@@ -1,12 +1,20 @@
+import { Box, Text } from '@chakra-ui/react';
 import type { NextPage } from 'next'
-import MainContainer from '../../components/MainContainer/MainContainer'
-import { Title } from '../styles/Home.js'
+import PageLayout from '../../components/PageLayout/PageLayout';
+import PageMeta from '../../components/PageMeta/PageMeta';
+
 
 const Home: NextPage = () => {
   return (
-    <MainContainer keywords='home'>
-      <Title>Home page</Title>
-    </MainContainer>
+    <PageMeta title='home'>
+      <PageLayout>
+        <Box ml={100} mt={10}>
+          <Text fontSize={20}>
+            Home page
+          </Text>
+        </Box>
+      </PageLayout>
+    </PageMeta>
   )
 }
 
