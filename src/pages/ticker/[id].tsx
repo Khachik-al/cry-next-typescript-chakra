@@ -3,7 +3,7 @@ import { NextPage } from "next";
 import { useRouter } from "next/router";
 import PageLayout from "../../../components/PageLayout/PageLayout";
 import PageMeta from "../../../components/PageMeta/PageMeta";
-import { GetStaticProps, GetStaticPaths } from 'next'
+// import { GetStaticProps, GetStaticPaths } from 'next'
 
 const Coin: NextPage = () => {
   const { query } = useRouter()
@@ -11,7 +11,7 @@ const Coin: NextPage = () => {
   return (
     <PageMeta title={`${query.id}`}>
       <PageLayout>
-        <Box ml={100} mt={10}>
+        <Box  mr='10%' ml='10%' mt={10}>
           <Text fontWeight='bold'>{query.id}</Text>
         </Box>
       </PageLayout>
@@ -19,19 +19,19 @@ const Coin: NextPage = () => {
   )
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  return {
-    props: {},
-  }
-}
-export const getStaticPaths: GetStaticPaths = async (context) => {
-  return {
-    paths: [
-      { params: {} }
-    ],
-    fallback: true
-  };
-}
+// export const getStaticProps: GetStaticProps = async (context) => {
+//   return {
+//     props: {},
+//   }
+// }
+// export const getStaticPaths: GetStaticPaths = async (context) => {
+//   return {
+//     paths: [
+//       { params: {} }
+//     ],
+//     fallback: true
+//   };
+// }
 
 export default Coin;
 

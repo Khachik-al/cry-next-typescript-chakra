@@ -9,20 +9,21 @@ const Coins: NextPage = () => {
   return (
     <PageMeta title='Coins'>
       <PageLayout>
-        <Box ml={100} mt={10}>
+        <Box mr='10%' ml='10%' mt={10}>
           <Text fontSize={20} fontWeight='bold'>
             Coins
           </Text>
-          <Link href='/ticker/bitcoin'>
-            <Text cursor='pointer' _hover={{ textDecoration: 'underline' }}>
-              Bitcoin
-            </Text>
-          </Link>
-          <Link href='/ticker/etherium'>
-            <Text cursor='pointer' _hover={{ textDecoration: 'underline' }}>
-              Etherium
-            </Text>
-          </Link>
+          {[
+            { name: 'Bitcoin', ticker: 'bitcoin' },
+            { name: 'Etherium', ticker: 'etherium' },
+            { name: 'BNB', ticker: 'bnb' },
+          ].map((el) =>
+            <Link href={`/ticker/${el.ticker}`}>
+              <Text cursor='pointer' _hover={{ textDecoration: 'underline' }}>
+                {el.name}
+              </Text>
+            </Link>
+          )}
         </Box>
       </PageLayout>
     </PageMeta>

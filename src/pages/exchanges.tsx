@@ -7,9 +7,10 @@ const Exchanges: NextPage = () => {
   return (
     <PageMeta title='Exchanges'>
       <PageLayout>
-        <Box ml={100} mt={10}>
-          <Text fontSize={20}>
-            Exchanges
+        <Box mr='10%' ml='10%' mt={10}>
+          <Text fontSize={20}>Exchanges</Text>
+          <Text>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias nesciunt, atque quaerat eaque debitis aliquam provident, odio saepe a dolorem excepturi deserunt fuga? Fuga saepe eius, veritatis nihil eum itaque!
           </Text>
         </Box>
       </PageLayout>

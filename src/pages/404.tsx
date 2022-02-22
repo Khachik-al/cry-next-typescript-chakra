@@ -7,9 +7,9 @@ const NotFound: NextPage = () => {
   return (
     <PageMeta title='404'>
       <PageLayout>
-        <Box ml={100} mt={10}>
+        <Box mr='10%' ml='10%' mt={10}>
           <Text fontSize={20}>
-            Got 404 not found error
+            404 not found error
           </Text>
         </Box>
       </PageLayout>

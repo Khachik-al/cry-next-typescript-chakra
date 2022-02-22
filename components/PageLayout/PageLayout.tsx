@@ -11,9 +11,9 @@ const PageLayout: React.FC<Props> = ({ children }) => {
     return (
         <>
             <HeaderNav />
-            <SearchTab/>
+            <SearchTab />
             {children}
-            <Footer/>
+            <Footer />
         </>
     );
 }

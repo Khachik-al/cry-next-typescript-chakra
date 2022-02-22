@@ -1,4 +1,4 @@
-import { Flex, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import * as React from 'react';
 
@@ -8,46 +8,42 @@ type Props = {
 
 const HeaderNav: React.FC<Props> = ({ }) => {
     return (
-        <>
-            <Flex align='center' ml={100} mt={30}>
-                
-                <Link href='/'>
-                    <Text fontSize={25} color='green' fontWeight={600} cursor='pointer'>
-                        Cryptogic
-                    </Text>
-                </Link>
-                <Link href='/coins'>
-                    <Text ml={10} cursor='pointer' _hover={{ textDecoration: 'underline' }}>
-                        Coins
-                    </Text>
-                </Link>
-                <Link href='/exchanges'>
-                    <Text ml={10} cursor='pointer' _hover={{ textDecoration: 'underline' }}>
-                        Exchanges
-                    </Text>
-                </Link>
-                <Link href='/nfts'>
-                    <Text ml={10} cursor='pointer' _hover={{ textDecoration: 'underline' }}>
-                        NFT's
-                    </Text>
-                </Link>
-                <Text ml={10} cursor='pointer' _hover={{ textDecoration: 'underline' }}>
-                    Podcast
-                </Text>
-                <Text ml={10} cursor='pointer' _hover={{ textDecoration: 'underline' }}>
-                    TV
-                </Text>
-                <Text ml={10} cursor='pointer' _hover={{ textDecoration: 'underline' }}>
-                    Guide
-                </Text>
-                <Text ml={10} cursor='pointer' _hover={{ textDecoration: 'underline' }}>
-                    News
-                </Text>
-                <Text ml={10} cursor='pointer' _hover={{ textDecoration: 'underline' }}>
-                    About us
-                </Text>
+        <Box mr='10%' ml='10%' mt={30}>
+            <Flex justify='space-between' align='center'>
+                <Flex align='center'>
+                    <Link href='/'>
+                        <Text fontSize={25} color='green' fontWeight={700} cursor='pointer'>
+                            Cryptogic
+                        </Text>
+                    </Link>
+                    {[
+                        { name: 'Coins', link: '/coins' },
+                        { name: 'Exchanges', link: '/exchanges' },
+                        { name: "NFT's", link: '/nfts' }
+                    ].map((el) =>
+                        <Link href={el.link}>
+                            <Text fontSize={14} ml={7} cursor='pointer' _hover={{ textDecoration: 'underline' }}>
+                                {el.name}
+                            </Text>
+                        </Link>
+                    )}
+                    {[
+                        { name: 'Podcast' },
+                        { name: 'TV' },
+                        { name: 'Guide' },
+                        { name: 'News' },
+                        { name: 'About us' },
+                    ].map((el) =>
+                        <Text fontSize={14} ml={10} cursor='pointer' _hover={{ textDecoration: 'underline' }}>
+                            {el.name}
+                        </Text>
+                    )}
+                </Flex>
+                <Box>
+                    <Button>Sign up</Button>
+                </Box>
             </Flex>
-        </>
+        </Box>
     );
 }
 
