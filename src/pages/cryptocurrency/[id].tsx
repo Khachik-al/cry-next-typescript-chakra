@@ -3,9 +3,9 @@ import { NextPage } from "next";
 import { useRouter } from "next/router";
 import PageLayout from "../../../components/PageLayout/PageLayout";
 import PageMeta from "../../../components/PageMeta/PageMeta";
-// import { GetStaticProps, GetStaticPaths } from 'next'
 
-const Coin: NextPage = () => {
+
+const CryptocurrencyItem: NextPage = () => {
   const { query } = useRouter()
 
   return (
@@ -19,19 +19,5 @@ const Coin: NextPage = () => {
   )
 }
 
-// export const getStaticProps: GetStaticProps = async (context) => {
-//   return {
-//     props: {},
-//   }
-// }
-// export const getStaticPaths: GetStaticPaths = async (context) => {
-//   return {
-//     paths: [
-//       { params: {} }
-//     ],
-//     fallback: true
-//   };
-// }
-
-export default Coin;
+export default CryptocurrencyItem;
 

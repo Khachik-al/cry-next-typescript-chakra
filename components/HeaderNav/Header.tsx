@@ -17,9 +17,9 @@ const HeaderNav: React.FC<Props> = ({ }) => {
 						</Text>
 					</Link>
 					{[
-						{ name: 'Coins', link: '/coins' },
-						{ name: 'Exchanges', link: '/exchanges' },
-						{ name: "NFT's", link: '/nfts' }
+						{ name: 'Coins', link: '/cryptocurrency' },
+						{ name: 'Exchanges', link: '/exchange' },
+						{ name: "NFT's", link: '/nft' }
 					].map((el) =>
 						<Link href={el.link}>
 							<Text fontSize={14} ml={7} cursor='pointer' _hover={{ textDecoration: 'underline' }}>
