@@ -1,10 +1,16 @@
 import { Box, Text } from '@chakra-ui/react'
-import type { NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
 import Link from 'next/link'
 import PageLayout from '../../../components/PageLayout/PageLayout'
 import PageMeta from '../../../components/PageMeta/PageMeta'
 
-const Exchanges: NextPage = () => {
+
+interface Props {
+  data: any[]
+}
+
+
+const Exchanges: NextPage<Props> = ({ data }) => {
   return (
     <PageMeta title='Exchanges'>
       <PageLayout>
@@ -12,15 +18,7 @@ const Exchanges: NextPage = () => {
           <Text fontSize={20} fontWeight='bold'>
             Top Cryptocurrency Exchanges
           </Text>
-          {[
-            { name: 'Binance', ticker: 'binance' },
-            { name: 'OKX', ticker: 'okx' },
-            { name: 'Coinbase Exchange', ticker: 'coinbase_exchange' },
-            { name: 'Coinbase Exchange', ticker: 'coinbase_exchange' },
-            { name: 'Coinbase Exchange', ticker: 'coinbase_exchange' },
-            { name: 'Coinbase Exchange', ticker: 'coinbase_exchange' },
-            { name: 'Coinbase Exchange', ticker: 'coinbase_exchange' },
-          ].map((el) =>
+          {data.map((el) =>
             <Link href={`/exchange/${el.ticker}`}>
               <Text cursor='pointer' _hover={{ textDecoration: 'underline' }} mt={5}>
                 {el.name}
@@ -31,6 +29,22 @@ const Exchanges: NextPage = () => {
       </PageLayout>
     </PageMeta>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const data = [
+    { name: 'Binance', ticker: 'binance' },
+    { name: 'OKX', ticker: 'okx' },
+    { name: 'Coinbase Exchange', ticker: 'coinbase_exchange' },
+    { name: 'Coinbase Exchange', ticker: 'coinbase_exchange' },
+    { name: 'Coinbase Exchange', ticker: 'coinbase_exchange' },
+    { name: 'Coinbase Exchange', ticker: 'coinbase_exchange' },
+    { name: 'Coinbase Exchange', ticker: 'coinbase_exchange' },
+  ]
+
+  return {
+    props: { data }
+  }
 }
 
 export default Exchanges

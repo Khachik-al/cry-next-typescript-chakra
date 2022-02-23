@@ -1,11 +1,15 @@
 import { Box, Text } from '@chakra-ui/react'
-import type { NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
 import Link from 'next/link'
 import PageLayout from '../../../components/PageLayout/PageLayout'
 import PageMeta from '../../../components/PageMeta/PageMeta'
 
 
-const Nfts: NextPage = () => {
+interface Props {
+  data: any[];
+}
+
+const Nfts: NextPage<Props> = ({ data }) => {
   return (
     <PageMeta title='Nfts'>
       <PageLayout>
@@ -13,17 +17,7 @@ const Nfts: NextPage = () => {
           <Text fontSize={20} fontWeight='bold'>
             Top NFT Rankings
           </Text>
-          {[
-            { name: 'Cryptopunks', ticker: 'cryptopunks' },
-            { name: 'Azuki', ticker: 'azuki' },
-            { name: 'Tasty Bones XYZ', ticker: 'tasty-bones-xyz' },
-            { name: 'Tasty Bones XYZ', ticker: 'tasty-bones-xyz' },
-            { name: 'Tasty Bones XYZ', ticker: 'tasty-bones-xyz' },
-            { name: 'Tasty Bones XYZ', ticker: 'tasty-bones-xyz' },
-            { name: 'Tasty Bones XYZ', ticker: 'tasty-bones-xyz' },
-            { name: 'Tasty Bones XYZ', ticker: 'tasty-bones-xyz' },
-            { name: 'Tasty Bones XYZ', ticker: 'tasty-bones-xyz' },
-          ].map((el) =>
+          {data.map((el) =>
             <Link href={`/nft/${el.ticker}`}>
               <Text cursor='pointer' _hover={{ textDecoration: 'underline' }} mt={5}>
                 {el.name}
@@ -34,6 +28,24 @@ const Nfts: NextPage = () => {
       </PageLayout>
     </PageMeta>
   )
+}
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const data = [
+    { name: 'Cryptopunks', ticker: 'cryptopunks' },
+    { name: 'Azuki', ticker: 'azuki' },
+    { name: 'Tasty Bones XYZ', ticker: 'tasty-bones-xyz' },
+    { name: 'Tasty Bones XYZ', ticker: 'tasty-bones-xyz' },
+    { name: 'Tasty Bones XYZ', ticker: 'tasty-bones-xyz' },
+    { name: 'Tasty Bones XYZ', ticker: 'tasty-bones-xyz' },
+    { name: 'Tasty Bones XYZ', ticker: 'tasty-bones-xyz' },
+    { name: 'Tasty Bones XYZ', ticker: 'tasty-bones-xyz' },
+    { name: 'Tasty Bones XYZ', ticker: 'tasty-bones-xyz' },
+  ]
+
+  return {
+    props: { data }
+  }
 }
 
 export default Nfts

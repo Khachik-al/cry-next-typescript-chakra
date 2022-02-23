@@ -1,11 +1,15 @@
 import { Box, Text } from '@chakra-ui/react';
-import type { NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
 import Link from 'next/link';
 import PageLayout from '../../../components/PageLayout/PageLayout';
 import PageMeta from '../../../components/PageMeta/PageMeta';
 
 
-const Cryptocurrency: NextPage = () => {
+interface Props {
+  data: any[]
+}
+
+const Cryptocurrency: NextPage<Props> = ({ data }) => {
   return (
     <PageMeta title='Coins'>
       <PageLayout>
@@ -13,17 +17,7 @@ const Cryptocurrency: NextPage = () => {
           <Text fontSize={20} fontWeight='bold' mb={5}>
             Today's Cryptocurrency Prices by Market Cap
           </Text>
-          {[
-            { name: 'Bitcoin', ticker: 'bitcoin' },
-            { name: 'Etherium', ticker: 'etherium' },
-            { name: 'BNB', ticker: 'bnb' },
-            { name: 'Tether', ticker: 'tether' },
-            { name: 'Tether', ticker: 'tether' },
-            { name: 'Tether', ticker: 'tether' },
-            { name: 'Tether', ticker: 'tether' },
-            { name: 'Tether', ticker: 'tether' },
-            { name: 'Tether', ticker: 'tether' },
-          ].map((el) =>
+          {data.map((el) =>
             <Link href={`/cryptocurrency/${el.ticker}`}>
               <Text cursor='pointer' _hover={{ textDecoration: 'underline' }} mb={5}>
                 {el.name}
@@ -34,6 +28,24 @@ const Cryptocurrency: NextPage = () => {
       </PageLayout>
     </PageMeta>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const data = [
+    { name: 'Bitcoin', ticker: 'bitcoin' },
+    { name: 'Etherium', ticker: 'etherium' },
+    { name: 'BNB', ticker: 'bnb' },
+    { name: 'Tether', ticker: 'tether' },
+    { name: 'Tether', ticker: 'tether' },
+    { name: 'Tether', ticker: 'tether' },
+    { name: 'Tether', ticker: 'tether' },
+    { name: 'Tether', ticker: 'tether' },
+    { name: 'Tether', ticker: 'tether' },
+  ];
+
+  return {
+    props: { data },
+  }
 }
 
 export default Cryptocurrency;
