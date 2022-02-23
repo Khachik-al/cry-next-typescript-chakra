@@ -1,16 +1,11 @@
-import * as React from 'react';
+import React, { FC } from 'react'
 
-type Props = {
+type Props = {}
 
+const Footer: FC = (props: Props) => {
+  return (
+    <div></div>
+  )
 }
-
-const Footer: React.FC<Props> = ({ }) => {
-    return (
-        <>
-
-        </>
-    );
-}
-
 
 export default Footer

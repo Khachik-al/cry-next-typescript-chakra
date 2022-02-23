@@ -1,16 +1,11 @@
-import * as React from 'react';
+import React, { FC } from 'react'
 
-type Props = {
-   
+interface Props { }
+
+const SearchTab: FC<Props> = () => {
+  return (
+    <div></div>
+  )
 }
-
-const SearchTab: React.FC<Props> = ({  }) => {
-    return (
-        <>
-          
-        </>
-    );
-}
-
 
 export default SearchTab
