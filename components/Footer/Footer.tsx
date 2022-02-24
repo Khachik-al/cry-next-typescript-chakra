@@ -2,10 +2,8 @@ import React, { FC } from 'react'
 
 type Props = {}
 
-const Footer: FC = (props: Props) => {
-  return (
-    <div></div>
-  )
-}
+const Footer: FC = (props: Props) => (
+  <div />
+)
 
 export default Footer

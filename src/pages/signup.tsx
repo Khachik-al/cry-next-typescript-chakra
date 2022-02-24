@@ -3,10 +3,8 @@ import React, { FC } from 'react'
 
 type Props = {}
 
-const Signup: FC<Props> = () => {
-  return (
-    <Text>Signup</Text>
-  )
-}
+const Signup: FC<Props> = () => (
+  <Text>Signup</Text>
+)
 
 export default Signup

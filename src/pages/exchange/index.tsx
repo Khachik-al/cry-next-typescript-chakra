@@ -4,32 +4,28 @@ import Link from 'next/link'
 import PageLayout from '../../../components/PageLayout/PageLayout'
 import PageMeta from '../../../components/PageMeta/PageMeta'
 
-
 interface Props {
   data: any[]
 }
 
-
-const Exchanges: NextPage<Props> = ({ data }) => {
-  return (
-    <PageMeta title='Exchanges'>
-      <PageLayout>
-        <Box mr='10%' ml='10%' mt={10}>
-          <Text fontSize={20} fontWeight='bold'>
-            Top Cryptocurrency Exchanges
-          </Text>
-          {data.map((el) =>
-            <Link href={`/exchange/${el.ticker}`}>
-              <Text cursor='pointer' _hover={{ textDecoration: 'underline' }} mt={5}>
-                {el.name}
-              </Text>
-            </Link>
-          )}
-        </Box>
-      </PageLayout>
-    </PageMeta>
-  )
-}
+const Exchanges: NextPage<Props> = ({ data }) => (
+  <PageMeta title="Exchanges">
+    <PageLayout>
+      <Box mr="10%" ml="10%" mt={10}>
+        <Text fontSize={20} fontWeight="bold">
+          Top Cryptocurrency Exchanges
+        </Text>
+        {data.map((el) => (
+          <Link href={`/exchange/${el.ticker}`}>
+            <Text cursor="pointer" _hover={{ textDecoration: 'underline' }} mt={5}>
+              {el.name}
+            </Text>
+          </Link>
+        ))}
+      </Box>
+    </PageLayout>
+  </PageMeta>
+)
 
 export const getStaticProps: GetStaticProps = async () => {
   const data = [
@@ -43,7 +39,7 @@ export const getStaticProps: GetStaticProps = async () => {
   ]
 
   return {
-    props: { data }
+    props: { data },
   }
 }
 
