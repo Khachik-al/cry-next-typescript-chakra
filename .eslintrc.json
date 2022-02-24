@@ -3,6 +3,17 @@
     "next/core-web-vitals",
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
-  ]
+    "airbnb",
+    "airbnb/hooks"
+  ],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "semi": ["error", "never"],
+    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
+    "react/function-component-definition": [1, {
+      "namedComponents":  "arrow-function",
+      "unnamedComponents": "arrow-function"
+    }],
+    "implicit-arrow-linebreak": "off"
+  }
 }
