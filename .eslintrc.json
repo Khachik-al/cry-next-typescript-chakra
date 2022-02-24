@@ -14,6 +14,8 @@
       "namedComponents":  "arrow-function",
       "unnamedComponents": "arrow-function"
     }],
-    "implicit-arrow-linebreak": "off"
+    "implicit-arrow-linebreak": "off",
+    "import/extensions": ["error", "ignorePackages", { "ts": "never", "tsx": "never" }
+    ]
   }
 }
