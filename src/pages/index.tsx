@@ -1,8 +1,8 @@
 import { Box, Text } from '@chakra-ui/react';
+import { Skeleton } from '@chakra-ui/react'
 import type { NextPage } from 'next'
 import PageLayout from '../../components/PageLayout/PageLayout';
 import PageMeta from '../../components/PageMeta/PageMeta';
-import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/react'
 
 const Home: NextPage = () => {
   return (
