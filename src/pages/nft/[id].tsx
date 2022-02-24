@@ -1,9 +1,8 @@
-import { Box, Text } from "@chakra-ui/react";
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { useRouter } from "next/router";
-import PageLayout from "../../../components/PageLayout/PageLayout";
-import PageMeta from "../../../components/PageMeta/PageMeta";
-
+import { Box, Text } from '@chakra-ui/react'
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import { useRouter } from 'next/router'
+import PageLayout from '../../../components/PageLayout/PageLayout'
+import PageMeta from '../../../components/PageMeta/PageMeta'
 
 interface Props {
   data: string;
@@ -15,8 +14,8 @@ const NftItem: NextPage<Props> = ({ data }) => {
   return (
     <PageMeta title={`${query.id}`}>
       <PageLayout>
-        <Box mr='10%' ml='10%' mt={10}>
-          <Text fontWeight='bold'>{query.id}</Text>
+        <Box mr="10%" ml="10%" mt={10}>
+          <Text fontWeight="bold">{query.id}</Text>
           <Text>{data}</Text>
         </Box>
       </PageLayout>
@@ -25,11 +24,10 @@ const NftItem: NextPage<Props> = ({ data }) => {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-
   const data = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit unde tempora vitae quod '
 
   return {
-    props: { data: data },
+    props: { data },
   }
 }
 
@@ -47,15 +45,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
   ]
 
   const paths = data.map((el) => ({
-    params: { id: el.ticker }
+    params: { id: el.ticker },
   }))
 
   return {
     paths,
-    fallback: true
-  };
+    fallback: true,
+  }
 }
 
-
-export default NftItem;
-
+export default NftItem
