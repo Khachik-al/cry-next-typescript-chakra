@@ -1,10 +1,18 @@
-import { Text } from '@chakra-ui/react'
-import React, { FC } from 'react'
+import { Box } from '@chakra-ui/react'
+import { NextPage } from 'next'
+import React from 'react'
+import PageLayout from '../../components/PageLayout/PageLayout'
+import PageMeta from '../../components/PageMeta/PageMeta'
+import SignUpComp from '../../components/SignUp/SignUpComp'
 
-type Props = {}
-
-const Signup: FC<Props> = () => (
-  <Text>Signup</Text>
+const SignUp: NextPage = () => (
+  <PageMeta title="home">
+    <PageLayout>
+      <Box mr="10%" ml="10%" mt={10}>
+        <SignUpComp />
+      </Box>
+    </PageLayout>
+  </PageMeta>
 )
 
-export default Signup
+export default SignUp
