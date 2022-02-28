@@ -4,9 +4,9 @@ import PageLayout from '../../components/PageLayout/PageLayout'
 import PageMeta from '../../components/PageMeta/PageMeta'
 
 const NotFound: NextPage = () => (
-  <PageMeta title="404">
+  <PageMeta title='404'>
     <PageLayout>
-      <Box mr="10%" ml="10%" mt={10}>
+      <Box mr='10%' ml='10%' mt={10}>
         <Text fontSize={20}>
           404 not found error
         </Text>

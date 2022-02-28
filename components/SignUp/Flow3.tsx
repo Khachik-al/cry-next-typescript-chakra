@@ -1,4 +1,6 @@
-import { Button, Flex, Text } from '@chakra-ui/react'
+import {
+  Box, Button, Flex, HStack, Input, Select, Stack, Text,
+} from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import React, { FC } from 'react'
 
@@ -11,18 +13,38 @@ const Flow3: FC<Props> = () => {
   return (
     <>
       <Flex justify='center'>
-        <Text fontSize='48px' mb={30} fontWeight='900'>Start your 7 day trial</Text>
+        <Text fontSize='5xl' mb={30} fontWeight='black'>Start your 7 day trial</Text>
       </Flex>
-      <Flex justify='center' mt='50px'>
-      <Button
+      <Stack direction={['row']} spacing={5}>
+        <Box w='full'>
+          <Text fontSize={18} mb={30}>Payment Method</Text>
+          <Text fontSize='sm'>Card Number</Text>
+          <Input focusBorderColor='none' borderRadius='xl' fontSize='sm' />
+          <HStack spacing={5}>
+            <Box w='full'>
+              <Text fontSize='sm' mt={3}>Expiry Date</Text>
+              <Input focusBorderColor='none' borderRadius='xl' fontSize='sm' />
+            </Box>
+            <Box w='full'>
+              <Text fontSize='sm' mt={3}>CVC/CVV</Text>
+              <Input focusBorderColor='none' borderRadius='xl' fontSize='sm' />
+            </Box>
+          </HStack>
+        </Box>
+        <Box w='full'>
+          <Text fontSize={18} mb={30}>Order Summary</Text>
+          <Text fontSize={12}>Select Plan</Text>
+          <Select focusBorderColor='none' borderRadius='xl' fontSize='sm'>
+            <option value='option1'>Option 1</option>
+            <option value='option2'>Option 2</option>
+            <option value='option3'>Option 3</option>
+          </Select>
+        </Box>
+      </Stack>
+      <Flex justify='center' mt={12}>
+        <Button
           onClick={() => router.push('/signup?flow=4')}
-          height='56px'
-          width='344px'
-          background='#3EAE7D'
-          borderRadius='60px'
-          boxShadow='0px 5px 15px rgba(62, 174, 125, 0.3)'
-          color='#FCFCFC'
-          fontSize='16px'
+          _focus={{}}
           _hover={{ opacity: '0.9' }}
         >
           Place Older

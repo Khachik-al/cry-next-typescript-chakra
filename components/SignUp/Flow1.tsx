@@ -12,19 +12,13 @@ const Flow1: FC<Props> = () => {
   return (
     <>
       <Flex justify='center'>
-        <Text fontSize='48px' mb={30} fontWeight='900'>Choose your plan</Text>
+        <Text fontSize='5xl' mb={30} fontWeight='black'>Choose your plan</Text>
       </Flex>
-      <Flex justify='center' mt='50px'>
+      <Flex justify='center' mt={12}>
         <Button
           onClick={() => router.push('/signup?flow=2')}
-          height='56px'
-          width='185px'
-          background='#3EAE7D'
-          borderRadius='60px'
-          boxShadow='0px 5px 15px rgba(62, 174, 125, 0.3)'
-          color='#FCFCFC'
-          fontSize='16px'
           _hover={{ opacity: '0.9' }}
+          _focus={{}}
         >
           7 day trial for $7
         </Button>

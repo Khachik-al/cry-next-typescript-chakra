@@ -11,18 +11,12 @@ const Flow4: FC<Props> = () => {
   return (
     <>
       <Flex justify='center'>
-        <Text fontSize='48px' mb={30} fontWeight='900'>Order Placed</Text>
+        <Text fontSize='5xl' mb={30} fontWeight='black'>Order Placed</Text>
       </Flex>
-      <Flex justify='center' mt='50px'>
+      <Flex justify='center' mt={12}>
         <Button
           onClick={() => router.push('/signup?flow=1')}
-          height='56px'
-          width='344px'
-          background='#3EAE7D'
-          borderRadius='60px'
-          boxShadow='0px 5px 15px rgba(62, 174, 125, 0.3)'
-          color='#FCFCFC'
-          fontSize='16px'
+          _focus={{}}
           _hover={{ opacity: '0.9' }}
         >
           Resend Verification

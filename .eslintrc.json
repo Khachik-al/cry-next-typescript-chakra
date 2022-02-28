@@ -15,7 +15,7 @@
       "unnamedComponents": "arrow-function"
     }],
     "implicit-arrow-linebreak": "off",
-    "import/extensions": ["error", "ignorePackages", { "ts": "never", "tsx": "never" }
-    ]
+    "import/extensions": ["error", "ignorePackages", { "ts": "never", "tsx": "never" }],
+    "jsx-quotes": ["error", "prefer-single"]
   }
 }

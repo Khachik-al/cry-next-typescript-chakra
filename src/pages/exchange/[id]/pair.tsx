@@ -8,8 +8,8 @@ type Props = {}
 const pair = (props: Props) => (
   <PageMeta>
     <PageLayout>
-      <Box mr="10%" ml="10%" mt={10}>
-        <Text fontWeight="bold">Pair</Text>
+      <Box mr='10%' ml='10%' mt={10}>
+        <Text fontWeight='bold'>Pair</Text>
       </Box>
     </PageLayout>
   </PageMeta>

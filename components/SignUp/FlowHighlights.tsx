@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from '@chakra-ui/react'
+import { Box, Flex, HStack, Stack, Text } from '@chakra-ui/react'
 import React, { FC } from 'react'
 
 interface Props {
@@ -7,23 +7,23 @@ interface Props {
 
 const FlowHighlights: FC<Props> = ({ flow }) => (
   <>
-    <Flex mr="10%" ml="10%" mt={10} justify='center'>
-      <Text fontSize='14px' mb='24px' color='#3EAE7D' fontWeight='900'>Signup flow Highlight</Text>
+    <Flex mx='10%' mt={10} justify='center'>
+      <Text fontSize='sm' mb={6} color='green.100' fontWeight='black'>Signup flow Highlight</Text>
     </Flex>
-    <Flex justify='center'>
+    <HStack spacing={2} justify='center'>
       <Box textAlign='center'>
-        <Text fontSize='10px'>Plan</Text>
-        <Box height='4px' width='79px' borderRadius='8px' background={flow === '1' ? '#3EAE7D' : '#ECECEC'} />
+        <Text fontSize={10}>Plan</Text>
+        <Box h='4px' w='79px' borderRadius='xl' background={flow === '1' ? 'green.100' : '#ECECEC'} />
       </Box>
-      <Box textAlign='center' ml='5px'>
-        <Text fontSize='10px'>Details</Text>
-        <Box height='4px' width='79px' borderRadius='8px' background={flow === '2' ? '#3EAE7D' : '#ECECEC'} />
+      <Box textAlign='center'>
+        <Text fontSize={10}>Details</Text>
+        <Box h='4px' w='79px' borderRadius='xl' background={flow === '2' ? 'green.100' : '#ECECEC'} />
       </Box>
-      <Box textAlign='center' ml='5px'>
-        <Text fontSize='10px'>Checkout</Text>
-        <Box height='4px' width='79px' borderRadius='8px' background={flow === '3' ? '#3EAE7D' : '#ECECEC'} />
+      <Box textAlign='center'>
+        <Text fontSize={10}>Checkout</Text>
+        <Box h='4px' w='79px' borderRadius='xl' background={flow === '3' ? 'green.100' : '#ECECEC'} />
       </Box>
-    </Flex>
+    </HStack>
   </>
 )
 
