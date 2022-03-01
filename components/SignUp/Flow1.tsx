@@ -12,7 +12,7 @@ const Flow1: FC<Props> = () => {
   return (
     <>
       <Flex justify='center'>
-        <Text fontSize='5xl' mb={30} fontWeight='black'>Choose your plan</Text>
+        <Text fontSize={['3xl', '4xl', '5xl']} mb={30} fontWeight='black'>Choose your plan</Text>
       </Flex>
       <Flex justify='center' mt={12}>
         <Button

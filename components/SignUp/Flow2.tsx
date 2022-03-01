@@ -11,10 +11,10 @@ const Flow2: FC = () => {
 
     <>
       <Flex justify='center'>
-        <Text fontSize='5xl' mb={30} fontWeight='black'>Start your 7 day trial</Text>
+        <Text fontSize={['3xl', '4xl', '5xl']} mb={30} fontWeight='black'>Start your 7 day trial</Text>
       </Flex>
       <form>
-        <Stack spacing={10} direction={['row']}>
+        <Stack spacing={10} direction={['column', 'column', 'row']}>
           <Box w='full'>
             <Text fontSize={18} mb={30}>Personal Details</Text>
             <Text fontSize={12}>Full name</Text>
@@ -34,7 +34,7 @@ const Flow2: FC = () => {
             <Input focusBorderColor='none' borderRadius='xl' fontSize='sm' />
           </Box>
           <Box w='full'>
-            <Text fontSize={12} mt='56px'>State</Text>
+            <Text fontSize={12} mt={[null, null, '56px']}>State</Text>
             <Input focusBorderColor='none' borderRadius='xl' fontSize='sm' />
             <Text fontSize={12} mt={3}>Zipe Code</Text>
             <Input focusBorderColor='none' borderRadius='xl' fontSize='sm' />

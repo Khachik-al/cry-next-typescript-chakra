@@ -13,9 +13,9 @@ const Flow3: FC<Props> = () => {
   return (
     <>
       <Flex justify='center'>
-        <Text fontSize='5xl' mb={30} fontWeight='black'>Start your 7 day trial</Text>
+        <Text fontSize={['3xl', '4xl', '5xl']} mb={30} fontWeight='black'>Start your 7 day trial</Text>
       </Flex>
-      <Stack direction={['row']} spacing={5}>
+      <Stack direction={['column', 'column', 'row']} spacing={5}>
         <Box w='full'>
           <Text fontSize={18} mb={30}>Payment Method</Text>
           <Text fontSize='sm'>Card Number</Text>
