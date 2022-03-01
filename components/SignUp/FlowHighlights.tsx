@@ -1,4 +1,6 @@
-import { Box, Flex, HStack, Stack, Text } from '@chakra-ui/react'
+import {
+  Box, Flex, HStack, Text,
+} from '@chakra-ui/react'
 import React, { FC } from 'react'
 
 interface Props {

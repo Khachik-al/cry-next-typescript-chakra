@@ -16,6 +16,9 @@
     }],
     "implicit-arrow-linebreak": "off",
     "import/extensions": ["error", "ignorePackages", { "ts": "never", "tsx": "never" }],
-    "jsx-quotes": ["error", "prefer-single"]
+    "jsx-quotes": ["error", "prefer-single"],
+    "react/no-unescaped-entities": 0 ,
+    "react/prop-types": 0,
+    "react/require-default-props" : 0
   }
 }

@@ -15,7 +15,7 @@ const HeaderNav: React.FC<Props> = () => {
     <Box mr='10%' ml='10%' mt={30}>
       <Flex justify='space-between' align='center'>
         <Flex align='center'>
-          <Link href='/'>
+          <Link href='/' passHref>
             <Text fontSize={25} color='green' fontWeight={700} cursor='pointer'>
               Cryptogic
             </Text>
@@ -25,7 +25,7 @@ const HeaderNav: React.FC<Props> = () => {
             { name: 'Exchanges', link: '/exchange' },
             { name: "NFT's", link: '/nft' },
           ].map((el) => (
-            <Link href={el.link}>
+            <Link href={el.link} passHref>
               <Text fontSize={14} ml={7} cursor='pointer' _hover={{ textDecoration: 'underline' }}>
                 {el.name}
               </Text>
@@ -47,13 +47,13 @@ const HeaderNav: React.FC<Props> = () => {
           <Button
             onClick={() => router.push('/signup')}
             _focus={{}}
-            _hover={{opacity:'0.9'}}
+            _hover={{ opacity: '0.9' }}
           >
             Sign up
           </Button>
         </Box>
-      </Flex >
-    </Box >
+      </Flex>
+    </Box>
   )
 }
 

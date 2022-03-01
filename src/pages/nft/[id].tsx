@@ -23,7 +23,7 @@ const NftItem: NextPage<Props> = ({ data }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   const data = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit unde tempora vitae quod '
 
   return {

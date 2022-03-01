@@ -16,7 +16,7 @@ const Nfts: NextPage<Props> = ({ data }) => (
           Top NFT Rankings
         </Text>
         {data.map((el) => (
-          <Link href={`/nft/${el.ticker}`}>
+          <Link href={`/nft/${el.ticker}`} passHref>
             <Text cursor='pointer' _hover={{ textDecoration: 'underline' }} mt={5}>
               {el.name}
             </Text>
@@ -27,7 +27,7 @@ const Nfts: NextPage<Props> = ({ data }) => (
   </PageMeta>
 )
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   const data = [
     { name: 'Cryptopunks', ticker: 'cryptopunks' },
     { name: 'Azuki', ticker: 'azuki' },

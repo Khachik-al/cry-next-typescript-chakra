@@ -1,5 +1,5 @@
 import {
-  Text, Input, Box, Select, Flex, Button, HStack, VStack, Stack,
+  Text, Input, Box, Select, Flex, Button, Stack,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import React, { FC } from 'react'
