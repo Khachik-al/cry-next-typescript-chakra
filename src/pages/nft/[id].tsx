@@ -14,8 +14,8 @@ const NftItem: NextPage<Props> = ({ data }) => {
   return (
     <PageMeta title={`${query.id}`}>
       <PageLayout>
-        <Box mr="10%" ml="10%" mt={10}>
-          <Text fontWeight="bold">{query.id}</Text>
+        <Box mr='10%' ml='10%' mt={10}>
+          <Text fontWeight='bold'>{query.id}</Text>
           <Text>{data}</Text>
         </Box>
       </PageLayout>
@@ -23,7 +23,7 @@ const NftItem: NextPage<Props> = ({ data }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   const data = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit unde tempora vitae quod '
 
   return {

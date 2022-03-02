@@ -15,11 +15,11 @@ const ExchangeItem: NextPage<Props> = ({ data }) => {
   return (
     <PageMeta title={`${query.id}`}>
       <PageLayout>
-        <Box mr="10%" ml="10%" mt={10}>
-          <Text fontWeight="bold">{query.id}</Text>
+        <Box mr='10%' ml='10%' mt={10}>
+          <Text fontWeight='bold'>{query.id}</Text>
           <Text>{data}</Text>
-          <Link href={`/exchange/${query.id}/pair`}>
-            <Text cursor="pointer" _hover={{ textDecoration: 'underline' }} mt={5}>
+          <Link href={`/exchange/${query.id}/pair`} passHref>
+            <Text cursor='pointer' _hover={{ textDecoration: 'underline' }} mt={5}>
               Pair
             </Text>
           </Link>
@@ -29,7 +29,7 @@ const ExchangeItem: NextPage<Props> = ({ data }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   const data = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit unde tempora vitae quod '
 
   return {

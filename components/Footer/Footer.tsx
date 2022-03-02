@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 type Props = {}
 
-const Footer: FC = (props: Props) => (
+const Footer: FC<Props> = () => (
   <div />
 )
 

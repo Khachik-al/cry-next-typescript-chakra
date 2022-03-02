@@ -9,15 +9,15 @@ interface Props {
 }
 
 const Nfts: NextPage<Props> = ({ data }) => (
-  <PageMeta title="Nfts">
+  <PageMeta title='Nfts'>
     <PageLayout>
-      <Box mr="10%" ml="10%" mt={10}>
-        <Text fontSize={20} fontWeight="bold">
+      <Box mr='10%' ml='10%' mt={10}>
+        <Text fontSize={20} fontWeight='bold'>
           Top NFT Rankings
         </Text>
         {data.map((el) => (
-          <Link href={`/nft/${el.ticker}`}>
-            <Text cursor="pointer" _hover={{ textDecoration: 'underline' }} mt={5}>
+          <Link href={`/nft/${el.ticker}`} passHref>
+            <Text cursor='pointer' _hover={{ textDecoration: 'underline' }} mt={5}>
               {el.name}
             </Text>
           </Link>
@@ -27,7 +27,7 @@ const Nfts: NextPage<Props> = ({ data }) => (
   </PageMeta>
 )
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   const data = [
     { name: 'Cryptopunks', ticker: 'cryptopunks' },
     { name: 'Azuki', ticker: 'azuki' },

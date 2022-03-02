@@ -9,15 +9,15 @@ interface Props {
 }
 
 const Cryptocurrency: NextPage<Props> = ({ data }) => (
-  <PageMeta title="Coins">
+  <PageMeta title='Coins'>
     <PageLayout>
-      <Box mr="10%" ml="10%" mt={10}>
-        <Text fontSize={20} fontWeight="bold" mb={5}>
+      <Box mr='10%' ml='10%' mt={10}>
+        <Text fontSize={20} fontWeight='bold' mb={5}>
           Today's Cryptocurrency Prices by Market Cap
         </Text>
         {data.map((el) => (
-          <Link href={`/cryptocurrency/${el.ticker}`}>
-            <Text cursor="pointer" _hover={{ textDecoration: 'underline' }} mb={5}>
+          <Link href={`/cryptocurrency/${el.ticker}`} passHref>
+            <Text cursor='pointer' _hover={{ textDecoration: 'underline' }} mb={5}>
               {el.name}
             </Text>
           </Link>
