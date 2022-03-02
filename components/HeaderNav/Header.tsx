@@ -1,5 +1,5 @@
 import {
-  Box, Button, Flex, Text,
+  Box, Button, Flex, Heading, Text,
 } from '@chakra-ui/react'
 import Link from 'next/link'
 import * as React from 'react'
@@ -16,9 +16,9 @@ const HeaderNav: React.FC<Props> = () => {
       <Flex justify='space-between' align='center'>
         <Flex align='center'>
           <Link href='/' passHref>
-            <Text fontSize={25} color='green' fontWeight={700} cursor='pointer'>
+            <Heading fontSize={25} color='green' fontWeight={700} cursor='pointer'>
               Cryptogic
-            </Text>
+            </Heading>
           </Link>
           {[
             { name: 'Coins', link: '/cryptocurrency' },
@@ -46,8 +46,6 @@ const HeaderNav: React.FC<Props> = () => {
         <Box>
           <Button
             onClick={() => router.push('/signup')}
-            _focus={{}}
-            _hover={{ opacity: '0.9' }}
           >
             Sign up
           </Button>

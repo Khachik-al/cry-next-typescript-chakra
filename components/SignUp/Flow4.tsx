@@ -1,4 +1,6 @@
-import { Button, Flex, Text } from '@chakra-ui/react'
+import {
+  Button, Flex, Heading,
+} from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import React, { FC } from 'react'
 
@@ -11,13 +13,11 @@ const Flow4: FC<Props> = () => {
   return (
     <>
       <Flex justify='center'>
-        <Text fontSize={['3xl', '4xl', '5xl']} mb={30} fontWeight='black'>Order Placed</Text>
+        <Heading fontSize={['3xl', '4xl', '5xl']} mb={30} fontWeight='black'>Order Placed</Heading>
       </Flex>
       <Flex justify='center' mt={12}>
         <Button
           onClick={() => router.push('/signup?flow=1')}
-          _focus={{}}
-          _hover={{ opacity: '0.9' }}
         >
           Resend Verification
         </Button>

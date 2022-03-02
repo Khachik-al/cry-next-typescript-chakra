@@ -1,6 +1,6 @@
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
 
-const Button = {
+const Button: ComponentStyleConfig = {
   baseStyle: {
 
   },

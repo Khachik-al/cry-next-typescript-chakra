@@ -15,15 +15,15 @@ const FlowHighlights: FC<Props> = ({ flow }) => (
     <HStack spacing={2} justify='center'>
       <Box textAlign='center'>
         <Text fontSize={10}>Plan</Text>
-        <Box h='4px' w='79px' borderRadius='xl' background={flow === '1' ? 'green.100' : '#ECECEC'} />
+        <Box h={1} w={20} borderRadius='xl' background={flow === '1' ? 'green.100' : 'grey.light'} />
       </Box>
       <Box textAlign='center'>
         <Text fontSize={10}>Details</Text>
-        <Box h='4px' w='79px' borderRadius='xl' background={flow === '2' ? 'green.100' : '#ECECEC'} />
+        <Box h={1} w={20} borderRadius='xl' background={flow === '2' ? 'green.100' : 'grey.light'} />
       </Box>
       <Box textAlign='center'>
         <Text fontSize={10}>Checkout</Text>
-        <Box h='4px' w='79px' borderRadius='xl' background={flow === '3' ? 'green.100' : '#ECECEC'} />
+        <Box h={1} w={20} borderRadius='xl' background={flow === '3' ? 'green.100' : 'grey.light'} />
       </Box>
     </HStack>
   </>

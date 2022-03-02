@@ -1,28 +1,22 @@
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
+import { StyleFunctionProps } from "@chakra-ui/theme-tools"
+import defaultTheme from "@chakra-ui/theme"
+
+console.log(defaultTheme.components.Input);
 
 const Input: ComponentStyleConfig = {
-	baseStyle: {
-
-	},
-	sizes: {
-		sm: {
-
-		},
-		md: {
-			
-		},
-	},
 	variants: {
-		outline: {
-
-		},
-		solid: {
-
-		},
+		"blue-outline": (props: StyleFunctionProps) => ({
+			...defaultTheme.components.Input.variants.outline(props),
+			fontsize:'sm',
+			field: {
+				...defaultTheme.components.Input.variants.outline(props).field,
+			},
+		}),
 	},
 	defaultProps: {
-		size: 'md'
-	},
+		variant: 'blue-outline'
+	}
 }
 
 export default Input
