@@ -16,7 +16,7 @@ const HeaderNav: React.FC<Props> = () => {
       <Flex justify='space-between' align='center'>
         <Flex align='center'>
           <Link href='/' passHref>
-            <Heading fontSize={25} color='green' fontWeight={700} cursor='pointer'>
+            <Heading as='h2' size='lg'>
               Cryptogic
             </Heading>
           </Link>

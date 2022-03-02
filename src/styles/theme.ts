@@ -3,6 +3,7 @@ import Button from './components/Button'
 import Input from './components/Input'
 
 export const theme = extendTheme({
+  
   colors: {
     black: '#030D24',
     white: '#FCFCFC',
