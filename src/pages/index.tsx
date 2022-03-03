@@ -1,4 +1,4 @@
-import { Box, Text, Skeleton } from '@chakra-ui/react'
+import { Text, Skeleton } from '@chakra-ui/react'
 import type { NextPage } from 'next'
 import PageLayout from '../../components/PageLayout/PageLayout'
 import PageMeta from '../../components/PageMeta/PageMeta'

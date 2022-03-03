@@ -19,7 +19,7 @@ const MenuBar: FC<Props> = ({ direction }) => {
         { name: "NFT's", link: '/nft' },
       ].map((el) => (
         <Link href={el.link} passHref>
-          <Text fontSize={14} cursor='pointer' _hover={{ textDecoration: 'underline' }}>
+          <Text variant='link'>
             {el.name}
           </Text>
         </Link>
@@ -31,7 +31,7 @@ const MenuBar: FC<Props> = ({ direction }) => {
         { name: 'News' },
         { name: 'About us' },
       ].map((el) => (
-        <Text fontSize={14} ml={10} cursor='pointer' _hover={{ textDecoration: 'underline' }}>
+        <Text variant='link'>
           {el.name}
         </Text>
       ))}

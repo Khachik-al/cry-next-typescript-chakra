@@ -1,6 +1,6 @@
 import { HamburgerIcon, Search2Icon } from '@chakra-ui/icons'
 import {
-  Box, Button, CloseButton, Drawer, DrawerBody, DrawerContent, DrawerOverlay,
+  Button, CloseButton, Drawer, DrawerBody, DrawerContent, DrawerOverlay,
   Flex, Heading, HStack, useDisclosure, useMediaQuery,
 } from '@chakra-ui/react'
 import Link from 'next/link'
@@ -25,7 +25,7 @@ const HeaderNav: FC = () => {
           )}
         <Flex align='center'>
           <Link href='/' passHref>
-            <Heading as='h2' size='lg' cursor='pointer' mr={[10, 14]} color='green.700'>
+            <Heading as='h2' size='lg' cursor='pointer' mr={[10, 14]} color='primary.700'>
               Cryptogic
             </Heading>
           </Link>

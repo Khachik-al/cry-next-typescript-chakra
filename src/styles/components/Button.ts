@@ -13,10 +13,10 @@ const Button: ComponentStyleConfig = {
   },
   variants: {
     link: {
-      color:'green.100'
+      color:'primary.100'
     },
     solid: {
-      bg: 'green.100',
+      bg: 'primary.100',
       borderRadius: '3xl',
       boxShadow: '0px 5px 15px rgba(62, 174, 125, 0.3)',
       color: 'white',

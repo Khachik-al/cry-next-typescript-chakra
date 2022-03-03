@@ -1,4 +1,4 @@
-import { Box, Text } from '@chakra-ui/react'
+import { Text } from '@chakra-ui/react'
 import type { NextPage } from 'next'
 import PageLayout from '../../components/PageLayout/PageLayout'
 import PageMeta from '../../components/PageMeta/PageMeta'

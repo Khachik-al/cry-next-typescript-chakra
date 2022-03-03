@@ -1,4 +1,4 @@
-import { Box, Text } from '@chakra-ui/react'
+import { Text } from '@chakra-ui/react'
 import type { GetStaticProps, NextPage } from 'next'
 import Link from 'next/link'
 import PageLayout from '../../../components/PageLayout/PageLayout'
