@@ -6,6 +6,7 @@ import {
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
+import Main from '../../src/styles/components/Main'
 import MenuBar from './MenuBar'
 
 const HeaderNav: FC = () => {
@@ -13,7 +14,7 @@ const HeaderNav: FC = () => {
   const [isBrowser] = useMediaQuery('(min-width: 1110px)')
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
-    <Box pt={isBrowser ? 10 : 5}>
+    <Main pt={isBrowser ? 10 : 5}>
       <Flex justify='space-between' align='center'>
         {!isBrowser
           && (
@@ -56,7 +57,7 @@ const HeaderNav: FC = () => {
           </DrawerBody>
         </DrawerContent>
       </Drawer>
-    </Box>
+    </Main>
   )
 }
 

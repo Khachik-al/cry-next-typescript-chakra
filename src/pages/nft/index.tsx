@@ -3,6 +3,7 @@ import type { GetStaticProps, NextPage } from 'next'
 import Link from 'next/link'
 import PageLayout from '../../../components/PageLayout/PageLayout'
 import PageMeta from '../../../components/PageMeta/PageMeta'
+import Main from '../../styles/components/Main'
 
 interface Props {
   data: any[];
@@ -11,7 +12,7 @@ interface Props {
 const Nfts: NextPage<Props> = ({ data }) => (
   <PageMeta title='Nfts'>
     <PageLayout>
-      <Box mt={10}>
+      <Main mt={10}>
         <Text fontSize={20} fontWeight='bold'>
           Top NFT Rankings
         </Text>
@@ -22,7 +23,7 @@ const Nfts: NextPage<Props> = ({ data }) => (
             </Text>
           </Link>
         ))}
-      </Box>
+      </Main>
     </PageLayout>
   </PageMeta>
 )

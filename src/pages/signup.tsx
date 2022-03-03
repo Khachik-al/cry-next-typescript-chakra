@@ -4,13 +4,14 @@ import React from 'react'
 import PageLayout from '../../components/PageLayout/PageLayout'
 import PageMeta from '../../components/PageMeta/PageMeta'
 import SignUpComp from '../../components/SignUp/SignUpComp'
+import Main from '../styles/components/Main'
 
 const SignUp: NextPage = () => (
   <PageMeta title='home'>
     <PageLayout>
-      <Box mt={10}>
+      <Main mt={10}>
         <SignUpComp />
-      </Box>
+      </Main>
     </PageLayout>
   </PageMeta>
 )

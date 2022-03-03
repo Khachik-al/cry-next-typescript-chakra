@@ -1,8 +1,9 @@
-import { Box, Text } from '@chakra-ui/react'
+import { Text } from '@chakra-ui/react'
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next'
 import { useRouter } from 'next/router'
 import PageLayout from '../../../components/PageLayout/PageLayout'
 import PageMeta from '../../../components/PageMeta/PageMeta'
+import Main from '../../styles/components/Main'
 
 interface Props {
   data: string;
@@ -14,10 +15,10 @@ const CryptocurrencyItem: NextPage<Props> = ({ data }) => {
   return (
     <PageMeta title={`${query.id}`}>
       <PageLayout>
-        <Box mt={10}>
+        <Main mt={10}>
           <Text fontWeight='bold'>{query.id}</Text>
           <Text>{data}</Text>
-        </Box>
+        </Main>
       </PageLayout>
     </PageMeta>
   )
