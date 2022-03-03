@@ -1,20 +1,20 @@
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
 
 const Text: ComponentStyleConfig = {
-	baseStyle: {
+  baseStyle: {
 
-	},
-	sizes: {
-		
-	},
-	variants: {
-		label_input: {
-			fontsize: 'sm'
-		},
-	},
-	defaultProps: {
-		
-	},
+  },
+  sizes: {
+
+  },
+  variants: {
+    label_input: {
+      fontsize: 'sm'
+    },
+  },
+  defaultProps: {
+
+  },
 }
 
 export default Text
