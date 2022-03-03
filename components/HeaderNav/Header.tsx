@@ -1,56 +1,61 @@
+import { HamburgerIcon, Search2Icon } from '@chakra-ui/icons'
 import {
-  Box, Button, Flex, Heading, Text,
+  Box, Button, CloseButton, Drawer, DrawerBody, DrawerContent, DrawerOverlay,
+  Flex, Heading, HStack, useDisclosure, useMediaQuery,
 } from '@chakra-ui/react'
 import Link from 'next/link'
-import * as React from 'react'
 import { useRouter } from 'next/router'
+import { FC } from 'react'
+import MenuBar from './MenuBar'
 
-type Props = {
-
-}
-
-const HeaderNav: React.FC<Props> = () => {
+const HeaderNav: FC = () => {
   const router = useRouter()
+  const [isBrowser] = useMediaQuery('(min-width: 1110px)')
+  const { isOpen, onOpen, onClose } = useDisclosure()
   return (
-    <Box mr='10%' ml='10%' mt={30}>
+    <Box pt={isBrowser ? 10 : 5}>
       <Flex justify='space-between' align='center'>
+        {!isBrowser
+          && (
+            <HStack spacing={5}>
+              <HamburgerIcon onClick={onOpen} cursor='pointer' color='grey' boxSize={[6, 7]} />
+              <Search2Icon cursor='pointer' color='grey' boxSize={[5, 6]} />
+            </HStack>
+          )}
         <Flex align='center'>
           <Link href='/' passHref>
-            <Heading as='h2' size='lg'>
+            <Heading as='h2' size='lg' cursor='pointer' mr={[10, 14]} color='green.700'>
               Cryptogic
             </Heading>
           </Link>
-          {[
-            { name: 'Coins', link: '/cryptocurrency' },
-            { name: 'Exchanges', link: '/exchange' },
-            { name: "NFT's", link: '/nft' },
-          ].map((el) => (
-            <Link href={el.link} passHref>
-              <Text fontSize={14} ml={7} cursor='pointer' _hover={{ textDecoration: 'underline' }}>
-                {el.name}
-              </Text>
-            </Link>
-          ))}
-          {[
-            { name: 'Podcast' },
-            { name: 'TV' },
-            { name: 'Guide' },
-            { name: 'News' },
-            { name: 'About us' },
-          ].map((el) => (
-            <Text fontSize={14} ml={10} cursor='pointer' _hover={{ textDecoration: 'underline' }}>
-              {el.name}
-            </Text>
-          ))}
+          {isBrowser
+            && <MenuBar direction='row' />}
         </Flex>
-        <Box>
+        <HStack spacing={7}>
+          {isBrowser
+            && (
+              <Button variant='link'>
+                Log in
+              </Button>
+            )}
           <Button
+            size={isBrowser ? 'md' : 'sm'}
+            py={isBrowser ? 2 : 1}
             onClick={() => router.push('/signup')}
           >
             Sign up
           </Button>
-        </Box>
+        </HStack>
       </Flex>
+      <Drawer placement='top' onClose={onClose} isOpen={isOpen}>
+        <DrawerOverlay />
+        <DrawerContent pb={3} pt={2}>
+          <DrawerBody>
+            <CloseButton onClick={onClose} justifyContent='start' color='grey.menu_close_button' />
+            <MenuBar direction='column' />
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
     </Box>
   )
 }

@@ -11,7 +11,7 @@ interface Props {
 const Cryptocurrency: NextPage<Props> = ({ data }) => (
   <PageMeta title='Coins'>
     <PageLayout>
-      <Box mr='10%' ml='10%' mt={10}>
+      <Box mt={10}>
         <Text fontSize={20} fontWeight='bold' mb={5}>
           Today's Cryptocurrency Prices by Market Cap
         </Text>

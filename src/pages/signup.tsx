@@ -8,7 +8,7 @@ import SignUpComp from '../../components/SignUp/SignUpComp'
 const SignUp: NextPage = () => (
   <PageMeta title='home'>
     <PageLayout>
-      <Box mr='10%' ml='10%' mt={10}>
+      <Box mt={10}>
         <SignUpComp />
       </Box>
     </PageLayout>

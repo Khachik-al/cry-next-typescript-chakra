@@ -14,7 +14,7 @@ const NftItem: NextPage<Props> = ({ data }) => {
   return (
     <PageMeta title={`${query.id}`}>
       <PageLayout>
-        <Box mr='10%' ml='10%' mt={10}>
+        <Box mt={10}>
           <Text fontWeight='bold'>{query.id}</Text>
           <Text>{data}</Text>
         </Box>

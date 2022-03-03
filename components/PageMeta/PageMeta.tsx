@@ -1,13 +1,13 @@
 import Head from 'next/head'
-import * as React from 'react'
+import { FC, ReactNode } from 'react'
 
 interface Props {
   keywords?: string;
   title?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-const PageMeta: React.FC<Props> = ({ keywords = '', title = 'Criptogic', children }) => (
+const PageMeta: FC<Props> = ({ keywords = '', title = 'Criptogic', children }) => (
   <>
     <Head>
       <title>{title}</title>

@@ -9,7 +9,7 @@ type Props = {}
 const pair: NextPage<Props> = () => (
   <PageMeta>
     <PageLayout>
-      <Box mr='10%' ml='10%' mt={10}>
+      <Box mt={10}>
         <Text fontWeight='bold'>Pair</Text>
       </Box>
     </PageLayout>

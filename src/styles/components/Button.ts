@@ -5,11 +5,6 @@ const Button: ComponentStyleConfig = {
 
   },
   sizes: {
-    sm: {
-      fontSize: 'sm',
-      px: 4,
-      py: 3,
-    },
     md: {
       fontSize: 'md',
       px: 6,
@@ -17,8 +12,8 @@ const Button: ComponentStyleConfig = {
     },
   },
   variants: {
-    outline: {
-
+    link: {
+      color:'green.100'
     },
     solid: {
       bg: 'green.100',

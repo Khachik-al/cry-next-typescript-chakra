@@ -5,12 +5,7 @@ const Text: ComponentStyleConfig = {
 
 	},
 	sizes: {
-		sm: {
-			fontSize: 'sm',
-		},
-		md: {
-			fontSize: 'md',
-		},
+		
 	},
 	variants: {
 		label_input: {
@@ -18,8 +13,7 @@ const Text: ComponentStyleConfig = {
 		},
 	},
 	defaultProps: {
-		size: 'md',
-		variant: 'solid',
+		
 	},
 }
 

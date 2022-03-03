@@ -11,7 +11,7 @@ interface Props {
 const Nfts: NextPage<Props> = ({ data }) => (
   <PageMeta title='Nfts'>
     <PageLayout>
-      <Box mr='10%' ml='10%' mt={10}>
+      <Box mt={10}>
         <Text fontSize={20} fontWeight='bold'>
           Top NFT Rankings
         </Text>
