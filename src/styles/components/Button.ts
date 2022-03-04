@@ -19,7 +19,7 @@ const Button: ComponentStyleConfig = {
       bg: 'primary.100',
       borderRadius: '3xl',
       boxShadow: '0px 5px 15px rgba(62, 174, 125, 0.3)',
-      color: 'white',
+      color: 'main_white',
     },
   },
   defaultProps: {

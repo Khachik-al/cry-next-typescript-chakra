@@ -19,8 +19,7 @@ export const HeaderBlock = chakra('div', {
     top: '0',
     left: '0',
     right: '0',
-    zIndex:'100',
-    bg: 'white',
+    bg: 'main_white',
     borderBottom: '1px solid',
     borderColor: 'border.grey'
   },
@@ -33,7 +32,7 @@ export const SearchTabBlock = chakra('div', {
     alignItems: 'center',
     pl: ['1%', '2%', '5%', '8%', '12%'],
     pr: ['1%', '2%', '2%', '5%', '9%'],
-    bg: 'white',
+    bg: 'main_white',
     borderBottom: '1px solid',
     borderColor: 'border.grey'
   },

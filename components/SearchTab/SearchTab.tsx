@@ -46,9 +46,9 @@ const SearchTab: FC<Props> = () => {
           <InputGroup>
             <InputLeftElement
               pointerEvents='none'
-              /* eslint-disable-next-line */
-              children={<Search2Icon color='gray.300' />}
-            />
+            >
+              <Search2Icon color='gray.300' />
+            </InputLeftElement>
             <Input type='text' placeholder='Serach' />
           </InputGroup>
         </Box>

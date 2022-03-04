@@ -6,8 +6,10 @@ import Text from './components/Text'
 
 export const theme = extendTheme({
   colors: {
-    black: '#030D24',
-    white: '#FCFCFC',
+    main_black: '#030D24',
+    main_white: '#FCFCFC',
+    secondary_text: '#717784',
+    disabled_text: '#9EA2AB',
     grey: {
       menu_close_button: '#BDBDBD',
       light: '#ECECEC',
