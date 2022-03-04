@@ -9,7 +9,7 @@ interface Props {
 
 const FlowHighlights: FC<Props> = ({ flow }) => (
   <>
-    <Flex mx='10%' mt={10} justify='center'>
+    <Flex justify='center'>
       <Text fontSize='sm' mb={6} color='primary.100' fontWeight='black'>Signup flow Highlight</Text>
     </Flex>
     <HStack spacing={2} justify='center'>

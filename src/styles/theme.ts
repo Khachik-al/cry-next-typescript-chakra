@@ -10,12 +10,15 @@ export const theme = extendTheme({
     white: '#FCFCFC',
     grey: {
       menu_close_button: '#BDBDBD',
-      light: '#ECECEC'
+      light: '#ECECEC',
     },
     primary: {
       100: '#3EAE7D',
       200: '#134730',
       300: '#103726'
+    },
+    border: {
+      grey: '#ECECEC'
     }
   },
   components: {

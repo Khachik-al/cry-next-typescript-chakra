@@ -15,40 +15,38 @@ const HeaderNav: FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
     <Portal>
-      <HeaderBlock py={isBrowser ? 10 : 5}>
-        <Flex justify='space-between' align='center'>
-          {!isBrowser
+      <HeaderBlock h={isBrowser ? 24 : 16}>
+        {!isBrowser
             && (
               <HStack spacing={5}>
                 <HamburgerIcon onClick={onOpen} cursor='pointer' color='grey' boxSize={[6, 7]} />
                 <Search2Icon cursor='pointer' color='grey' boxSize={[5, 6]} />
               </HStack>
             )}
-          <Flex align='center'>
-            <Link href='/' passHref>
-              <Heading as='h2' size='lg' cursor='pointer' mr={[10, 14]} color='primary.200'>
-                Cryptogic
-              </Heading>
-            </Link>
-            {isBrowser
+        <Flex align='center'>
+          <Link href='/' passHref>
+            <Heading as='h2' size='lg' cursor='pointer' mr={[10, 14]} color='primary.200'>
+              Cryptogic
+            </Heading>
+          </Link>
+          {isBrowser
               && <MenuBar direction='row' />}
-          </Flex>
-          <HStack spacing={7}>
-            {isBrowser
+        </Flex>
+        <HStack spacing={7}>
+          {isBrowser
               && (
                 <Button variant='link'>
                   Log in
                 </Button>
               )}
-            <Button
-              size={isBrowser ? 'md' : 'sm'}
-              py={isBrowser ? 2 : 1}
-              onClick={() => router.push('/signup')}
-            >
-              Sign up
-            </Button>
-          </HStack>
-        </Flex>
+          <Button
+            size={isBrowser ? 'md' : 'sm'}
+            py={isBrowser ? 2 : 1}
+            onClick={() => router.push('/signup')}
+          >
+            Sign up
+          </Button>
+        </HStack>
         <Drawer placement='top' onClose={onClose} isOpen={isOpen}>
           <DrawerOverlay />
           <DrawerContent pb={3} pt={2}>
