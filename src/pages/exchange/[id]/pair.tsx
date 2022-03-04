@@ -3,14 +3,14 @@ import { NextPage } from 'next'
 import React from 'react'
 import PageLayout from '../../../../components/PageLayout/PageLayout'
 import PageMeta from '../../../../components/PageMeta/PageMeta'
-import Main from '../../../styles/components/Main'
+import { Main } from '../../../styles/components/Customs'
 
 type Props = {}
 
 const pair: NextPage<Props> = () => (
   <PageMeta>
     <PageLayout>
-      <Main mt={10}>
+      <Main>
         <Text fontWeight='bold'>Pair</Text>
       </Main>
     </PageLayout>

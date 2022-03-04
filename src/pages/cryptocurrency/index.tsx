@@ -3,7 +3,7 @@ import type { GetStaticProps, NextPage } from 'next'
 import Link from 'next/link'
 import PageLayout from '../../../components/PageLayout/PageLayout'
 import PageMeta from '../../../components/PageMeta/PageMeta'
-import Main from '../../styles/components/Main'
+import { Main } from '../../styles/components/Customs'
 
 interface Props {
   data: any[]
@@ -12,7 +12,7 @@ interface Props {
 const Cryptocurrency: NextPage<Props> = ({ data }) => (
   <PageMeta title='Coins'>
     <PageLayout>
-      <Main mt={10}>
+      <Main>
         <Text fontSize={20} fontWeight='bold' mb={5}>
           Today's Cryptocurrency Prices by Market Cap
         </Text>

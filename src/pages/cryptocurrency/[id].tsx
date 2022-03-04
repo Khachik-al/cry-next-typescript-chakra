@@ -3,7 +3,7 @@ import { NextPage, GetStaticProps, GetStaticPaths } from 'next'
 import { useRouter } from 'next/router'
 import PageLayout from '../../../components/PageLayout/PageLayout'
 import PageMeta from '../../../components/PageMeta/PageMeta'
-import Main from '../../styles/components/Main'
+import { Main } from '../../styles/components/Customs'
 
 interface Props {
   data: string;
@@ -15,7 +15,7 @@ const CryptocurrencyItem: NextPage<Props> = ({ data }) => {
   return (
     <PageMeta title={`${query.id}`}>
       <PageLayout>
-        <Main mt={10}>
+        <Main>
           <Text fontWeight='bold'>{query.id}</Text>
           <Text>{data}</Text>
         </Main>

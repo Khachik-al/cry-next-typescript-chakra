@@ -1,7 +1,7 @@
 import { extendTheme } from '@chakra-ui/react'
 import Button from './components/Button'
 import Input from './components/Input'
-import Main from './components/Main'
+import Main from './components/Customs'
 import Text from './components/Text'
 
 export const theme = extendTheme({

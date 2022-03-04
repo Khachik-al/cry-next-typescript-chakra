@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import PageLayout from '../../../../components/PageLayout/PageLayout'
 import PageMeta from '../../../../components/PageMeta/PageMeta'
-import Main from '../../../styles/components/Main'
+import { Main } from '../../../styles/components/Customs'
 
 interface Props {
   data: string;
@@ -16,7 +16,7 @@ const ExchangeItem: NextPage<Props> = ({ data }) => {
   return (
     <PageMeta title={`${query.id}`}>
       <PageLayout>
-        <Main mt={10}>
+        <Main>
           <Text fontWeight='bold'>{query.id}</Text>
           <Text>{data}</Text>
           <Link href={`/exchange/${query.id}/pair`} passHref>
