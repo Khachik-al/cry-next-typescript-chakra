@@ -19,6 +19,7 @@ export const HeaderBlock = chakra('div', {
     top: '0',
     left: '0',
     right: '0',
+    zIndex: 'sticky',
     bg: 'main_white',
     borderBottom: '1px solid',
     borderColor: 'border.grey'
