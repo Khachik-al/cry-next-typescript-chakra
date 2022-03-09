@@ -1,16 +1,16 @@
-import { Search2Icon } from '@chakra-ui/icons'
 import {
-  Box, HStack, Input, InputGroup, InputLeftElement, Text, useMediaQuery,
+  Box, Container, HStack, Input, InputGroup, InputLeftElement, Text, useMediaQuery,
 } from '@chakra-ui/react'
+import Image from 'next/image'
 import { FC } from 'react'
-import { SearchTabBlock } from '../../src/styles/components/Customs'
 
 interface Props { }
 
 const SearchTab: FC<Props> = () => {
   const [isBrowser] = useMediaQuery('(min-width: 1110px)')
   return (
-    <SearchTabBlock
+    <Container
+      variant='searchtab'
       minH={isBrowser ? 16 : 10}
       h={isBrowser ? 16 : 10}
       pt={isBrowser ? 32 : 20}
@@ -47,13 +47,13 @@ const SearchTab: FC<Props> = () => {
             <InputLeftElement
               pointerEvents='none'
             >
-              <Search2Icon color='gray.300' />
+              <Image src='/search_icon_input.svg' height={20} width={20} />
             </InputLeftElement>
             <Input type='text' placeholder='Serach' />
           </InputGroup>
         </Box>
       )}
-    </SearchTabBlock>
+    </Container>
   )
 }
 

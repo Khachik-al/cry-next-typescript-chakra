@@ -2,8 +2,8 @@ import { mode } from '@chakra-ui/theme-tools';
 import { extendTheme } from '@chakra-ui/react'
 import Button from './components/Button'
 import Input from './components/Input'
-import { Main } from './components/Customs'
 import Text from './components/Text'
+import Container from './components/Container'
 
 export const theme = extendTheme({
   config: {
@@ -14,6 +14,7 @@ export const theme = extendTheme({
     global: (props: any) => ({
       body: {
         color: mode('main_black', 'main_white')(props),
+        bg: mode('main_white', 'dark.400')(props),
       },
     }),
   },
@@ -45,7 +46,7 @@ export const theme = extendTheme({
   components: {
     Button,
     Input,
-    Main,
-    Text
+    Text,
+    Container
   }
 })

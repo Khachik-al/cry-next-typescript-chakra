@@ -1,7 +1,7 @@
-import { Search2Icon } from '@chakra-ui/icons'
 import {
   Box, CloseButton, Flex, Input, InputGroup, InputLeftElement,
 } from '@chakra-ui/react'
+import Image from 'next/image'
 import { FC } from 'react'
 
 interface Props {
@@ -15,7 +15,7 @@ const Search: FC<Props> = ({ onClose }) => (
         <InputLeftElement
           pointerEvents='none'
         >
-          <Search2Icon color='gray.300' />
+          <Image src='/search_icon_input.svg' height={20} width={20} />
         </InputLeftElement>
         <Input type='text' placeholder='What are you looking for?' />
       </InputGroup>
