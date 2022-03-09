@@ -9,7 +9,7 @@ type Props = {}
 const pair: NextPage<Props> = () => (
   <PageMeta>
     <PageLayout>
-    <Container variant='main'>
+      <Container variant='main'>
         <Text fontWeight='bold'>Pair</Text>
       </Container>
     </PageLayout>

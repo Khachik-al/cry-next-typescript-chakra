@@ -9,7 +9,8 @@ interface Props { }
 const SearchTab: FC<Props> = () => {
   const [isBrowser] = useMediaQuery('(min-width: 1110px)')
   return (
-    <Container variant='searchtab'
+    <Container
+      variant='searchtab'
       minH={isBrowser ? 16 : 10}
       h={isBrowser ? 16 : 10}
       pt={isBrowser ? 32 : 20}
