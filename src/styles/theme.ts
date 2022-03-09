@@ -3,6 +3,7 @@ import { extendTheme } from '@chakra-ui/react'
 import Button from './components/Button'
 import Input from './components/Input'
 import Text from './components/Text'
+import Container from './components/Container'
 
 export const theme = extendTheme({
   config: {
@@ -45,6 +46,7 @@ export const theme = extendTheme({
   components: {
     Button,
     Input,
-    Text
+    Text,
+    Container
   }
 })

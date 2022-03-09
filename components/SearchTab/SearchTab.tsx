@@ -1,16 +1,15 @@
 import {
-  Box, HStack, Input, InputGroup, InputLeftElement, Text, useMediaQuery,
+  Box, Container, HStack, Input, InputGroup, InputLeftElement, Text, useMediaQuery,
 } from '@chakra-ui/react'
 import Image from 'next/image'
 import { FC } from 'react'
-import { SearchTabBlock } from '../../src/styles/components/Customs'
 
 interface Props { }
 
 const SearchTab: FC<Props> = () => {
   const [isBrowser] = useMediaQuery('(min-width: 1110px)')
   return (
-    <SearchTabBlock
+    <Container variant='searchtab'
       minH={isBrowser ? 16 : 10}
       h={isBrowser ? 16 : 10}
       pt={isBrowser ? 32 : 20}
@@ -53,7 +52,7 @@ const SearchTab: FC<Props> = () => {
           </InputGroup>
         </Box>
       )}
-    </SearchTabBlock>
+    </Container>
   )
 }
 

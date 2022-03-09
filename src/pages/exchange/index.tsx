@@ -1,9 +1,8 @@
-import { Text } from '@chakra-ui/react'
+import { Container, Text } from '@chakra-ui/react'
 import type { GetStaticProps, NextPage } from 'next'
 import Link from 'next/link'
 import PageLayout from '../../../components/PageLayout/PageLayout'
 import PageMeta from '../../../components/PageMeta/PageMeta'
-import { Main } from '../../styles/components/Customs'
 
 interface Props {
   data: any[]
@@ -12,7 +11,7 @@ interface Props {
 const Exchanges: NextPage<Props> = ({ data }) => (
   <PageMeta title='Exchanges'>
     <PageLayout>
-      <Main>
+      <Container variant='main'>
         <Text fontSize={20} fontWeight='bold'>
           Top Cryptocurrency Exchanges
         </Text>
@@ -23,7 +22,7 @@ const Exchanges: NextPage<Props> = ({ data }) => (
             </Text>
           </Link>
         ))}
-      </Main>
+      </Container>
     </PageLayout>
   </PageMeta>
 )
