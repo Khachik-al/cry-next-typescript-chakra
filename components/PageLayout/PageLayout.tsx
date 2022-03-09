@@ -1,13 +1,13 @@
-import * as React from 'react'
+import { FC, ReactNode } from 'react'
 import Footer from '../Footer/Footer'
 import HeaderNav from '../HeaderNav/Header'
 import SearchTab from '../SearchTab/SearchTab'
 
 type Props = {
-  children: any;
+  children: ReactNode;
 }
 
-const PageLayout: React.FC<Props> = ({ children }) => (
+const PageLayout: FC<Props> = ({ children }) => (
   <>
     <HeaderNav />
     <SearchTab />

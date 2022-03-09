@@ -1,8 +1,9 @@
-import { Box, Text } from '@chakra-ui/react'
+import { Text } from '@chakra-ui/react'
 import type { GetStaticProps, NextPage } from 'next'
 import Link from 'next/link'
 import PageLayout from '../../../components/PageLayout/PageLayout'
 import PageMeta from '../../../components/PageMeta/PageMeta'
+import { Main } from '../../styles/components/Customs'
 
 interface Props {
   data: any[];
@@ -11,7 +12,7 @@ interface Props {
 const Nfts: NextPage<Props> = ({ data }) => (
   <PageMeta title='Nfts'>
     <PageLayout>
-      <Box mr='10%' ml='10%' mt={10}>
+      <Main>
         <Text fontSize={20} fontWeight='bold'>
           Top NFT Rankings
         </Text>
@@ -22,7 +23,7 @@ const Nfts: NextPage<Props> = ({ data }) => (
             </Text>
           </Link>
         ))}
-      </Box>
+      </Main>
     </PageLayout>
   </PageMeta>
 )

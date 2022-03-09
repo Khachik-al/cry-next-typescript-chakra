@@ -1,26 +1,27 @@
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
 
 const Text: ComponentStyleConfig = {
-	baseStyle: {
+  baseStyle: {
 
-	},
-	sizes: {
-		sm: {
-			fontSize: 'sm',
-		},
-		md: {
-			fontSize: 'md',
-		},
-	},
-	variants: {
-		label_input: {
-			fontsize: 'sm'
-		},
-	},
-	defaultProps: {
-		size: 'md',
-		variant: 'solid',
-	},
+  },
+  sizes: {
+    
+  },
+  variants: {
+    label_input: {
+      fontSize: 'sm'
+    },
+    link: {
+      _hover: {
+        textDecoration: "underline",
+      },
+      cursor: 'pointer',
+      fontSize: '14'
+    }
+  },
+  defaultProps: {
+
+  },
 }
 
 export default Text

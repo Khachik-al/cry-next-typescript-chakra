@@ -1,9 +1,10 @@
-import { Box, Text } from '@chakra-ui/react'
+import { Text } from '@chakra-ui/react'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import PageLayout from '../../../../components/PageLayout/PageLayout'
 import PageMeta from '../../../../components/PageMeta/PageMeta'
+import { Main } from '../../../styles/components/Customs'
 
 interface Props {
   data: string;
@@ -15,7 +16,7 @@ const ExchangeItem: NextPage<Props> = ({ data }) => {
   return (
     <PageMeta title={`${query.id}`}>
       <PageLayout>
-        <Box mr='10%' ml='10%' mt={10}>
+        <Main>
           <Text fontWeight='bold'>{query.id}</Text>
           <Text>{data}</Text>
           <Link href={`/exchange/${query.id}/pair`} passHref>
@@ -23,7 +24,7 @@ const ExchangeItem: NextPage<Props> = ({ data }) => {
               Pair
             </Text>
           </Link>
-        </Box>
+        </Main>
       </PageLayout>
     </PageMeta>
   )
