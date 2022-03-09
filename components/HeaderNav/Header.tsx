@@ -1,8 +1,9 @@
-import { HamburgerIcon, Search2Icon } from '@chakra-ui/icons'
+import { HamburgerIcon } from '@chakra-ui/icons'
 import {
   Button, CloseButton, Drawer, DrawerBody, DrawerContent, DrawerOverlay,
   Flex, Heading, HStack, Portal, useDisclosure, useMediaQuery,
 } from '@chakra-ui/react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { FC, useState } from 'react'
@@ -25,9 +26,9 @@ const HeaderNav: FC = () => {
       <HeaderBlock h={isBrowser ? 24 : 16}>
         {!isBrowser
           && (
-            <HStack spacing={5}>
-              <HamburgerIcon onClick={() => onOpenDrawer(true)} cursor='pointer' color='grey' boxSize={[6, 7]} />
-              <Search2Icon onClick={() => onOpenDrawer(false)} cursor='pointer' color='grey' boxSize={[5, 6]} />
+            <HStack cursor='pointer'>
+              <HamburgerIcon onClick={() => onOpenDrawer(true)} color='grey' boxSize={[6, 7]} mr={2} />
+              <Image src='/search_icon.svg' height={25} width={25} onClick={() => onOpenDrawer(false)} />
             </HStack>
           )}
         <Flex align='center'>

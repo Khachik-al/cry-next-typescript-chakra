@@ -1,12 +1,11 @@
-import type { AppProps } from 'next/app'
-import { ChakraProvider } from '@chakra-ui/react'
-import { theme } from '../styles/theme'
+import { AppProps } from 'next/app'
+import { Chakra } from '../Chakra'
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
-
-  <ChakraProvider theme={theme}>
+  <Chakra cookies={pageProps.cookies}>
     {/* eslint-disable-next-line */}
-    <Component {...pageProps} />
-  </ChakraProvider>
+      <Component {...pageProps} />
+  </Chakra>
 )
+
 export default MyApp

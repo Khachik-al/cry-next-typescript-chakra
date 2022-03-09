@@ -9,20 +9,22 @@ export const Main = chakra('div', {
 })
 
 export const HeaderBlock = chakra('div', {
-  baseStyle: {
-    pl: ['1%', '2%', '5%', '8%', '12%'],
-    pr: ['1%', '2%', '2%', '5%', '9%'],
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    position: 'fixed',
-    top: '0',
-    left: '0',
-    right: '0',
-    zIndex: 'sticky',
-    bg: 'main_white',
-    borderBottom: '1px solid',
-    borderColor: 'border.grey'
+  baseStyle: (props: any) => {
+    return ({
+      pl: ['1%', '2%', '5%', '8%', '12%'],
+      pr: ['1%', '2%', '2%', '5%', '9%'],
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      right: '0',
+      zIndex: 'sticky',
+      bg: props.theme.config.initialColorMode === 'light' ? 'main_white' : 'dark.400',
+      borderBottom: '1px solid',
+      borderColor: 'border.grey'
+    })
   },
 })
 
@@ -33,7 +35,6 @@ export const SearchTabBlock = chakra('div', {
     alignItems: 'center',
     pl: ['1%', '2%', '5%', '8%', '12%'],
     pr: ['1%', '2%', '2%', '5%', '9%'],
-    bg: 'main_white',
     borderBottom: '1px solid',
     borderColor: 'border.grey'
   },
