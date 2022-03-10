@@ -9,8 +9,8 @@ const Container: ComponentStyleConfig = {
   },
   variants: {
     header: (props) => ({
-      pl: ['1%', '2%', '5%', '8%', '12%'],
-      pr: ['1%', '2%', '2%', '5%', '9%'],
+      pl: ['2%', '2%', '5%', '8%', '12%'],
+      pr: ['2%', '2%', '2%', '5%', '9%'],
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
@@ -24,8 +24,8 @@ const Container: ComponentStyleConfig = {
       borderColor: 'border.grey',
     }),
     searchtab: {
-      pl: ['1%', '2%', '5%', '8%', '12%'],
-      pr: ['1%', '2%', '2%', '5%', '9%'],
+      pl: ['2%', '2%', '5%', '8%', '12%'],
+      pr: ['2%', '2%', '2%', '5%', '9%'],
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
@@ -33,22 +33,25 @@ const Container: ComponentStyleConfig = {
       borderColor: 'border.grey',
     },
     main: {
-      pl: ['1%', '2%', '5%', '8%', '12%'],
-      pr: ['1%', '2%', '2%', '5%', '9%'],
+      pl: ['2%', '2%', '5%', '8%', '12%'],
+      pr: ['2%', '2%', '2%', '5%', '9%'],
       pt: ['4', '12'],
+      pb: '8',
     },
-    important_disclaimer: (props) => ({
-      pl: ['1%', '2%', '5%', '8%', '12%'],
-      pr: ['1%', '2%', '2%', '5%', '9%'],
+    disclaimer: (props) => ({
+      pl: ['2%', '2%', '5%', '8%', '12%'],
+      pr: ['2%', '2%', '2%', '5%', '9%'],
       py: '8',
       bg: props.colorMode === 'light' ? 'primary.200' : 'dark.300',
       color: 'main_white',
-      fontsize: '3',
+      fontSize: '12',
     }),
     footer: (props) => ({
-      pl: ['1%', '2%', '5%', '8%', '12%'],
-      pr: ['1%', '2%', '2%', '5%', '9%'],
+      pl: ['2%', '2%', '5%', '8%', '12%'],
+      pr: ['2%', '2%', '2%', '5%', '9%'],
       bg: props.colorMode === 'light' ? 'primary.300' : 'dark.500',
+      color: 'main_white',
+      py: '12',
     }),
   },
   defaultProps: {

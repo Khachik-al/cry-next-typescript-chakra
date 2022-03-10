@@ -15,7 +15,7 @@ const Search: FC<Props> = ({ onClose }) => (
         <InputLeftElement
           pointerEvents='none'
         >
-          <Image src='/search_icon_input.svg' alt='search icon' height={20} width={20} />
+          <Image src='/assets/img/search_icon_input.svg' alt='search icon' height={20} width={20} />
         </InputLeftElement>
         <Input type='text' placeholder='What are you looking for?' />
       </InputGroup>
