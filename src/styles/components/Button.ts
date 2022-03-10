@@ -13,7 +13,7 @@ const Button: ComponentStyleConfig = {
   },
   variants: {
     link: {
-      color:'primary.100'
+      color:'primary.100',
     },
     solid: {
       bg: 'primary.100',

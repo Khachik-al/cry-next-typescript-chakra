@@ -27,7 +27,7 @@ const HeaderNav: FC = () => {
           && (
             <HStack cursor='pointer'>
               <HamburgerIcon onClick={() => onOpenDrawer(true)} color='grey' boxSize={[6, 7]} mr={2} />
-              <Image src='/search_icon.svg' height={25} width={25} onClick={() => onOpenDrawer(false)} />
+              <Image src='/search_icon.svg' alt='search icon' height={25} width={25} onClick={() => onOpenDrawer(false)} />
             </HStack>
           )}
         <Flex align='center'>
