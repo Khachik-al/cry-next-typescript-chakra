@@ -21,7 +21,7 @@ const SearchTab: FC<Props> = () => {
           { name: 'Exchanges', value: ' 457' },
           { name: 'Marketcap', value: ' $1,730,091,106,147' },
         ].map((el) => (
-          <Box fontSize={[11, 12]}>
+          <Box fontSize={[11, 12]} key={el.name}>
             {el.name}
             :
             {' '}
@@ -32,7 +32,7 @@ const SearchTab: FC<Props> = () => {
           { name: 'BTC', value: ' $37,490.48' },
           { name: 'ETH', value: ' $2,669.99' },
         ].map((el) => (
-          <Box fontSize={12} display={['none', 'none', 'block']}>
+          <Box fontSize={12} key={el.name} display={['none', 'none', 'block']}>
             {el.name}
             :
             {' '}
@@ -46,7 +46,7 @@ const SearchTab: FC<Props> = () => {
             <InputLeftElement
               pointerEvents='none'
             >
-              <Image src='/assets/img/search_icon_input.svg' height={20} width={20} />
+              <Image src='/assets/img/search_icon_input.svg' alt='search icon' height={20} width={20} />
             </InputLeftElement>
             <Input type='text' placeholder='Serach' />
           </InputGroup>

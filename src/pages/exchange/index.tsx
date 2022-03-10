@@ -16,7 +16,7 @@ const Exchanges: NextPage<Props> = ({ data }) => (
           Top Cryptocurrency Exchanges
         </Text>
         {data.map((el) => (
-          <Link href={`/exchange/${el.ticker}`} passHref>
+          <Link href={`/exchange/${el.ticker}`} key={el.ticker} passHref>
             <Text cursor='pointer' _hover={{ textDecoration: 'underline' }} mt={5}>
               {el.name}
             </Text>

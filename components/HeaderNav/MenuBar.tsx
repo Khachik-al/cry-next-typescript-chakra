@@ -18,7 +18,7 @@ const MenuBar: FC<Props> = ({ direction }) => {
         { name: 'Exchanges', link: '/exchange' },
         { name: "NFT's", link: '/nft' },
       ].map((el) => (
-        <Link href={el.link} passHref>
+        <Link href={el.link} passHref key={el.name}>
           <Text variant='link'>
             {el.name}
           </Text>
@@ -31,7 +31,7 @@ const MenuBar: FC<Props> = ({ direction }) => {
         { name: 'News' },
         { name: 'About us' },
       ].map((el) => (
-        <Text variant='link'>
+        <Text variant='link' key={el.name}>
           {el.name}
         </Text>
       ))}

@@ -7,7 +7,7 @@ import { GetServerSidePropsContext } from 'next'
 import { ReactNode } from 'react'
 import { theme } from './styles/theme'
 
-export function Chakra({ cookies, children }: { cookies: string; children: ReactNode }) {
+export var Chakra = ({ cookies, children }: { cookies: string; children: ReactNode }) => {
   const colorModeManager =
     typeof cookies === 'string'
       ? cookieStorageManager(cookies)

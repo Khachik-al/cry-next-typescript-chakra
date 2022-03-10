@@ -9,15 +9,15 @@ const Text: ComponentStyleConfig = {
   },
   variants: {
     label_input: {
-      fontSize: 'sm'
+      fontSize: 'sm',
     },
     link: {
       _hover: {
-        textDecoration: "underline",
+        textDecoration: 'underline',
       },
       cursor: 'pointer',
-      fontSize: '14'
-    }
+      fontSize: '14',
+    },
   },
   defaultProps: {
 

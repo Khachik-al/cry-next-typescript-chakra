@@ -14,7 +14,7 @@ const Flow2: FC = () => (
         { name: 'Privacy Policy' },
         { name: 'Terms of use' },
       ].map((el) => (
-        <Text variant='link'>
+        <Text variant='link' key={el.name}>
           {el.name}
         </Text>
       ))}
@@ -23,7 +23,7 @@ const Flow2: FC = () => (
         { name: 'Exachanges' },
         { name: 'Coins' },
       ].map((el) => (
-        <Text variant='link'>
+        <Text variant='link' key={el.name}>
           {el.name}
         </Text>
       ))}
@@ -35,7 +35,7 @@ const Flow2: FC = () => (
         { name: 'Beginners Guide' },
         { name: 'Crypto Cheat Sheet' },
       ].map((el) => (
-        <Text variant='link'>
+        <Text variant='link' key={el.name}>
           {el.name}
         </Text>
       ))}
@@ -47,7 +47,7 @@ const Flow2: FC = () => (
         { name: 'Spotify' },
         { name: 'Watch on Youtube' },
       ].map((el) => (
-        <Text variant='link'>
+        <Text variant='link' key={el.name}>
           {el.name}
         </Text>
       ))}

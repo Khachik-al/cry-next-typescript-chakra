@@ -16,7 +16,7 @@ const Nfts: NextPage<Props> = ({ data }) => (
           Top NFT Rankings
         </Text>
         {data.map((el) => (
-          <Link href={`/nft/${el.ticker}`} passHref>
+          <Link href={`/nft/${el.ticker}`} key={el.ticker} passHref>
             <Text cursor='pointer' _hover={{ textDecoration: 'underline' }} mt={5}>
               {el.name}
             </Text>

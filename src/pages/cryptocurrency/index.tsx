@@ -16,7 +16,7 @@ const Cryptocurrency: NextPage<Props> = ({ data }) => (
           Today's Cryptocurrency Prices by Market Cap
         </Text>
         {data.map((el) => (
-          <Link href={`/cryptocurrency/${el.ticker}`} passHref>
+          <Link href={`/cryptocurrency/${el.ticker}`} key={el.ticker} passHref>
             <Text cursor='pointer' _hover={{ textDecoration: 'underline' }} mb={5}>
               {el.name}
             </Text>

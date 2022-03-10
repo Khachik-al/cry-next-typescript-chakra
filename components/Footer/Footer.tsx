@@ -13,7 +13,7 @@ type Props = {}
 const Footer: FC<Props> = () => (
   <>
     <Container variant='disclaimer'>
-      <Image src='/assets/img/danger.svg' height={15} width={15} />
+      <Image src='/assets/img/danger.svg' alt='warning' height={15} width={15} />
       <Text as='span' color='danger'> IMPORTANT DISCLAIMER: </Text>
       {disclaimer}
     </Container>
