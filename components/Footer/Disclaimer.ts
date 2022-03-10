@@ -1,4 +1,4 @@
-const warningText = `All content provided herein our website, hyperlinked sites, 
+const disclaimer = `All content provided herein our website, hyperlinked sites, 
 associated applications, forums, blogs, social media accounts and other platforms 
 (“Site”) is for your general information only, procured from third party sources. 
 We make no warranties of any kind in relation to our content, including but not 
@@ -10,4 +10,4 @@ review, analyse and verify our content before relying on them. Trading is a high
 risky activity that can lead to major losses, please therefore consult your financial 
 advisor before making any decision. No content on our Site is meant to be a solicitation or offer.
 `
-export default warningText
+export default disclaimer

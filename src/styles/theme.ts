@@ -30,6 +30,7 @@ export const theme = extendTheme({
     main_white: '#FCFCFC',
     secondary_text: '#717784',
     disabled_text: '#9EA2AB',
+    danger: '#F04C4C',
     grey: {
       menu_close_button: '#BDBDBD',
       light: '#ECECEC',

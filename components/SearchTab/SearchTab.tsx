@@ -47,7 +47,7 @@ const SearchTab: FC<Props> = () => {
             <InputLeftElement
               pointerEvents='none'
             >
-              <Image src='/search_icon_input.svg' height={20} width={20} />
+              <Image src='/assets/img/search_icon_input.svg' height={20} width={20} />
             </InputLeftElement>
             <Input type='text' placeholder='Serach' />
           </InputGroup>

@@ -38,7 +38,7 @@ const Container: ComponentStyleConfig = {
       pt: ['4', '12'],
       pb: '8'
     },
-    important_disclaimer: (props) => ({
+    disclaimer: (props) => ({
       pl: ['2%', '2%', '5%', '8%', '12%'],
       pr: ['2%', '2%', '2%', '5%', '9%'],
       py: '8',
