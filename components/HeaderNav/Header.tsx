@@ -1,5 +1,5 @@
-import { HamburgerIcon } from '@chakra-ui/icons'
 import {
+  Box,
   Button, CloseButton, Container, Drawer, DrawerBody, DrawerContent, DrawerOverlay,
   Flex, Heading, HStack, Portal, useDisclosure, useMediaQuery,
 } from '@chakra-ui/react'
@@ -26,7 +26,7 @@ const HeaderNav: FC = () => {
         {!isBrowser
           && (
             <HStack cursor='pointer'>
-              <HamburgerIcon onClick={() => onOpenDrawer(true)} color='grey' boxSize={[6, 7]} mr={2} />
+              <Box mr={2}><Image src='/assets/img/hamburger.svg' onClick={() => onOpenDrawer(true)} height={25} width={25} /></Box>
               <Image src='/assets/img/search_icon.svg' height={25} width={25} onClick={() => onOpenDrawer(false)} />
             </HStack>
           )}

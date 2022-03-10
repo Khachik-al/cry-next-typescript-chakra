@@ -23,6 +23,12 @@ const Footer: FC<Props> = () => (
         <Links />
         <Subscribe />
       </Stack>
+      <Text fontSize={14} mt={12}>
+        Copyright
+        <Text as='span' color='primary.100'>Ⓒ</Text>
+        {' '}
+        2022 - Cryptogic - All Rights Reserved
+      </Text>
     </Container>
   </>
 )

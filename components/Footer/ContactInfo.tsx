@@ -1,4 +1,5 @@
 import {
+  Box,
   Heading, HStack, Text, VStack,
 } from '@chakra-ui/react'
 import Image from 'next/image'
@@ -26,6 +27,12 @@ const ContactInfo: FC = () => (
       {' '}
       Phone: + 1 000-000-0000
     </Text>
+    <HStack spacing={3}>
+      <Box><Image src='/assets/img/linkedin.svg' height={25} width={25} layout='fixed' /></Box>
+      <Box><Image src='/assets/img/facebook.svg' height={25} width={25} layout='fixed' /></Box>
+      <Box><Image src='/assets/img/twitter.svg' height={25} width={25} layout='fixed' /></Box>
+      <Box><Image src='/assets/img/yootube.svg' height={25} width={25} layout='fixed' /></Box>
+    </HStack>
   </VStack>
 )
 export default ContactInfo

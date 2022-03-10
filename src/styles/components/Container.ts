@@ -51,7 +51,7 @@ const Container: ComponentStyleConfig = {
       pr: ['2%', '2%', '2%', '5%', '9%'],
       bg: props.colorMode === 'light' ? 'primary.300' : 'dark.500',
       color: 'main_white',
-      py: '9',
+      py: '12',
     }),
   },
   defaultProps: {

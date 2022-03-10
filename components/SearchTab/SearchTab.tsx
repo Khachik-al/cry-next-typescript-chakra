@@ -11,7 +11,6 @@ const SearchTab: FC<Props> = () => {
   return (
     <Container
       variant='searchtab'
-      minH={isBrowser ? 16 : 10}
       h={isBrowser ? 16 : 10}
       pt={isBrowser ? 32 : 20}
       pb={isBrowser ? 8 : 4}
