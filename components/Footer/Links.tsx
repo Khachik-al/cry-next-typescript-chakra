@@ -4,7 +4,7 @@ import { FC } from 'react'
 const Flow2: FC = () => (
   <HStack align='start' spacing={[20, 48, 48, 20]} w='full'>
     <VStack align='start'>
-      <Text fontSize='14' fontWeight='800'>Cryptogic</Text>
+      <Text fontSize='14' fontWeight='extrabold'>Cryptogic</Text>
       {[
         { name: 'About us' },
         { name: 'Guides' },
@@ -18,7 +18,7 @@ const Flow2: FC = () => (
           {el.name}
         </Text>
       ))}
-      <Text fontSize='14' fontWeight='800'>Data</Text>
+      <Text fontSize='14' fontWeight='extrabold'>Data</Text>
       {[
         { name: 'Exachanges' },
         { name: 'Coins' },
@@ -29,7 +29,7 @@ const Flow2: FC = () => (
       ))}
     </VStack>
     <VStack align='start'>
-      <Text fontSize='14' fontWeight='800'>Guides</Text>
+      <Text fontSize='14' fontWeight='extrabold'>Guides</Text>
       {[
         { name: 'Guides Homepage' },
         { name: 'Beginners Guide' },
@@ -39,7 +39,7 @@ const Flow2: FC = () => (
           {el.name}
         </Text>
       ))}
-      <Text fontSize='14' fontWeight='800'>Podcast</Text>
+      <Text fontSize='14' fontWeight='extrabold'>Podcast</Text>
       {[
         { name: 'Podcast Homepage' },
         { name: 'Apple Podcasts' },

@@ -31,6 +31,9 @@ export const theme = extendTheme({
     secondary_text: '#717784',
     disabled_text: '#9EA2AB',
     danger: '#F04C4C',
+    blue: {
+      100: 'rgba(62, 174, 125, 0.2)',
+    },
     grey: {
       menu_close_button: '#BDBDBD',
       light: '#ECECEC',

@@ -5,11 +5,20 @@ const Text: ComponentStyleConfig = {
 
   },
   sizes: {
-    
+    sm: {
+      fontSize: '12',
+    },
+    xs:{
+      fontSize: '10',
+    },
   },
   variants: {
     label_input: {
       fontSize: 'sm',
+    },
+    list_text: {
+      fontSize: '12',
+      fontWeight: 'black',
     },
     link: {
       _hover: {

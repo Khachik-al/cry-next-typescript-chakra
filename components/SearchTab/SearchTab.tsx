@@ -11,9 +11,9 @@ const SearchTab: FC<Props> = () => {
   return (
     <Container
       variant='searchtab'
-      h={isBrowser ? 16 : 10}
-      pt={isBrowser ? 32 : 20}
-      pb={isBrowser ? 8 : 4}
+      h={[10, 10, 10, 16]}
+      pt={[20, 20, 20, 32]}
+      pb={[4, 4, 4, 8]}
     >
       <HStack spacing={[3, 7]}>
         {[

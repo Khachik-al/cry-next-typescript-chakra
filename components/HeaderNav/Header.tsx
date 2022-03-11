@@ -22,7 +22,7 @@ const HeaderNav: FC = () => {
   }
   return (
     <Portal>
-      <Container variant='header' h={isBrowser ? 24 : 16}>
+      <Container variant='header' h={[16, 16, 16, 24]}>
         {!isBrowser
           && (
             <HStack cursor='pointer'>
