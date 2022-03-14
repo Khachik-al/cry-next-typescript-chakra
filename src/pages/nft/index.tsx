@@ -2,8 +2,8 @@ import { Center, Container, Flex, HStack, Text, VStack } from '@chakra-ui/react'
 import type { GetStaticProps, NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import PageLayout from '../../../components/PageLayout/PageLayout'
-import PageMeta from '../../../components/PageMeta/PageMeta'
+import PageLayout from '../../components/PageLayout/PageLayout'
+import PageMeta from '../../components/PageMeta/PageMeta'
 
 interface Props {
   data: any[];

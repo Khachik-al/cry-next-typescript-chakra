@@ -1,8 +1,8 @@
 import { Container, Text } from '@chakra-ui/react'
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next'
 import { useRouter } from 'next/router'
-import PageLayout from '../../../components/PageLayout/PageLayout'
-import PageMeta from '../../../components/PageMeta/PageMeta'
+import PageLayout from '../../components/PageLayout/PageLayout'
+import PageMeta from '../../components/PageMeta/PageMeta'
 
 interface Props {
   data: string;

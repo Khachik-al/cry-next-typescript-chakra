@@ -1,9 +1,9 @@
 import { Container } from '@chakra-ui/react'
 import { NextPage } from 'next'
 import React from 'react'
-import PageLayout from '../../components/PageLayout/PageLayout'
-import PageMeta from '../../components/PageMeta/PageMeta'
-import SignUpComp from '../../components/SignUp/SignUpComp'
+import PageLayout from '../components/PageLayout/PageLayout'
+import PageMeta from '../components/PageMeta/PageMeta'
+import SignUpComp from '../components/SignUp/SignUpComp'
 
 const SignUp: NextPage = () => (
   <PageMeta title='home'>
