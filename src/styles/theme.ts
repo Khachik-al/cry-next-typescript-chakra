@@ -4,6 +4,7 @@ import Button from './components/Button'
 import Input from './components/Input'
 import Text from './components/Text'
 import Container from './components/Container'
+import { pagination } from './components/pagination'
 
 export const theme = extendTheme({
   config: {
@@ -15,6 +16,15 @@ export const theme = extendTheme({
       body: {
         color: mode('main_black', 'main_white')(props),
         bg: mode('main_white', 'dark.400')(props),
+      },
+      '.rc-pagination': pagination,
+      '.more_than_50': {
+        'li:nth-last-of-type(3)': {
+          borderRadius: '0 50% 50% 0',
+        },
+        'li:nth-last-of-type(2)': {
+          borderRadius: '50%',
+        },
       },
     }),
   },
@@ -37,6 +47,8 @@ export const theme = extendTheme({
     grey: {
       menu_close_button: '#BDBDBD',
       light: '#ECECEC',
+      pagination_bg: '#EFEFEF',
+      pagination_disabled: '#C4C4C4',
     },
     primary: {
       100: '#3EAE7D',
