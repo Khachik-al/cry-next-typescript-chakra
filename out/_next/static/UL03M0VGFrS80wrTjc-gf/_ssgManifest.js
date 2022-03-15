@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002Fexchange","\u002Fcryptocurrency","\u002Fnft","\u002Fcryptocurrency\u002F[id]","\u002Fexchange\u002F[id]","\u002Fnft\u002F[id]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()

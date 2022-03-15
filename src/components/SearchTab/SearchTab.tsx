@@ -3,6 +3,7 @@ import {
 } from '@chakra-ui/react'
 import Image from 'next/image'
 import { FC } from 'react'
+import customLoader from '../../../custom-loader'
 
 interface Props { }
 
@@ -46,7 +47,7 @@ const SearchTab: FC<Props> = () => {
             <InputLeftElement
               pointerEvents='none'
             >
-              <Image src='/assets/img/search_icon_input.svg' alt='search icon' height={20} width={20} />
+              <Image loader={customLoader} src='/assets/img/search_icon_input.svg' alt='search icon' height={20} width={20} />
             </InputLeftElement>
             <Input type='text' placeholder='Serach' />
           </InputGroup>

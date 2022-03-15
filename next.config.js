@@ -6,3 +6,9 @@ const nextConfig = withPreact({
 })
 
 module.exports = nextConfig
+
+module.exports = {
+  env: {
+    DIRNAME: __dirname
+  }
+}
