@@ -1,4 +1,4 @@
-import { ImageLoaderProps } from "next/image"
+import { ImageLoaderProps } from 'next/image'
 
 export const exportableLoader = ({ src, width, quality }: ImageLoaderProps) => {
   if (process.env.NODE_ENV === 'development') {
@@ -25,10 +25,10 @@ export const exportableLoader = ({ src, width, quality }: ImageLoaderProps) => {
   if (typeof window === 'undefined') {
     const json = { output, src, width, quality: quality || 75 }
     const fs = require('fs')
-    const path = require('path')
+    const { join } = require('path')
     fs.appendFileSync(
-      path.join(process.env.DIRNAME, '.next/custom-optimized-images.nd.json'),
-      JSON.stringify(json) + '\n'
+      join(process.env.DIRNAME, '.next/custom-optimized-images.nd.json'),
+      JSON.stringify(json) + '\n',
     )
   }
 
