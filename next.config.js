@@ -8,6 +8,9 @@ const nextConfig = withPreact({
 module.exports = nextConfig
 
 module.exports = {
+  images: {
+    loader: 'custom'
+  },
   env: {
     DIRNAME: __dirname
   }
