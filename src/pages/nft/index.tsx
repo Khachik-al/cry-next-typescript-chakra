@@ -8,7 +8,7 @@ import { useState } from 'react'
 import PageLayout from '../../components/PageLayout/PageLayout'
 import PageMeta from '../../components/PageMeta/PageMeta'
 import 'rc-pagination/assets/index.css'
-import { exportableLoader } from '../../custom-loader'
+import { exportableLoader } from '../../image-loader'
 
 interface Props {
   data: any[];

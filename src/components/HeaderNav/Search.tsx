@@ -3,7 +3,7 @@ import {
 } from '@chakra-ui/react'
 import Image from 'next/image'
 import { FC } from 'react'
-import { exportableLoader } from '../../custom-loader'
+import { exportableLoader } from '../../image-loader'
 
 interface Props {
   onClose: () => void;

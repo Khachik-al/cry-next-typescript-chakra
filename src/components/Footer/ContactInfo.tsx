@@ -5,7 +5,7 @@ import {
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
-import { exportableLoader } from '../../custom-loader'
+import { exportableLoader } from '../../image-loader'
 
 const ContactInfo: FC = () => (
   <VStack spacing={5} align='start' w='full'>

@@ -7,7 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { FC, useState } from 'react'
-import { exportableLoader } from '../../custom-loader'
+import { exportableLoader } from '../../image-loader'
 import MenuBar from './MenuBar'
 import Search from './Search'
 
