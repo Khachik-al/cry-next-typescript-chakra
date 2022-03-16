@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "export": "next export",
+    "optimize": "node scripts/optimize.mjs",
     "start": "next start",
     "lint": "eslint . --ext .ts,.tsx"
   },
