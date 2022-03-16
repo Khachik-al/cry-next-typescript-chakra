@@ -8,7 +8,7 @@ import { useState } from 'react'
 import PageLayout from '../../components/PageLayout/PageLayout'
 import PageMeta from '../../components/PageMeta/PageMeta'
 import 'rc-pagination/assets/index.css'
-import customLoader from '../../../custom-loader'
+import { exportableLoader } from '../../custom-loader'
 
 interface Props {
   data: any[];
@@ -58,7 +58,7 @@ const Nfts: NextPage<Props> = ({ data }) => {
             <Container variant='list_item' key={i}>
               <Text size='sm' textAlign='start' w='2%'>{i + 1}</Text>
               <HStack w={['20%', '30%']}>
-                <Image loader={customLoader} src={`/assets/img/${el.ticker}.svg`} alt='icon' height={32} width={32} />
+                <Image loader={exportableLoader} src={`/assets/img/${el.ticker}.svg`} alt='icon' height={32} width={32} />
                 <Link href={`/nft/${el.ticker}`} passHref>
                   <Text variant='link' size='sm' fontWeight='extrabold'>
                     {el.name}
@@ -100,8 +100,8 @@ const Nfts: NextPage<Props> = ({ data }) => {
             total={total}
             className={total > 50 ? 'more_than_50' : ''}
             hideOnSinglePage
-            jumpPrevIcon={() => <Image loader={customLoader} src='/assets/img/point.svg' alt='.' height={5} width={5} />}
-            jumpNextIcon={() => <Image loader={customLoader} src='/assets/img/point.svg' alt='.' height={5} width={5} />}
+            jumpPrevIcon={() => <Image loader={exportableLoader} src='/assets/img/point.svg' alt='.' height={5} width={5} />}
+            jumpNextIcon={() => <Image loader={exportableLoader} src='/assets/img/point.svg' alt='.' height={5} width={5} />}
             prevIcon={() => <ChevronLeftIcon />}
             nextIcon={() => <ChevronRightIcon />}
           />

@@ -7,14 +7,14 @@ import ContactInfo from './ContactInfo'
 import Links from './Links'
 import Subscribe from './Subscribe'
 import disclaimer from './Disclaimer'
-import customLoader from '../../../custom-loader'
+import { exportableLoader } from '../../image-loader'
 
 type Props = {}
 
 const Footer: FC<Props> = () => (
   <>
     <Container variant='disclaimer'>
-      <Image loader={customLoader} src='/assets/img/danger.svg' alt='warning' height={15} width={15} />
+      <Image loader={exportableLoader} src='/assets/img/danger.svg' alt='warning' height={15} width={15} />
       <Text as='span' color='danger'> IMPORTANT DISCLAIMER: </Text>
       {disclaimer}
     </Container>

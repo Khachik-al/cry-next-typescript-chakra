@@ -7,7 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { FC, useState } from 'react'
-import customLoader from '../../../custom-loader'
+import { exportableLoader } from '../../custom-loader'
 import MenuBar from './MenuBar'
 import Search from './Search'
 
@@ -27,8 +27,8 @@ const HeaderNav: FC = () => {
         {!isBrowser
           && (
             <HStack cursor='pointer'>
-              <Box mr={2}><Image loader={customLoader} src='/assets/img/hamburger.svg' alt='menu icon' onClick={() => onOpenDrawer(true)} height={25} width={25} /></Box>
-              <Image loader={customLoader} src='/assets/img/search_icon.svg' alt='search icon' height={25} width={25} onClick={() => onOpenDrawer(false)} />
+              <Box mr={2}><Image loader={exportableLoader} src='/assets/img/hamburger.svg' alt='menu icon' onClick={() => onOpenDrawer(true)} height={25} width={25} /></Box>
+              <Image loader={exportableLoader} src='/assets/img/search_icon.svg' alt='search icon' height={25} width={25} onClick={() => onOpenDrawer(false)} />
             </HStack>
           )}
         <Flex align='center'>

@@ -3,7 +3,7 @@ import {
 } from '@chakra-ui/react'
 import Image from 'next/image'
 import { FC } from 'react'
-import customLoader from '../../../custom-loader'
+import { exportableLoader } from '../../custom-loader'
 
 interface Props {
   onClose: () => void;
@@ -16,7 +16,7 @@ const Search: FC<Props> = ({ onClose }) => (
         <InputLeftElement
           pointerEvents='none'
         >
-          <Image loader={customLoader} src='/assets/img/search_icon_input.svg' alt='search icon' height={20} width={20} />
+          <Image loader={exportableLoader} src='/assets/img/search_icon_input.svg' alt='search icon' height={20} width={20} />
         </InputLeftElement>
         <Input type='text' placeholder='What are you looking for?' />
       </InputGroup>
