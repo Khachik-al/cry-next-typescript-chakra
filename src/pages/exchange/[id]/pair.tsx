@@ -1,8 +1,8 @@
 import { Container, Text } from '@chakra-ui/react'
 import { NextPage } from 'next'
 import React from 'react'
-import PageLayout from '../../../../components/PageLayout/PageLayout'
-import PageMeta from '../../../../components/PageMeta/PageMeta'
+import PageLayout from '../../../components/PageLayout/PageLayout'
+import PageMeta from '../../../components/PageMeta/PageMeta'
 
 type Props = {}
 

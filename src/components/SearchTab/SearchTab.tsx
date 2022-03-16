@@ -3,6 +3,7 @@ import {
 } from '@chakra-ui/react'
 import Image from 'next/image'
 import { FC } from 'react'
+import { exportableLoader } from '../../image-loader'
 
 interface Props { }
 
@@ -11,9 +12,9 @@ const SearchTab: FC<Props> = () => {
   return (
     <Container
       variant='searchtab'
-      h={isBrowser ? 16 : 10}
-      pt={isBrowser ? 32 : 20}
-      pb={isBrowser ? 8 : 4}
+      h={[10, 10, 10, 16]}
+      pt={[20, 20, 20, 32]}
+      pb={[4, 4, 4, 8]}
     >
       <HStack spacing={[3, 7]}>
         {[
@@ -46,7 +47,7 @@ const SearchTab: FC<Props> = () => {
             <InputLeftElement
               pointerEvents='none'
             >
-              <Image src='/assets/img/search_icon_input.svg' alt='search icon' height={20} width={20} />
+              <Image loader={exportableLoader} src='/assets/img/search_icon_input.svg' alt='search icon' height={20} width={20} />
             </InputLeftElement>
             <Input type='text' placeholder='Serach' />
           </InputGroup>

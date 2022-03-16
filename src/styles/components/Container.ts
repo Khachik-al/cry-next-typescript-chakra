@@ -3,6 +3,7 @@ import type { ComponentStyleConfig } from '@chakra-ui/theme'
 const Container: ComponentStyleConfig = {
   baseStyle: {
     maxW: 'none',
+    p: '0',
   },
   sizes: {
 
@@ -53,6 +54,15 @@ const Container: ComponentStyleConfig = {
       color: 'main_white',
       py: '12',
     }),
+    list_item: {
+      display: 'flex',
+      justifyContent: 'start  ',
+      alignItems: 'center',
+      borderTop: '1px solid',
+      borderColor: 'border.grey',
+      py: '4',
+      pl: '3',
+    },
   },
   defaultProps: {
 
