@@ -3,6 +3,8 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
 import PageLayout from '../../components/PageLayout/PageLayout'
 import PageMeta from '../../components/PageMeta/PageMeta'
+import LineChart from '../../components/Chart/LineChart'
+import { chartData } from '../../components/Chart/chartdata'
 
 interface Props {
   data: string;
@@ -17,6 +19,7 @@ const NftItem: NextPage<Props> = ({ data }) => {
         <Container variant='main'>
           <Text fontWeight='bold'>{query.id}</Text>
           <Text>{data}</Text>
+           <LineChart data={chartData}/>
         </Container>
       </PageLayout>
     </PageMeta>

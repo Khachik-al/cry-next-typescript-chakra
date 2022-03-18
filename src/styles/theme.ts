@@ -45,6 +45,7 @@ export const theme = extendTheme({
       100: 'rgba(62, 174, 125, 0.2)',
     },
     grey: {
+      nft_chart_line: '#9EA2AB',
       menu_close_button: '#BDBDBD',
       light: '#ECECEC',
       pagination_bg: '#EFEFEF',
