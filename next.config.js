@@ -15,3 +15,7 @@ module.exports = {
     DIRNAME: __dirname
   }
 }
+
+module.exports = {
+  trailingSlash: true
+}
