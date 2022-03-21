@@ -21,8 +21,9 @@ interface Props {
 const NftItem: NextPage<Props> = ({ data }) => {
   const { query } = useRouter()
   const [chartTimePicker, setChartTimePicker] = useState<string>('1D')
+  
   return (
-    <PageMeta title={`${query.id}`}>
+    data && <PageMeta title={`${query.id}`}>
       <PageLayout>
         <Container variant='main'>
           <HStack align='start' whiteSpace='nowrap' overflowX='auto'>
