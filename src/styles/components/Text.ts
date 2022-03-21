@@ -5,12 +5,18 @@ const Text: ComponentStyleConfig = {
 
   },
   sizes: {
-    sm: {
-      fontSize: '12',
-    },
     xs:{
       fontSize: '10',
     },
+    sm: {
+      fontSize: '12',
+    },
+    md:{
+      fontSize: '14',
+    },
+    lg:{
+      fontSize: '18',
+    }
   },
   variants: {
     label_input: {

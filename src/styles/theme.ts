@@ -50,6 +50,9 @@ export const theme = extendTheme({
       light: '#ECECEC',
       pagination_bg: '#EFEFEF',
       pagination_disabled: '#C4C4C4',
+      nft_rank_bg: '#717784',
+      chart_timepicker_bg: 'rgba(113, 119, 132, 0.07)',
+      rating_bg: '#D9D9D9'
     },
     primary: {
       100: '#3EAE7D',

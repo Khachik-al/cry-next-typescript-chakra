@@ -1,9 +1,11 @@
+import { chart, nft, rating } from './Customs';
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
 
 const Container: ComponentStyleConfig = {
   baseStyle: {
     maxW: 'none',
     p: '0',
+    m: '0'
   },
   sizes: {
 
@@ -32,6 +34,12 @@ const Container: ComponentStyleConfig = {
       alignItems: 'center',
       borderBottom: '1px solid',
       borderColor: 'border.grey',
+      overflow: 'auto hidden',
+      whiteSpace: 'nowrap',
+      scrollbarWidth: 'none',
+      '::-webkit-scrollbar': {
+        display: 'none'
+      }
     },
     main: {
       pl: ['2%', '2%', '5%', '8%', '12%'],
@@ -56,13 +64,19 @@ const Container: ComponentStyleConfig = {
     }),
     list_item: {
       display: 'flex',
-      justifyContent: 'start  ',
+      justifyContent: 'start',
       alignItems: 'center',
       borderTop: '1px solid',
       borderColor: 'border.grey',
       py: '4',
       pl: '3',
     },
+    nft_rank: nft.rank,
+    nft_link: nft.link,
+    nft_item_info: nft.item_info,
+    chart_timepicker: chart.timepicker,
+    rating_block: rating.rating_block,
+    rating: rating.rating,
   },
   defaultProps: {
 
