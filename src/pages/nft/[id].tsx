@@ -117,11 +117,12 @@ const NftItem: NextPage<Props> = ({ data }) => {
             <Container variant='chart_timepicker' w={['full', 'fit-content']}>
               {['1D', '7D', '1M', '3M', '1Y', 'YTD', 'ALL'].map((el) =>
                 <Box
+                  key={el}
                   className={chartTimePicker === el ? 'active' : ''}
                   onClick={() => setChartTimePicker(el)}
                 >
                   {el}
-                </Box>
+                </Box>,
               )}
             </Container>
           </Flex>
@@ -176,7 +177,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const data = [
     { name: 'Cryptopunks', ticker: 'cryptopunks' },
     { name: 'Azuki', ticker: 'azuki' },
-    { name: 'Tasty Bones XYZ', ticker: 'tasty-bones-xyz' }
+    { name: 'Tasty Bones XYZ', ticker: 'tasty-bones-xyz' },
   ]
 
   const paths = data.map((el) => ({

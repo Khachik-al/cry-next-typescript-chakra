@@ -1,11 +1,11 @@
-import { chart, nft, rating } from './Customs';
+import { chart, nft, rating } from './Customs'
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
 
 const Container: ComponentStyleConfig = {
   baseStyle: {
     maxW: 'none',
     p: '0',
-    m: '0'
+    m: '0',
   },
   sizes: {
 
@@ -38,8 +38,8 @@ const Container: ComponentStyleConfig = {
       whiteSpace: 'nowrap',
       scrollbarWidth: 'none',
       '::-webkit-scrollbar': {
-        display: 'none'
-      }
+        display: 'none',
+      },
     },
     main: {
       pl: ['2%', '2%', '5%', '8%', '12%'],

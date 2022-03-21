@@ -9,7 +9,7 @@ export const nft = {
     py: '1',
     fontSize: '10',
     color: 'main_white',
-    fontWeight: 'extrabold'
+    fontWeight: 'extrabold',
   },
   link: {
     w: '24',
@@ -62,12 +62,12 @@ export const chart = {
     '.active': {
       bg: 'primary.100',
       borderRadius: '2xl',
-      color: 'main_white'
+      color: 'main_white',
     },
     'div:last-of-type': {
-      m: '0'
-    }
-  }
+      m: '0',
+    },
+  },
 }
 
 export const rating = {
@@ -77,7 +77,7 @@ export const rating = {
     borderColor: 'border.grey',
     borderRadius: '2xl',
     p: '7',
-    minW: '72'
+    minW: '72',
   },
   rating: {
     display: 'flex',
@@ -92,6 +92,6 @@ export const rating = {
       marginTop: 'auto',
       bg: 'primary.100',
       borderRadius: '2xl',
-    }
-  }
+    },
+  },
 }

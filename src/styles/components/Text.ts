@@ -16,7 +16,7 @@ const Text: ComponentStyleConfig = {
     },
     lg:{
       fontSize: '18',
-    }
+    },
   },
   variants: {
     label_input: {
