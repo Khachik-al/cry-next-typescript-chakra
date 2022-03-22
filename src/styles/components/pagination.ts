@@ -27,7 +27,7 @@ export const pagination = {
     h: '6',
     m: '0',
     border: 'none',
-    bg: 'grey.pagination_bg',
+    bg: 'grey.100',
     borderRadius: 'none',
   },
   '.rc-pagination-item-1': {
@@ -45,7 +45,7 @@ export const pagination = {
     alignItems: 'center',
     justifyContent: 'center',
     h: '6',
-    bg: 'grey.pagination_bg',
+    bg: 'grey.100',
     m: '0',
     borderRadius: 'none',
   },
@@ -54,7 +54,7 @@ export const pagination = {
     alignItems: 'center',
     justifyContent: 'center',
     h: '6',
-    bg: 'grey.pagination_bg',
+    bg: 'grey.100',
     m: '0',
     borderRadius: 'none',
   },
@@ -84,7 +84,7 @@ export const pagination = {
   },
   '.rc-pagination-disabled': {
     cursor: 'auto',
-    bg: 'grey.pagination_bg',
-    color: 'grey.pagination_disabled',
+    bg: 'grey.100',
+    color: 'grey.400',
   },
 }

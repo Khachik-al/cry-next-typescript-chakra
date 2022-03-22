@@ -63,7 +63,7 @@ const HeaderNav: FC = () => {
             {isMenu
               ? (
                 <>
-                  <CloseButton onClick={onClose} justifyContent='start' color='grey.menu_close_button' />
+                  <CloseButton onClick={onClose} justifyContent='start' color='grey.500' />
                   <MenuBar direction='column' />
                 </>
               )

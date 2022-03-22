@@ -3,7 +3,7 @@ export const nft = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    bg: 'grey.nft_rank_bg',
+    bg: 'secondary_text',
     borderRadius: 'lg',
     px: '2',
     py: '1',
@@ -20,7 +20,7 @@ export const nft = {
     fontSize: '10',
     color: 'secondary_text',
     border: '1px solid',
-    borderColor: 'border.grey',
+    borderColor: 'grey.200',
     borderRadius: 'lg',
     px: '1',
     cursor: 'pointer',
@@ -31,7 +31,7 @@ export const nft = {
     flexDirection: 'column',
     p: '0 5 0 0',
     borderRight: '1px solid',
-    borderColor: 'border.grey',
+    borderColor: 'grey.200',
   },
 }
 
@@ -39,7 +39,7 @@ export const chart = {
   timepicker: {
     display: 'flex',
     borderRadius: '2xl',
-    bg: 'grey.chart_timepicker_bg',
+    bg: 'blue.200',
     p: '4px',
     userSelect: 'none',
     'div': {
@@ -74,7 +74,7 @@ export const rating = {
   rating_block: {
     display: 'flex',
     border: '1px solid',
-    borderColor: 'border.grey',
+    borderColor: 'grey.200',
     borderRadius: '2xl',
     p: '7',
     minW: '72',
@@ -84,7 +84,7 @@ export const rating = {
     minW: '8',
     w: '8',
     h: 'full',
-    bg: 'grey.rating_bg',
+    bg: 'grey.300',
     borderRadius: '2xl',
     ml: '7',
     'div': {

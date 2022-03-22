@@ -38,7 +38,7 @@ const LineChart: FC<Props> = ({ data }) => {
         <AnimatedGrid
           columns={false}
           lineStyle={{
-            stroke: theme.colors.grey.light,
+            stroke: theme.colors.grey['200'],
             strokeLinecap: 'round',
             strokeWidth: 1,
           }}
@@ -47,7 +47,7 @@ const LineChart: FC<Props> = ({ data }) => {
           orientation='bottom'
           tickLabelProps={() => ({ dy: 10 })}
           numTicks={7}
-          stroke={theme.colors.grey.light}
+          stroke={theme.colors.grey['200']}
           strokeWidth='1'
 
         />
@@ -55,12 +55,12 @@ const LineChart: FC<Props> = ({ data }) => {
           orientation='left'
           numTicks={6}
           tickLabelProps={() => ({ dx: -10 })}
-          stroke={theme.colors.grey.light}
+          stroke={theme.colors.grey['200']}
           strokeWidth='1'
         />
 
         <AnimatedLineSeries
-          stroke={theme.colors.grey.nft_chart_line}
+          stroke={theme.colors.disabled_text}
           dataKey='primary_line'
           data={data}
           xAccessor={accessors.xAccessor}
