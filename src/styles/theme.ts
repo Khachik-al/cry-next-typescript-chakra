@@ -43,20 +43,20 @@ export const theme = extendTheme({
     danger: '#F04C4C',
     blue: {
       100: 'rgba(62, 174, 125, 0.2)',
-      200: 'rgba(113, 119, 132, 0.07)'
+      200: 'rgba(113, 119, 132, 0.07)',
     },
     grey: {
       100: '#EFEFEF',
       200: '#ECECEC',
       300: '#D9D9D9',
       400: '#C4C4C4',
-      500: '#BDBDBD'
+      500: '#BDBDBD',
     },
     primary: {
       100: '#3EAE7D',
       200: '#134730',
       300: '#103726',
-    }
+    },
   },
   components: {
     Button,

@@ -32,7 +32,7 @@ const Nfts: NextPage<Props> = ({ data }) => {
               ].map((el) =>
                 <Text variant='list_text' w={el.w} key={el.title}>
                   {el.title}
-                </Text>
+                </Text>,
               )}
               {[
                 { title: 'Fundamental Rating' },
@@ -40,7 +40,7 @@ const Nfts: NextPage<Props> = ({ data }) => {
               ].map((el) =>
                 <Text variant='list_text' textAlign='center' w='10%' key={el.title}>
                   {el.title}
-                </Text>
+                </Text>,
               )}
               {[
                 { title: 'Floor Price', w: '10%' },
@@ -52,7 +52,7 @@ const Nfts: NextPage<Props> = ({ data }) => {
               ].map((el) =>
                 <Text variant='list_text' textAlign='end' w={el.w} key={el.title}>
                   {el.title}
-                </Text>
+                </Text>,
               )}
             </HStack>
             {data.map((el, i) => (
