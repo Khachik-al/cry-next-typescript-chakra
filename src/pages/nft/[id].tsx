@@ -134,7 +134,7 @@ const NftItem: NextPage<Props> = ({ data }) => {
           <Flex justify='space-between' overflowX='auto'>
             <Container variant='rating_block'>
               <VStack align='start'>
-                <Text fontSize={['3xl', '4xl', '40']} fontWeight='bold'>91.99</Text>
+                <Text fontSize={['3xl', '4xl', '40']} fontWeight='bold'>70.9</Text>
                 <Text fontWeight='extrabold'>Fundamental Rating</Text>
                 <Text size='sm' color='secondary_text'>Technical Ratings is a technical analysis tool that combines the ratings of several
                   technical indicators to make it easier for traders and investors to find profitable trades.</Text>
