@@ -75,7 +75,7 @@ const Nfts: NextPage<Props> = ({ data }) => {
             </HStack>
             {data.data.map((el, i) => (
               <Container variant='list_item' key={i} minW='900px'>
-                <Text size='sm' textAlign='start' w='2%' position='sticky' zIndex={20} >{el['No']}</Text>
+                <Text size='sm' textAlign='start' w='2%' position='sticky' zIndex={20} >{el.No}</Text>
                 <HStack w={['20%', '30%']}>
                   <Image loader={exportableLoader} src={`/assets/img/${el.ticker}.svg`} alt='icon' height={32} width={32} />
                   <Link href={`/nft/${el.ticker}`} passHref>
@@ -146,7 +146,7 @@ export const getStaticProps: GetStaticProps = async () => {
         market_cap: ['326,710.59 ETH', '$958,246,560.54'],
         '24h_valume': '745.3 ETH',
         owners: '3.4k',
-        items: '10.0k'
+        items: '10.0k',
       },
       {
         'No': '2',
@@ -160,7 +160,7 @@ export const getStaticProps: GetStaticProps = async () => {
         market_cap: ['326,710.59 ETH', '$958,246,560.54'],
         '24h_valume': '745.3 ETH',
         owners: '3.4k',
-        items: '10.0k'
+        items: '10.0k',
       },
       {
         'No': '3',
@@ -174,10 +174,10 @@ export const getStaticProps: GetStaticProps = async () => {
         market_cap: ['326,710.59 ETH', '$958,246,560.54'],
         '24h_valume': '745.3 ETH',
         owners: '3.4k',
-        items: '10.0k'
+        items: '10.0k',
       },
     ],
-    total: 200
+    total: 200,
   }
 
   return {

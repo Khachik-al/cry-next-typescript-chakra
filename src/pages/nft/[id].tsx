@@ -191,7 +191,7 @@ export const getStaticProps: GetStaticProps = async () => {
     '24h_valume': ['745.3 ETH', '$2,080,165.84', '0.02%'],
     owners: '3.4k',
     items: '10.0k',
-    overall_rating: '91.24'
+    overall_rating: '91.24',
   }
   return {
     props: { data },
