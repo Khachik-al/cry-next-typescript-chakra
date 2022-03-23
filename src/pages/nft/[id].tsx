@@ -47,28 +47,30 @@ const NftItem: NextPage<Props> = ({ data }) => {
                   height={50}
                   width={50}
                 />
-                <VStack spacing={1}>
+                <VStack spacing={1} align='start'>
                   <Heading as='h2' fontSize={20}>{data.name}</Heading>
                   <Container variant='nft_rank'>Rank #2</Container>
                 </VStack>
               </HStack>
-              <Container variant='nft_link'>
-                <Image
-                  loader={exportableLoader}
-                  src='/assets/img/link.svg'
-                  alt='icon'
-                  height={12}
-                  width={12}
-                />
-                <Text mx={1}>{data.link}</Text>
-                <Image
-                  loader={exportableLoader}
-                  src='/assets/img/export.svg'
-                  alt='icon'
-                  height={10}
-                  width={10}
-                />
-              </Container>
+              <Flex justify='start'>
+                <Container variant='nft_link'>
+                  <Image
+                    loader={exportableLoader}
+                    src='/assets/img/link.svg'
+                    alt='icon'
+                    height={12}
+                    width={12}
+                  />
+                  <Text mx={1}>azuki.com</Text>
+                  <Image
+                    loader={exportableLoader}
+                    src='/assets/img/export.svg'
+                    alt='icon'
+                    height={10}
+                    width={10}
+                  />
+                </Container>
+              </Flex>
             </VStack>
             <Container variant='nft_item_info'>
               <Text pb={2} size='sm' color='secondary_text'>Floor Price</Text>

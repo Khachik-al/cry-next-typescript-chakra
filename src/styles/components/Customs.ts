@@ -10,9 +10,9 @@ export const nft = {
     fontSize: '10',
     color: 'main_white',
     fontWeight: 'extrabold',
+    w: '14',
   },
   link: {
-    w: '24',
     h: '6',
     display: 'flex',
     justifyContent: 'center',
@@ -22,7 +22,7 @@ export const nft = {
     border: '1px solid',
     borderColor: 'grey.200',
     borderRadius: 'lg',
-    px: '1',
+    p: '1',
     cursor: 'pointer',
   },
   item_info: {
