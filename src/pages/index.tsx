@@ -58,7 +58,7 @@ const Home: NextPage = () => {
                     justify='center'
                     align='center'
                   >
-                    <Box w={10} h={10} position='absolute'>
+                    <Box w={10} h={10} position='relative'>
                       <Image
                         loader={exportableLoader}
                         src='/assets/img/video_circle.png'
@@ -209,7 +209,55 @@ const Home: NextPage = () => {
               </VStack>
             </Container>
           </Stack>
-          <ChoosePlan/>
+          <ChoosePlan />
+          <VStack textAlign='center' mt={16} px='15%'>
+            <Text color='primary.100' fontSize={[12, 12, 14]} fontWeight='black' mb={6}>
+              VIDEO HIGHLIGHT PHRASE
+            </Text>
+            <Heading fontSize={[32, 32, 36, 48]}>
+              Latest videos
+            </Heading>
+            <Text color='secondary_text' fontSize={[12, 12, 14, 16]} mt={5}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam imperdiet tempor, ipsum amet eu quam cras nibh.
+            </Text>
+          </VStack>
+          <Flex mt={16} flexWrap='wrap' marginX='auto' justify='center' gap={5} maxW='1200px'>
+            {[1, 2, 3, 4, 5, 6].map(() =>
+              <VStack align='start' >
+                <Box position='relative'>
+                    <Flex
+                      position='absolute'
+                      h='100%' w='100%'
+                      top={0}
+                      justify='center'
+                      align='center'
+                      zIndex={1}
+                    >
+                      <Box w={10} h={10} position='relative'>
+                        <Image
+                          loader={exportableLoader}
+                          src='/assets/img/video_white_circle.svg'
+                          alt='image'
+                          layout='fill'
+                        />
+                      </Box>
+                    </Flex>
+                  <Image
+                    loader={exportableLoader}
+                    src='/assets/img/video_img.png'
+                    alt='image'
+                    height={196}
+                    width={344}
+                  />
+                </Box>
+                <Text fontSize={[16, 16, 18, 24]} w={80} fontWeight='black'>Video Title</Text>
+                <Text color='secondary_text' fontSize={[12, 12, 14]} w={80}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam imperdiet tempor,
+                  ipsum amet eu quam cras nibh.
+                </Text>
+              </VStack>
+            )}
+          </Flex>
           <Show above='xl'>
             <Portal containerRef={main}>
               <Box
@@ -246,7 +294,6 @@ const Home: NextPage = () => {
               </Box>
             </Portal>
           </Show>
-
         </Container>
       </PageLayout>
     </PageMeta >
