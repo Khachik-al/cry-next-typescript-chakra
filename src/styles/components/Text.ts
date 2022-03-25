@@ -5,11 +5,17 @@ const Text: ComponentStyleConfig = {
 
   },
   sizes: {
+    xs:{
+      fontSize: '10',
+    },
     sm: {
       fontSize: '12',
     },
-    xs:{
-      fontSize: '10',
+    md:{
+      fontSize: '14',
+    },
+    lg:{
+      fontSize: '18',
     },
   },
   variants: {

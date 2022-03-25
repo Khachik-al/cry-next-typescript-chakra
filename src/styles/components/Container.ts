@@ -1,9 +1,11 @@
+import { chart, nft, rating } from './Customs'
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
 
 const Container: ComponentStyleConfig = {
   baseStyle: {
     maxW: 'none',
     p: '0',
+    m: '0',
   },
   sizes: {
 
@@ -22,7 +24,7 @@ const Container: ComponentStyleConfig = {
       zIndex: 'sticky',
       bg: props.colorMode === 'light' ? 'main_white' : 'dark.400',
       borderBottom: '1px solid',
-      borderColor: 'border.grey',
+      borderColor: 'grey.200',
     }),
     searchtab: {
       pl: ['2%', '2%', '5%', '8%', '12%'],
@@ -31,7 +33,13 @@ const Container: ComponentStyleConfig = {
       justifyContent: 'space-between',
       alignItems: 'center',
       borderBottom: '1px solid',
-      borderColor: 'border.grey',
+      borderColor: 'grey.200',
+      overflow: 'auto hidden',
+      whiteSpace: 'nowrap',
+      scrollbarWidth: 'none',
+      '::-webkit-scrollbar': {
+        display: 'none',
+      },
     },
     main: {
       pl: ['2%', '2%', '5%', '8%', '12%'],
@@ -56,10 +64,10 @@ const Container: ComponentStyleConfig = {
     }),
     list_item: {
       display: 'flex',
-      justifyContent: 'start  ',
+      justifyContent: 'start',
       alignItems: 'center',
       borderTop: '1px solid',
-      borderColor: 'border.grey',
+      borderColor: 'grey.200',
       py: '4',
       pl: '3',
     },
@@ -67,7 +75,13 @@ const Container: ComponentStyleConfig = {
       border: '1px solid',
       borderColor: 'border.grey',
       borderRadius: '2xl'
-    }
+    },
+    nft_rank: nft.rank,
+    nft_link: nft.link,
+    nft_item_info: nft.item_info,
+    chart_timepicker: chart.timepicker,
+    rating_block: rating.rating_block,
+    rating: rating.rating,
   },
   defaultProps: {
 

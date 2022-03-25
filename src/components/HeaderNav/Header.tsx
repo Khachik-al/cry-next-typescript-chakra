@@ -26,9 +26,9 @@ const HeaderNav: FC = () => {
       <Container variant='header' h={[16, 16, 16, 24]}>
         {!isBrowser
           && (
-            <HStack cursor='pointer'>
-              <Box mr={2}><Image loader={exportableLoader} src='/assets/img/hamburger.svg' alt='menu icon' onClick={() => onOpenDrawer(true)} height={25} width={25} /></Box>
-              <Image loader={exportableLoader} src='/assets/img/search_icon.svg' alt='search icon' height={25} width={25} onClick={() => onOpenDrawer(false)} />
+            <HStack cursor='pointer' spacing={2}>
+              <Box><Image loader={exportableLoader} src='/assets/img/hamburger.svg' alt='menu icon' onClick={() => onOpenDrawer(true)} height={25} width={25} /></Box>
+              <Box><Image loader={exportableLoader} src='/assets/img/search_icon.svg' alt='search icon' height={25} width={25} onClick={() => onOpenDrawer(false)} /></Box>
             </HStack>
           )}
         <Flex align='center'>
@@ -63,7 +63,7 @@ const HeaderNav: FC = () => {
             {isMenu
               ? (
                 <>
-                  <CloseButton onClick={onClose} justifyContent='start' color='grey.menu_close_button' />
+                  <CloseButton onClick={onClose} justifyContent='start' color='grey.500' />
                   <MenuBar direction='column' />
                 </>
               )

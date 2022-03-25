@@ -33,7 +33,7 @@ const SearchTab: FC<Props> = () => {
           { name: 'BTC', value: ' $37,490.48' },
           { name: 'ETH', value: ' $2,669.99' },
         ].map((el) => (
-          <Box fontSize={12} key={el.name} display={['none', 'none', 'block']}>
+          <Box fontSize={12} key={el.name}>
             {el.name}
             :
             {' '}
