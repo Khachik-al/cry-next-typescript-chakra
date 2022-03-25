@@ -16,7 +16,7 @@ type TData = {
   link: string;
   fundamental_rating: string;
   technical_rating: string;
-  floore_price: string[];
+  floor_price: string[];
   '24h_percent': string;
   market_cap: string[];
   '24h_valume': string[];
@@ -74,8 +74,8 @@ const NftItem: NextPage<Props> = ({ data }) => {
             </VStack>
             <Container variant='nft_item_info'>
               <Text pb={2} size='sm' color='secondary_text'>Floor Price</Text>
-              <Text lineHeight={1} size='lg' fontWeight='extrabold'>{data.floore_price[0]}</Text>
-              <Text size='md' color='secondary_text'>{data.floore_price[1]}</Text>
+              <Text lineHeight={1} size='lg' fontWeight='extrabold'>{data.floor_price[0]}</Text>
+              <Text size='md' color='secondary_text'>{data.floor_price[1]}</Text>
             </Container>
             <Container variant='nft_item_info'>
               <Text pb={2} size='sm' color='secondary_text'>24h %</Text>
@@ -115,8 +115,8 @@ const NftItem: NextPage<Props> = ({ data }) => {
             </Container>
             <VStack align='start' pl={3}>
               <Text pb={2} size='sm' color='secondary_text'>Floor Price</Text>
-              <Text lineHeight={1} size='lg' fontWeight='extrabold'>{data.floore_price[0]}</Text>
-              <Text size='md' color='secondary_text'>{data.floore_price[1]}</Text>
+              <Text lineHeight={1} size='lg' fontWeight='extrabold'>{data.floor_price[0]}</Text>
+              <Text size='md' color='secondary_text'>{data.floor_price[1]}</Text>
               <Text pb={2} size='sm' color='secondary_text'>Owners</Text>
               <Text pb={4} lineHeight={1} size='lg' fontWeight='extrabold'>{data.owners}</Text>
               <Text pb={2} size='sm' color='secondary_text'>Items</Text>
@@ -187,7 +187,7 @@ export const getStaticProps: GetStaticProps = async () => {
     link: 'azuki.com',
     fundamental_rating: '91.24',
     technical_rating: '91.24',
-    floore_price: ['18.19 ETH', '$53,351.51'],
+    floor_price: ['18.19 ETH', '$53,351.51'],
     '24h_percent': '8.21%',
     market_cap: ['326,710.59 ETH', '$958,246,560.54'],
     '24h_valume': ['745.3 ETH', '$2,080,165.84', '0.02%'],
