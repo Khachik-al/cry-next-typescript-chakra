@@ -13,5 +13,7 @@ module.exports = {
   },
   env: {
     DIRNAME: __dirname
-  }
+  },
+  trailingSlash: true
 }
+

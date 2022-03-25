@@ -1,5 +1,5 @@
 import { mode } from '@chakra-ui/theme-tools'
-import { extendTheme } from '@chakra-ui/react'
+import { ComponentStyleConfig, extendTheme } from '@chakra-ui/react'
 import Button from './components/Button'
 import Input from './components/Input'
 import Text from './components/Text'
@@ -12,7 +12,7 @@ export const theme = extendTheme({
     useSystemColorMode: false,
   },
   styles: {
-    global: (props: any) => ({
+    global: (props: ComponentStyleConfig) => ({
       body: {
         color: mode('main_black', 'main_white')(props),
         bg: mode('main_white', 'dark.400')(props),
@@ -43,20 +43,19 @@ export const theme = extendTheme({
     danger: '#F04C4C',
     blue: {
       100: 'rgba(62, 174, 125, 0.2)',
+      200: 'rgba(113, 119, 132, 0.07)',
     },
     grey: {
-      menu_close_button: '#BDBDBD',
-      light: '#ECECEC',
-      pagination_bg: '#EFEFEF',
-      pagination_disabled: '#C4C4C4',
+      100: '#EFEFEF',
+      200: '#ECECEC',
+      300: '#D9D9D9',
+      400: '#C4C4C4',
+      500: '#BDBDBD',
     },
     primary: {
       100: '#3EAE7D',
       200: '#134730',
       300: '#103726',
-    },
-    border: {
-      grey: '#ECECEC',
     },
   },
   components: {
