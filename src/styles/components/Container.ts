@@ -63,6 +63,11 @@ const Container: ComponentStyleConfig = {
       py: '4',
       pl: '3',
     },
+    card: {
+      border: '1px solid',
+      borderColor: 'border.grey',
+      borderRadius: '2xl'
+    }
   },
   defaultProps: {
 

@@ -4,6 +4,7 @@ import Button from './components/Button'
 import Input from './components/Input'
 import Text from './components/Text'
 import Container from './components/Container'
+import Switch from './components/Switch'
 import { pagination } from './components/pagination'
 
 export const theme = extendTheme({
@@ -26,6 +27,9 @@ export const theme = extendTheme({
           borderRadius: '50%',
         },
       },
+      '.css-xvmw52[data-focus]': {
+        boxShadow: 'none !important'
+      }
     }),
   },
   colors: {
@@ -64,5 +68,6 @@ export const theme = extendTheme({
     Input,
     Text,
     Container,
+    Switch,
   },
 })
