@@ -15,10 +15,7 @@ const ChoosePlan: FC = () => {
 
   return (
     <>
-      <VStack textAlign='center' mt={16}>
-        <Text color='primary.100' fontSize={[12, 12, 14]} fontWeight='black' mb={6}>
-          PLAN HIGHLIGHT PHRASE
-        </Text>
+      <VStack textAlign='center' mt={5}>
         <Heading fontSize={[32, 32, 36, 48]}>
           Choose Your  <Text as='span' color='primary.100'>Plan</Text>
         </Heading>
