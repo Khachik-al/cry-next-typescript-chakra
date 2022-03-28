@@ -1,20 +1,17 @@
 import {
-  Box,
-  Button,
-  Center, Container, Flex, Heading, HStack, Portal, Switch, Text, VStack,
+  Box, Button, Portal, Switch, Text, VStack,
+  Container, Heading, HStack, Stack, useColorMode,
 } from '@chakra-ui/react'
 import Image from 'next/image'
 import { FC, useRef, useState } from 'react'
-import { exportableLoader } from '../image-loader'
+import { exportableLoader } from '../../image-loader'
 
-interface Props {
 
-}
-
-const ChoosePlan: FC<Props> = ({ }) => {
+const ChoosePlan: FC = () => {
   const [isYearly, setIsYearly] = useState(true)
   const ethCard = useRef(null)
   const chartCard = useRef(null)
+  const { colorMode } = useColorMode()
 
   return (
     <>
@@ -41,39 +38,41 @@ const ChoosePlan: FC<Props> = ({ }) => {
             color={isYearly ? 'primary.100' : ''}>
             Billed yearly
           </Text>
-          <Center
-            w={14}
-            h={6}
-            color='main_white'
-            bg='#DEBD36'
-            borderRadius='2xl'
-            fontSize={9}
-            fontWeight='extrabold'
-          >
+          <Container variant='landing_discount'>
             Save 15%
-          </Center>
+          </Container>
         </HStack>
       </VStack>
-      <Flex flexDirection={['column', 'column', 'row']} justify={'center'} mt={32}>
-        <Container variant='card' pb={10} pt={20} ref={ethCard} position='relative' maxW='424px'>
+      <Stack direction={['column', 'column', 'row']} spacing={20} mt={32} align='center' justify='center'>
+        <Container
+          variant='card'
+          pb={10}
+          pt={20}
+          ref={ethCard}
+          position='relative'
+          maxW='438px'
+        >
           <Portal containerRef={ethCard}>
             <Box
               position='absolute'
               top={-68}
-              left='32%'
+              left='50%'
+              transform='translate(-50%, 0)'
             >
               <Image
                 loader={exportableLoader}
-                src='/assets/img/plan_etherium.png'
+                src={`/assets/img/${colorMode === 'light' ? 'plan_etherium' : 'plan_etheriumdark'}.png`}
                 alt='image'
                 width={136}
                 height={136}
               />
             </Box>
           </Portal>
-          <VStack>
+          <VStack spacing={4}>
             <Text fontSize={24} fontWeight='black'>Cryptogic Premium</Text>
-            <Button>7 day trial for $7</Button>
+            <Button px={8}>
+              7 day trial for $7
+            </Button>
             <Text fontSize={20} fontWeight='black'><Text as='span' color='primary.100'>$399</Text> / year</Text>
             <Text fontWeight='medium'> Includes unlimited access to: </Text>
             <Text fontSize={14} fontWeight='medium' color='secondary_text'>
@@ -92,41 +91,43 @@ const ChoosePlan: FC<Props> = ({ }) => {
           pb={10} pt={20}
           ref={chartCard}
           position='relative'
-          maxW='424px'
-          ml={[null, null, 10]} mt={[20, 20, 0]}
+          maxW='438px'
         >
           <Portal containerRef={chartCard}>
             <Box
               position='absolute'
               top={-68}
-              left='32%'
+              left='50%'
+              transform='translate(-50%, 0)'
             >
               <Image
                 loader={exportableLoader}
-                src='/assets/img/plan_chart.png'
+                src={`/assets/img/${colorMode === 'light' ? 'plan_chart' : 'plan_chartdark'}.png`}
                 alt='image'
                 width={136}
                 height={136}
               />
             </Box>
           </Portal>
-          <VStack>
-            <Text fontSize={24} fontWeight='black'>Cryptogic Premium</Text>
-            <Button>7 day trial for $7</Button>
-            <Text fontSize={20} fontWeight='black'><Text as='span' color='primary.100'>$399</Text> / year</Text>
-            <Text fontWeight='medium'> Includes unlimited access to: </Text>
+          <VStack spacing={4}>
+            <Text fontSize={24} fontWeight='black'>Cryptogic Elite</Text>
+            <Button px={8}>
+              7 day trial for $147
+            </Button>
+            <Text fontSize={20} fontWeight='black'><Text as='span' color='primary.100'>$999</Text> / year</Text>
+            <Text fontWeight='medium'> Everything in Cryptogic Premium plus: </Text>
             <Text fontSize={14} fontWeight='medium' color='secondary_text'>
-              <Text as='span' color='primary.100'>+</Text> Crypto Ratings (Fundamental + Technical)
+              <Text as='span' color='primary.100'>+</Text> Everything In Premium
             </Text>
             <Text fontSize={14} fontWeight='medium' color='secondary_text'>
-              <Text as='span' color='primary.100'>+</Text> Portfolio Tracking
+              <Text as='span' color='primary.100'>+</Text> Crypto Indexes
             </Text>
             <Text fontSize={14} fontWeight='medium' color='secondary_text'>
-              <Text as='span' color='primary.100'>+</Text> Premium Community
+              <Text as='span' color='primary.100'>+</Text> Second Thing
             </Text>
           </VStack>
         </Container>
-      </Flex>
+      </Stack>
     </>
 
   )

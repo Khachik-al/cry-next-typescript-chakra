@@ -27,13 +27,15 @@ export const theme = extendTheme({
           borderRadius: '50%',
         },
       },
-      '.css-xvmw52[data-focus]': {
-        boxShadow: 'none !important'
-      }
+      '.css-xvmw52[data-focus], .css-1lnbiz9[data-focus]': {
+        boxShadow: 'none !important',
+      },
+      
     }),
   },
   colors: {
     dark: {
+      50: '#505466',
       100: '#40465B',
       200: '#272D3F',
       300: '#090C16',
@@ -46,8 +48,10 @@ export const theme = extendTheme({
     disabled_text: '#9EA2AB',
     danger: '#F04C4C',
     blue: {
+      50: 'rgba(62, 174, 125, 0.05)',
       100: 'rgba(62, 174, 125, 0.2)',
       200: 'rgba(113, 119, 132, 0.07)',
+
     },
     grey: {
       100: '#EFEFEF',
@@ -55,6 +59,10 @@ export const theme = extendTheme({
       300: '#D9D9D9',
       400: '#C4C4C4',
       500: '#BDBDBD',
+      600: '#272D3F',
+    },
+    yellow: {
+      200: '#DEBD36',
     },
     primary: {
       100: '#3EAE7D',

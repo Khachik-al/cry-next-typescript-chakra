@@ -1,19 +1,18 @@
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
 
 const Switch: ComponentStyleConfig = {
-	baseStyle: {
+  baseStyle: {
 	
-		
-	},
-	sizes: {
+  },
+  sizes: {
 
-	},
-	variants: {
+  },
+  variants: {
 		
-	},
-	defaultProps: {
-		colorScheme:'green',
-	},
+  },
+  defaultProps: {
+    colorScheme:'green',
+  },
 }
 
 export default Switch

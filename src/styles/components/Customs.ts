@@ -95,3 +95,35 @@ export const rating = {
     },
   },
 }
+
+export const landing = {
+  discount: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    w: 14,
+    h: 6,
+    color: 'main_white',
+    bg: 'yellow.200',
+    borderRadius: '2xl',
+    fontSize: 9,
+    fontWeight: 'extrabold',
+  },
+  masonry:{
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    '.my-masonry-grid': {
+      display: 'flex',
+      marginLeft: '-30px',
+      width: 'auto',
+    },
+    '.my-masonry-grid_column': {
+      paddingLeft: '30px',
+      backgroundClip: 'padding-box',
+    },
+    '.my-masonry-grid_column > div': {
+      marginBottom: 7,
+    },
+  },
+}
