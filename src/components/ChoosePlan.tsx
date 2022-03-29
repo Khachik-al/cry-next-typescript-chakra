@@ -4,7 +4,7 @@ import {
 } from '@chakra-ui/react'
 import Image from 'next/image'
 import { FC, useRef, useState } from 'react'
-import { exportableLoader } from '../../image-loader'
+import { exportableLoader } from '../image-loader'
 
 
 const ChoosePlan: FC = () => {

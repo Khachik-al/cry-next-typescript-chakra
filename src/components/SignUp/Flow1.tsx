@@ -3,7 +3,7 @@ import {
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import React, { FC } from 'react'
-import ChoosePlan from '../LandingPage/ChoosePlan'
+import ChoosePlan from '../ChoosePlan'
 
 interface Props {
 
