@@ -33,7 +33,7 @@ const ChoosePlan: FC = () => {
           <Text
             fontWeight={isYearly ? 'bold' : 'medium'}
             color={isYearly ? 'primary.100' : ''}>
-            Billed yearly
+            Billed yeacrly
           </Text>
           <Container variant='landing_discount'>
             Save 15%
@@ -47,7 +47,7 @@ const ChoosePlan: FC = () => {
           pt={20}
           ref={ethCard}
           position='relative'
-          maxW='438px'
+          maxW={438}
         >
           <Portal containerRef={ethCard}>
             <Box
@@ -88,7 +88,7 @@ const ChoosePlan: FC = () => {
           pb={10} pt={20}
           ref={chartCard}
           position='relative'
-          maxW='438px'
+          maxW={438}
         >
           <Portal containerRef={chartCard}>
             <Box

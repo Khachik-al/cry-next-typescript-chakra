@@ -109,21 +109,4 @@ export const landing = {
     fontSize: 9,
     fontWeight: 'extrabold',
   },
-  masonry:{
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    '.my-masonry-grid': {
-      display: 'flex',
-      marginLeft: '-30px',
-      width: 'auto',
-    },
-    '.my-masonry-grid_column': {
-      paddingLeft: '30px',
-      backgroundClip: 'padding-box',
-    },
-    '.my-masonry-grid_column > div': {
-      marginBottom: 7,
-    },
-  },
 }

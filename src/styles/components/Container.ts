@@ -86,7 +86,6 @@ const Container: ComponentStyleConfig = {
     rating_block: rating.rating_block,
     rating: rating.rating,
     landing_discount: landing.discount,
-    masonry: landing.masonry,
   },
   defaultProps: {
 
