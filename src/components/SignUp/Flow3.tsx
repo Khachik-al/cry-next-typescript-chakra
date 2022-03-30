@@ -113,7 +113,7 @@ const Flow3: FC<Props> = () => {
           onClick={() => router.push('/signup?flow=4')}
           px={24}
         >
-          Place Older
+          Place Order
         </Button>
       </Flex>
     </>
