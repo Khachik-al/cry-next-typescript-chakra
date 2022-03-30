@@ -14,26 +14,23 @@ const PasswordStrength: FC<Props> = ({ value }) => {
 	const [strength, setStrength] = useState([false, false, false, false])
 
 	useEffect(() => {
-		
+
 		if (strongRegex.test(value)) {
 			setStrength([true, true, true, true])
 		} else if (mediumRegex.test(value)) {
 			setStrength([true, true, true, false])
 		} else if (value) {
 			setStrength([true, false, false, false])
-		}else{
+		} else {
 			setStrength([false, false, false, false])
 		}
 
 	}, [value])
 
 	return (
-		<>
-
-			<HStack spacing={0.5} mt={2}>
-				{strength.map(el => <Box h='2px' w='full' borderRadius='xl' bg={el ? 'primary.100' : 'grey.400'} />)}
-			</HStack>
-		</>
+		<HStack spacing={0.5} mt={2}>
+			{strength.map(el => <Box h='2px' w='full' borderRadius='xl' bg={el ? 'primary.100' : 'grey.400'} />)}
+		</HStack>
 	)
 }
 

@@ -1,4 +1,4 @@
-import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
+import { ChevronRightIcon, ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
 import {
   Text, Input, Box, Select, Flex, Button, Stack, Heading, VStack, Show, InputGroup, InputRightElement,
 } from '@chakra-ui/react'
@@ -8,7 +8,7 @@ import {
   ChangeEvent, FC, FormEvent, useState,
 } from 'react'
 import { exportableLoader } from '../../image-loader'
-import PasswordStrength from './PasswordStrength'
+import PasswordStrength from '../PasswordStrength'
 
 const Flow2: FC = () => {
   const router = useRouter()
@@ -136,8 +136,10 @@ const Flow2: FC = () => {
           <Button
             onClick={() => router.push('/signup?flow=3')}
             type='submit'
+            px={20}
           >
             Payment method
+            <ChevronRightIcon boxSize={7}/>
           </Button>
         </Flex>
       </form>
