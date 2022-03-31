@@ -62,6 +62,7 @@ const ChoosePlan: FC = () => {
                 alt='image'
                 width={136}
                 height={136}
+                unoptimized
               />
             </Box>
           </Portal>
@@ -103,6 +104,7 @@ const ChoosePlan: FC = () => {
                 alt='image'
                 width={136}
                 height={136}
+                unoptimized
               />
             </Box>
           </Portal>

@@ -62,6 +62,7 @@ const ToolsetAndPlatform: FC = () => {
                       src='/assets/img/video_circle.png'
                       alt='image'
                       layout='fill'
+                      unoptimized
                     />
                   </Box>
                 </Flex>
@@ -74,6 +75,7 @@ const ToolsetAndPlatform: FC = () => {
                 width={526}
                 height={321}
                 priority
+                unoptimized
               />
             </Box>
           </Portal>
@@ -107,18 +109,29 @@ const ToolsetAndPlatform: FC = () => {
                 width={223}
                 height={150}
                 layout='responsive'
+                unoptimized
               />
             </Box>
           </Portal>
-          <Image
+          {colorMode === 'light' ? <Image
             loader={exportableLoader}
-            src={`/assets/img/${colorMode === 'light' ? 'coin_list' : 'coin_listdark'}.png`}
+            src='/assets/img/coin_list.png'
             alt='image'
             layout='responsive'
             height={374}
             width={496}
             priority
           />
+            :
+            <Image
+              loader={exportableLoader}
+              src='/assets/img/coin_listdark.png'
+              alt='image'
+              layout='responsive'
+              height={374}
+              width={496}
+              priority
+            />}
         </Box>
         <VStack
           align={['center', 'center', 'start']}

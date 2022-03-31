@@ -55,6 +55,7 @@ const Home: NextPage = () => {
                   height={450}
                   width={300}
                   priority
+                  unoptimized
                 />
               </Box>
             </Portal>
@@ -73,6 +74,7 @@ const Home: NextPage = () => {
                   height={350}
                   width={250}
                   priority
+                  unoptimized
                 />
               </Box>
             </Portal>
