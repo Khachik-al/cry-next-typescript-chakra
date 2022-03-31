@@ -15,14 +15,11 @@ const PasswordStrength: FC<Props> = ({ value }) => {
 
   useEffect(() => {
 
-    if (strongRegex.test(value)) {
-      setStrength([true, true, true, true])
-    } else if (mediumRegex.test(value)) {
-      setStrength([true, true, true, false])
-    } else if (value) {
-      setStrength([true, false, false, false])
-    } else {
-      setStrength([false, false, false, false])
+    switch (true) {
+      case (strongRegex.test(value)): return setStrength([true, true, true, true])
+      case (mediumRegex.test(value)): return setStrength([true, true, true, false])
+      case (!!value): return setStrength([true, false, false, false])
+      default: return setStrength([false, false, false, false])
     }
 
   }, [value])

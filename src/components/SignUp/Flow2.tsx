@@ -89,7 +89,7 @@ const Flow2: FC = () => {
             <Text color='secondary_text' fontSize={10} mt={2}>Password Strength:</Text>
             <PasswordStrength value={state.password} />
             <Text color='grey.500' fontSize={12} mt={2}>
-              Security tip: Dolor sit amet, consectetur adipiscing elit. Dictum cras nisl, cras id luctus at scelerisque sit.
+              <Skeleton h={3}/>
             </Text>
           </Box>
           <Box w='full'>

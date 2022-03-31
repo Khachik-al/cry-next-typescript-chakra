@@ -5,7 +5,7 @@ import defaultTheme from '@chakra-ui/theme'
 
 const Select: ComponentStyleConfig = {
   variants: {
-    'sighnup': (props: StyleFunctionProps) => ({
+    'signup': (props: StyleFunctionProps) => ({
       ...defaultTheme.components.Select.variants.outline(props),
       field: {
         ...defaultTheme.components.Select.variants.outline(props).field,
@@ -22,7 +22,7 @@ const Select: ComponentStyleConfig = {
     }),
   },
   defaultProps: {
-    variant: 'sighnup',
+    variant: 'signup',
   },
 }
 
