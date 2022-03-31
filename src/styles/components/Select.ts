@@ -3,17 +3,16 @@ import { StyleFunctionProps } from '@chakra-ui/theme-tools'
 import defaultTheme from '@chakra-ui/theme'
 
 
-const Input: ComponentStyleConfig = {
+const Select: ComponentStyleConfig = {
   variants: {
-    'outline': (props: StyleFunctionProps) => ({
-      ...defaultTheme.components.Input.variants.outline(props),
+    'signup': (props: StyleFunctionProps) => ({
+      ...defaultTheme.components.Select.variants.outline(props),
       field: {
-        ...defaultTheme.components.Input.variants.outline(props).field,
+        ...defaultTheme.components.Select.variants.outline(props).field,
         borderRadius: 'xl',
         border: '1px solid',
         borderColor: 'grey.200',
         fontSize: '14',
-        _placeholder: { opacity: 0.4, color: 'secondary_text', fontSize: '14' },
         _focus: {
           borderColor: 'grey.300',
           boxShadow: 'none',
@@ -23,8 +22,8 @@ const Input: ComponentStyleConfig = {
     }),
   },
   defaultProps: {
-    variant: 'outline',
+    variant: 'signup',
   },
 }
 
-export default Input
+export default Select
