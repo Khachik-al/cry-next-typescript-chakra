@@ -1,4 +1,4 @@
-import { Box, Container, Heading, Stack, Text, VStack } from '@chakra-ui/react'
+import { Box, Container, Flex, Heading, Skeleton, Stack, Text, VStack } from '@chakra-ui/react'
 import Image from 'next/image'
 import { FC } from 'react'
 import { exportableLoader } from '../../image-loader'
@@ -7,9 +7,7 @@ const CryptogicFeatures: FC = () => {
   return (
     <>
       <VStack textAlign='center' mt={20} px='10%'>
-        <Text color='primary.100' fontSize={[12, 12, 14]} fontWeight='black' mb={6}>
-          FEATURE HIGHLIGHT PHRASE
-        </Text>
+        <Flex justify='center'><Skeleton h={4} mt={16} w={32} /></Flex>
         <Heading fontSize={[32, 32, 36, 48]}>
           Cryptogic <Text as='span' color='primary.100'>Features</Text>
         </Heading>

@@ -1,4 +1,4 @@
-import { Container, Box, Portal, Show, Text } from '@chakra-ui/react'
+import { Container, Box, Portal, Show, Skeleton, Flex } from '@chakra-ui/react'
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import { useRef } from 'react'
@@ -19,9 +19,7 @@ const Home: NextPage = () => {
         <Container variant='main' ref={main}>
           <ToolsetAndPlatform />
           <CryptogicFeatures />
-          <Text mt={16} color='primary.100' fontSize={[12, 12, 14]} fontWeight='black' textAlign='center'>
-            PLAN HIGHLIGHT PHRASE
-          </Text>
+          <Flex justify='center'><Skeleton h={4} mt={16} w={32} /></Flex>
           <ChoosePlan />
           <LatestVideos />
           <UserTestimonials />

@@ -1,4 +1,4 @@
-import { Box, Container, Heading, HStack, Portal, Show, Text, VStack } from '@chakra-ui/react'
+import { Box, Container, Flex, Heading, HStack, Portal, Show, Skeleton, Text, VStack } from '@chakra-ui/react'
 import Image from 'next/image'
 import { FC, useRef } from 'react'
 import { exportableLoader } from '../../image-loader'
@@ -9,15 +9,11 @@ const UserTestimonials: FC = () => {
   return (
     <>
       <VStack textAlign='center' mt={16} px='15%'>
-        <Text color='primary.100' fontSize={[12, 12, 14]} fontWeight='black' mb={6}>
-          TESTIMONIAL HIGHLIGHT PHRASE
-        </Text>
+        <Flex justify='center'><Skeleton h={4} mt={16} w={32} /></Flex>
         <Heading fontSize={[32, 32, 36, 48]}>
           User testimonials
         </Heading>
-        <Text color='secondary_text' fontSize={[12, 12, 14, 16]} mt={5}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam imperdiet tempor, ipsum amet eu quam cras nibh.
-        </Text>
+        <Flex justify='center'><Skeleton h={4} w={56} /></Flex>
       </VStack>
       <Box
         my={16}

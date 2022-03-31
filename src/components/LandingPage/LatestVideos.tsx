@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, GridItem, Heading, Text, VStack } from '@chakra-ui/react'
+import { Box, Flex, Grid, GridItem, Heading, Skeleton, Text, VStack } from '@chakra-ui/react'
 import Image from 'next/image'
 import { FC } from 'react'
 import { exportableLoader } from '../../image-loader'
@@ -8,15 +8,11 @@ const LatestVideos: FC = () => {
   return (
     <>
       <VStack textAlign='center' mt={16} px='15%'>
-        <Text color='primary.100' fontSize={[12, 12, 14]} fontWeight='black' mb={6}>
-          VIDEO HIGHLIGHT PHRASE
-        </Text>
+        <Flex justify='center'><Skeleton h={4} mt={16} w={32} /></Flex>
         <Heading fontSize={[32, 32, 36, 48]}>
           Latest videos
         </Heading>
-        <Text color='secondary_text' fontSize={[12, 12, 14, 16]} mt={5}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam imperdiet tempor, ipsum amet eu quam cras nibh.
-        </Text>
+        <Flex justify='center'><Skeleton h={4} w={56} /></Flex>
       </VStack>
       <Grid
         mt={16}
@@ -57,8 +53,8 @@ const LatestVideos: FC = () => {
               </Box>
               <Text fontSize={[16, 16, 18, 24]} w={80} fontWeight='black'>Video Title</Text>
               <Text color='secondary_text' fontSize={[12, 12, 14]} w={80}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam imperdiet tempor,
-                ipsum amet eu quam cras nibh.
+                <Skeleton h={4} mb={1}/>
+                <Skeleton h={4}/>
               </Text>
             </VStack>
           </GridItem>,
