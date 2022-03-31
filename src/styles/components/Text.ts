@@ -22,7 +22,7 @@ const Text: ComponentStyleConfig = {
     label_input: {
       fontSize: '12',
       mb: 2,
-      mt: 3
+      mt: 3,
     },
     list_text: {
       fontSize: '12',

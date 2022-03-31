@@ -64,6 +64,6 @@ export const theme = extendTheme({
     Input,
     Text,
     Container,
-    Select
+    Select,
   },
 })

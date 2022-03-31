@@ -17,8 +17,8 @@ const Input: ComponentStyleConfig = {
         _focus: {
           borderColor: 'grey.300',
           boxShadow: 'none',
-          zIndex: 0
-        }
+          zIndex: 0,
+        },
       },
     }),
   },
