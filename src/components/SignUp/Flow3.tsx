@@ -1,5 +1,5 @@
 import {
-  Box, Button, Checkbox, Flex, Heading, HStack, Input, InputGroup, InputLeftElement, Select, Show, Stack, Text, VStack,
+  Box, Button, Checkbox, Flex, Heading, HStack, Input, InputGroup, InputLeftElement, Select, Show, Skeleton, Stack, Text, VStack,
 } from '@chakra-ui/react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -15,12 +15,16 @@ const Flow3: FC<Props> = () => {
   return (
     <>
       <VStack spacing={4} mt={4} textAlign='center'>
-        <Show above='sm'><Heading fontSize={['3xl', '4xl', '5xl']}>Start your 7 day trial</Heading></Show>
-        <Show above='sm'><Text color='secondary_text' px='20%'>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam imperdiet tempor, ipsum amet eu quam cras nibh.
-        </Text></Show>
+        <Show above='sm'>
+          <Heading fontSize={['3xl', '4xl', '5xl']}>Start your 7 day trial</Heading>
+        </Show>
+        <Show above='sm'>
+          <Text color='secondary_text' px='20%' w='full'>
+            <Skeleton h={5} />
+          </Text>
+        </Show>
       </VStack>
-      <Stack direction={['column', 'column', 'row']} spacing={5} px={[null, null, null, null, 56]} mt={16}>
+      <Stack direction={['column', 'column', 'row']} spacing={5} px={[null, null, null, null, 44]} mt={16}>
         <Box w='full'>
           <Text fontSize={18} mb={30}>Payment Method</Text>
           <Text fontSize='sm'>Card Number</Text>

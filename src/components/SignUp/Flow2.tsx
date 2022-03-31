@@ -1,6 +1,6 @@
 import { ChevronRightIcon, ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
 import {
-  Text, Input, Box, Select, Flex, Button, Stack, Heading, VStack, Show, InputGroup, InputRightElement,
+  Text, Input, Box, Select, Flex, Button, Stack, Heading, VStack, Show, InputGroup, InputRightElement, Skeleton,
 } from '@chakra-ui/react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -38,9 +38,11 @@ const Flow2: FC = () => {
     <>
       <VStack spacing={4} mt={4} textAlign='center'>
         <Show above='sm'><Heading fontSize={['3xl', '4xl', '5xl']}>Start your 7 day trial</Heading></Show>
-        <Show above='sm'><Text color='secondary_text' px='20%'>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam imperdiet tempor, ipsum amet eu quam cras nibh.
-        </Text></Show>
+        <Show above='sm'>
+          <Text color='secondary_text' px='20%' w='full'>
+            <Skeleton h={5} />
+          </Text>
+        </Show>
         <Button variant='outline' color='secondary_text' w={['full', 'auto']}>
           <Box>
             Sign up with Google
@@ -139,7 +141,7 @@ const Flow2: FC = () => {
             px={20}
           >
             Payment method
-            <ChevronRightIcon boxSize={7}/>
+            <ChevronRightIcon boxSize={7} />
           </Button>
         </Flex>
       </form>
