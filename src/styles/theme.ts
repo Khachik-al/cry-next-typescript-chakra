@@ -5,6 +5,7 @@ import Input from './components/Input'
 import Text from './components/Text'
 import Container from './components/Container'
 import Switch from './components/Switch'
+import Select from './components/Select'
 import { pagination } from './components/pagination'
 
 export const theme = extendTheme({
@@ -76,5 +77,6 @@ export const theme = extendTheme({
     Text,
     Container,
     Switch,
+    Select,
   },
 })
