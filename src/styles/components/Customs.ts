@@ -95,3 +95,18 @@ export const rating = {
     },
   },
 }
+
+export const landing = {
+  discount: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    w: 14,
+    h: 6,
+    color: 'main_white',
+    bg: 'yellow.200',
+    borderRadius: '2xl',
+    fontSize: 9,
+    fontWeight: 'extrabold',
+  },
+}
