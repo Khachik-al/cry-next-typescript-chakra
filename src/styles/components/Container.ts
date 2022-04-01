@@ -1,4 +1,4 @@
-import { chart, nft, rating } from './Customs'
+import { chart, landing, nft, rating } from './Customs'
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
 
 const Container: ComponentStyleConfig = {
@@ -11,7 +11,7 @@ const Container: ComponentStyleConfig = {
 
   },
   variants: {
-    header: (props) => ({
+    header: ({ colorMode }) => ({
       pl: ['2%', '2%', '5%', '8%', '12%'],
       pr: ['2%', '2%', '2%', '5%', '9%'],
       display: 'flex',
@@ -22,43 +22,43 @@ const Container: ComponentStyleConfig = {
       left: '0',
       right: '0',
       zIndex: 'sticky',
-      bg: props.colorMode === 'light' ? 'main_white' : 'dark.400',
+      bg: colorMode === 'light' ? 'main_white' : 'dark.400',
       borderBottom: '1px solid',
-      borderColor: 'grey.200',
+      borderColor: colorMode === 'light' ? 'grey.200' : 'grey.600',
     }),
-    searchtab: {
+    searchtab: ({ colorMode }) => ({
       pl: ['2%', '2%', '5%', '8%', '12%'],
       pr: ['2%', '2%', '2%', '5%', '9%'],
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
       borderBottom: '1px solid',
-      borderColor: 'grey.200',
+      borderColor: colorMode === 'light' ? 'grey.200' : 'grey.600',
       overflow: 'auto hidden',
       whiteSpace: 'nowrap',
       scrollbarWidth: 'none',
       '::-webkit-scrollbar': {
         display: 'none',
       },
-    },
+    }),
     main: {
       pl: ['2%', '2%', '5%', '8%', '12%'],
       pr: ['2%', '2%', '2%', '5%', '9%'],
       pt: ['4', '12'],
       pb: '8',
     },
-    disclaimer: (props) => ({
+    disclaimer: ({ colorMode }) => ({
       pl: ['2%', '2%', '5%', '8%', '12%'],
       pr: ['2%', '2%', '2%', '5%', '9%'],
       py: '8',
-      bg: props.colorMode === 'light' ? 'primary.200' : 'dark.300',
+      bg: colorMode === 'light' ? 'primary.200' : 'dark.300',
       color: 'main_white',
       fontSize: '12',
     }),
-    footer: (props) => ({
+    footer: ({ colorMode }) => ({
       pl: ['2%', '2%', '5%', '8%', '12%'],
       pr: ['2%', '2%', '2%', '5%', '9%'],
-      bg: props.colorMode === 'light' ? 'primary.300' : 'dark.500',
+      bg: colorMode === 'light' ? 'primary.300' : 'dark.500',
       color: 'main_white',
       py: '12',
     }),
@@ -71,12 +71,21 @@ const Container: ComponentStyleConfig = {
       py: '4',
       pl: '3',
     },
+    card: ({ colorMode }) => ({
+      border: '1px solid',
+      borderColor: colorMode === 'light' ? 'grey.200' : 'grey.600',
+      borderRadius: '2xl',
+      _hover: {
+        bg: colorMode === 'light' ? 'blue.50' : 'dark.200',
+      },
+    }),
     nft_rank: nft.rank,
     nft_link: nft.link,
     nft_item_info: nft.item_info,
     chart_timepicker: chart.timepicker,
     rating_block: rating.rating_block,
     rating: rating.rating,
+    landing_discount: landing.discount,
   },
   defaultProps: {
 
