@@ -33,7 +33,7 @@ const ChoosePlan: FC = () => {
           <Text
             fontWeight={isYearly ? 'bold' : 'medium'}
             color={isYearly ? 'primary.100' : ''}>
-            Billed yeacrly
+            Billed yearly
           </Text>
           <Container variant='landing_discount'>
             Save 15%
