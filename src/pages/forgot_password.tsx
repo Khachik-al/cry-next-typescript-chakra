@@ -10,7 +10,7 @@ const ForgotPassword: NextPage = () => {
   const [isView, setIsView] = useState(false)
   const [isNewPassword, setIsNewPassword] = useState(false)
   const [state, setState] = useState({
-    password: ''
+    password: '',
   })
   const handleChange = ({ target }: ChangeEvent<HTMLInputElement>): void => {
     setState({

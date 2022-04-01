@@ -1,18 +1,18 @@
 import {
-	Button, Checkbox, Divider, Flex, Input,
-	Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Text
+  Button, Checkbox, Divider, Flex, Input,
+  Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Text,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 
 interface Props {
-	isOpen: boolean;
-	onClose: () => void;
+  isOpen: boolean;
+  onClose: () => void;
 }
 
 const Login: FC<Props> = ({ isOpen, onClose }) => {
-	const router = useRouter()
-	return (
+  const router = useRouter()
+  return (
 		<Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
 			<ModalOverlay />
 			<ModalContent p={3}>
@@ -39,8 +39,8 @@ const Login: FC<Props> = ({ isOpen, onClose }) => {
 							fontSize={12}
 							color='primary.100'
 							onClick={() => {
-								onClose()
-								router.push('/forgot_password')
+							  onClose()
+							  router.push('/forgot_password')
 							}}
 							cursor='pointer'
 						>
@@ -67,7 +67,7 @@ const Login: FC<Props> = ({ isOpen, onClose }) => {
 				</ModalBody>
 			</ModalContent>
 		</Modal >
-	)
+  )
 }
 
 export default Login
