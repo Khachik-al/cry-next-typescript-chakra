@@ -1,8 +1,7 @@
-import {
-  Button, Flex,
-} from '@chakra-ui/react'
-import { useRouter } from 'next/router'
+import { Box } from '@chakra-ui/react'
+import Image from 'next/image'
 import React, { FC } from 'react'
+import { exportableLoader } from '../../image-loader'
 import ChoosePlan from '../ChoosePlan'
 
 interface Props {
@@ -10,19 +9,26 @@ interface Props {
 }
 
 const Flow1: FC<Props> = () => {
-  const router = useRouter()
-
   return (
-    <>
-      <ChoosePlan/>
-      <Flex justify='center' mt={12}>
-        <Button
-          onClick={() => router.push('/signup?flow=2')}
-        >
-          7 day trial for $7
-        </Button>
-      </Flex>
-    </>
+    <Box pb={24}>
+      <ChoosePlan />
+      <Box
+        display={['none', 'none', 'none', 'none', 'block']}
+        position='absolute'
+        left={0}
+        top={[null, null, 200]}
+      >
+        <Image
+          loader={exportableLoader}
+          src='/assets/img/circle_gold.png'
+          alt='image'
+          height={350}
+          width={250}
+          priority
+          unoptimized
+        />
+      </Box>
+    </Box>
   )
 }
 

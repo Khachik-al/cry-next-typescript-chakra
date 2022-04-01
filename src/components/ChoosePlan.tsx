@@ -3,11 +3,13 @@ import {
   Container, Heading, HStack, Stack, useColorMode,
 } from '@chakra-ui/react'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import { FC, useRef, useState } from 'react'
 import { exportableLoader } from '../image-loader'
 
 
 const ChoosePlan: FC = () => {
+  const router = useRouter()
   const [isYearly, setIsYearly] = useState(true)
   const ethCard = useRef(null)
   const chartCard = useRef(null)
@@ -60,15 +62,15 @@ const ChoosePlan: FC = () => {
                 loader={exportableLoader}
                 src={`/assets/img/${colorMode === 'light' ? 'plan_etherium' : 'plan_etheriumdark'}.png`}
                 alt='image'
-                width={136}
-                height={136}
+                width={150}
+                height={150}
                 unoptimized
               />
             </Box>
           </Portal>
           <VStack spacing={4}>
             <Text fontSize={24} fontWeight='black'>Cryptogic Premium</Text>
-            <Button px={8}>
+            <Button px={8} onClick={() => router.push('/signup?flow=2')}>
               7 day trial for $7
             </Button>
             <Text fontSize={20} fontWeight='black'><Text as='span' color='primary.100'>$399</Text> / year</Text>
@@ -102,15 +104,15 @@ const ChoosePlan: FC = () => {
                 loader={exportableLoader}
                 src={`/assets/img/${colorMode === 'light' ? 'plan_chart' : 'plan_chartdark'}.png`}
                 alt='image'
-                width={136}
-                height={136}
+                width={150}
+                height={150}
                 unoptimized
               />
             </Box>
           </Portal>
           <VStack spacing={4}>
             <Text fontSize={24} fontWeight='black'>Cryptogic Elite</Text>
-            <Button px={8}>
+            <Button px={8} onClick={() => router.push('/signup?flow=2')}>
               7 day trial for $147
             </Button>
             <Text fontSize={20} fontWeight='black'><Text as='span' color='primary.100'>$999</Text> / year</Text>
