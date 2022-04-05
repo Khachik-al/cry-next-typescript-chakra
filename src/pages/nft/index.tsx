@@ -11,21 +11,20 @@ import 'rc-pagination/assets/index.css'
 import { exportableLoader } from '../../image-loader'
 
 type TData = {
-  data: {
-    'No': string;
-    icon: string;
+  items: {
+    rank: number;
     name: string;
-    ticker: string;
-    fundamental_rating: string;
-    technical_rating: string;
-    floor_price: string[];
-    '24h_percent': string;
-    market_cap: string[];
-    '24h_valume': string;
-    owners: string;
-    items: string;
+    slug: string;
+    fundamentalRating: number;
+    technicalRating: number;
+    floorPrice: number;
+    volumeChangePercent24h: number;
+    marketCap: number;
+    volumeChange24h: number;
+    owners: number;
+    items: number;
   }[];
-  total: number
+  count: number;
 }
 
 interface Props {
@@ -33,8 +32,15 @@ interface Props {
 }
 
 const Nfts: NextPage<Props> = ({ data }) => {
+  const [list, setList] = useState(data.items)
   const [page, setPage] = useState(1)
-  let total = 200
+
+  const changePage = async (value: number) => {
+    setPage(value)
+    const res = await fetch(`http://localhost:3000/dev/section/nft?offset=${value}&limit=5`)
+    const pageData = await res.json()
+    setList(pageData?.data?.items)
+  }
   return (
     <PageMeta title='Nfts'>
       <PageLayout>
@@ -73,12 +79,12 @@ const Nfts: NextPage<Props> = ({ data }) => {
                 </Text>,
               )}
             </HStack>
-            {data.data.map((el, i) => (
+            {list.map((el, i) => (
               <Container variant='list_item' key={i} minW='900px'>
-                <Text size='sm' textAlign='start' w='2%' position='sticky' zIndex={20} >{el.No}</Text>
+                <Text size='sm' textAlign='start' w='2%' position='sticky' zIndex={20} ></Text>
                 <HStack w={['20%', '30%']}>
-                  <Image loader={exportableLoader} src={`/assets/img/${el.ticker}.svg`} alt='icon' height={32} width={32} />
-                  <Link href={`/nft/${el.ticker}`} passHref>
+                  <Image loader={exportableLoader} src={`/assets/img/${el.slug}.svg`} alt='icon' height={32} width={32} />
+                  <Link href={`/nft/${el.slug}`} passHref>
                     <Text variant='link' size='sm' fontWeight='extrabold'>
                       {el.name}
                     </Text>
@@ -87,27 +93,29 @@ const Nfts: NextPage<Props> = ({ data }) => {
                 <Flex justify='center' w='10%'>
                   <Center borderRadius='2xl' bg='blue.100' p={2}>
                     <Text variant='list_text' fontWeight='medium'>
-                      {el.fundamental_rating}
+                      {el.fundamentalRating}
                     </Text>
                   </Center>
                 </Flex>
                 <Flex justify='center' w='10%'>
                   <Center borderRadius='2xl' bg='blue.100' p={2}>
                     <Text variant='list_text' fontWeight='medium'>
-                    {el.technical_rating}
+                      {el.technicalRating}
                     </Text>
                   </Center>
                 </Flex>
                 <VStack w='10%' align='end' spacing={0.5}>
-                  <Text variant='list_text'>{el.floor_price[0]}</Text>
-                  <Text color='secondary_text' size='xs'>{el.floor_price[1]}</Text>
+                  <Text variant='list_text'>{el.floorPrice.toString().slice(0, 8)}</Text>
+                  <Text color='secondary_text' size='xs'>{el.floorPrice.toString().slice(0, 8)}</Text>
                 </VStack>
-                <Text variant='list_text' textAlign='end' w='9%' color='primary.100'>{el['24h_percent']}</Text>
+                <Text variant='list_text' textAlign='end' w='9%' color='primary.100'>
+                  {el.volumeChangePercent24h.toString().slice(0, 5) + ' %'}
+                </Text>
                 <VStack w='15%' align='end' spacing={0.5}>
-                  <Text variant='list_text'>{el.market_cap[0]}</Text>
-                  <Text color='secondary_text' size='xs'>{el.market_cap[1]}</Text>
+                  <Text variant='list_text'>{el.marketCap}</Text>
+                  <Text color='secondary_text' size='xs'>{el.marketCap}</Text>
                 </VStack>
-                <Text variant='list_text' textAlign='end' w='10%'>{el['24h_valume']}</Text>
+                <Text variant='list_text' textAlign='end' w='10%'>{el.volumeChange24h}</Text>
                 <Text variant='list_text' textAlign='end' w='9%'>{el.owners}</Text>
                 <Text variant='list_text' textAlign='end' w='9%'>{el.items}</Text>
               </Container>
@@ -115,10 +123,10 @@ const Nfts: NextPage<Props> = ({ data }) => {
           </Box>
           <Pagination
             pageSize={10}
-            onChange={(ev) => setPage(ev)}
+            onChange={changePage}
             current={page}
-            total={data.total}
-            className={total > 50 ? 'more_than_50' : ''}
+            total={data.count}
+            className={data.count > 50 ? 'more_than_50' : ''}
             hideOnSinglePage
             jumpPrevIcon={() => <Image loader={exportableLoader} src='/assets/img/point.svg' alt='.' height={5} width={5} />}
             jumpNextIcon={() => <Image loader={exportableLoader} src='/assets/img/point.svg' alt='.' height={5} width={5} />}
@@ -132,53 +140,8 @@ const Nfts: NextPage<Props> = ({ data }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = {
-    data: [
-      {
-        'No': '1',
-        icon: 'icon',
-        name: 'Cryptopunks',
-        ticker: 'cryptopunks',
-        fundamental_rating: '91.24',
-        technical_rating: '91.24',
-        floor_price: ['18.19 ETH', '$53,351.51'],
-        '24h_percent': '8.21%',
-        market_cap: ['326,710.59 ETH', '$958,246,560.54'],
-        '24h_valume': '745.3 ETH',
-        owners: '3.4k',
-        items: '10.0k',
-      },
-      {
-        'No': '2',
-        icon: 'icon',
-        name: 'Azuki',
-        ticker: 'azuki',
-        fundamental_rating: '91.24',
-        technical_rating: '91.24',
-        floor_price: ['18.19 ETH', '$53,351.51'],
-        '24h_percent': '8.21%',
-        market_cap: ['326,710.59 ETH', '$958,246,560.54'],
-        '24h_valume': '745.3 ETH',
-        owners: '3.4k',
-        items: '10.0k',
-      },
-      {
-        'No': '3',
-        icon: 'icon',
-        name: 'Tasty Bones XYZ',
-        ticker: 'tasty-bones-xyz',
-        fundamental_rating: '91.24',
-        technical_rating: '91.24',
-        floor_price: ['18.19 ETH', '$53,351.51'],
-        '24h_percent': '8.21%',
-        market_cap: ['326,710.59 ETH', '$958,246,560.54'],
-        '24h_valume': '745.3 ETH',
-        owners: '3.4k',
-        items: '10.0k',
-      },
-    ],
-    total: 200,
-  }
+  const res = await fetch('http://localhost:3000/dev/section/nft?offset=1&limit=5')
+  const { data } = await res.json()
 
   return {
     props: { data },
