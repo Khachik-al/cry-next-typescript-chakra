@@ -10,19 +10,17 @@ import { exportableLoader } from '../../image-loader'
 import { useState } from 'react'
 
 type TData = {
-  icon: string;
+  rank: string;
   name: string;
-  ticker: string;
-  link: string;
-  fundamental_rating: string;
-  technical_rating: string;
-  floor_price: string[];
-  '24h_percent': string;
-  market_cap: string[];
-  '24h_valume': string[];
-  owners: string;
-  items: string;
-  overall_rating: string;
+  slug: string;
+  floorPrice: number;
+  technicalRating: number;
+  fundamentalRating: number;
+  marketCap: number;
+  volumeChange24h: number;
+  volumeChangePercent24h: number;
+  owners: number;
+  items: number;
 }
 
 interface Props {
@@ -42,7 +40,7 @@ const NftItem: NextPage<Props> = ({ data }) => {
               <HStack spacing={4} minW='44'>
                 <Image
                   loader={exportableLoader}
-                  src={`/assets/img/${data.ticker}.svg`}
+                  src={`/assets/img/${data.slug}.svg`}
                   alt='icon'
                   height={50}
                   width={50}
@@ -74,23 +72,23 @@ const NftItem: NextPage<Props> = ({ data }) => {
             </VStack>
             <Container variant='nft_item_info'>
               <Text pb={2} size='sm' color='secondary_text'>Floor Price</Text>
-              <Text lineHeight={1} size='lg' fontWeight='extrabold'>{data.floor_price[0]}</Text>
-              <Text size='md' color='secondary_text'>{data.floor_price[1]}</Text>
+              <Text lineHeight={1} size='lg' fontWeight='extrabold'>{data.floorPrice}</Text>
+              <Text size='md' color='secondary_text'>{data.floorPrice}</Text>
             </Container>
             <Container variant='nft_item_info'>
               <Text pb={2} size='sm' color='secondary_text'>24h %</Text>
-              <Text pb={3.5} size='lg' color='primary.100' fontWeight='extrabold'>{data['24h_percent']}</Text>
+              <Text pb={3.5} size='lg' color='primary.100' fontWeight='extrabold'>{data.volumeChangePercent24h + ' %'}</Text>
             </Container>
             <Container variant='nft_item_info'>
               <Text pb={2} size='sm' color='secondary_text'>Market Cap</Text>
-              <Text lineHeight={1} size='lg' fontWeight='extrabold'>{data.market_cap[0]}</Text>
-              <Text pb={6} size='md' color='secondary_text'>{data.market_cap[1]}</Text>
+              <Text lineHeight={1} size='lg' fontWeight='extrabold'>{data.marketCap}</Text>
+              <Text pb={6} size='md' color='secondary_text'>{data.marketCap}</Text>
             </Container>
             <Container variant='nft_item_info'>
               <Text pb={2} size='sm' color='secondary_text'>24h Volume</Text>
-              <Text lineHeight={1} size='lg' fontWeight='extrabold'>{data['24h_valume'][0]}</Text>
-              <Text size='md' color='secondary_text'>{data['24h_valume'][1]}</Text>
-              <Text size='md' color='primary.100'>{data['24h_valume'][2]}</Text>
+              <Text lineHeight={1} size='lg' fontWeight='extrabold'>{data.volumeChange24h}</Text>
+              <Text size='md' color='secondary_text'>{data.volumeChange24h}</Text>
+              <Text size='md' color='primary.100'>{data.volumeChange24h}</Text>
             </Container>
             <Container variant='nft_item_info'>
               <Text pb={2} size='sm' color='secondary_text'>Owners</Text>
@@ -104,19 +102,19 @@ const NftItem: NextPage<Props> = ({ data }) => {
           <HStack mt={5} align='start' display={['flex', 'flex', 'none']}>
             <Container variant='nft_item_info' pl={0} pr={10} display='flex'>
               <Text pb={2} size='sm' color='secondary_text'>24h Volume</Text>
-              <Text lineHeight={1} size='lg' fontWeight='extrabold'>{data['24h_valume'][0]}</Text>
-              <Text size='md' color='secondary_text'>{data['24h_valume'][1]}</Text>
-              <Text pb={3} size='md' color='primary.100'>{data['24h_valume'][2]}</Text>
+              <Text lineHeight={1} size='lg' fontWeight='extrabold'>{data.volumeChange24h}</Text>
+              <Text size='md' color='secondary_text'>{data.volumeChange24h}</Text>
+              <Text pb={3} size='md' color='primary.100'>{data.volumeChange24h}</Text>
               <Text pb={2} size='sm' color='secondary_text'>24h %</Text>
-              <Text pb={3.5} size='lg' color='primary.100' fontWeight='extrabold'>{data['24h_percent']}</Text>
+              <Text pb={3.5} size='lg' color='primary.100' fontWeight='extrabold'>{data.volumeChangePercent24h + ' %'}</Text>
               <Text pb={2} size='sm' color='secondary_text'>Market Cap</Text>
-              <Text lineHeight={1} size='lg' fontWeight='extrabold'>{data.market_cap[0]}</Text>
-              <Text pb={3} size='md' color='secondary_text'>{data.market_cap[1]}</Text>
+              <Text lineHeight={1} size='lg' fontWeight='extrabold'>{data.marketCap}</Text>
+              <Text pb={3} size='md' color='secondary_text'>{data.marketCap}</Text>
             </Container>
             <VStack align='start' pl={3}>
               <Text pb={2} size='sm' color='secondary_text'>Floor Price</Text>
-              <Text lineHeight={1} size='lg' fontWeight='extrabold'>{data.floor_price[0]}</Text>
-              <Text size='md' color='secondary_text'>{data.floor_price[1]}</Text>
+              <Text lineHeight={1} size='lg' fontWeight='extrabold'>{data.floorPrice}</Text>
+              <Text size='md' color='secondary_text'>{data.floorPrice}</Text>
               <Text pb={2} size='sm' color='secondary_text'>Owners</Text>
               <Text pb={4} lineHeight={1} size='lg' fontWeight='extrabold'>{data.owners}</Text>
               <Text pb={2} size='sm' color='secondary_text'>Items</Text>
@@ -147,30 +145,30 @@ const NftItem: NextPage<Props> = ({ data }) => {
           <Flex justify='space-between' overflowX='auto'>
             <Container variant='rating_block'>
               <VStack align='start'>
-                <Text fontSize={['3xl', '4xl', '40']} fontWeight='bold'>{data.fundamental_rating}</Text>
+                <Text fontSize={['3xl', '4xl', '40']} fontWeight='bold'>{data.fundamentalRating}</Text>
                 <Text fontWeight='extrabold'>Fundamental Rating</Text>
                 <Text size='sm' color='secondary_text'>Technical Ratings is a technical analysis tool that combines the ratings of several
                   technical indicators to make it easier for traders and investors to find profitable trades.</Text>
               </VStack>
-              <Container variant='rating'><Box h={data.fundamental_rating + '%'} /></Container>
+              <Container variant='rating'><Box h={data.fundamentalRating + '%'} /></Container>
             </Container>
             <Container variant='rating_block' ml={5}>
               <VStack align='start'>
-                <Text fontSize={['3xl', '4xl', '40']} fontWeight='bold'>{data.technical_rating}</Text>
+                <Text fontSize={['3xl', '4xl', '40']} fontWeight='bold'>{data.technicalRating}</Text>
                 <Text fontWeight='extrabold'>Fundamental Rating</Text>
                 <Text size='sm' color='secondary_text'>Technical Ratings is a technical analysis tool that combines the ratings of several
                   technical indicators to make it easier for traders and investors to find profitable trades.</Text>
               </VStack>
-              <Container variant='rating'><Box h={data.technical_rating + '%'} /></Container>
+              <Container variant='rating'><Box h={data.technicalRating + '%'} /></Container>
             </Container>
             <Container variant='rating_block' ml={5}>
               <VStack align='start'>
-                <Text fontSize={['3xl', '4xl', '40']} fontWeight='bold'>{data.overall_rating}</Text>
+                <Text fontSize={['3xl', '4xl', '40']} fontWeight='bold'>{data.technicalRating}</Text>
                 <Text fontWeight='extrabold'>Fundamental Rating</Text>
                 <Text size='sm' color='secondary_text'>Technical Ratings is a technical analysis tool that combines the ratings of several
                   technical indicators to make it easier for traders and investors to find profitable trades.</Text>
               </VStack>
-              <Container variant='rating'><Box h={data.overall_rating + '%'} /></Container>
+              <Container variant='rating'><Box h={data.technicalRating + '%'} /></Container>
             </Container>
           </Flex>
         </Container>
@@ -179,36 +177,22 @@ const NftItem: NextPage<Props> = ({ data }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const data = {
-    icon: 'icon',
-    name: 'Azuki',
-    ticker: 'azuki',
-    link: 'azuki.com',
-    fundamental_rating: '91.24',
-    technical_rating: '91.24',
-    floor_price: ['18.19 ETH', '$53,351.51'],
-    '24h_percent': '8.21%',
-    market_cap: ['326,710.59 ETH', '$958,246,560.54'],
-    '24h_valume': ['745.3 ETH', '$2,080,165.84', '0.02%'],
-    owners: '3.4k',
-    items: '10.0k',
-    overall_rating: '91.24',
-  }
+export const getStaticProps: GetStaticProps = async (context) => {
+  const res = await fetch(`http://localhost:3000/dev/section/nft/details/${context?.params?.id}`)
+  const { data } = await res.json()
+  console.log(data);
+
   return {
     props: { data },
   }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const data = [
-    { name: 'Cryptopunks', ticker: 'cryptopunks' },
-    { name: 'Azuki', ticker: 'azuki' },
-    { name: 'Tasty Bones XYZ', ticker: 'tasty-bones-xyz' },
-  ]
+  const res = await fetch('http://localhost:3000/dev/section/nft')
+  const { data } = await res.json()
 
-  const paths = data.map((el) => ({
-    params: { id: el.ticker },
+  const paths = data.items.map((el: TData) => ({
+    params: { id: el.slug },
   }))
 
   return {
