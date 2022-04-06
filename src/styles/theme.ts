@@ -10,7 +10,7 @@ import { pagination } from './components/pagination'
 
 export const theme = extendTheme({
   fonts: {
-    heading: 'Avenir, sans-serif',
+    heading: 'Avenir_black, sans-serif',
     body: 'Avenir, sans-serif',
   },
   config: {
