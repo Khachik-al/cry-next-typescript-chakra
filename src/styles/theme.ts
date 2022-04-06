@@ -9,6 +9,10 @@ import Select from './components/Select'
 import { pagination } from './components/pagination'
 
 export const theme = extendTheme({
+  fonts: {
+    heading: 'Avenir_black, sans-serif',
+    body: 'Avenir_book, sans-serif',
+  },
   config: {
     initialColorMode: 'light',
     useSystemColorMode: false,

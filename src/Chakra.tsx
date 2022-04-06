@@ -5,6 +5,7 @@ import {
 } from '@chakra-ui/react'
 import { GetServerSidePropsContext } from 'next'
 import { ReactNode } from 'react'
+import Fonts from './Fonts'
 import { theme } from './styles/theme'
 
 export var Chakra = ({ cookies, children }: { cookies: string; children: ReactNode }) => {
@@ -15,6 +16,7 @@ export var Chakra = ({ cookies, children }: { cookies: string; children: ReactNo
 
   return (
     <ChakraProvider colorModeManager={colorModeManager} theme={theme}>
+      <Fonts/>
       {children}
     </ChakraProvider>
   )
