@@ -1,7 +1,4 @@
-import { GetStaticPropsContext, PreviewData } from 'next'
-import { ParsedUrlQuery } from 'querystring'
-
-export const nftList = async (offset: number, limit: number) => {
+export const nftList = async ({ offset, limit }: { offset: number, limit: number }) => {
   try {
     const res = await fetch(`${process.env.CRYPTOGIC_API}/section/nft?offset=${offset}&limit=${limit}`)
     const { data } = await res.json()
@@ -11,9 +8,9 @@ export const nftList = async (offset: number, limit: number) => {
   }
 }
 
-export const nftItem = async (context: GetStaticPropsContext<ParsedUrlQuery, PreviewData>) => {
+export const nftItem = async (slug: string) => {
   try {
-    const res = await fetch(`${process.env.CRYPTOGIC_API}/section/nft/details/${context?.params?.id}`)
+    const res = await fetch(`${process.env.CRYPTOGIC_API}/section/nft/details/${slug}`)
     const { data } = await res.json()
     return data
   } catch {

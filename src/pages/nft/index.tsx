@@ -37,7 +37,7 @@ const Nfts: NextPage<Props> = ({ data }) => {
 
   const changePage = async (value: number) => {
     setPage(value)
-    const res = await fetch(`http://localhost:3000/dev/section/nft?offset=${value}&limit=5`)
+    const res = await fetch(`http://localhost:3000/dev/section/nft?offset=${value-1}&limit=10`)
     const pageData = await res.json()
     setList(pageData?.data?.items)
   }
@@ -136,7 +136,7 @@ const Nfts: NextPage<Props> = ({ data }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await nftList(1, 10)
+  const data = await nftList({ offset: 0, limit: 10 })
 
   return {
     props: { data },
