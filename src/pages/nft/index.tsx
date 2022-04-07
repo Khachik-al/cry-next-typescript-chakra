@@ -37,7 +37,7 @@ const Nfts: NextPage<Props> = ({ data }) => {
 
   const changePage = async (value: number) => {
     setPage(value)
-    const res = await fetch(`http://localhost:3000/dev/section/nft?offset=${value-1}&limit=10`)
+    const res = await fetch(`http://localhost:3000/dev/section/nft?offset=${value - 1}&limit=10`)
     const pageData = await res.json()
     setList(pageData?.data?.items)
   }
