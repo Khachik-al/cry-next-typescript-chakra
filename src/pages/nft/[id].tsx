@@ -180,7 +180,6 @@ const NftItem: NextPage<Props> = ({ data }) => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const res = await fetch(`http://localhost:3000/dev/section/nft/details/${context?.params?.id}`)
   const { data } = await res.json()
-  console.log(data);
 
   return {
     props: { data },

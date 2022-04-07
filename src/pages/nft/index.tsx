@@ -1,14 +1,13 @@
-import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import { Box, Center, Container, Flex, HStack, Text, VStack } from '@chakra-ui/react'
 import type { GetStaticProps, NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import Pagination from 'rc-pagination'
 import { useState } from 'react'
 import PageLayout from '../../components/PageLayout/PageLayout'
 import PageMeta from '../../components/PageMeta/PageMeta'
 import 'rc-pagination/assets/index.css'
 import { exportableLoader } from '../../image-loader'
+import PaginationComp from '../../components/Pagination'
 
 type TData = {
   items: {
@@ -34,8 +33,6 @@ interface Props {
 const Nfts: NextPage<Props> = ({ data }) => {
   const [list, setList] = useState(data.items)
   const [page, setPage] = useState(1)
-  console.log(data);
-  
 
   const changePage = async (value: number) => {
     setPage(value)
@@ -123,18 +120,14 @@ const Nfts: NextPage<Props> = ({ data }) => {
               </Container>
             ))}
           </Box>
-          <Pagination
-            pageSize={10}
-            onChange={changePage}
-            current={page}
-            total={data.count}
-            className={data.count > 50 ? 'more_than_50' : ''}
-            hideOnSinglePage
-            jumpPrevIcon={() => <Image loader={exportableLoader} src='/assets/img/point.svg' alt='.' height={5} width={5} />}
-            jumpNextIcon={() => <Image loader={exportableLoader} src='/assets/img/point.svg' alt='.' height={5} width={5} />}
-            prevIcon={() => <ChevronLeftIcon />}
-            nextIcon={() => <ChevronRightIcon />}
-          />
+          <Container variant='pagination'>
+            <PaginationComp
+              pageSize={10}
+              changePage={changePage}
+              current={page}
+              total={data.count}
+            />
+          </Container>
         </Container>
       </PageLayout>
     </PageMeta>

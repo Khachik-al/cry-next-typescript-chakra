@@ -3,7 +3,15 @@ export const pagination = {
   alignItems: 'center',
   justifyContent: 'center',
   userSelect: 'none',
-  mt:'7',
+  mt: '7',
+  '.more_than_50': {
+    'li:nth-last-of-type(3)': {
+      borderRadius: '0 50% 50% 0',
+    },
+    'li:nth-last-of-type(2)': {
+      borderRadius: '50%',
+    },
+  },
   'li:nth-last-of-type(2)': {
     borderRadius: '0 50% 50% 0',
   },
