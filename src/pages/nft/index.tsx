@@ -135,7 +135,7 @@ const Nfts: NextPage<Props> = ({ data }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch(`${process.env.HOST}/dev/section/nft?offset=1&limit=5`)
+  const res = await fetch(`${process.env.CRYPTOGIC_API}/section/nft?offset=1&limit=5`)
   const { data } = await res.json()
 
   return {
