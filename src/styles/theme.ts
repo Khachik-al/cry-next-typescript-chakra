@@ -6,7 +6,6 @@ import Text from './components/Text'
 import Container from './components/Container'
 import Switch from './components/Switch'
 import Select from './components/Select'
-import { pagination } from './components/pagination'
 
 export const theme = extendTheme({
   fonts: {
@@ -22,15 +21,6 @@ export const theme = extendTheme({
       body: {
         color: mode('main_black', 'main_white')(props),
         bg: mode('main_white', 'dark.400')(props),
-      },
-      '.rc-pagination': pagination,
-      '.more_than_50': {
-        'li:nth-last-of-type(3)': {
-          borderRadius: '0 50% 50% 0',
-        },
-        'li:nth-last-of-type(2)': {
-          borderRadius: '50%',
-        },
       },
       '.css-xvmw52[data-focus], .css-1lnbiz9[data-focus]': {
         boxShadow: 'none !important',

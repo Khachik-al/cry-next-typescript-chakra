@@ -1,5 +1,6 @@
 import { chart, landing, nft, rating } from './Customs'
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
+import { pagination } from './pagination'
 
 const Container: ComponentStyleConfig = {
   baseStyle: {
@@ -82,6 +83,7 @@ const Container: ComponentStyleConfig = {
     nft_rank: nft.rank,
     nft_link: nft.link,
     nft_item_info: nft.item_info,
+    pagination: pagination,
     chart_timepicker: chart.timepicker,
     rating_block: rating.rating_block,
     rating: rating.rating,
