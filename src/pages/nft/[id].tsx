@@ -8,6 +8,7 @@ import { chartData } from '../../components/Chart/chartdata'
 import Image from 'next/image'
 import { exportableLoader } from '../../image-loader'
 import { useState } from 'react'
+import { nftAll, nftItem } from '../../services'
 
 type TData = {
   rank: string;
@@ -178,8 +179,7 @@ const NftItem: NextPage<Props> = ({ data }) => {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const res = await fetch(`${process.env.CRYPTOGIC_API}/section/nft/details/${context?.params?.id}`)
-  const { data } = await res.json()
+  const data = await nftItem(context)
 
   return {
     props: { data },
@@ -187,8 +187,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch(`${process.env.CRYPTOGIC_API}/section/nft`)
-  const { data } = await res.json()
+  const data = await nftAll()
 
   const paths = data.items.map((el: TData) => ({
     params: { id: el.slug },

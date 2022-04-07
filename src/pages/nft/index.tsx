@@ -8,6 +8,7 @@ import PageMeta from '../../components/PageMeta/PageMeta'
 import 'rc-pagination/assets/index.css'
 import { exportableLoader } from '../../image-loader'
 import PaginationComp from '../../components/Pagination'
+import { nftList } from '../../services'
 
 type TData = {
   items: {
@@ -135,8 +136,7 @@ const Nfts: NextPage<Props> = ({ data }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch(`${process.env.CRYPTOGIC_API}/section/nft?offset=1&limit=5`)
-  const { data } = await res.json()
+  const data = await nftList(1, 10)
 
   return {
     props: { data },
