@@ -1,6 +1,8 @@
 export const nftList = async ({ offset, limit }: { offset: number, limit: number }) => {
+ 
+  
   try {
-    const res = await fetch(`${process.env.CRYPTOGIC_API}/section/nft?offset=${offset}&limit=${limit}`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_CRYPTOGIC_API}/section/nft?offset=${offset}&limit=${limit}`)
     const { data } = await res.json()
     return data
   } catch {
@@ -10,7 +12,7 @@ export const nftList = async ({ offset, limit }: { offset: number, limit: number
 
 export const nftItem = async ({ slug }: { slug: string }) => {
   try {
-    const res = await fetch(`${process.env.CRYPTOGIC_API}/section/nft/details/${slug}`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_CRYPTOGIC_API}/section/nft/details/${slug}`)
     const { data } = await res.json()
     return data
   } catch {
@@ -20,7 +22,7 @@ export const nftItem = async ({ slug }: { slug: string }) => {
 
 export const nftAll = async () => {
   try {
-    const res = await fetch(`${process.env.CRYPTOGIC_API}/section/nft`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_CRYPTOGIC_API}/section/nft`)
     const { data } = await res.json()
     return data
   } catch {
