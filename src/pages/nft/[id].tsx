@@ -179,7 +179,7 @@ const NftItem: NextPage<Props> = ({ data }) => {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const data = await nftItem(`${context?.params?.id}`)
+  const data = await nftItem({ slug: `${context?.params?.id}` })
 
   return {
     props: { data },

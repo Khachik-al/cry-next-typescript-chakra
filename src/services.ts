@@ -8,7 +8,7 @@ export const nftList = async ({ offset, limit }: { offset: number, limit: number
   }
 }
 
-export const nftItem = async (slug: string) => {
+export const nftItem = async ({ slug }: { slug: string }) => {
   try {
     const res = await fetch(`${process.env.CRYPTOGIC_API}/section/nft/details/${slug}`)
     const { data } = await res.json()
