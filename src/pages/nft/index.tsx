@@ -37,7 +37,7 @@ interface Props {
 const Nfts: NextPage<Props> = ({ data }) => {
   const [list, setList] = useState(data.items)
   const [page, setPage] = useState(1)
-  console.log(data);
+  console.log(data)
 
 
   const changePage = async (value: number) => {
@@ -60,7 +60,7 @@ const Nfts: NextPage<Props> = ({ data }) => {
               ].map((el) =>
                 <Text variant='list_text' w={el.w} key={el.title}>
                   {el.title}
-                </Text>
+                </Text>,
               )}
               {[
                 { title: 'Fundamental Rating' },
@@ -68,7 +68,7 @@ const Nfts: NextPage<Props> = ({ data }) => {
               ].map((el) =>
                 <Text variant='list_text' textAlign='center' w='10%' key={el.title}>
                   {el.title}
-                </Text>
+                </Text>,
               )}
               {[
                 { title: 'Floor Price', w: '10%' },
@@ -80,7 +80,7 @@ const Nfts: NextPage<Props> = ({ data }) => {
               ].map((el) =>
                 <Text variant='list_text' textAlign='end' w={el.w} key={el.title}>
                   {el.title}
-                </Text>
+                </Text>,
               )}
             </HStack>
             {list.map((el, i) => (
