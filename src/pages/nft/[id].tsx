@@ -9,17 +9,22 @@ import Image from 'next/image'
 import { exportableLoader } from '../../image-loader'
 import { useState } from 'react'
 import { nftAll, nftItem } from '../../services'
+import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons'
 
 type TData = {
-  rank: string;
+  logo: string;
+  rank: number;
   name: string;
   slug: string;
-  floorPrice: number;
-  technicalRating: number;
   fundamentalRating: number;
-  marketCap: number;
-  volumeChange24h: number;
+  technicalRating: number;
+  floorPriceEth: number;
+  floorPriceUsd: number;
   volumeChangePercent24h: number;
+  volumeChange24hUsd: number;
+  marketCapEth: number;
+  marketCapUsd: number;
+  volumeChange24hEth: number;
   owners: number;
   items: number;
 }
@@ -39,13 +44,9 @@ const NftItem: NextPage<Props> = ({ data }) => {
           <HStack align='start' whiteSpace='nowrap' overflowX='auto'>
             <VStack align='start' pr={14}>
               <HStack spacing={4} minW='44'>
-                <Image
-                  loader={exportableLoader}
-                  src={`/assets/img/${data.slug}.svg`}
-                  alt='icon'
-                  height={50}
-                  width={50}
-                />
+                <Box minW={50} minH={50} position='relative' borderRadius='base' overflow='hidden'>
+                  <Image loader={exportableLoader} src={data.logo} alt='icon' layout='fill' unoptimized />
+                </Box>
                 <VStack spacing={1} align='start'>
                   <Heading as='h2' fontSize={20}>{data.name}</Heading>
                   <Container variant='nft_rank'>Rank #2</Container>
@@ -73,53 +74,115 @@ const NftItem: NextPage<Props> = ({ data }) => {
             </VStack>
             <Container variant='nft_item_info'>
               <Text pb={2} size='sm' color='secondary_text'>Floor Price</Text>
-              <Text lineHeight={1} size='lg' fontWeight='extrabold'>{data.floorPrice}</Text>
-              <Text size='md' color='secondary_text'>{data.floorPrice}</Text>
+              <Text lineHeight={1} size='lg' fontWeight='extrabold'>
+                {data.floorPriceEth === null ? '---' : Number(data.floorPriceEth.toFixed(2)) + ' ETH'}
+              </Text>
+              <Text size='md' color='secondary_text'>
+                {data.floorPriceUsd === null ? '---' : '$' + Number(data.floorPriceUsd.toFixed(2))}
+              </Text>
             </Container>
             <Container variant='nft_item_info'>
               <Text pb={2} size='sm' color='secondary_text'>24h %</Text>
-              <Text pb={3.5} size='lg' color='primary.100' fontWeight='extrabold'>{data.volumeChangePercent24h + ' %'}</Text>
+              <Text
+                pb={3.5}
+                size='lg'
+                color={data.volumeChangePercent24h < 0 ? 'danger' : 'primary.100'}
+                fontWeight='extrabold'
+              >
+                {data.volumeChangePercent24h < 0 ?
+                  <TriangleDownIcon boxSize={3} mb={1} /> :
+                  <TriangleUpIcon boxSize={3} mb={1} />}
+                {' '}
+                {data.volumeChangePercent24h === null ?
+                  '---' :
+                  Number(data.volumeChangePercent24h.toFixed(2)) + ' %'}
+              </Text>
             </Container>
             <Container variant='nft_item_info'>
               <Text pb={2} size='sm' color='secondary_text'>Market Cap</Text>
-              <Text lineHeight={1} size='lg' fontWeight='extrabold'>{data.marketCap}</Text>
-              <Text pb={6} size='md' color='secondary_text'>{data.marketCap}</Text>
+              <Text lineHeight={1} size='lg' fontWeight='extrabold'>
+                {data.marketCapEth === null ? '---' : Number(data.marketCapEth.toFixed(2)) + ' ETH'}
+              </Text>
+              <Text pb={6} size='md' color='secondary_text'>
+                {data.marketCapUsd === null ? '---' : '$' + Number(data.marketCapUsd.toFixed(2))}
+              </Text>
             </Container>
             <Container variant='nft_item_info'>
               <Text pb={2} size='sm' color='secondary_text'>24h Volume</Text>
-              <Text lineHeight={1} size='lg' fontWeight='extrabold'>{data.volumeChange24h}</Text>
-              <Text size='md' color='secondary_text'>{data.volumeChange24h}</Text>
-              <Text size='md' color='primary.100'>{data.volumeChange24h}</Text>
+              <Text lineHeight={1} size='lg' fontWeight='extrabold'>
+                {data.volumeChange24hEth === null ? '---' : Number(data.volumeChange24hEth.toFixed(2)) + ' ETH'}
+              </Text>
+              <Text size='md' color='secondary_text'>
+                {data.volumeChange24hUsd === null ? '---' : '$' + Number(data.volumeChange24hUsd.toFixed(2))}
+              </Text>
+              <Text size='md' color='primary.100'>
+                {data.volumeChange24hEth === null ? '---' : Number(data.volumeChange24hEth.toFixed(2))}
+              </Text>
             </Container>
             <Container variant='nft_item_info'>
               <Text pb={2} size='sm' color='secondary_text'>Owners</Text>
-              <Text pb={4} lineHeight={1} size='lg' fontWeight='extrabold'>{data.owners}</Text>
+              <Text pb={4} lineHeight={1} size='lg' fontWeight='extrabold'>
+                {data.owners === null ? '---' : data.owners}
+              </Text>
             </Container>
             <Container variant='nft_item_info' border='none'>
               <Text pb={2} size='sm' color='secondary_text'>Items</Text>
-              <Text pb={4} lineHeight={1} size='lg' fontWeight='extrabold'>{data.items}</Text>
+              <Text pb={4} lineHeight={1} size='lg' fontWeight='extrabold'>
+                {data.items === null ? '---' : data.items}
+              </Text>
             </Container>
           </HStack>
           <HStack mt={5} align='start' display={['flex', 'flex', 'none']}>
             <Container variant='nft_item_info' pl={0} pr={10} display='flex'>
               <Text pb={2} size='sm' color='secondary_text'>24h Volume</Text>
-              <Text lineHeight={1} size='lg' fontWeight='extrabold'>{data.volumeChange24h}</Text>
-              <Text size='md' color='secondary_text'>{data.volumeChange24h}</Text>
-              <Text pb={3} size='md' color='primary.100'>{data.volumeChange24h}</Text>
+              <Text lineHeight={1} size='lg' fontWeight='extrabold'>
+                {data.volumeChange24hEth === null ? '---' : Number(data.volumeChange24hEth.toFixed(2)) + ' ETH'}
+              </Text>
+              <Text size='md' color='secondary_text'>
+                {data.volumeChange24hUsd === null ? '---' : '$' + Number(data.volumeChange24hUsd.toFixed(2))}
+              </Text>
+              <Text pb={3} size='md' color='primary.100'>
+                {data.volumeChange24hEth === null ? '---' : Number(data.volumeChange24hEth.toFixed(2))}
+              </Text>
               <Text pb={2} size='sm' color='secondary_text'>24h %</Text>
-              <Text pb={3.5} size='lg' color='primary.100' fontWeight='extrabold'>{data.volumeChangePercent24h + ' %'}</Text>
+              <Text
+                pb={3.5}
+                size='lg'
+                color={data.volumeChangePercent24h < 0 ? 'danger' : 'primary.100'}
+                fontWeight='extrabold'
+              >
+                {data.volumeChangePercent24h < 0 ?
+                  <TriangleDownIcon boxSize={3} mb={1} /> :
+                  <TriangleUpIcon boxSize={3} mb={1} />}
+                {' '}
+                {data.volumeChangePercent24h === null ?
+                  '---' :
+                  Number(data.volumeChangePercent24h.toFixed(2)) + ' %'}
+              </Text>
               <Text pb={2} size='sm' color='secondary_text'>Market Cap</Text>
-              <Text lineHeight={1} size='lg' fontWeight='extrabold'>{data.marketCap}</Text>
-              <Text pb={3} size='md' color='secondary_text'>{data.marketCap}</Text>
+              <Text lineHeight={1} size='lg' fontWeight='extrabold'>
+                {data.marketCapEth === null ? '---' : Number(data.marketCapEth.toFixed(2)) + ' ETH'}
+              </Text>
+              <Text pb={3} size='md' color='secondary_text'>
+                {data.marketCapUsd === null ? '---' : '$' + Number(data.marketCapUsd.toFixed(2))}
+              </Text>
             </Container>
             <VStack align='start' pl={3}>
               <Text pb={2} size='sm' color='secondary_text'>Floor Price</Text>
-              <Text lineHeight={1} size='lg' fontWeight='extrabold'>{data.floorPrice}</Text>
-              <Text size='md' color='secondary_text'>{data.floorPrice}</Text>
+              <Text lineHeight={1} size='lg' fontWeight='extrabold'>
+                {data.floorPriceEth === null ? '---' : (data.floorPriceEth.toFixed(2) + ' ETH')}
+              </Text>
+              <Text size='md' color='secondary_text'>
+                {data.floorPriceUsd === null ? '---' : ('$' + data.floorPriceUsd.toFixed(2))}
+              </Text>
               <Text pb={2} size='sm' color='secondary_text'>Owners</Text>
-              <Text pb={4} lineHeight={1} size='lg' fontWeight='extrabold'>{data.owners}</Text>
+              <Text pb={4} lineHeight={1} size='lg' fontWeight='extrabold'>
+                {data.owners === null ? '---' : data.owners}
+              </Text>
               <Text pb={2} size='sm' color='secondary_text'>Items</Text>
-              <Text lineHeight={1} size='lg' fontWeight='extrabold'>{data.items}</Text>
+              <Text lineHeight={1} size='lg' fontWeight='extrabold'>
+                {data.items === null ? '---' : data.items}
+              </Text>
             </VStack>
           </HStack>
 
