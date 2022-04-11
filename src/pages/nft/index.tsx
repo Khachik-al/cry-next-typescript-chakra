@@ -37,7 +37,6 @@ interface Props {
 const Nfts: NextPage<Props> = ({ data }) => {
   const [list, setList] = useState(data.items)
   const [page, setPage] = useState(1)
-  console.log(data)
 
 
   const changePage = async (value: number) => {
