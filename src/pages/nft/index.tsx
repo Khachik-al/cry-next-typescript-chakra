@@ -88,7 +88,7 @@ const Nfts: NextPage<Props> = ({ data }) => {
                 <Text size='sm' textAlign='start' w='4%' position='sticky' zIndex={20} >{el.rank}</Text>
                 <HStack w={['20%', '30%']}>
                   <Box minW={8} minH={8} position='relative' borderRadius='base' overflow='hidden'>
-                    <Image loader={exportableLoader} src={el.logo} alt='icon' layout='fill' />
+                    <Image loader={exportableLoader} src={el.logo} alt='icon' layout='fill' unoptimized />
                   </Box>
                   <Link href={`/nft/${el.slug}`} passHref>
                     <Text variant='link' size='sm' fontWeight='extrabold'>

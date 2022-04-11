@@ -36,7 +36,6 @@ interface Props {
 const NftItem: NextPage<Props> = ({ data }) => {
   const { query } = useRouter()
   const [chartTimePicker, setChartTimePicker] = useState<string>('1D')
-  console.log(data)
 
   return (
     data && <PageMeta title={`${query.id}`}>
@@ -46,7 +45,7 @@ const NftItem: NextPage<Props> = ({ data }) => {
             <VStack align='start' pr={14}>
               <HStack spacing={4} minW='44'>
                 <Box minW={50} minH={50} position='relative' borderRadius='base' overflow='hidden'>
-                  <Image loader={exportableLoader} src={data.logo} alt='icon' layout='fill' />
+                  <Image loader={exportableLoader} src={data.logo} alt='icon' layout='fill' unoptimized />
                 </Box>
                 <VStack spacing={1} align='start'>
                   <Heading as='h2' fontSize={20}>{data.name}</Heading>
