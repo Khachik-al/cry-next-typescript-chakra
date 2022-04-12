@@ -15,3 +15,9 @@ export const nftAll = async () => {
   const { data } = await res.json()
   return data
 }
+
+export const nftMarketPlace = async ({ slug, limit, cursor }: { slug: string, limit: number, cursor: string }) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_CRYPTOGIC_API}/section/nft/market/${slug}?limit=${limit}&cursor=${cursor}`)
+  const { data } = await res.json()
+  return data
+}
