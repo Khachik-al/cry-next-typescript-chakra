@@ -1,4 +1,4 @@
-export type TItem = {
+export type NFTMarketItem = {
   logo: string;
   rank: number;
   name: string;
@@ -16,7 +16,7 @@ export type TItem = {
   items: number;
 }
 
-export type TMarketPlace = {
+export type Marketplace = {
   assets: {
     address: string;
     img_url: string;

@@ -8,28 +8,28 @@ import { chartData } from '../../components/Chart/chartdata'
 import Image from 'next/image'
 import { exportableLoader } from '../../image-loader'
 import { useState } from 'react'
-import { nftAll, nftItem, nftMarketPlace } from '../../services'
+import { nftAll, nftItem, nftMarketplace } from '../../services'
 import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons'
-import { TItem, TMarketPlace } from '../../components/types/nftItemType'
+import { NFTMarketItem, Marketplace } from '../../components/types/nft-marketplace.interface'
 import Link from 'next/link'
 
 interface Props {
-  item: TItem;
-  marketPlace: TMarketPlace;
+  item: NFTMarketItem;
+  marketplace: Marketplace;
 }
 enum Path {
   next = 'next',
   previous = 'previous',
 }
 
-const NftItem: NextPage<Props> = ({ item, marketPlace }) => {
+const NftItem: NextPage<Props> = ({ item, marketplace }) => {
   const { query } = useRouter()
-  const [marketPlaceList, setMarketPlaceList] = useState(marketPlace)
+  const [marketplaceList, setMarketplaceList] = useState(marketplace)
   const [chartTimePicker, setChartTimePicker] = useState<string>('1D')
   const changePage = async (path: Path) => {
     if (typeof query.id === 'string') {
-      const pageData = await nftMarketPlace({ slug: query.id, limit: 10, cursor: marketPlaceList[path] || '' })
-      setMarketPlaceList(pageData)
+      const pageData = await nftMarketplace({ slug: query.id, limit: 10, offset: marketplaceList[path] || '' })
+      setMarketplaceList(pageData)
     }
   }
 
@@ -247,7 +247,7 @@ const NftItem: NextPage<Props> = ({ item, marketPlace }) => {
                 </Text>,
               )}
             </HStack>
-            {!!marketPlaceList.assets.length ? marketPlaceList.assets.map((el, i) => (
+            {!!marketplaceList.assets.length ? marketplaceList.assets.map((el, i) => (
               <Container variant='list_item' key={i} minW={1000}>
                 <HStack w='75%' spacing={5}>
                   <Box minW={68} minH={68} position='relative' borderRadius='lg' overflow='hidden'>
@@ -289,18 +289,18 @@ const NftItem: NextPage<Props> = ({ item, marketPlace }) => {
               </Container>
             )) : <h1>0 items</h1>}
           </Box>
-          {!!marketPlaceList.assets.length &&
+          {!!marketplaceList.assets.length &&
             <HStack>
               <Button
                 onClick={() => changePage(Path.previous)}
-                isDisabled={marketPlaceList.previous === null}
+                isDisabled={marketplaceList.previous === null}
                 size='xs'
               >
                 {'<'}
               </Button>
               <Button
                 onClick={() => changePage(Path.next)}
-                isDisabled={marketPlaceList.next === null}
+                isDisabled={marketplaceList.next === null}
                 size='xs'
               >
                 {'>'}
@@ -314,17 +314,17 @@ const NftItem: NextPage<Props> = ({ item, marketPlace }) => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const item = await nftItem({ slug: `${context?.params?.id}` })
-  const marketPlace = await nftMarketPlace({ slug: `${context?.params?.id}`, limit: 10, cursor: '' })
+  const marketplace = await nftMarketplace({ slug: `${context?.params?.id}`, limit: 10, offset: '' })
 
   return {
-    props: { item, marketPlace },
+    props: { item, marketplace },
   }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const data = await nftAll()
 
-  const paths = data.items.map((el: TItem) => ({
+  const paths = data.items.map((el: NFTMarketItem) => ({
     params: { id: el.slug },
   }))
 
