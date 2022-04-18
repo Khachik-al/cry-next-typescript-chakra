@@ -3,8 +3,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
 import PageLayout from '../../components/PageLayout/PageLayout'
 import PageMeta from '../../components/PageMeta/PageMeta'
-import LineChart from '../../components/Chart/LineChart'
-import { chartData } from '../../components/Chart/chartdata'
+import { coinChartData } from '../../components/Chart/chartdata'
 import Image from 'next/image'
 import { exportableLoader } from '../../image-loader'
 import { useState } from 'react'
@@ -12,6 +11,10 @@ import { nftAll, nftItem, nftMarketplace } from '../../services'
 import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons'
 import { NFTMarketItem, Marketplace } from '../../components/types/nft-marketplace.interface'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
+const NftChart = dynamic(() => import('../../components/Chart/NftChart'), {
+  ssr: false,
+})
 
 interface Props {
   item: NFTMarketItem;
@@ -197,7 +200,7 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
               )}
             </Container>
           </Flex>
-          <LineChart data={chartData} />
+          <NftChart data={coinChartData} />
           <Text fontSize={20} fontWeight='extrabold' mt={5} mb={5}>
             Cryptogic Rating
           </Text>
@@ -273,10 +276,10 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
                 </HStack>
                 <VStack w='15%' spacing={0.5} align='start'>
                   <Text variant='list_text'>
-                    {Number(el.price_eth.toFixed(2))} ETH
+                    {el.price_eth === null ? '---' : Number(el.price_eth.toFixed(2)) + ' ETH'}
                   </Text>
                   <Text color='secondary_text' size='xs'>
-                    ${Number(el.price_usd.toFixed(2))}
+                    {el.price_usd === null ? '---' : '$' + Number(el.price_usd.toFixed(2))}
                   </Text>
                 </VStack>
                 <Tooltip label={el.address}>
