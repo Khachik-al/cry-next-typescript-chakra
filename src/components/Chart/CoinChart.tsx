@@ -1,5 +1,5 @@
 import { Box, useTheme } from '@chakra-ui/react'
-import { createChart, CrosshairMode, IChartApi } from 'lightweight-charts'
+import { createChart, CrosshairMode, IChartApi, HistogramSeriesPartialOptions } from 'lightweight-charts'
 import { FC, useEffect, useRef, useState } from 'react'
 
 interface Props {
@@ -80,7 +80,7 @@ const CoinChart: FC<Props> = ({ data }) => {
           top: 0.9,
           bottom: 0,
         },
-      })
+      } as HistogramSeriesPartialOptions)
       volumeSeries.setData(data)
       window.addEventListener('resize', handleResize)
       series.setData(data)
