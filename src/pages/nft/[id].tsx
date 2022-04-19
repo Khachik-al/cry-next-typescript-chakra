@@ -12,7 +12,7 @@ import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons'
 import { NFTMarketItem, Marketplace } from '../../components/types/nft-marketplace.interface'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
-const NftChart = dynamic(() => import('../../components/Chart/NftChart'), {
+const ChartComp = dynamic(() => import('../../components/Chart/ChartComp'), {
   ssr: false,
 })
 
@@ -200,7 +200,7 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
               )}
             </Container>
           </Flex>
-          <NftChart data={coinChartData} />
+          <ChartComp data={coinChartData} />
           <Text fontSize={20} fontWeight='extrabold' mt={5} mb={5}>
             Cryptogic Rating
           </Text>

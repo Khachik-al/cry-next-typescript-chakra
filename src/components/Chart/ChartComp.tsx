@@ -1,17 +1,18 @@
 import { Box, useTheme } from '@chakra-ui/react'
-import { createChart, CrosshairMode, IChartApi, HistogramSeriesPartialOptions } from 'lightweight-charts'
+import { createChart, IChartApi, HistogramSeriesPartialOptions } from 'lightweight-charts'
 import { FC, useEffect, useRef, useState } from 'react'
 
 interface Props {
   data: {
     time: string;
     value: number;
-  }[]
+  }[],
+  baseLine?: boolean
 }
 
 let handleResize: () => void
 let chart: IChartApi
-const CoinChart: FC<Props> = ({ data }) => {
+const ChartComp: FC<Props> = ({ data, baseLine }) => {
   const theme = useTheme()
   const [chartContainer, setChartContainer] = useState<HTMLElement | null>()
   const chartContainerRef = useRef(null)
@@ -37,7 +38,7 @@ const CoinChart: FC<Props> = ({ data }) => {
           },
         },
         crosshair: {
-          mode: CrosshairMode.Normal,
+          mode: baseLine ? 0 : 1,
           vertLine: {
             color: theme.colors.grey['500'],
           },
@@ -57,33 +58,42 @@ const CoinChart: FC<Props> = ({ data }) => {
         timeScale: {
           borderColor: theme.colors.grey['200'],
         },
-
       })
-      var series = chart.addBaselineSeries({
-        priceScaleId: 'left',
-        priceLineColor: theme.colors.grey['400'],
-        topFillColor2: theme.colors.green['50'],
-        topFillColor1: theme.colors.green['100'],
-        bottomFillColor2: theme.colors.red['100'],
-        bottomFillColor1: theme.colors.red['50'],
-        baseValue: { type: 'price', price: data[data.length - 1].value },
-        lineWidth: 1,
-      })
-      const volumeSeries = chart.addHistogramSeries({
-        color: theme.colors.blue['50'],
-        priceFormat: {
-          type: 'volume',
-        },
-        overlay: true,
-        priceLineVisible: false,
-        scaleMargins: {
-          top: 0.9,
-          bottom: 0,
-        },
-      } as HistogramSeriesPartialOptions)
-      volumeSeries.setData(data)
+      if (baseLine) {
+        const volumeSeries = chart.addHistogramSeries({
+          color: theme.colors.blue['50'],
+          priceFormat: {
+            type: 'volume',
+          },
+          overlay: true,
+          priceLineVisible: false,
+          scaleMargins: {
+            top: 0.9,
+            bottom: 0,
+          },
+        } as HistogramSeriesPartialOptions)
+        volumeSeries.setData(data)
+        var baseLineSeries = chart.addBaselineSeries({
+          priceScaleId: 'left',
+          priceLineColor: theme.colors.grey['400'],
+          topFillColor2: theme.colors.green['50'],
+          topFillColor1: theme.colors.green['100'],
+          bottomFillColor2: theme.colors.red['100'],
+          bottomFillColor1: theme.colors.red['50'],
+          baseValue: { type: 'price', price: data[data.length - 1].value },
+          lineWidth: 1,
+        })
+        baseLineSeries.setData(data)
+      } else {
+        var lineSeries = chart.addLineSeries({
+          priceScaleId: 'left',
+          priceLineVisible: false,
+          color: theme.colors.secondary_text,
+          lineWidth: 2,
+        })
+        lineSeries.setData(data)
+      }
       window.addEventListener('resize', handleResize)
-      series.setData(data)
       chart.timeScale().fitContent()
     }
     return () => {
@@ -95,4 +105,4 @@ const CoinChart: FC<Props> = ({ data }) => {
 
 }
 
-export default CoinChart
+export default ChartComp
