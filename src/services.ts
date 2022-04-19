@@ -21,3 +21,10 @@ export const nftMarketplace = async ({ slug, limit, offset }: { slug: string, li
   const { data } = await res.json()
   return data
 }
+
+export const coinList = async ({ offset, limit }: { offset: number, limit: number }) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_CRYPTOGIC_API}/section/token?offset=${offset}&limit=${limit}`)
+  const { data } = await res.json()
+  return data
+
+}
