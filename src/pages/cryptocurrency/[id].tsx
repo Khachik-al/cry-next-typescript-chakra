@@ -22,7 +22,7 @@ const CryptocurrencyItem: NextPage<Props> = ({ data }) => {
         <Container variant='main'>
           <Text fontWeight='bold'>{query.id}</Text>
           <Text>{data}</Text>
-          <ChartComp data={coinChartData} baseLine/>
+          <ChartComp data={coinChartData} baseLine />
         </Container>
       </PageLayout>
     </PageMeta>

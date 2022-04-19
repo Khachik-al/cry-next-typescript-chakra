@@ -1,40 +1,46 @@
-import { Box, useTheme } from '@chakra-ui/react'
+import { Box, useColorMode, useTheme } from '@chakra-ui/react'
 import { createChart, IChartApi, HistogramSeriesPartialOptions } from 'lightweight-charts'
-import { FC, useEffect, useRef, useState } from 'react'
+import { FC, useEffect, useRef } from 'react'
 
 interface Props {
   data: {
     time: string;
     value: number;
   }[],
-  baseLine?: boolean
+  baseLine?: boolean,
 }
-
-let handleResize: () => void
 let chart: IChartApi
+
 const ChartComp: FC<Props> = ({ data, baseLine }) => {
   const theme = useTheme()
-  const [chartContainer, setChartContainer] = useState<HTMLElement | null>()
-  const chartContainerRef = useRef(null)
-  setChartContainer(chartContainerRef.current)
+  const { colorMode } = useColorMode()
+  const chartContainerRef = useRef<HTMLDivElement>(null)
 
+  const handleResize = () => {
+    if (!!chartContainerRef.current) {
+      chart.applyOptions({ width: chartContainerRef.current.clientWidth })
+    }
+    chart.timeScale().fitContent()
+  }
   useEffect(() => {
-    if (chartContainer) {
-      handleResize = () => {
-        chart.applyOptions({ width: chartContainer.clientWidth })
-        chart.timeScale().fitContent()
-      }
-      chart = createChart(chartContainer, {
+    if (!!chartContainerRef.current) {
+      chart = createChart(chartContainerRef.current, {
         layout: {
-          backgroundColor: theme.colors.main_white,
+          backgroundColor: colorMode === 'light' ?
+            theme.colors.main_white :
+            theme.colors.dark['400'],
           textColor: theme.colors.secondary_text,
         },
         grid: {
           horzLines: {
-            color: theme.colors.grey['200'],
+            color: colorMode === 'light' ?
+              theme.colors.grey['200'] :
+              theme.colors.grey['600'],
           },
           vertLines: {
-            color: theme.colors.main_white,
+            color: colorMode === 'light' ?
+              theme.colors.main_white :
+              theme.colors.dark['400'],
           },
         },
         crosshair: {
@@ -48,15 +54,23 @@ const ChartComp: FC<Props> = ({ data, baseLine }) => {
         },
         leftPriceScale: {
           autoScale: true,
-          borderColor: theme.colors.grey['200'],
+          borderColor: colorMode === 'light' ?
+            theme.colors.grey['200'] :
+            theme.colors.grey['600'],
           alignLabels: true,
           visible: true,
+          scaleMargins: {
+            top: 0.1,
+            bottom: 0.1,
+          },
         },
         rightPriceScale: {
           visible: false,
         },
         timeScale: {
-          borderColor: theme.colors.grey['200'],
+          borderColor: colorMode === 'light' ?
+            theme.colors.grey['200'] :
+            theme.colors.grey['600'],
         },
       })
       if (baseLine) {
@@ -100,8 +114,8 @@ const ChartComp: FC<Props> = ({ data, baseLine }) => {
       window.removeEventListener('resize', handleResize)
       if (chart) { chart.remove() }
     }
-  })
-  return <Box ref={chartContainerRef} w='full' h={500} />
+  }, [data, baseLine, theme, colorMode])
+  return <Box ref={chartContainerRef} w='full' h={[380, 450]} />
 
 }
 
