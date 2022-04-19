@@ -7,11 +7,11 @@ interface Props {
     time: string;
     value: number;
   }[],
-  baseLine?: boolean,
+  baseline?: boolean,
 }
 let chart: IChartApi
 
-const ChartComp: FC<Props> = ({ data, baseLine }) => {
+const Chart: FC<Props> = ({ data, baseline }) => {
   const theme = useTheme()
   const { colorMode } = useColorMode()
   const chartContainerRef = useRef<HTMLDivElement>(null)
@@ -44,7 +44,7 @@ const ChartComp: FC<Props> = ({ data, baseLine }) => {
           },
         },
         crosshair: {
-          mode: baseLine ? 0 : 1,
+          mode: baseline ? 0 : 1,
           vertLine: {
             color: theme.colors.grey['500'],
           },
@@ -73,7 +73,7 @@ const ChartComp: FC<Props> = ({ data, baseLine }) => {
             theme.colors.grey['600'],
         },
       })
-      if (baseLine) {
+      if (baseline) {
         const volumeSeries = chart.addHistogramSeries({
           color: theme.colors.blue['50'],
           priceFormat: {
@@ -87,7 +87,7 @@ const ChartComp: FC<Props> = ({ data, baseLine }) => {
           },
         } as HistogramSeriesPartialOptions)
         volumeSeries.setData(data)
-        var baseLineSeries = chart.addBaselineSeries({
+        var baselineSeries = chart.addBaselineSeries({
           priceScaleId: 'left',
           priceLineColor: theme.colors.grey['400'],
           topFillColor2: theme.colors.green['50'],
@@ -97,7 +97,7 @@ const ChartComp: FC<Props> = ({ data, baseLine }) => {
           baseValue: { type: 'price', price: data[data.length - 1].value },
           lineWidth: 1,
         })
-        baseLineSeries.setData(data)
+        baselineSeries.setData(data)
       } else {
         var lineSeries = chart.addLineSeries({
           priceScaleId: 'left',
@@ -114,9 +114,9 @@ const ChartComp: FC<Props> = ({ data, baseLine }) => {
       window.removeEventListener('resize', handleResize)
       if (chart) { chart.remove() }
     }
-  }, [data, baseLine, theme, colorMode])
+  }, [data, baseline, theme, colorMode])
   return <Box ref={chartContainerRef} w='full' h={[380, 450]} />
 
 }
 
-export default ChartComp
+export default Chart

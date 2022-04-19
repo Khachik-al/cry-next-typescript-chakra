@@ -3,7 +3,7 @@ import { NextPage, GetStaticProps, GetStaticPaths } from 'next'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { coinChartData } from '../../components/Chart/chartdata'
-const ChartComp = dynamic(() => import('../../components/Chart/ChartComp'), {
+const Chart = dynamic(() => import('../../components/Chart/Chart'), {
   ssr: false,
 })
 import PageLayout from '../../components/PageLayout/PageLayout'
@@ -22,7 +22,7 @@ const CryptocurrencyItem: NextPage<Props> = ({ data }) => {
         <Container variant='main'>
           <Text fontWeight='bold'>{query.id}</Text>
           <Text>{data}</Text>
-          <ChartComp data={coinChartData} baseLine />
+          <Chart data={coinChartData} baseline />
         </Container>
       </PageLayout>
     </PageMeta>
