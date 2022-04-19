@@ -12,6 +12,7 @@ import { coinList } from '../../services'
 
 type TData = {
   items: {
+    id: string;
     fundamentalRating: number;
     icon: string;
     marketCap: number;
@@ -31,11 +32,9 @@ interface Props {
   data: TData;
 }
 
-const Nfts: NextPage<Props> = ({ data }) => {
+const Cryptocurrency: NextPage<Props> = ({ data }) => {
   const [list, setList] = useState(data.items)
   const [page, setPage] = useState(1)
-
-  console.log(data);
 
   const changePage = async (value: number) => {
     setPage(value)
@@ -53,33 +52,33 @@ const Nfts: NextPage<Props> = ({ data }) => {
             <HStack pb={3} pl={3} spacing='none' minW={1000}>
               {[
                 { title: '#', w: '4%' },
-                { title: 'Coin', w: ['20%', '30%'] },
+                { title: 'Coin', w: '20%' },
               ].map((el) =>
                 <Text variant='list_text' w={el.w} key={el.title}>
                   {el.title}
                 </Text>,
               )}
               {[
-                { title: 'Price', w: '10%' },
-                { title: '24h', w: '10%' },
-                { title: '7d', w: '10%' },
+                { title: 'Price', w: '7%' },
+                { title: '24h', w: '7%' },
+                { title: '7d', w: '7%' },
               ].map((el) =>
                 <Text variant='list_text' textAlign='end' w={el.w} key={el.title}>
                   {el.title}
                 </Text>,
               )}
               {[
-                { title: 'Fundamental Rating' },
-                { title: 'Technical Rating' },
+                { title: 'Fundamental Rating', w: '11%' },
+                { title: 'Technical Rating', w: '8%' },
               ].map((el) =>
-                <Text variant='list_text' textAlign='center' w='10%' key={el.title}>
+                <Text variant='list_text' textAlign='center' w={el.w} key={el.title} px={2}>
                   {el.title}
                 </Text>,
               )}
               {[
-                { title: 'Volume(24h)', w: '10%' },
-                { title: 'Market Cap', w: '10%' },
-                { title: 'Last 7 Days', w: '10%' },
+                { title: 'Volume(24h)', w: '13%' },
+                { title: 'Market Cap', w: '13%' },
+                { title: 'Last 7 Days', w: '15%' },
               ].map((el) =>
                 <Text variant='list_text' textAlign='end' w={el.w} key={el.title}>
                   {el.title}
@@ -89,58 +88,57 @@ const Nfts: NextPage<Props> = ({ data }) => {
             {list.map((el, i) => (
               <Container variant='list_item' key={i} minW={1000}>
                 <Text size='sm' textAlign='start' w='4%' position='sticky' zIndex={20} >{el.rank}</Text>
-                <HStack w={['20%', '30%']}>
+                <HStack w='20%'>
                   <Box minW={8} minH={8} position='relative' borderRadius='base' overflow='hidden'>
-                    <Image loader={exportableLoader} src={el.icon} alt='icon' layout='fill' unoptimized />
+                    <Image priority loader={exportableLoader} src={el.icon} alt='icon' layout='fill' unoptimized />
                   </Box>
-                  <Link href={`/nft/${el.name}`} passHref>
+                  <Link href={`/cryptocurrency/${el.id}`} passHref>
                     <Text variant='link' size='sm' fontWeight='extrabold'>
                       {el.name}
                     </Text>
                   </Link>
                 </HStack>
-                <Text variant='list_text' w='10%' textAlign='end'>
+                <Text variant='list_text' w='7%' textAlign='end'>
                   {el.price === null ? '---' : '$' + Number(el.price.toFixed(2))}
                 </Text>
                 <Text
+                  w='7%'
                   textAlign='end'
                   variant='list_text'
-                  w='10%'
                   color={el.priceChangePercent24h < 0 ? 'danger' : 'primary.100'}
                 >
                   {el.priceChangePercent24h === null ? '---' : '$' + Number(el.priceChangePercent24h.toFixed(2))}
                 </Text>
                 <Text
+                  w='7%'
                   textAlign='end'
                   variant='list_text'
-                  w='10%'
                   color={el.priceChangePercent7d < 0 ? 'danger' : 'primary.100'}
                 >
                   {el.priceChangePercent7d === null ? '---' : '$' + Number(el.priceChangePercent7d.toFixed(2))}
                 </Text>
-                <Flex justify='center' w='10%'>
+                <Flex justify='center' w='11%'>
                   <Center borderRadius='2xl' bg='blue.100' p={2}>
                     <Text variant='list_text' fontWeight='medium'>
                       {el.fundamentalRating === null ? '--' : Number(el.technicalRating.toFixed(2))}
                     </Text>
                   </Center>
                 </Flex>
-                <Flex justify='center' w='10%'>
+                <Flex justify='center' w='8%'>
                   <Center borderRadius='2xl' bg='blue.100' p={2}>
                     <Text variant='list_text' fontWeight='medium'>
                       {el.technicalRating === null ? '--' : Number(el.technicalRating.toFixed(2))}
                     </Text>
                   </Center>
                 </Flex>
-                <Text
-                  variant='list_text'
-                  textAlign='end'
-                  w='10%'
-                >
-                  {el.volume24h === null ? '---' : '$' + Number(el.volume24h.toFixed(2))}
+                <Text w='13%' variant='list_text' textAlign='end'>
+                  {el.volume24h === null ? '---' : '$' + Number(el.volume24h.toFixed(2)).toLocaleString()}
                 </Text>
-                <Text w='10%' variant='list_text' textAlign='end'>
-                  {el.marketCap === null ? '---' : '$' + Number(el.marketCap.toFixed(2))}
+                <Text w='13%' variant='list_text' textAlign='end'>
+                  {el.marketCap === null ? '---' : '$' + Number(el.marketCap.toFixed(2)).toLocaleString()}
+                </Text>
+                <Text w='15%' variant='list_text' textAlign='end'>
+
                 </Text>
               </Container>
             ))}
@@ -167,4 +165,4 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-export default Nfts
+export default Cryptocurrency

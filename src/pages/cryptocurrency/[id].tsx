@@ -3,49 +3,40 @@ import { NextPage, GetStaticProps, GetStaticPaths } from 'next'
 import { useRouter } from 'next/router'
 import PageLayout from '../../components/PageLayout/PageLayout'
 import PageMeta from '../../components/PageMeta/PageMeta'
+import { CoinItem } from '../../components/types/coin-item.interface'
+import { coinItem, coinList } from '../../services'
 
 interface Props {
-  data: string;
+  item: CoinItem;
 }
 
-const CryptocurrencyItem: NextPage<Props> = ({ data }) => {
+const CryptocurrencyItem: NextPage<Props> = ({ item }) => {
   const { query } = useRouter()
 
   return (
     <PageMeta title={`${query.id}`}>
       <PageLayout>
         <Container variant='main'>
-          <Text fontWeight='bold'>{query.id}</Text>
-          <Text>{data}</Text>
+          <Text fontWeight='bold'>{item.name}</Text>
         </Container>
       </PageLayout>
     </PageMeta>
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const data = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit unde tempora vitae quod '
+export const getStaticProps: GetStaticProps = async (context) => {
+  const item = await coinItem({ slug: `${context?.params?.id}` })
 
   return {
-    props: { data },
+    props: { item },
   }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const data = [
-    { name: 'Bitcoin', ticker: 'bitcoin' },
-    { name: 'Etherium', ticker: 'etherium' },
-    { name: 'BNB', ticker: 'bnb' },
-    { name: 'Tether', ticker: 'tether' },
-    { name: 'Tether', ticker: 'tether' },
-    { name: 'Tether', ticker: 'tether' },
-    { name: 'Tether', ticker: 'tether' },
-    { name: 'Tether', ticker: 'tether' },
-    { name: 'Tether', ticker: 'tether' },
-  ]
+  const data = await coinList({})
 
-  const paths = data.map((el) => ({
-    params: { id: el.ticker },
+  const paths = data.items.map((el: CoinItem) => ({
+    params: { id: el.id },
   }))
 
   return {
