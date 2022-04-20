@@ -72,6 +72,10 @@ const Chart: FC<Props> = ({ data, baseline }) => {
             theme.colors.grey['200'] :
             theme.colors.grey['600'],
         },
+        handleScroll: {
+          horzTouchDrag: false,
+          vertTouchDrag: false,
+        },
       })
       if (baseline) {
         const volumeSeries = chart.addHistogramSeries({
@@ -85,6 +89,7 @@ const Chart: FC<Props> = ({ data, baseline }) => {
             top: 0.9,
             bottom: 0,
           },
+          lastValueVisible: false,
         } as HistogramSeriesPartialOptions)
         volumeSeries.setData(data)
         var baselineSeries = chart.addBaselineSeries({
@@ -104,6 +109,7 @@ const Chart: FC<Props> = ({ data, baseline }) => {
           priceLineVisible: false,
           color: theme.colors.secondary_text,
           lineWidth: 2,
+          lastValueVisible: false,
         })
         lineSeries.setData(data)
       }
