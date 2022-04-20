@@ -25,7 +25,6 @@ export const theme = extendTheme({
       '.css-xvmw52[data-focus], .css-1lnbiz9[data-focus]': {
         boxShadow: 'none !important',
       },
-      
     }),
   },
   colors: {
@@ -43,10 +42,9 @@ export const theme = extendTheme({
     disabled_text: '#9EA2AB',
     danger: '#F04C4C',
     blue: {
-      50: 'rgba(62, 174, 125, 0.05)',
+      50: 'rgba(113, 119, 132, 0.2)',
       100: 'rgba(62, 174, 125, 0.2)',
       200: 'rgba(113, 119, 132, 0.07)',
-
     },
     grey: {
       100: '#EFEFEF',
@@ -63,6 +61,14 @@ export const theme = extendTheme({
       100: '#3EAE7D',
       200: '#134730',
       300: '#103726',
+    },
+    green: {
+      50: 'rgba(62, 174, 125, 0)',
+      100: 'rgba(62, 174, 125, 0.05)',
+    },
+    red: {
+      50: 'rgba(240, 76, 76, 0)',
+      100: 'rgba(240, 76, 76, 0.5)',
     },
   },
   components: {
