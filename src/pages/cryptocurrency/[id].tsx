@@ -1,6 +1,11 @@
 import { Container, Text } from '@chakra-ui/react'
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next'
+import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
+import { coinChartData } from '../../components/Chart/chartdata'
+const Chart = dynamic(() => import('../../components/Chart/Chart'), {
+  ssr: false,
+})
 import PageLayout from '../../components/PageLayout/PageLayout'
 import PageMeta from '../../components/PageMeta/PageMeta'
 
@@ -17,6 +22,7 @@ const CryptocurrencyItem: NextPage<Props> = ({ data }) => {
         <Container variant='main'>
           <Text fontWeight='bold'>{query.id}</Text>
           <Text>{data}</Text>
+          <Chart data={coinChartData} baseline />
         </Container>
       </PageLayout>
     </PageMeta>

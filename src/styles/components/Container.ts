@@ -77,7 +77,7 @@ const Container: ComponentStyleConfig = {
       borderColor: colorMode === 'light' ? 'grey.200' : 'grey.600',
       borderRadius: '2xl',
       _hover: {
-        bg: colorMode === 'light' ? 'blue.50' : 'dark.200',
+        bg: colorMode === 'light' ? 'green.100' : 'dark.200',
       },
     }),
     nft_rank: nft.rank,
