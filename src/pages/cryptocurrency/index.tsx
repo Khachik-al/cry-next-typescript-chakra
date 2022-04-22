@@ -9,6 +9,11 @@ import 'rc-pagination/assets/index.css'
 import { exportableLoader } from '../../image-loader'
 import PaginationComp from '../../components/Pagination'
 import { coinList } from '../../services'
+import dynamic from 'next/dynamic'
+import { UTCTimestamp } from 'lightweight-charts'
+const Chart = dynamic(() => import('../../components/Chart/Chart'), {
+  ssr: false,
+})
 
 type TData = {
   items: {
@@ -20,7 +25,7 @@ type TData = {
     price: number;
     priceChangePercent7d: number;
     priceChangePercent24h: number;
-    rank: 1
+    rank: number | null;
     sparkline: number[];
     technicalRating: number;
     volume24h: number;
@@ -137,8 +142,13 @@ const Cryptocurrency: NextPage<Props> = ({ data }) => {
                 <Text w='13%' variant='list_text' textAlign='end'>
                   {el.marketCap === null ? '---' : '$' + Number(el.marketCap.toFixed(2)).toLocaleString()}
                 </Text>
-                <Text w='15%' variant='list_text' textAlign='end'>
-
+                <Text w='15%' variant='list_text' textAlign='end' pl={5}>
+                  <Chart
+                    small
+                    height={35}
+                    data={el.sparkline.map((elem, index) => ({ value: elem, time: index as UTCTimestamp }))}
+                    redColor={el.priceChangePercent7d ? el.priceChangePercent7d < 0 : true}
+                  />
                 </Text>
               </Container>
             ))}
