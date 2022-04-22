@@ -9,7 +9,7 @@ const Chart = dynamic(() => import('../../components/Chart/Chart'), {
 import PageLayout from '../../components/PageLayout/PageLayout'
 import PageMeta from '../../components/PageMeta/PageMeta'
 import { CoinItem } from '../../components/types/coin-item.interface'
-import { coinItem, coinList } from '../../services'
+import { coinAll, coinItem } from '../../services'
 
 interface Props {
   item: CoinItem;
@@ -39,7 +39,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const data = await coinList({})
+  const data = await coinAll()
 
   const paths = data.items.map((el: CoinItem) => ({
     params: { id: el.id },
