@@ -24,7 +24,6 @@ const CryptocurrencyItem: NextPage<Props> = ({ item }) => {
   const { query } = useRouter()
   const [chartTimePicker, setChartTimePicker] = useState<string>('1D')
   const [chartType, setChartType] = useState<string>('Price')
-  console.log(item)
 
   return (
     <PageMeta title={`${query.id}`}>
