@@ -3,7 +3,6 @@ import { NextPage, GetStaticProps, GetStaticPaths } from 'next'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { coinChartData } from '../../components/Chart/chartdata'
 const Chart = dynamic(() => import('../../components/Chart/Chart'), {
@@ -21,15 +20,20 @@ interface Props {
 }
 
 const CryptocurrencyItem: NextPage<Props> = ({ item }) => {
-  const { query } = useRouter()
   const [chartTimePicker, setChartTimePicker] = useState<string>('1D')
   const [chartType, setChartType] = useState<string>('Price')
 
+  const rangeSupply = () => {
+    if (item.maxSupply && item.totalSupply) {
+      return Number((item.maxSupply / item.totalSupply * 100).toFixed(2))
+    }
+    return ''
+  }
   return (
-    <PageMeta title={`${query.id}`}>
+    <PageMeta title={item.name}>
       <PageLayout>
         <Container variant='main'>
-          <HStack spacing={14} overflowX='auto' whiteSpace='nowrap'>
+          <HStack spacing={14} overflowX='auto' whiteSpace='nowrap' pb={3}>
             <VStack align='start'>
               <HStack align='start'>
                 <Container variant='rank'>Rank #{item.rank}</Container>
@@ -57,8 +61,12 @@ const CryptocurrencyItem: NextPage<Props> = ({ item }) => {
               </HStack>
               <Container variant='horizontalRating'><Box w='60%' /></Container>
               <Flex justify='space-between' w='full'>
-                <Text fontSize={10} fontWeight='semibold'>Low: ${item.low24h?.toLocaleString()}</Text>
-                <Text fontSize={10} fontWeight='semibold'>high: ${item.high24h?.toLocaleString()}</Text>
+                <Text fontSize={10} fontWeight='semibold'>
+                  Low: ${item.low24h ? item.low24h.toLocaleString() : '---'}
+                </Text>
+                <Text fontSize={10} fontWeight='semibold'>
+                  high: ${item.high24h ? item.high24h.toLocaleString() : '---'}
+                </Text>
               </Flex>
               <HStack>
                 <Link href={item.website[0]} passHref>
@@ -80,7 +88,7 @@ const CryptocurrencyItem: NextPage<Props> = ({ item }) => {
                     />
                   </Container>
                 </Link>
-                <Link href={item.explorers[0]} passHref>
+                <Link href={item.explorers[0] || item.website[0]} passHref>
                   <Container variant='link'>
                     <Image
                       loader={exportableLoader}
@@ -92,7 +100,7 @@ const CryptocurrencyItem: NextPage<Props> = ({ item }) => {
                     <Text mx={1}>Explorers</Text>
                   </Container>
                 </Link>
-                <Link href={item.explorers[0]} passHref>
+                <Link href={item.community[0] || item.website[0]} passHref>
                   <Container variant='link'>
                     <Image
                       loader={exportableLoader}
@@ -106,7 +114,7 @@ const CryptocurrencyItem: NextPage<Props> = ({ item }) => {
                 </Link>
               </HStack>
               <HStack>
-                <Link href={item.website[0]} passHref>
+                <Link href={item.sourceCode.github[0] || item.website[0]} passHref>
                   <Container variant='link'>
                     <Image
                       loader={exportableLoader}
@@ -125,7 +133,7 @@ const CryptocurrencyItem: NextPage<Props> = ({ item }) => {
                     />
                   </Container>
                 </Link>
-                <Link href={item.sourceCode.github[0]} passHref>
+                <Link href={item.sourceCode.github[0] || item.website[0]} passHref>
                   <Container variant='link'>
                     <Image
                       loader={exportableLoader}
@@ -196,9 +204,9 @@ const CryptocurrencyItem: NextPage<Props> = ({ item }) => {
                       <Text size='sm' fontWeight='extrabold'>
                         {item.circulatingSupply === null ? '---' : '$' + Number(item.circulatingSupply.toFixed(2)).toLocaleString()}
                       </Text>
-                      <Text size='sm' fontWeight='extrabold' color='secondary_text'>90%</Text>
+                      {rangeSupply() && <Text size='sm' fontWeight='extrabold' color='secondary_text'>{rangeSupply()}%</Text>}
                     </Flex>
-                    <Container variant='horizontalRating' h={1}><Box w='70%' /></Container>
+                    {rangeSupply() && <Container variant='horizontalRating' h={1}><Box w={`${rangeSupply()}%`} /></Container>}
                   </Box>
                   <UpDownPercent fontSize={12} value={item.circulatingSupplyChangePercent24h} boxSize={2.5} />
                 </VStack>
@@ -240,9 +248,9 @@ const CryptocurrencyItem: NextPage<Props> = ({ item }) => {
                     <Text size='sm' fontWeight='extrabold'>
                       {item.circulatingSupply === null ? '---' : '$' + Number(item.circulatingSupply.toFixed(2)).toLocaleString()}
                     </Text>
-                    <Text size='sm' fontWeight='extrabold' color='secondary_text'>90%</Text>
+                    {rangeSupply() && <Text size='sm' fontWeight='extrabold' color='secondary_text'>{rangeSupply()}%</Text>}
                   </Flex>
-                  <Container variant='horizontalRating' h={1}><Box w='70%' /></Container>
+                  {rangeSupply() && <Container variant='horizontalRating' h={1}><Box w={`${rangeSupply()}%`} /></Container>}
                 </Box>
                 <UpDownPercent fontSize={12} value={item.circulatingSupplyChangePercent24h} boxSize={2.5} />
               </VStack>
@@ -363,8 +371,7 @@ const CryptocurrencyItem: NextPage<Props> = ({ item }) => {
                 <Text size='xs' color='secondary_text'>Market Rank</Text>
                 <Text size='xs' fontWeight='extrabold'>#{item.rank}</Text>
               </Flex>
-              <Text fontSize={8} fontWeight='extrabold' color='secondary_text' pt={4}>Bitcoin Price Today</Text>
-              <Flex w='full' justify='space-between' align='center'>
+              <Flex w='full' justify='space-between' align='center' pt={4}>
                 <Text size='xs' color='secondary_text'>Market Cap</Text>
                 <VStack spacing={1} align='end'>
                   <Text size='xs' fontWeight='extrabold'>
