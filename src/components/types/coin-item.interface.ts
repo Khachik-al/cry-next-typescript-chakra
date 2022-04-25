@@ -11,11 +11,11 @@ export type CoinItem = {
   marketCap: number;
   marketCapChangePercent24h: number;
   circulatingSupply: number;
-  circulatingSupplyChangePercent24h: number | null;
+  circulatingSupplyChangePercent24h: number;
   totalSupply: number;
   maxSupply: number;
   fullyDiluted: number | null;
-  fullyDilutedChangePercent24h: number | null;
+  fullyDilutedChangePercent24h: number;
   volumeMarketCapRatio: number;
   low24h: number;
   high24h: number;
@@ -23,5 +23,5 @@ export type CoinItem = {
   website: string[];
   explorers: string[];
   community: string[];
-  sourceCode: string[];
+  sourceCode: { github: string[] };
 }

@@ -112,7 +112,7 @@ const Cryptocurrency: NextPage<Props> = ({ data }) => {
                   variant='list_text'
                   color={el.priceChangePercent24h < 0 ? 'danger' : 'primary.100'}
                 >
-                  {el.priceChangePercent24h === null ? '---' : '$' + Number(el.priceChangePercent24h.toFixed(2))}
+                  {el.priceChangePercent24h === null ? '---' : Number(el.priceChangePercent24h.toFixed(2)) + '%'}
                 </Text>
                 <Text
                   w='7%'
@@ -120,7 +120,7 @@ const Cryptocurrency: NextPage<Props> = ({ data }) => {
                   variant='list_text'
                   color={el.priceChangePercent7d < 0 ? 'danger' : 'primary.100'}
                 >
-                  {el.priceChangePercent7d === null ? '---' : '$' + Number(el.priceChangePercent7d.toFixed(2))}
+                  {el.priceChangePercent7d === null ? '---' : Number(el.priceChangePercent7d.toFixed(2)) + '%'}
                 </Text>
                 <Flex justify='center' w='11%'>
                   <Center borderRadius='2xl' bg='blue.100' p={2}>
