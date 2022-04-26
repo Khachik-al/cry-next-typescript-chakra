@@ -1,4 +1,4 @@
-import { Box, Button, Container, Flex, Heading, HStack, Text, Tooltip, VStack } from '@chakra-ui/react'
+import { Box, Button, Container, Flex, Heading, HStack, Text, VStack } from '@chakra-ui/react'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
 import PageLayout from '../../components/PageLayout/PageLayout'
@@ -211,21 +211,16 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
             Live Marketplace
           </Text>
           <Box overflowX='auto'>
-            <HStack pb={3} pl={3} spacing='none' minW={1000}>
+            <HStack pb={3} pl={3} spacing='none' minW={800}>
               <Text variant='list_text' w='75%' pl={89}>
                 NFT
-              </Text>,
-              {[
-                { title: 'Price', w: '15%' },
-                { title: 'Seller', w: '10%' },
-              ].map((el) =>
-                <Text variant='list_text' w={el.w} key={el.title}>
-                  {el.title}
-                </Text>,
-              )}
+              </Text>
+              <Text variant='list_text' textAlign='end' w='25%'>
+                Price
+              </Text>
             </HStack>
             {!!marketplaceList.assets.length ? marketplaceList.assets.map((el, i) => (
-              <Container variant='list_item' key={i} minW={1000}>
+              <Container variant='list_item' key={i} minW={800}>
                 <HStack w='75%' spacing={5}>
                   <Box minW={68} minH={68} position='relative' borderRadius='lg' overflow='hidden'>
                     <Image loader={exportableLoader} src={el.img_url} alt='icon' layout='fill' unoptimized />
@@ -233,7 +228,7 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
                   <VStack align='start'>
                     <Link href={el.permalink} passHref>
                       <Text variant='link' fontSize='12' fontWeight='extrabold'>
-                        {el.name} #{el.token_id} <Text as='span' color='primary.100'>#516</Text>
+                        {el.name}
                       </Text>
                     </Link>
                     <HStack>
@@ -243,12 +238,9 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
                         </Text>,
                       )}
                     </HStack>
-                    <Text size='xs' color='secondary_text'>
-                      Listed: 29min ago
-                    </Text>
                   </VStack>
                 </HStack>
-                <VStack w='15%' spacing={0.5} align='start'>
+                <VStack w='25%' spacing={0.5} align='end'>
                   <Text variant='list_text'>
                     {el.price_eth === null ? '---' : Number(el.price_eth.toFixed(2)) + ' ETH'}
                   </Text>
@@ -256,13 +248,6 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
                     {el.price_usd === null ? '---' : '$' + Number(el.price_usd.toFixed(2))}
                   </Text>
                 </VStack>
-                <Tooltip label={el.address}>
-                  <Text w='10%' color='secondary_text' size='xs'>
-                    {el.address.length > 10 ?
-                      el.address.slice(0, 7) + '...' + el.address.slice(-6, el.address.length)
-                      : el.address}
-                  </Text>
-                </Tooltip>
               </Container>
             )) : <h1>0 items</h1>}
           </Box>
