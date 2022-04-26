@@ -17,23 +17,17 @@ const MenuBar: FC<Props> = ({ direction }) => {
         { name: 'Coins', link: '/cryptocurrency' },
         { name: 'Exchanges', link: '/exchange' },
         { name: "NFT's", link: '/nft' },
+        { name: 'Podcast', link: 'https://cryptogic.com/podcast/' },
+        { name: 'TV', link: 'https://cryptogic.com/tv/' },
+        { name: 'Guide', link: 'https://cryptogic.com/guides/' },
+        { name: 'News', link: 'https://cryptogic.com/latest/' },
+        { name: 'About us', link: 'https://cryptogic.com/about/' },
       ].map((el) => (
         <Link href={el.link} passHref key={el.name}>
           <Text variant='link'>
             {el.name}
           </Text>
         </Link>
-      ))}
-      {[
-        { name: 'Podcast' },
-        { name: 'TV' },
-        { name: 'Guide' },
-        { name: 'News' },
-        { name: 'About us' },
-      ].map((el) => (
-        <Text variant='link' key={el.name}>
-          {el.name}
-        </Text>
       ))}
       {direction === 'column'
         && (

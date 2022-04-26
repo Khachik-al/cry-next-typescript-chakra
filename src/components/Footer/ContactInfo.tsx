@@ -14,14 +14,19 @@ const ContactInfo: FC = () => (
         Cryptogic
       </Heading>
     </Link>
-    <HStack align='start' spacing={1}>
-      <Image loader={exportableLoader} src='/assets/img/location.svg' alt='location icon' height={15} width={15} layout='fixed' />
-      <Text fontSize='14'>Address line1, Address line 2, Postcode, City, State, Country</Text>
-    </HStack>
+    <Text fontSize='14'>
+      <Image loader={exportableLoader} src='/assets/img/location.svg' alt='location icon' height={15} width={15} />
+      {' '}
+      Headquarters: Evanston, IL
+    </Text>
     <Text fontSize='14'>
       <Image loader={exportableLoader} src='/assets/img/sms.svg' alt='sms icon' height={15} width={15} />
       {' '}
-      Email: info@cryptogic.com
+      Email:
+      {' '}
+      <Link href={'mailto:info@cryptogic.com'} passHref >
+        <Text as='span' variant='link'>info@cryptogic.com</Text>
+      </Link>
     </Text>
     <Text fontSize='14'>
       <Image loader={exportableLoader} src='/assets/img/call.svg' alt='call icon' height={15} width={15} />
@@ -29,10 +34,50 @@ const ContactInfo: FC = () => (
       Phone: + 1 000-000-0000
     </Text>
     <HStack spacing={3}>
-      <Box><Image loader={exportableLoader} src='/assets/img/linkedin.svg' alt='linkedin icon' height={25} width={25} layout='fixed' /></Box>
-      <Box><Image loader={exportableLoader} src='/assets/img/facebook.svg' alt='facebook icon' height={25} width={25} layout='fixed' /></Box>
-      <Box><Image loader={exportableLoader} src='/assets/img/twitter.svg' alt='twitter icon' height={25} width={25} layout='fixed' /></Box>
-      <Box><Image loader={exportableLoader} src='/assets/img/yootube.svg' alt='yootube icon' height={25} width={25} layout='fixed' /></Box>
+      <Box cursor='pointer'>
+        <Link href={'https://www.linkedin.com/company/cryptogic-com/'} passHref>
+          <Image
+            loader={exportableLoader}
+            src='/assets/img/linkedin.svg'
+            alt='linkedin icon'
+            height={25}
+            width={25}
+          />
+        </Link>
+      </Box>
+      <Box cursor='pointer'>
+        <Link href={'https://www.facebook.com/cryptogic/'} passHref>
+          <Image
+            loader={exportableLoader}
+            src='/assets/img/facebook.svg'
+            alt='facebook icon'
+            height={25}
+            width={25}
+          />
+        </Link>
+      </Box>
+      <Box cursor='pointer'>
+        <Link href={'https://twitter.com/cryptogic_com'} passHref>
+          <Image
+            loader={exportableLoader}
+            src='/assets/img/twitter.svg'
+            alt='twitter icon'
+            height={25}
+            width={25}
+          />
+        </Link>
+      </Box>
+      <Box cursor='pointer'>
+        <Link href={'https://www.youtube.com/Cryptogic'} passHref>
+          <Image
+            loader={exportableLoader}
+            src='/assets/img/yootube.svg'
+            alt='yootube icon'
+            height={25}
+            width={25}
+          />
+        </Link>
+      </Box>
     </HStack>
   </VStack>
 )
