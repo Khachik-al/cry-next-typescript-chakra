@@ -1,4 +1,4 @@
-import { chart, landing, nft, rating } from './Customs'
+import { chart, horizontalRating, landing, link, itemInfo, rank, rating } from './Customs'
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
 import { pagination } from './pagination'
 
@@ -80,14 +80,15 @@ const Container: ComponentStyleConfig = {
         bg: colorMode === 'light' ? 'green.100' : 'dark.200',
       },
     }),
-    nft_rank: nft.rank,
-    nft_link: nft.link,
-    nft_item_info: nft.item_info,
+    rank: rank,
+    link: link,
+    itemInfo: itemInfo,
     pagination: pagination,
     chart_timepicker: chart.timepicker,
     rating_block: rating.rating_block,
     rating: rating.rating,
     landing_discount: landing.discount,
+    horizontalRating: horizontalRating,
   },
   defaultProps: {
 

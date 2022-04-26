@@ -8,10 +8,10 @@ import Image from 'next/image'
 import { exportableLoader } from '../../image-loader'
 import { useState } from 'react'
 import { nftAll, nftItem, nftMarketplace } from '../../services'
-import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons'
 import { NFTMarketItem, Marketplace } from '../../components/types/nft-marketplace.interface'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
+import UpDownPercent from '../../components/UpDownPercent'
 const Chart = dynamic(() => import('../../components/Chart/Chart'), {
   ssr: false,
 })
@@ -48,11 +48,11 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
                 </Box>
                 <VStack spacing={1} align='start'>
                   <Heading as='h2' fontSize={20}>{item.name}</Heading>
-                  <Container variant='nft_rank'>Rank #2</Container>
+                  <Container variant='rank'>Rank #2</Container>
                 </VStack>
               </HStack>
               <Flex justify='start'>
-                <Container variant='nft_link'>
+                <Container variant='link'>
                   <Image
                     loader={exportableLoader}
                     src='/assets/img/link.svg'
@@ -71,7 +71,7 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
                 </Container>
               </Flex>
             </VStack>
-            <Container variant='nft_item_info'>
+            <Container variant='itemInfo'>
               <Text pb={2} size='sm' color='secondary_text'>Floor Price</Text>
               <Text lineHeight={1} size='lg' fontWeight='extrabold'>
                 {item.floorPriceEth === null ? '---' : Number(item.floorPriceEth.toFixed(2)) + ' ETH'}
@@ -80,24 +80,11 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
                 {item.floorPriceUsd === null ? '---' : '$' + Number(item.floorPriceUsd.toFixed(2))}
               </Text>
             </Container>
-            <Container variant='nft_item_info'>
+            <Container variant='itemInfo' pb={3.5}>
               <Text pb={2} size='sm' color='secondary_text'>24h %</Text>
-              <Text
-                pb={3.5}
-                size='lg'
-                color={item.volumeChangePercent24h < 0 ? 'danger' : 'primary.100'}
-                fontWeight='extrabold'
-              >
-                {item.volumeChangePercent24h < 0 ?
-                  <TriangleDownIcon boxSize={3} mb={1} /> :
-                  <TriangleUpIcon boxSize={3} mb={1} />}
-                {' '}
-                {item.volumeChangePercent24h === null ?
-                  '---' :
-                  Number(item.volumeChangePercent24h.toFixed(2)) + ' %'}
-              </Text>
+              <UpDownPercent fontSize={16} value={item.volumeChangePercent24h} boxSize={3} />
             </Container>
-            <Container variant='nft_item_info'>
+            <Container variant='itemInfo'>
               <Text pb={2} size='sm' color='secondary_text'>Market Cap</Text>
               <Text lineHeight={1} size='lg' fontWeight='extrabold'>
                 {item.marketCapEth === null ? '---' : Number(item.marketCapEth.toFixed(2)) + ' ETH'}
@@ -106,7 +93,7 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
                 {item.marketCapUsd === null ? '---' : '$' + Number(item.marketCapUsd.toFixed(2))}
               </Text>
             </Container>
-            <Container variant='nft_item_info'>
+            <Container variant='itemInfo'>
               <Text pb={2} size='sm' color='secondary_text'>24h Volume</Text>
               <Text lineHeight={1} size='lg' fontWeight='extrabold'>
                 {item.volumeChange24hEth === null ? '---' : Number(item.volumeChange24hEth.toFixed(2)) + ' ETH'}
@@ -118,13 +105,13 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
                 {item.volumeChange24hEth === null ? '---' : Number(item.volumeChange24hEth.toFixed(2))}
               </Text>
             </Container>
-            <Container variant='nft_item_info'>
+            <Container variant='itemInfo'>
               <Text pb={2} size='sm' color='secondary_text'>Owners</Text>
               <Text pb={4} lineHeight={1} size='lg' fontWeight='extrabold'>
                 {item.owners === null ? '---' : item.owners}
               </Text>
             </Container>
-            <Container variant='nft_item_info' border='none'>
+            <Container variant='itemInfo' border='none'>
               <Text pb={2} size='sm' color='secondary_text'>Items</Text>
               <Text pb={4} lineHeight={1} size='lg' fontWeight='extrabold'>
                 {item.items === null ? '---' : item.items}
@@ -132,7 +119,7 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
             </Container>
           </HStack>
           <HStack mt={5} align='start' display={['flex', 'flex', 'none']}>
-            <Container variant='nft_item_info' pl={0} pr={10} display='flex'>
+            <Container variant='itemInfo' pl={0} pr={10} display='flex'>
               <Text pb={2} size='sm' color='secondary_text'>24h Volume</Text>
               <Text lineHeight={1} size='lg' fontWeight='extrabold'>
                 {item.volumeChange24hEth === null ? '---' : Number(item.volumeChange24hEth.toFixed(2)) + ' ETH'}
@@ -144,21 +131,8 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
                 {item.volumeChange24hEth === null ? '---' : Number(item.volumeChange24hEth.toFixed(2))}
               </Text>
               <Text pb={2} size='sm' color='secondary_text'>24h %</Text>
-              <Text
-                pb={3.5}
-                size='lg'
-                color={item.volumeChangePercent24h < 0 ? 'danger' : 'primary.100'}
-                fontWeight='extrabold'
-              >
-                {item.volumeChangePercent24h < 0 ?
-                  <TriangleDownIcon boxSize={3} mb={1} /> :
-                  <TriangleUpIcon boxSize={3} mb={1} />}
-                {' '}
-                {item.volumeChangePercent24h === null ?
-                  '---' :
-                  Number(item.volumeChangePercent24h.toFixed(2)) + ' %'}
-              </Text>
-              <Text pb={2} size='sm' color='secondary_text'>Market Cap</Text>
+              <UpDownPercent fontSize={16} value={item.volumeChangePercent24h} boxSize={3} />
+              <Text pt={3.5} pb={2} size='sm' color='secondary_text'>Market Cap</Text>
               <Text lineHeight={1} size='lg' fontWeight='extrabold'>
                 {item.marketCapEth === null ? '---' : Number(item.marketCapEth.toFixed(2)) + ' ETH'}
               </Text>

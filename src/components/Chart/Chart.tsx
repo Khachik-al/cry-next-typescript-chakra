@@ -138,7 +138,6 @@ const Chart: FC<Props> = ({ data, baseline, small, height, redColor }) => {
     }
   }, [data, baseline, theme, colorMode, redColor, small])
   return <Box ref={chartContainerRef} w='full' h={height || [380, 450]} />
-
 }
 
 export default Chart
