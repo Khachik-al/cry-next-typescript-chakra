@@ -104,7 +104,7 @@ const Cryptocurrency: NextPage<Props> = ({ data }) => {
                   </Link>
                 </HStack>
                 <Text variant='list_text' w='7%' textAlign='end'>
-                  {el.price === null ? '---' : '$' + Number(el.price.toFixed(2))}
+                  {el.price === null ? '---' : '$' + Number(el.price.toFixed(2)).toLocaleString()}
                 </Text>
                 <Text
                   w='7%'

@@ -41,7 +41,7 @@ export const coinAll = async () => {
   return data
 }
 
-export const coinMarkets = async ({ slug, limit, offset }: { slug: string, limit: number, offset: string }) => {
+export const coinMarkets = async ({ slug, limit, offset }: { slug: string, limit: number, offset: number }) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_CRYPTOGIC_API}/section/token/market/${slug}?limit=${limit}&offset=${offset}`)
   const { data } = await res.json()
   return data

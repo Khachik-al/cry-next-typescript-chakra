@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Pagination from 'rc-pagination'
 import { FC } from 'react'
 import { exportableLoader } from '../image-loader'
+import 'rc-pagination/assets/index.css'
 
 interface Props {
   total: number;

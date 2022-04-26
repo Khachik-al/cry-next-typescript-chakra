@@ -25,3 +25,19 @@ export type CoinItem = {
   community: string[];
   sourceCode: { github: string[] };
 }
+
+export type CoinMarkets = {
+  tickers: {
+    id: string;
+    liquidity: number | null;
+    logo: string;
+    minus2Depth: number;
+    pair: string;
+    plus2Depth: number;
+    price: number;
+    rank: number | null;
+    source: string;
+    volume24h: number;
+    volume24hPercent: number | null;
+  }[]
+}
