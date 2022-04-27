@@ -10,18 +10,29 @@ const Chart = dynamic(() => import('../../components/Chart/Chart'), {
 })
 import PageLayout from '../../components/PageLayout/PageLayout'
 import PageMeta from '../../components/PageMeta/PageMeta'
-import { CoinItem } from '../../components/types/coin-item.interface'
+import PaginationComp from '../../components/Pagination'
+import { CoinItem, CoinMarkets } from '../../components/types/coin-item.interface'
 import UpDownPercent from '../../components/UpDownPercent'
 import { exportableLoader } from '../../image-loader'
-import { coinItem, coinAll } from '../../services'
+import { coinItem, coinAll, coinMarkets } from '../../services'
 
 interface Props {
   item: CoinItem;
+  markets: CoinMarkets;
 }
 
-const CryptocurrencyItem: NextPage<Props> = ({ item }) => {
+const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
   const [chartTimePicker, setChartTimePicker] = useState<string>('1D')
   const [chartType, setChartType] = useState<string>('Price')
+  const [marketList, steMarketList] = useState(markets.tickers)
+  const [page, setPage] = useState(1)
+
+
+  const changePage = async (value: number) => {
+    setPage(value)
+    const pageData = await coinMarkets({ slug: item.id, limit: 10, offset: value - 1 })
+    steMarketList(pageData.tickers)
+  }
 
   const rangeSupply = () => {
     if (item.maxSupply && item.totalSupply) {
@@ -424,6 +435,77 @@ const CryptocurrencyItem: NextPage<Props> = ({ item }) => {
               <Container variant='rating'><Box h={item.technicalRating + '%'} /></Container>
             </Container>
           </Flex>
+          <Text fontSize={20} fontWeight='extrabold' my={10}>
+            {item.name} Markets
+          </Text>
+          <Box overflowX='auto'>
+            <HStack pb={3} pl={3} spacing='none' minW={1000}>
+              {[
+                { title: '#', w: '4%' },
+                { title: 'Source', w: '20%' },
+                { title: 'Pair ', w: '15%' },
+              ].map((el) =>
+                <Text variant='list_text' w={el.w} key={el.title}>
+                  {el.title}
+                </Text>,
+              )}
+              {[
+                { title: 'Price', w: '7%' },
+                { title: '+2% Depth', w: '12%' },
+                { title: '-2% Depth', w: '12%' },
+                { title: 'Volume', w: '12%' },
+                { title: 'Volume %', w: '10%' },
+                { title: 'Liquidity', w: '7%' },
+              ].map((el) =>
+                <Text variant='list_text' textAlign='end' w={el.w} key={el.title}>
+                  {el.title}
+                </Text>,
+              )}
+
+            </HStack>
+            {marketList.map((el, i) => (
+              <Container variant='list_item' key={i} minW={1000} whiteSpace='nowrap'>
+                <Text size='sm' textAlign='start' w='4%' position='sticky' zIndex={20} >{i + 1}</Text>
+                <HStack w='20%'>
+                  <Box minW={8} minH={8} position='relative' borderRadius='base' overflow='hidden'>
+                    <Image priority loader={exportableLoader} src={el.logo} alt='icon' layout='fill' unoptimized />
+                  </Box>
+                  <Text variant='list_text' whiteSpace='normal'>
+                    {el.source}
+                  </Text>
+                </HStack>
+                <Text variant='list_text' w='15%' textAlign='start' color='primary.100'>
+                  {el.pair === null ? '---' : el.pair.slice(0, 15)}
+                </Text>
+                <Text w='7%' textAlign='end' variant='list_text'>
+                  {el.price === null ? '---' : '$' + Number(el.price.toFixed(2)).toLocaleString()}
+                </Text>
+                <Text w='12%' textAlign='end' variant='list_text'>
+                  {el.plus2Depth === null ? '---' : '$' + Number(el.plus2Depth.toFixed(2)).toLocaleString()}
+                </Text>
+                <Text w='12%' variant='list_text' textAlign='end'>
+                  {el.minus2Depth === null ? '--' : '$' + Number(el.minus2Depth.toFixed(2)).toLocaleString()}
+                </Text>
+                <Text w='12%' variant='list_text' textAlign='end'>
+                  {el.volume24h === null ? '--' : '$' + Number(el.volume24h.toFixed(2)).toLocaleString()}
+                </Text>
+                <Text w='10%' variant='list_text' textAlign='end'>
+                  {el.volume24hPercent === null ? '---' : Number(el.volume24hPercent.toFixed(2)) + '%'}
+                </Text>
+                <Text w='7%' variant='list_text' textAlign='end'>
+                  {el.liquidity === null ? '---' : Number(el.liquidity.toFixed(2)).toLocaleString()}
+                </Text>
+              </Container>
+            ))}
+          </Box>
+          <Container variant='pagination'>
+            <PaginationComp
+              pageSize={100}
+              changePage={changePage}
+              current={page}
+              total={100}
+            />
+          </Container>
         </Container>
       </PageLayout>
     </PageMeta >
@@ -432,9 +514,10 @@ const CryptocurrencyItem: NextPage<Props> = ({ item }) => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const item = await coinItem({ slug: `${context?.params?.id}` })
+  const markets = await coinMarkets({ slug: `${context?.params?.id}`, limit: 10, offset: 0 })
 
   return {
-    props: { item },
+    props: { item, markets },
   }
 }
 
