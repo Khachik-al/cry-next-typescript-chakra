@@ -1,7 +1,7 @@
 import {
   Box,
   Button, CloseButton, Container, Drawer, DrawerBody, DrawerContent, DrawerOverlay,
-  Flex, Heading, HStack, Portal, useDisclosure, useMediaQuery,
+  Flex, HStack, Portal, useDisclosure, useMediaQuery,
 } from '@chakra-ui/react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -38,9 +38,16 @@ const HeaderNav: FC = () => {
             )}
           <Flex align='center'>
             <Link href='/' passHref>
-              <Heading as='h2' size='lg' cursor='pointer' mr={[10, 14]} color='primary.200'>
-                Cryptogic
-              </Heading>
+              <Box cursor='pointer' h={[41, 41, 41, 61]} w={[105.4, 105.4, 105.4, 156.8]} position='relative' mr={[10, 14]}>
+                <Image
+                  src='/assets/img/cryptogic_logo.png'
+                  alt='icon'
+                  layout='fill'
+                  loader={exportableLoader}
+                  unoptimized
+                  priority
+                />
+              </Box>
             </Link>
             {isBrowser
               && <MenuBar direction='row' />}

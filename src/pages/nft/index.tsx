@@ -12,7 +12,7 @@ import { nftList } from '../../services'
 
 type TData = {
   items: {
-    logo: string;
+    logoUrl: string;
     rank: number;
     name: string;
     slug: string;
@@ -24,8 +24,8 @@ type TData = {
     marketCapEth: number;
     marketCapUsd: number;
     volumeChange24hEth: number;
-    owners: number;
-    items: number;
+    ownersCount: number;
+    itemsCount: number;
   }[];
   count: number;
 }
@@ -73,7 +73,7 @@ const Nfts: NextPage<Props> = ({ data }) => {
                 { title: 'Floor Price', w: '10%' },
                 { title: '24h %', w: '9%' },
                 { title: 'Market Cap', w: '13%' },
-                { title: '24h Volume', w: '10%' },
+                { title: '24h Volume', w: '12%' },
                 { title: 'Owners', w: '9%' },
                 { title: 'Items', w: '9%' },
               ].map((el) =>
@@ -87,7 +87,14 @@ const Nfts: NextPage<Props> = ({ data }) => {
                 <Text size='sm' textAlign='start' w='4%' position='sticky' zIndex={20} >{el.rank}</Text>
                 <HStack w={['20%', '30%']}>
                   <Box minW={8} minH={8} position='relative' borderRadius='base' overflow='hidden'>
-                    <Image loader={exportableLoader} src={el.logo} alt='icon' layout='fill' unoptimized />
+                    <Image
+                      src={el.logoUrl || '/'}
+                      alt='icon'
+                      layout='fill'
+                      loader={exportableLoader}
+                      unoptimized
+                      priority
+                    />
                   </Box>
                   <Link href={`/nft/${el.slug}`} passHref>
                     <Text variant='link' size='sm' fontWeight='extrabold'>
@@ -111,10 +118,10 @@ const Nfts: NextPage<Props> = ({ data }) => {
                 </Flex>
                 <VStack w='10%' align='end' spacing={0.5}>
                   <Text variant='list_text'>
-                    {el.floorPriceEth === null ? '---' : Number(el.floorPriceEth.toFixed(2)) + ' ETH'}
+                    {el.floorPriceEth === null ? '---' : Number(el.floorPriceEth.toFixed(2)).toLocaleString() + ' ETH'}
                   </Text>
                   <Text color='secondary_text' size='xs'>
-                    {el.floorPriceUsd === null ? '---' : '$' + Number(el.floorPriceUsd.toFixed(2))}
+                    {el.floorPriceUsd === null ? '---' : '$' + Number(el.floorPriceUsd.toFixed(2)).toLocaleString()}
                   </Text>
                 </VStack>
                 <Text
@@ -127,20 +134,20 @@ const Nfts: NextPage<Props> = ({ data }) => {
                 </Text>
                 <VStack w='13%' align='end' spacing={0.5}>
                   <Text variant='list_text'>
-                    {el.marketCapEth === null ? '---' : Number(el.marketCapEth.toFixed(2)) + ' ETH'}
+                    {el.marketCapEth === null ? '---' : Number(el.marketCapEth.toFixed(2)).toLocaleString() + ' ETH'}
                   </Text>
                   <Text color='secondary_text' size='xs'>
-                    {el.marketCapUsd === null ? '---' : '$' + Number(el.marketCapUsd.toFixed(2))}
+                    {el.marketCapUsd === null ? '---' : '$' + Number(el.marketCapUsd.toFixed(2)).toLocaleString()}
                   </Text>
                 </VStack>
-                <Text variant='list_text' textAlign='end' w='10%'>
-                  {el.volumeChange24hEth === null ? '---' : Number(el.volumeChange24hEth.toFixed(2)) + ' ETH'}
+                <Text variant='list_text' textAlign='end' w='12%'>
+                  {el.volumeChange24hEth === null ? '---' : Number(el.volumeChange24hEth.toFixed(2)).toLocaleString() + ' ETH'}
                 </Text>
                 <Text variant='list_text' textAlign='end' w='9%'>
-                  {el.owners === null ? '---' : el.owners}
+                  {el.ownersCount === null ? '---' : el.ownersCount.toLocaleString()}
                 </Text>
                 <Text variant='list_text' textAlign='end' w='9%'>
-                  {el.items === null ? '---' : el.items}
+                  {el.itemsCount === null ? '---' : el.itemsCount.toLocaleString()}
                 </Text>
               </Container>
             ))}
