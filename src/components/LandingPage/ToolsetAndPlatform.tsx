@@ -121,6 +121,7 @@ const ToolsetAndPlatform: FC = () => {
             height={374}
             width={496}
             priority
+            unoptimized
           />
             :
             <Image
@@ -131,6 +132,7 @@ const ToolsetAndPlatform: FC = () => {
               height={374}
               width={496}
               priority
+              unoptimized
             />}
         </Box>
         <VStack

@@ -49,6 +49,7 @@ const LatestVideos: FC = () => {
                   height={196}
                   width={344}
                   priority
+                  unoptimized
                 />
               </Box>
               <Text fontSize={[16, 16, 18, 24]} w={80} fontWeight='black'>Video Title</Text>

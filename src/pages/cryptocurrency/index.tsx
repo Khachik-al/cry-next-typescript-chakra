@@ -38,13 +38,13 @@ interface Props {
 }
 
 const Cryptocurrency: NextPage<Props> = ({ data }) => {
-  const [list, setList] = useState(data.items)
+  const [list, setList] = useState(data)
   const [page, setPage] = useState(1)
 
   const changePage = async (value: number) => {
     setPage(value)
     const pageData = await coinList({ offset: value - 1, limit: 10 })
-    setList(pageData.items)
+    setList(pageData)
   }
   return (
     <PageMeta title='Nfts'>
@@ -90,12 +90,12 @@ const Cryptocurrency: NextPage<Props> = ({ data }) => {
                 </Text>,
               )}
             </HStack>
-            {list.map((el, i) => (
+            {list && list.items?.length && list.items.map((el, i) => (
               <Container variant='list_item' key={i} minW={1000}>
                 <Text size='sm' textAlign='start' w='4%' position='sticky' zIndex={20} >{el.rank}</Text>
                 <HStack w='20%'>
                   <Box minW={8} minH={8} position='relative' borderRadius='base' overflow='hidden'>
-                    <Image priority loader={exportableLoader} src={el.icon} alt='icon' layout='fill' unoptimized />
+                    <Image priority loader={exportableLoader} src={el.icon || '/'} alt='icon' layout='fill' unoptimized />
                   </Box>
                   <Link href={`/cryptocurrency/${el.id}`} passHref>
                     <Text variant='link' size='sm' fontWeight='extrabold'>
