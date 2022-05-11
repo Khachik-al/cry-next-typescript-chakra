@@ -41,7 +41,7 @@ const Nfts: NextPage<Props> = ({ data }) => {
 
   const changePage = async (value: number) => {
     setPage(value)
-    const pageData = await nftList({ offset: value - 1, limit: 10 })
+    const pageData = await nftList({ offset: value - 1, limit: 10, sort: 'rank', order: 'asc' })
     setList(pageData.items)
   }
   return (
@@ -105,7 +105,7 @@ const Nfts: NextPage<Props> = ({ data }) => {
                 <Flex justify='center' w='10%'>
                   <Center borderRadius='2xl' bg='blue.100' p={2}>
                     <Text variant='list_text' fontWeight='medium'>
-                      {el.fundamentalRating === null ? '--' : Number(el.technicalRating.toFixed(2))}
+                      {el.fundamentalRating === null ? '--' : Number(el.fundamentalRating.toFixed(2))}
                     </Text>
                   </Center>
                 </Flex>
@@ -167,7 +167,7 @@ const Nfts: NextPage<Props> = ({ data }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await nftList({ offset: 0, limit: 10 })
+  const data = await nftList({ offset: 0, limit: 10, sort: 'rank', order: 'asc' })
 
   return {
     props: { data },
