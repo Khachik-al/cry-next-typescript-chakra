@@ -14,6 +14,10 @@ export type NFTMarketItem = {
   volumeChange24hEth: number;
   ownersCount: number;
   itemsCount: number;
+  marketCap: number;
+  volume: number;
+  turnOver: number;
+  ownersToItems: number;
 }
 
 export type Marketplace = {
