@@ -1,5 +1,5 @@
 export type NFTMarketItem = {
-  logo: string;
+  logoUrl: string;
   rank: number;
   name: string;
   slug: string;
@@ -12,8 +12,8 @@ export type NFTMarketItem = {
   marketCapEth: number;
   marketCapUsd: number;
   volumeChange24hEth: number;
-  owners: number;
-  items: number;
+  ownersCount: number;
+  itemsCount: number;
 }
 
 export type Marketplace = {

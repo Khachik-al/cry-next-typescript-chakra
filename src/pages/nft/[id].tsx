@@ -35,16 +35,15 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
       setMarketplaceList(pageData)
     }
   }
-
   return (
-    <PageMeta title={`${query.id}`}>
+    item && <PageMeta title={item.name || ''}>
       <PageLayout>
-        {item && <Container variant='main'>
+        <Container variant='main'>
           <HStack align='start' whiteSpace='nowrap' overflowX='auto'>
             <VStack align='start' pr={14}>
               <HStack spacing={4} minW='44'>
                 <Box minW={50} minH={50} position='relative' borderRadius='base' overflow='hidden'>
-                  <Image loader={exportableLoader} src={item.logo} alt='icon' layout='fill' unoptimized />
+                  <Image loader={exportableLoader} src={item.logoUrl || '/'} alt='icon' layout='fill' unoptimized />
                 </Box>
                 <VStack spacing={1} align='start'>
                   <Heading as='h2' fontSize={20}>{item.name}</Heading>
@@ -108,13 +107,13 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
             <Container variant='itemInfo'>
               <Text pb={2} size='sm' color='secondary_text'>Owners</Text>
               <Text pb={4} lineHeight={1} size='lg' fontWeight='extrabold'>
-                {item.owners === null ? '---' : item.owners}
+                {item.ownersCount === null ? '---' : item.ownersCount}
               </Text>
             </Container>
             <Container variant='itemInfo' border='none'>
               <Text pb={2} size='sm' color='secondary_text'>Items</Text>
               <Text pb={4} lineHeight={1} size='lg' fontWeight='extrabold'>
-                {item.items === null ? '---' : item.items}
+                {item.itemsCount === null ? '---' : item.itemsCount}
               </Text>
             </Container>
           </HStack>
@@ -150,11 +149,11 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
               </Text>
               <Text pb={2} size='sm' color='secondary_text'>Owners</Text>
               <Text pb={4} lineHeight={1} size='lg' fontWeight='extrabold'>
-                {item.owners === null ? '---' : item.owners}
+                {item.ownersCount === null ? '---' : item.ownersCount}
               </Text>
               <Text pb={2} size='sm' color='secondary_text'>Items</Text>
               <Text lineHeight={1} size='lg' fontWeight='extrabold'>
-                {item.items === null ? '---' : item.items}
+                {item.itemsCount === null ? '---' : item.itemsCount}
               </Text>
             </VStack>
           </HStack>
@@ -191,7 +190,7 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
             <Container variant='rating_block' ml={5}>
               <VStack align='start'>
                 <Text fontSize={['3xl', '4xl', '40']} fontWeight='bold'>{item.technicalRating}</Text>
-                <Text fontWeight='extrabold'>Fundamental Rating</Text>
+                <Text fontWeight='extrabold'>Technical Rating</Text>
                 <Text size='sm' color='secondary_text'>Technical Ratings is a technical analysis tool that combines the ratings of several
                   technical indicators to make it easier for traders and investors to find profitable trades.</Text>
               </VStack>
@@ -200,7 +199,7 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
             <Container variant='rating_block' ml={5}>
               <VStack align='start'>
                 <Text fontSize={['3xl', '4xl', '40']} fontWeight='bold'>{item.technicalRating}</Text>
-                <Text fontWeight='extrabold'>Fundamental Rating</Text>
+                <Text fontWeight='extrabold'>Overall Rating</Text>
                 <Text size='sm' color='secondary_text'>Technical Ratings is a technical analysis tool that combines the ratings of several
                   technical indicators to make it easier for traders and investors to find profitable trades.</Text>
               </VStack>
@@ -219,11 +218,11 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
                 Price
               </Text>
             </HStack>
-            {!!marketplaceList.assets.length ? marketplaceList.assets.map((el, i) => (
+            {!!marketplaceList && !!marketplaceList.assets.length ? marketplaceList.assets.map((el, i) => (
               <Container variant='list_item' key={i} minW={800}>
                 <HStack w='75%' spacing={5}>
                   <Box minW={68} minH={68} position='relative' borderRadius='lg' overflow='hidden'>
-                    <Image loader={exportableLoader} src={el.img_url} alt='icon' layout='fill' unoptimized />
+                    <Image loader={exportableLoader} src={el.img_url || '/'} alt='icon' layout='fill' unoptimized />
                   </Box>
                   <VStack align='start'>
                     <Link href={el.permalink} passHref>
@@ -251,7 +250,7 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
               </Container>
             )) : <h1>0 items</h1>}
           </Box>
-          {!!marketplaceList.assets.length &&
+          {!!marketplaceList && !!marketplaceList.assets?.length &&
             <HStack>
               <Button
                 onClick={() => changePage(Path.previous)}
@@ -268,7 +267,7 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
                 {'>'}
               </Button>
             </HStack>}
-        </Container>}
+        </Container>
       </PageLayout>
     </PageMeta>
   )

@@ -24,14 +24,14 @@ interface Props {
 const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
   const [chartTimePicker, setChartTimePicker] = useState<string>('1D')
   const [chartType, setChartType] = useState<string>('Price')
-  const [marketList, steMarketList] = useState(markets.tickers)
+  const [marketList, steMarketList] = useState(markets)
   const [page, setPage] = useState(1)
 
 
   const changePage = async (value: number) => {
     setPage(value)
     const pageData = await coinMarkets({ slug: item.id, limit: 10, offset: value - 1 })
-    steMarketList(pageData.tickers)
+    steMarketList(pageData)
   }
 
   const rangeSupply = () => {
@@ -41,7 +41,7 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
     return ''
   }
   return (
-    <PageMeta title={item.name}>
+    item && <PageMeta title={item.name}>
       <PageLayout>
         <Container variant='main'>
           <HStack spacing={14} overflowX='auto' whiteSpace='nowrap' pb={3}>
@@ -54,7 +54,7 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
                   <Image
                     priority
                     loader={exportableLoader}
-                    src={item.icon}
+                    src={item.icon || '/'}
                     alt='icon'
                     layout='fill'
                     unoptimized
@@ -463,7 +463,7 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
               )}
 
             </HStack>
-            {marketList.map((el, i) => (
+            {markets && marketList.tickers.length && marketList.tickers.map((el, i) => (
               <Container variant='list_item' key={i} minW={1000} whiteSpace='nowrap'>
                 <Text size='sm' textAlign='start' w='4%' position='sticky' zIndex={20} >{i + 1}</Text>
                 <HStack w='20%'>
