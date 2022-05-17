@@ -3,11 +3,13 @@ import {
   Button, CloseButton, Container, Drawer, DrawerBody, DrawerContent, DrawerOverlay,
   Flex, HStack, Portal, useDisclosure, useMediaQuery,
 } from '@chakra-ui/react'
+import { Hub } from 'aws-amplify'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { FC, useCallback, useState } from 'react'
+import { FC, useCallback, useEffect, useState } from 'react'
 import { exportableLoader } from '../../image-loader'
+import { getUser, logOut } from '../../services'
 import Login from '../Login'
 import MenuBar from './MenuBar'
 import Search from './Search'
@@ -18,6 +20,7 @@ const HeaderNav: FC = () => {
   const [isMenu, setIsMenu] = useState(true)
   const [isOpenLogin, setIsOpenLogin] = useState(false)
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const [user, setUser] = useState<any | null>()
 
   const onOpenDrawer = (menu: boolean) => {
     setIsMenu(menu)
@@ -25,6 +28,27 @@ const HeaderNav: FC = () => {
   }
   const onCloseLogin = useCallback(() => setIsOpenLogin(false), [])
 
+  const handleLogOut = async () => {
+    await logOut()
+    await setUser(null)
+  }
+
+  useEffect(() => {
+    const unsubscribe = Hub.listen('auth', ({ payload: { event, data } }) => {
+      switch (event) {
+        case 'signIn':
+          setUser(data)
+          break
+        case 'signOut':
+          setUser(null)
+          break
+      }
+    })
+    getUser()
+      .then(currentUser => setUser(currentUser))
+      .catch(() => console.log('Not signed in'))
+    return unsubscribe
+  }, [])
   return (
     <>
       <Portal>
@@ -53,19 +77,27 @@ const HeaderNav: FC = () => {
               && <MenuBar direction='row' />}
           </Flex>
           <HStack spacing={7}>
-            {isBrowser
-              && (
-                <Button variant='link' onClick={() => setIsOpenLogin(true)}>
-                  Log in
-                </Button>
-              )}
-            <Button
-              size={isBrowser ? 'md' : 'sm'}
-              py={isBrowser ? 2 : 1}
-              onClick={() => router.push('/signup')}
-            >
-              Sign up
-            </Button>
+            {isBrowser && !user &&
+              <Button
+                variant='link'
+                onClick={() => setIsOpenLogin(true)}>
+                Log in
+              </Button>}
+            {!!user ?
+              <Button
+                size={isBrowser ? 'md' : 'sm'}
+                py={isBrowser ? 2 : 1}
+                onClick={() => handleLogOut()}>
+                Log out
+              </Button>
+              :
+              <Button
+                size={isBrowser ? 'md' : 'sm'}
+                py={isBrowser ? 2 : 1}
+                onClick={() => router.push('/signup')}
+              >
+                Sign up
+              </Button>}
           </HStack>
         </Container>
         <Drawer placement='top' size={isMenu ? '' : 'full'} onClose={onClose} isOpen={isOpen}>
