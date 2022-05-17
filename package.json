@@ -13,6 +13,7 @@
   "author": "Andrej Novikov (jazzaiman@gmail.com)",
   "private": true,
   "dependencies": {
+    "@aws-amplify/auth": "^4.5.4",
     "@chakra-ui/icons": "^1.1.7",
     "@chakra-ui/react": "^1.8.5",
     "@chakra-ui/theme": "^1.14.0",
