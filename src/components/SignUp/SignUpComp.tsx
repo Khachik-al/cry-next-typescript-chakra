@@ -48,7 +48,7 @@ const SignUpComp: FC<Props> = () => {
         return (
           <>
             <FlowHighlights flow={query.flow} />
-            <Flow3 />
+            <Flow3 state={state} />
           </>
         )
       case '4':

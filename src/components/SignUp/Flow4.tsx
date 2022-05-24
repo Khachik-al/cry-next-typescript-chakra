@@ -1,12 +1,11 @@
 import {
   Box,
-  Button, Flex, Heading, Input, Text, VStack,
+  Button, Flex, Heading, Input, Text, useToast, VStack,
 } from '@chakra-ui/react'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
 import React, { FC, useCallback, useState } from 'react'
 import { exportableLoader } from '../../image-loader'
-import { verifyCode } from '../../services'
+import { resendCode } from '../../services'
 import Login from '../Login'
 
 interface Props {
@@ -24,13 +23,16 @@ interface Props {
 }
 
 const Flow4: FC<Props> = ({ state }) => {
-  const router = useRouter()
+  const toast = useToast()
   const [verificationCode, setVerificationCode] = useState('')
   const [isOpenLogin, setIsOpenLogin] = useState(false)
   const onCloseLogin = useCallback(() => setIsOpenLogin(false), [])
 
   const handleConfirmSignUp = async () => {
-    await verifyCode({ type: 'ConfirmSignUp', email: state.email, code: verificationCode, router })
+    await resendCode({ email: state.email })
+      .catch(({ message }) => {
+        toast({ position: 'top-right', title: `${message}`, status: 'error', isClosable: true })
+      })
   }
   return (
     <>

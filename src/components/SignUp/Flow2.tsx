@@ -1,16 +1,14 @@
-import { CognitoHostedUIIdentityProvider } from '@aws-amplify/auth'
 import { ChevronRightIcon, ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
 import {
-  Text, Input, Box, Select, Flex, Button, Stack, Heading, VStack, Show, InputGroup, InputRightElement, Skeleton,
+  Text, Input, Box, Select, Flex, Button, Stack, Heading, VStack, Show, InputGroup, InputRightElement, Skeleton, FormErrorMessage,
 } from '@chakra-ui/react'
-import { Auth } from 'aws-amplify'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import {
   ChangeEvent, FC, FormEvent, useState,
 } from 'react'
 import { exportableLoader } from '../../image-loader'
-import { signUp } from '../../services'
+import { federatedSignIn } from '../../services'
 import PasswordStrength from '../PasswordStrength'
 interface Props {
   state: {
@@ -33,9 +31,13 @@ const Flow2: FC<Props> = ({ state, handleChange }) => {
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    await signUp({ email: state.email, password: state.password, router })
+    if (state.email && state.password && state.full_name) {
+      router.push('/signup?flow=3')
+    }
   }
-
+  const googleSignin = async () => {
+    federatedSignIn()
+  }
   return (
     <>
       <VStack spacing={4} mt={4} textAlign='center'>
@@ -46,7 +48,7 @@ const Flow2: FC<Props> = ({ state, handleChange }) => {
           </Text>
         </Show>
         <Button variant='outline' color='secondary_text' w={['full', 'auto']}>
-          <Box onClick={() => Auth.federatedSignIn({ provider: CognitoHostedUIIdentityProvider.Google })}>
+          <Box onClick={googleSignin}>
             Sign up with Google
             {' '}
             <Image loader={exportableLoader} src='/assets/img/google.svg' alt='icon' height={16} width={17} />
@@ -63,6 +65,7 @@ const Flow2: FC<Props> = ({ state, handleChange }) => {
               name='full_name'
               type='text'
               onChange={handleChange}
+              value={state.full_name}
               placeholder='Name Surname'
             />
             <Text variant='label_input'>Email Address</Text>
@@ -73,6 +76,7 @@ const Flow2: FC<Props> = ({ state, handleChange }) => {
               onChange={handleChange}
               value={state.email}
             />
+            <FormErrorMessage>Email is required.</FormErrorMessage>
             <Text variant='label_input'>Password</Text>
             <InputGroup>
               <Input
@@ -148,7 +152,6 @@ const Flow2: FC<Props> = ({ state, handleChange }) => {
           </Button>
         </Flex>
       </form>
-
     </>
   )
 }

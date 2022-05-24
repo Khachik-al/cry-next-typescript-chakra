@@ -1,5 +1,6 @@
+import { CognitoHostedUIIdentityProvider } from '@aws-amplify/auth'
 import { Auth } from 'aws-amplify'
-import { NextRouter } from 'next/router'
+
 
 export const nftList = async ({ offset, limit, sort, order }: { offset: number, limit: number, sort: string, order: string }) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_CRYPTOGIC_API}/section/nft?offset=${offset}&limit=${limit}&sort=${sort}&order=${order}`)
@@ -111,45 +112,36 @@ export const exchangeMarket = async ({ slug, limit, offset }: { slug: string, li
   return null
 }
 
-export const signUp = async ({ email, password, router }: { email: string, password: string, router: NextRouter }) => {
-  try {
-    await Auth.signUp({
-      username: email,
-      password,
-      attributes: { email },
-    })
-    await router.push('/signup?flow=4')
-  } catch (e) {
-    console.log(e)
+export const signUp = ({ username, email, password }: { username: string, email: string, password: string }) => {
+  return Auth.signUp({
+    username: username,
+    password,
+    attributes: { email },
+  })
+}
+
+export const verifyCode = ({ type, email, code, newPassword }: { type: string, email: string, code: string, newPassword?: string }) => {
+  if (type === 'ForgotPasswordSubmit' && newPassword) {
+    return Auth.forgotPasswordSubmit(email, code, newPassword)
+  } else {
+    return Auth.confirmSignUp(email, code)
   }
 }
 
-export const verifyCode = async ({ type, email, code, newPassword, router }: { type: string, email: string, code: string, newPassword?: string, router: NextRouter }) => {
-  try {
-    if (type === 'ConfirmSignUp') {
-      await Auth.confirmSignUp(email, code).then(() => router.push('/'))
-    } else if (type === 'ForgotPasswordSubmit' && newPassword) {
-      await Auth.forgotPasswordSubmit(email, code, newPassword)
-    }
-  } catch (e) {
-    console.log(e)
-  }
+export const resendCode = ({ email }: { email: string }) => {
+  return Auth.resendSignUp(email)
 }
 
-export const signIn = async ({ email, password }: { email: string, password: string }) => {
-  try {
-    await Auth.signIn(email, password)
-  } catch (e) {
-    console.log(e)
-  }
+export const signIn = ({ email, password }: { email: string, password: string }) => {
+  return Auth.signIn(email, password)
+}
+
+export const federatedSignIn = () => {
+  Auth.federatedSignIn({ provider: CognitoHostedUIIdentityProvider.Google })
 }
 
 export const logOut = async () => {
-  try {
-    await Auth.signOut()
-  } catch (e) {
-    console.log(e)
-  }
+  return Auth.signOut()
 }
 
 export const forgotPassword = (email: any) => {

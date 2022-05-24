@@ -1,6 +1,6 @@
 import {
   Button, Checkbox, Divider, Flex, Input,
-  Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Text,
+  Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Text, useToast,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { FC, useState } from 'react'
@@ -13,13 +13,18 @@ interface Props {
 
 const Login: FC<Props> = ({ isOpen, onClose }) => {
   const router = useRouter()
+  const toast = useToast()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleSignUp = async () => {
-    await signIn({ email, password })
-    await onClose()
+  const handleSignIn = () => {
+    signIn({ email, password })
+      .then(onClose)
+      .catch(({ message }) => {
+        toast({ position: 'top-right', title: `${message}`, status: 'error', isClosable: true })
+      })
   }
+
   return (
     <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -59,7 +64,7 @@ const Login: FC<Props> = ({ isOpen, onClose }) => {
               Forgot password?
             </Text>
           </Flex>
-          <Button w='full' my={4} onClick={() => handleSignUp()}>Log in</Button>
+          <Button w='full' my={4} onClick={handleSignIn}>Log in</Button>
           <Divider />
           <Button w='full' variant='outline' color='secondary_text' my={4}>Log in with Google</Button>
           <Text textAlign='center' mt={4}>

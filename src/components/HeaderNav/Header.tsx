@@ -1,7 +1,6 @@
 import {
-  Box,
-  Button, CloseButton, Container, Drawer, DrawerBody, DrawerContent, DrawerOverlay,
-  Flex, HStack, Portal, useDisclosure, useMediaQuery,
+  Box, Button, CloseButton, Container, Drawer, DrawerBody, DrawerContent, DrawerOverlay,
+  Flex, HStack, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Portal, useDisclosure, useMediaQuery, useToast,
 } from '@chakra-ui/react'
 import { Hub } from 'aws-amplify'
 import Image from 'next/image'
@@ -15,6 +14,7 @@ import MenuBar from './MenuBar'
 import Search from './Search'
 
 const HeaderNav: FC = () => {
+  const toast = useToast()
   const router = useRouter()
   const [isBrowser] = useMediaQuery('(min-width: 1110px)')
   const [isMenu, setIsMenu] = useState(true)
@@ -30,7 +30,10 @@ const HeaderNav: FC = () => {
 
   const handleLogOut = async () => {
     await logOut()
-    await setUser(null)
+      .then(() => setUser(null))
+      .catch(({ message }) => {
+        toast({ position: 'top-right', title: `${message}`, status: 'error', isClosable: true })
+      })
   }
 
   useEffect(() => {
@@ -44,9 +47,7 @@ const HeaderNav: FC = () => {
           break
       }
     })
-    getUser()
-      .then(currentUser => setUser(currentUser))
-      .catch(() => console.log('Not signed in'))
+    getUser().then(currentUser => setUser(currentUser))
     return unsubscribe
   }, [])
   return (
@@ -84,12 +85,27 @@ const HeaderNav: FC = () => {
                 Log in
               </Button>}
             {!!user ?
-              <Button
-                size={isBrowser ? 'md' : 'sm'}
-                py={isBrowser ? 2 : 1}
-                onClick={() => handleLogOut()}>
-                Log out
-              </Button>
+              <Menu>
+                <MenuButton>
+                  <HStack>
+                    <Box>{user.username.slice(0, 10)}</Box>
+                    <Box>
+                      <Image
+                        loader={exportableLoader}
+                        src={'/assets/img/user_icon.svg'}
+                        alt='user icon'
+                        width={40}
+                        height={40}
+                      />
+                    </Box>
+                  </HStack>
+                </MenuButton>
+                <MenuList>
+                  <MenuItem>User account</MenuItem>
+                  <MenuDivider />
+                  <MenuItem onClick={handleLogOut}>Log out</MenuItem>
+                </MenuList>
+              </Menu>
               :
               <Button
                 size={isBrowser ? 'md' : 'sm'}
