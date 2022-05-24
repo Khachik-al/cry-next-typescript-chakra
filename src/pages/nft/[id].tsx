@@ -73,10 +73,10 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
             <Container variant='itemInfo'>
               <Text pb={2} size='sm' color='secondary_text'>Floor Price</Text>
               <Text lineHeight={1} size='lg' fontWeight='extrabold'>
-                {item.floorPriceEth === null ? '---' : Number(item.floorPriceEth.toFixed(2)) + ' ETH'}
+                {!item.floorPriceEth ? '---' : Number(item.floorPriceEth.toFixed(2)) + ' ETH'}
               </Text>
               <Text size='md' color='secondary_text'>
-                {item.floorPriceUsd === null ? '---' : '$' + Number(item.floorPriceUsd.toFixed(2))}
+                {!item.floorPriceUsd ? '---' : '$' + Number(item.floorPriceUsd.toFixed(2))}
               </Text>
             </Container>
             <Container variant='itemInfo' pb={3.5}>
@@ -86,34 +86,34 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
             <Container variant='itemInfo'>
               <Text pb={2} size='sm' color='secondary_text'>Market Cap</Text>
               <Text lineHeight={1} size='lg' fontWeight='extrabold'>
-                {item.marketCapEth === null ? '---' : Number(item.marketCapEth.toFixed(2)) + ' ETH'}
+                {!item.marketCapEth ? '---' : Number(item.marketCapEth.toFixed(2)) + ' ETH'}
               </Text>
               <Text pb={6} size='md' color='secondary_text'>
-                {item.marketCapUsd === null ? '---' : '$' + Number(item.marketCapUsd.toFixed(2))}
+                {!item.marketCapUsd ? '---' : '$' + Number(item.marketCapUsd.toFixed(2))}
               </Text>
             </Container>
             <Container variant='itemInfo'>
               <Text pb={2} size='sm' color='secondary_text'>24h Volume</Text>
               <Text lineHeight={1} size='lg' fontWeight='extrabold'>
-                {item.volumeChange24hEth === null ? '---' : Number(item.volumeChange24hEth.toFixed(2)) + ' ETH'}
+                {!item.volumeChange24hEth ? '---' : Number(item.volumeChange24hEth.toFixed(2)) + ' ETH'}
               </Text>
               <Text size='md' color='secondary_text'>
-                {item.volumeChange24hUsd === null ? '---' : '$' + Number(item.volumeChange24hUsd.toFixed(2))}
+                {!item.volumeChange24hUsd ? '---' : '$' + Number(item.volumeChange24hUsd.toFixed(2))}
               </Text>
               <Text size='md' color='primary.100'>
-                {item.volumeChange24hEth === null ? '---' : Number(item.volumeChange24hEth.toFixed(2))}
+                {!item.volumeChange24hEth ? '---' : Number(item.volumeChange24hEth.toFixed(2))}
               </Text>
             </Container>
             <Container variant='itemInfo'>
               <Text pb={2} size='sm' color='secondary_text'>Owners</Text>
               <Text pb={4} lineHeight={1} size='lg' fontWeight='extrabold'>
-                {item.ownersCount === null ? '---' : item.ownersCount}
+                {!item.ownersCount ? '---' : item.ownersCount}
               </Text>
             </Container>
             <Container variant='itemInfo' border='none'>
               <Text pb={2} size='sm' color='secondary_text'>Items</Text>
               <Text pb={4} lineHeight={1} size='lg' fontWeight='extrabold'>
-                {item.itemsCount === null ? '---' : item.itemsCount}
+                {!item.itemsCount ? '---' : item.itemsCount}
               </Text>
             </Container>
           </HStack>
@@ -121,39 +121,39 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
             <Container variant='itemInfo' pl={0} pr={10} display='flex'>
               <Text pb={2} size='sm' color='secondary_text'>24h Volume</Text>
               <Text lineHeight={1} size='lg' fontWeight='extrabold'>
-                {item.volumeChange24hEth === null ? '---' : Number(item.volumeChange24hEth.toFixed(2)) + ' ETH'}
+                {!item.volumeChange24hEth ? '---' : Number(item.volumeChange24hEth.toFixed(2)) + ' ETH'}
               </Text>
               <Text size='md' color='secondary_text'>
-                {item.volumeChange24hUsd === null ? '---' : '$' + Number(item.volumeChange24hUsd.toFixed(2))}
+                {!item.volumeChange24hUsd ? '---' : '$' + Number(item.volumeChange24hUsd.toFixed(2))}
               </Text>
               <Text pb={3} size='md' color='primary.100'>
-                {item.volumeChange24hEth === null ? '---' : Number(item.volumeChange24hEth.toFixed(2))}
+                {!item.volumeChange24hEth ? '---' : Number(item.volumeChange24hEth.toFixed(2))}
               </Text>
               <Text pb={2} size='sm' color='secondary_text'>24h %</Text>
               <UpDownPercent fontSize={16} value={item.volumeChangePercent24h} boxSize={3} />
               <Text pt={3.5} pb={2} size='sm' color='secondary_text'>Market Cap</Text>
               <Text lineHeight={1} size='lg' fontWeight='extrabold'>
-                {item.marketCapEth === null ? '---' : Number(item.marketCapEth.toFixed(2)) + ' ETH'}
+                {!item.marketCapEth ? '---' : Number(item.marketCapEth.toFixed(2)) + ' ETH'}
               </Text>
               <Text pb={3} size='md' color='secondary_text'>
-                {item.marketCapUsd === null ? '---' : '$' + Number(item.marketCapUsd.toFixed(2))}
+                {!item.marketCapUsd ? '---' : '$' + Number(item.marketCapUsd.toFixed(2))}
               </Text>
             </Container>
             <VStack align='start' pl={3}>
               <Text pb={2} size='sm' color='secondary_text'>Floor Price</Text>
               <Text lineHeight={1} size='lg' fontWeight='extrabold'>
-                {item.floorPriceEth === null ? '---' : (item.floorPriceEth.toFixed(2) + ' ETH')}
+                {!item.floorPriceEth ? '---' : (item.floorPriceEth.toFixed(2) + ' ETH')}
               </Text>
               <Text size='md' color='secondary_text'>
-                {item.floorPriceUsd === null ? '---' : ('$' + item.floorPriceUsd.toFixed(2))}
+                {!item.floorPriceUsd ? '---' : ('$' + item.floorPriceUsd.toFixed(2))}
               </Text>
               <Text pb={2} size='sm' color='secondary_text'>Owners</Text>
               <Text pb={4} lineHeight={1} size='lg' fontWeight='extrabold'>
-                {item.ownersCount === null ? '---' : item.ownersCount}
+                {!item.ownersCount ? '---' : item.ownersCount}
               </Text>
               <Text pb={2} size='sm' color='secondary_text'>Items</Text>
               <Text lineHeight={1} size='lg' fontWeight='extrabold'>
-                {item.itemsCount === null ? '---' : item.itemsCount}
+                {!item.itemsCount ? '---' : item.itemsCount}
               </Text>
             </VStack>
           </HStack>
@@ -241,10 +241,10 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
                 </HStack>
                 <VStack w='25%' spacing={0.5} align='end'>
                   <Text variant='list_text'>
-                    {el.price_eth === null ? '---' : Number(el.price_eth.toFixed(2)) + ' ETH'}
+                    {!el.price_eth ? '---' : Number(el.price_eth.toFixed(2)) + ' ETH'}
                   </Text>
                   <Text color='secondary_text' size='xs'>
-                    {el.price_usd === null ? '---' : '$' + Number(el.price_usd.toFixed(2))}
+                    {!el.price_usd ? '---' : '$' + Number(el.price_usd.toFixed(2))}
                   </Text>
                 </VStack>
               </Container>
@@ -254,14 +254,14 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
             <HStack>
               <Button
                 onClick={() => changePage(Path.previous)}
-                isDisabled={marketplaceList.previous === null}
+                isDisabled={!marketplaceList.previous}
                 size='xs'
               >
                 {'<'}
               </Button>
               <Button
                 onClick={() => changePage(Path.next)}
-                isDisabled={marketplaceList.next === null}
+                isDisabled={!marketplaceList.next}
                 size='xs'
               >
                 {'>'}
