@@ -1,0 +1,14 @@
+git:
+  tagName: v${version}
+  requireBranch: release
+  requireUpstream: false
+  commit: true
+  tag: true
+  push: true
+github:
+  release: true
+plugins:
+  "@release-it/keep-a-changelog":
+    filename: "CHANGELOG.md"
+npm:
+  publish: false
