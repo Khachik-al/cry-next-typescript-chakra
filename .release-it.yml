@@ -16,5 +16,13 @@ plugins:
         section: Features
       - type: fix
         section: Bug Fixes
+      - type: build
+        section: Refactoring
+      - type: refactor
+        section: Refactoring
+      - type: style
+        hidden: true
+      - type: chore
+        hidden: true
 npm:
   publish: false
