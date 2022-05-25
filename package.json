@@ -8,7 +8,8 @@
     "export": "next export",
     "optimize": "node scripts/optimize.mjs",
     "start": "next start",
-    "lint": "eslint . --ext .ts,.tsx"
+    "lint": "eslint . --ext .ts,.tsx",
+    "release": "release-it"
   },
   "author": "Andrej Novikov (jazzaiman@gmail.com)",
   "private": true,
