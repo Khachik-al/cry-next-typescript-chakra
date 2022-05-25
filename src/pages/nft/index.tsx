@@ -35,15 +35,16 @@ interface Props {
 }
 
 const Nfts: NextPage<Props> = ({ data }) => {
-  const [list, setList] = useState(data.items)
+  const [list, setList] = useState(data)
   const [page, setPage] = useState(1)
 
 
   const changePage = async (value: number) => {
     setPage(value)
     const pageData = await nftList({ offset: value - 1, limit: 10, sort: 'rank', order: 'asc' })
-    setList(pageData.items)
+    setList(pageData)
   }
+  
   return (
     <PageMeta title='Nfts'>
       <PageLayout>
@@ -82,7 +83,7 @@ const Nfts: NextPage<Props> = ({ data }) => {
                 </Text>,
               )}
             </HStack>
-            {list.map((el, i) => (
+            {list && list.items.map((el, i) => (
               <Container variant='list_item' key={i} minW={1000}>
                 <Text size='sm' textAlign='start' w='4%' position='sticky' zIndex={20} >{el.rank}</Text>
                 <HStack w={['20%', '30%']}>
@@ -157,7 +158,7 @@ const Nfts: NextPage<Props> = ({ data }) => {
               pageSize={10}
               changePage={changePage}
               current={page}
-              total={data.count}
+              total={list ? list.count : 0}
             />
           </Container>
         </Container>

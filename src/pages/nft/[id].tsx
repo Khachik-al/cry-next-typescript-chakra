@@ -285,7 +285,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const data = await nftAll()
 
-  const paths = data.items.map((el: NFTMarketItem) => ({
+  const paths = data.map((el: NFTMarketItem) => ({
     params: { id: el.slug },
   }))
 

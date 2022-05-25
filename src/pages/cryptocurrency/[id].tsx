@@ -524,7 +524,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const data = await coinAll()
 
-  const paths = data.items.map((el: CoinItem) => ({
+  const paths = data.map((el: CoinItem) => ({
     params: { id: el.id },
   }))
 

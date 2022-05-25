@@ -158,7 +158,7 @@ const Cryptocurrency: NextPage<Props> = ({ data }) => {
               pageSize={10}
               changePage={changePage}
               current={page}
-              total={data.count}
+              total={list ? list.count : 0}
             />
           </Container>
         </Container>

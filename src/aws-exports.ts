@@ -12,6 +12,7 @@ const awsExports = {
     redirectSignOut: 'http://localhost:3000/',
     responseType: 'code',
   },
+  ssr: true, 
 }
 
 export default awsExports
