@@ -8,7 +8,8 @@ git:
 github:
   release: true
 plugins:
-  "@release-it/keep-a-changelog":
-    filename: "CHANGELOG.md"
+  "@release-it/conventional-changelog":
+    infile: CHANGELOG.md
+    preset: conventionalcommits
 npm:
   publish: false
