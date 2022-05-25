@@ -16,10 +16,12 @@ plugins:
         section: Features
       - type: fix
         section: Bug Fixes
-      - type: build
-        section: Refactoring
       - type: refactor
-        section: Refactoring
+        section: Other
+      - type: build
+        section: Other
+      - type: refactor
+        section: Other
       - type: style
         hidden: true
       - type: chore
