@@ -1,5 +1,5 @@
 export type CoinItem = {
-  rank: number | null;
+  rank: number;
   id: string;
   icon: string;
   name: string;
@@ -14,7 +14,7 @@ export type CoinItem = {
   circulatingSupplyChangePercent24h: number;
   totalSupply: number;
   maxSupply: number;
-  fullyDiluted: number | null;
+  fullyDiluted: number;
   fullyDilutedChangePercent24h: number;
   volumeMarketCapRatio: number;
   low24h: number;
@@ -29,15 +29,15 @@ export type CoinItem = {
 export type CoinMarkets = {
   tickers: {
     id: string;
-    liquidity: number | null;
+    liquidity: number;
     logo: string;
     minus2Depth: number;
     pair: string;
     plus2Depth: number;
     price: number;
-    rank: number | null;
+    rank: number;
     source: string;
     volume24h: number;
-    volume24hPercent: number | null;
+    volume24hPercent: number;
   }[]
 }

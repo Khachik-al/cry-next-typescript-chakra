@@ -20,9 +20,9 @@ export const nftAll = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_CRYPTOGIC_API}/section/nft?limit=2000`)
   if (res.status === 200) {
     const { data } = await res.json()
-    return data
+    return data.items
   }
-  return null
+  return []
 }
 
 export const nftMarketplace = async ({ slug, limit, offset }: { slug: string, limit: number, offset: string }) => {
@@ -57,9 +57,9 @@ export const coinAll = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_CRYPTOGIC_API}/section/token?limit=250`)
   if (res.status === 200) {
     const { data } = await res.json()
-    return data
+    return data.items
   }
-  return null
+  return []
 }
 
 export const coinMarkets = async ({ slug, limit, offset }: { slug: string, limit: number, offset: number }) => {

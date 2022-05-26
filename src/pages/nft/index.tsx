@@ -35,14 +35,14 @@ interface Props {
 }
 
 const Nfts: NextPage<Props> = ({ data }) => {
-  const [list, setList] = useState(data.items)
+  const [list, setList] = useState(data)
   const [page, setPage] = useState(1)
 
 
   const changePage = async (value: number) => {
     setPage(value)
     const pageData = await nftList({ offset: value - 1, limit: 10, sort: 'rank', order: 'asc' })
-    setList(pageData.items)
+    setList(pageData)
   }
   return (
     <PageMeta title='Nfts'>
@@ -82,7 +82,7 @@ const Nfts: NextPage<Props> = ({ data }) => {
                 </Text>,
               )}
             </HStack>
-            {list.map((el, i) => (
+            {list && list.items.map((el, i) => (
               <Container variant='list_item' key={i} minW={1000}>
                 <Text size='sm' textAlign='start' w='4%' position='sticky' zIndex={20} >{el.rank}</Text>
                 <HStack w={['20%', '30%']}>
@@ -105,23 +105,23 @@ const Nfts: NextPage<Props> = ({ data }) => {
                 <Flex justify='center' w='10%'>
                   <Center borderRadius='2xl' bg='blue.100' p={2}>
                     <Text variant='list_text' fontWeight='medium'>
-                      {el.fundamentalRating === null ? '--' : Number(el.fundamentalRating.toFixed(2))}
+                      {!el.fundamentalRating ? '--' : Number(el.fundamentalRating.toFixed(2))}
                     </Text>
                   </Center>
                 </Flex>
                 <Flex justify='center' w='10%'>
                   <Center borderRadius='2xl' bg='blue.100' p={2}>
                     <Text variant='list_text' fontWeight='medium'>
-                      {el.technicalRating === null ? '--' : Number(el.technicalRating.toFixed(2))}
+                      {!el.technicalRating ? '--' : Number(el.technicalRating.toFixed(2))}
                     </Text>
                   </Center>
                 </Flex>
                 <VStack w='10%' align='end' spacing={0.5}>
                   <Text variant='list_text'>
-                    {el.floorPriceEth === null ? '---' : Number(el.floorPriceEth.toFixed(2)).toLocaleString() + ' ETH'}
+                    {!el.floorPriceEth ? '---' : Number(el.floorPriceEth.toFixed(2)).toLocaleString() + ' ETH'}
                   </Text>
                   <Text color='secondary_text' size='xs'>
-                    {el.floorPriceUsd === null ? '---' : '$' + Number(el.floorPriceUsd.toFixed(2)).toLocaleString()}
+                    {!el.floorPriceUsd ? '---' : '$' + Number(el.floorPriceUsd.toFixed(2)).toLocaleString()}
                   </Text>
                 </VStack>
                 <Text
@@ -130,24 +130,24 @@ const Nfts: NextPage<Props> = ({ data }) => {
                   w='9%'
                   color={el.volumeChangePercent24h < 0 ? 'danger' : 'primary.100'}
                 >
-                  {el.volumeChangePercent24h === null ? '---' : Number(el.volumeChangePercent24h.toFixed(2)) + ' %'}
+                  {!el.volumeChangePercent24h ? '---' : Number(el.volumeChangePercent24h.toFixed(2)) + ' %'}
                 </Text>
                 <VStack w='13%' align='end' spacing={0.5}>
                   <Text variant='list_text'>
-                    {el.marketCapEth === null ? '---' : Number(el.marketCapEth.toFixed(2)).toLocaleString() + ' ETH'}
+                    {!el.marketCapEth ? '---' : Number(el.marketCapEth.toFixed(2)).toLocaleString() + ' ETH'}
                   </Text>
                   <Text color='secondary_text' size='xs'>
-                    {el.marketCapUsd === null ? '---' : '$' + Number(el.marketCapUsd.toFixed(2)).toLocaleString()}
+                    {!el.marketCapUsd ? '---' : '$' + Number(el.marketCapUsd.toFixed(2)).toLocaleString()}
                   </Text>
                 </VStack>
                 <Text variant='list_text' textAlign='end' w='12%'>
-                  {el.volumeChange24hEth === null ? '---' : Number(el.volumeChange24hEth.toFixed(2)).toLocaleString() + ' ETH'}
+                  {!el.volumeChange24hEth ? '---' : Number(el.volumeChange24hEth.toFixed(2)).toLocaleString() + ' ETH'}
                 </Text>
                 <Text variant='list_text' textAlign='end' w='9%'>
-                  {el.ownersCount === null ? '---' : el.ownersCount.toLocaleString()}
+                  {!el.ownersCount ? '---' : el.ownersCount.toLocaleString()}
                 </Text>
                 <Text variant='list_text' textAlign='end' w='9%'>
-                  {el.itemsCount === null ? '---' : el.itemsCount.toLocaleString()}
+                  {!el.itemsCount ? '---' : el.itemsCount.toLocaleString()}
                 </Text>
               </Container>
             ))}
@@ -157,7 +157,7 @@ const Nfts: NextPage<Props> = ({ data }) => {
               pageSize={10}
               changePage={changePage}
               current={page}
-              total={data.count}
+              total={list ? list.count : 0}
             />
           </Container>
         </Container>
