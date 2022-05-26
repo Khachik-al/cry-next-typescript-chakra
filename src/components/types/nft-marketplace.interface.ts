@@ -30,6 +30,6 @@ export type Marketplace = {
       value: string;
     }[]
   }[];
-  next: string | null;
-  previous: string | null;
+  next: string;
+  previous: string;
 }
