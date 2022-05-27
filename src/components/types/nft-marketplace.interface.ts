@@ -19,7 +19,7 @@ export type NFTMarketItem = {
 export type Marketplace = {
   assets: {
     address: string;
-    img_url: string;
+    imgUrl: string;
     name: string;
     permalink: string;
     price_eth: number;

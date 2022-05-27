@@ -222,7 +222,7 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
               <Container variant='list_item' key={i} minW={800}>
                 <HStack w='75%' spacing={5}>
                   <Box minW={68} minH={68} position='relative' borderRadius='lg' overflow='hidden'>
-                    <Image loader={exportableLoader} src={el.img_url || '/'} alt='icon' layout='fill' unoptimized />
+                    <Image loader={exportableLoader} src={el.imgUrl || '/'} alt='icon' layout='fill' unoptimized />
                   </Box>
                   <VStack align='start'>
                     <Link href={el.permalink} passHref>
