@@ -41,7 +41,7 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
     return ''
   }
   return (
-    item && <PageMeta title={item.name}>
+    item && <PageMeta title={item.name || ''}>
       <PageLayout>
         <Container variant='main'>
           <HStack spacing={14} overflowX='auto' whiteSpace='nowrap' pb={3}>
@@ -180,14 +180,14 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
                 <VStack align='start' pb={10}>
                   <Text size='sm' color='secondary_text'>Market Cap</Text>
                   <Text size='sm' fontWeight='extrabold'>
-                    {item.marketCap === null ? '---' : '$' + Number(item.marketCap.toFixed(2)).toLocaleString()}
+                    {!item.marketCap ? '---' : '$' + Number(item.marketCap.toFixed(2)).toLocaleString()}
                   </Text>
                   <UpDownPercent fontSize={12} value={item.marketCapChangePercent24h} boxSize={2.5} />
                 </VStack>
                 <VStack align='start'>
                   <Text size='sm' color='secondary_text'>Fully Diluted Market Cap</Text>
                   <Text size='sm' fontWeight='extrabold'>
-                    {item.fullyDiluted === null ? '---' : '$' + Number(item.fullyDiluted.toFixed(2)).toLocaleString()}
+                    {!item.fullyDiluted ? '---' : '$' + Number(item.fullyDiluted.toFixed(2)).toLocaleString()}
                   </Text>
                   <UpDownPercent fontSize={12} value={item.fullyDilutedChangePercent24h} boxSize={2.5} />
                 </VStack>
@@ -196,14 +196,14 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
                 <VStack align='start' pb={10}>
                   <Text size='sm' color='secondary_text'>Volume 24h</Text>
                   <Text size='sm' fontWeight='extrabold'>
-                    {item.volume24h === null ? '---' : '$' + Number(item.volume24h.toFixed(2)).toLocaleString()}
+                    {!item.volume24h ? '---' : '$' + Number(item.volume24h.toFixed(2)).toLocaleString()}
                   </Text>
                   <UpDownPercent fontSize={12} value={item.priceChangePercent24h} boxSize={2.5} />
                 </VStack>
                 <VStack align='start'>
                   <Text size='sm' color='secondary_text'>Volume / Market Cap</Text>
                   <Text size='sm' fontWeight='extrabold'>
-                    {item.volumeMarketCapRatio === null ? '---' : '$' + Number(item.volumeMarketCapRatio.toFixed(2)).toLocaleString()}
+                    {!item.volumeMarketCapRatio ? '---' : '$' + Number(item.volumeMarketCapRatio.toFixed(2)).toLocaleString()}
                   </Text>
                 </VStack>
               </Container>
@@ -213,7 +213,7 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
                   <Box w='full'>
                     <Flex justify='space-between'>
                       <Text size='sm' fontWeight='extrabold'>
-                        {item.circulatingSupply === null ? '---' : '$' + Number(item.circulatingSupply.toFixed(2)).toLocaleString()}
+                        {!item.circulatingSupply ? '---' : '$' + Number(item.circulatingSupply.toFixed(2)).toLocaleString()}
                       </Text>
                       {rangeSupply() && <Text size='sm' fontWeight='extrabold' color='secondary_text'>{rangeSupply()}%</Text>}
                     </Flex>
@@ -224,13 +224,13 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
                 <Flex justify='space-between' mb={2}>
                   <Text size='sm' color='secondary_text'>Total Supply</Text>
                   <Text size='sm' fontWeight='extrabold'>
-                    {item.totalSupply === null ? '---' : '$' + Number(item.totalSupply.toFixed(2)).toLocaleString()}
+                    {!item.totalSupply ? '---' : '$' + Number(item.totalSupply.toFixed(2)).toLocaleString()}
                   </Text>
                 </Flex>
                 <Flex justify='space-between'>
                   <Text size='sm' color='secondary_text'>Max Supply</Text>
                   <Text size='sm' fontWeight='extrabold'>
-                    {item.maxSupply === null ? '---' : '$' + Number(item.maxSupply.toFixed(2)).toLocaleString()}
+                    {!item.maxSupply ? '---' : '$' + Number(item.maxSupply.toFixed(2)).toLocaleString()}
                   </Text>
                 </Flex>
               </Container>
@@ -241,14 +241,14 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
               <VStack align='start' pb={5}>
                 <Text size='sm' color='secondary_text'>Market Cap</Text>
                 <Text size='sm' fontWeight='extrabold'>
-                  {item.marketCap === null ? '---' : '$' + Number(item.marketCap.toFixed(2)).toLocaleString()}
+                  {!item.marketCap ? '---' : '$' + Number(item.marketCap.toFixed(2)).toLocaleString()}
                 </Text>
                 <UpDownPercent fontSize={12} value={item.marketCapChangePercent24h} boxSize={2.5} />
               </VStack>
               <VStack align='start' pb={5}>
                 <Text size='sm' color='secondary_text'>Fully Diluted Market Cap</Text>
                 <Text size='sm' fontWeight='extrabold'>
-                  {item.fullyDiluted === null ? '---' : '$' + Number(item.fullyDiluted.toFixed(2)).toLocaleString()}
+                  {!item.fullyDiluted ? '---' : '$' + Number(item.fullyDiluted.toFixed(2)).toLocaleString()}
                 </Text>
                 <UpDownPercent fontSize={12} value={item.fullyDilutedChangePercent24h} boxSize={2.5} />
               </VStack>
@@ -257,7 +257,7 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
                 <Box w='full'>
                   <Flex justify='space-between'>
                     <Text size='sm' fontWeight='extrabold'>
-                      {item.circulatingSupply === null ? '---' : '$' + Number(item.circulatingSupply.toFixed(2)).toLocaleString()}
+                      {!item.circulatingSupply ? '---' : '$' + Number(item.circulatingSupply.toFixed(2)).toLocaleString()}
                     </Text>
                     {rangeSupply() && <Text size='sm' fontWeight='extrabold' color='secondary_text'>{rangeSupply()}%</Text>}
                   </Flex>
@@ -270,26 +270,26 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
               <VStack align='start' pb={4}>
                 <Text size='sm' color='secondary_text'>Volume 24h</Text>
                 <Text size='sm' fontWeight='extrabold'>
-                  {item.volume24h === null ? '---' : '$' + Number(item.volume24h.toFixed(2)).toLocaleString()}
+                  {!item.volume24h ? '---' : '$' + Number(item.volume24h.toFixed(2)).toLocaleString()}
                 </Text>
                 <UpDownPercent fontSize={12} value={item.priceChangePercent24h} boxSize={2.5} />
               </VStack>
               <VStack align='start' pb={2} spacing={1}>
                 <Text size='sm' color='secondary_text'>Volume / Market Cap</Text>
                 <Text size='sm' fontWeight='extrabold'>
-                  {item.volumeMarketCapRatio === null ? '---' : '$' + Number(item.volumeMarketCapRatio.toFixed(2)).toLocaleString()}
+                  {!item.volumeMarketCapRatio ? '---' : '$' + Number(item.volumeMarketCapRatio.toFixed(2)).toLocaleString()}
                 </Text>
               </VStack>
               <VStack align='start' pb={1} spacing={1}>
                 <Text size='sm' color='secondary_text'>Total Supply</Text>
                 <Text size='sm' fontWeight='extrabold'>
-                  {item.totalSupply === null ? '---' : '$' + Number(item.totalSupply.toFixed(2)).toLocaleString()}
+                  {!item.totalSupply ? '---' : '$' + Number(item.totalSupply.toFixed(2)).toLocaleString()}
                 </Text>
               </VStack>
               <VStack align='start' spacing={1}>
                 <Text size='sm' color='secondary_text'>Max Supply</Text>
                 <Text size='sm' fontWeight='extrabold'>
-                  {item.maxSupply === null ? '---' : '$' + Number(item.maxSupply.toFixed(2)).toLocaleString()}
+                  {!item.maxSupply ? '---' : '$' + Number(item.maxSupply.toFixed(2)).toLocaleString()}
                 </Text>
               </VStack>
             </VStack>
@@ -328,7 +328,7 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
               <Flex w='full' justify='space-between'>
                 <Text size='xs' fontWeight='extrabold' color='secondary_text'>Bitcoin Price</Text>
                 <Text size='xs' fontWeight='extrabold'>
-                  {item.price === null ? '---' : '$' + Number(item.price.toFixed(2)).toLocaleString()}
+                  {!item.price ? '---' : '$' + Number(item.price.toFixed(2)).toLocaleString()}
                 </Text>
               </Flex>
               <Divider borderWidth={1} color='grey.200' />
@@ -336,7 +336,7 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
                 <Text size='xs' color='secondary_text'>Price Change 24h</Text>
                 <VStack spacing={1} align='end'>
                   <Text size='xs' fontWeight='extrabold'>
-                    {item.price === null ? '---' : '$' + Number(item.volume24h.toFixed(2)).toLocaleString()}
+                    {!item.price ? '---' : '$' + Number(item.volume24h.toFixed(2)).toLocaleString()}
                   </Text>
                   <UpDownPercent fontSize={10} value={item.priceChangePercent24h} boxSize={2} />
                 </VStack>
@@ -346,10 +346,10 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
                 <Text size='xs' color='secondary_text'>24h Low / 24h High</Text>
                 <VStack spacing={1} align='end'>
                   <Text size='xs' fontWeight='extrabold'>
-                    {item.low24h === null ? '---' : '$' + Number(item.low24h.toFixed(2)).toLocaleString()}
+                    {!item.low24h ? '---' : '$' + Number(item.low24h.toFixed(2)).toLocaleString()}
                   </Text>
                   <Text size='xs' fontWeight='extrabold'>
-                    {item.high24h === null ? '---' : '$' + Number(item.high24h.toFixed(2)).toLocaleString()}
+                    {!item.high24h ? '---' : '$' + Number(item.high24h.toFixed(2)).toLocaleString()}
                   </Text>
                 </VStack>
               </Flex>
@@ -358,7 +358,7 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
                 <Text size='xs' color='secondary_text'>Trading Volume 24h</Text>
                 <VStack spacing={1} align='end'>
                   <Text size='xs' fontWeight='extrabold'>
-                    {item.volume24h === null ? '---' : '$' + Number(item.volume24h.toFixed(2)).toLocaleString()}
+                    {!item.volume24h ? '---' : '$' + Number(item.volume24h.toFixed(2)).toLocaleString()}
                   </Text>
                   <UpDownPercent fontSize={10} value={item.priceChangePercent24h} boxSize={2} />
                 </VStack>
@@ -367,14 +367,14 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
               <Flex w='full' justify='space-between' align='center'>
                 <Text size='xs' color='secondary_text'>Volume / Market Cap</Text>
                 <Text size='xs' fontWeight='extrabold'>
-                  {item.volumeMarketCapRatio === null ? '---' : Number(item.volumeMarketCapRatio.toFixed(5))}
+                  {!item.volumeMarketCapRatio ? '---' : Number(item.volumeMarketCapRatio.toFixed(5))}
                 </Text>
               </Flex>
               <Divider borderWidth={1} color='grey.200' />
               <Flex w='full' justify='space-between' align='center'>
                 <Text size='xs' color='secondary_text'>Market Dominance</Text>
                 <Text size='xs' fontWeight='extrabold'>
-                  {item.marketDominance === null ? '---' : Number(item.marketDominance.toFixed(2)) + '%'}
+                  {!item.marketDominance ? '---' : Number(item.marketDominance.toFixed(2)) + '%'}
                 </Text>
               </Flex>
               <Divider borderWidth={1} color='grey.200' />
@@ -386,7 +386,7 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
                 <Text size='xs' color='secondary_text'>Market Cap</Text>
                 <VStack spacing={1} align='end'>
                   <Text size='xs' fontWeight='extrabold'>
-                    {item.marketCap === null ? '---' : '$' + Number(item.marketCap.toFixed(2)).toLocaleString()}
+                    {!item.marketCap ? '---' : '$' + Number(item.marketCap.toFixed(2)).toLocaleString()}
                   </Text>
                   <UpDownPercent fontSize={10} value={item.marketCapChangePercent24h} boxSize={2} />
                 </VStack>
@@ -396,7 +396,7 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
                 <Text size='xs' color='secondary_text'>Fully Diluted Market Cap</Text>
                 <VStack spacing={1} align='end'>
                   <Text size='xs' fontWeight='extrabold'>
-                    {item.fullyDiluted === null ? '---' : '$' + Number(item.fullyDiluted.toFixed(2)).toLocaleString()}
+                    {!item.fullyDiluted ? '---' : '$' + Number(item.fullyDiluted.toFixed(2)).toLocaleString()}
                   </Text>
                   <UpDownPercent fontSize={10} value={item.fullyDilutedChangePercent24h} boxSize={2} />
                 </VStack>
@@ -522,25 +522,25 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
                   </Text>
                 </HStack>
                 <Text variant='list_text' w='15%' textAlign='start' color='primary.100'>
-                  {el.pair === null ? '---' : el.pair.slice(0, 15)}
+                  {!el.pair ? '---' : el.pair.slice(0, 15)}
                 </Text>
                 <Text w='7%' textAlign='end' variant='list_text'>
-                  {el.price === null ? '---' : '$' + Number(el.price.toFixed(2)).toLocaleString()}
+                  {!el.price ? '---' : '$' + Number(el.price.toFixed(2)).toLocaleString()}
                 </Text>
                 <Text w='12%' textAlign='end' variant='list_text'>
-                  {el.plus2Depth === null ? '---' : '$' + Number(el.plus2Depth.toFixed(2)).toLocaleString()}
+                  {!el.plus2Depth ? '---' : '$' + Number(el.plus2Depth.toFixed(2)).toLocaleString()}
                 </Text>
                 <Text w='12%' variant='list_text' textAlign='end'>
-                  {el.minus2Depth === null ? '--' : '$' + Number(el.minus2Depth.toFixed(2)).toLocaleString()}
+                  {!el.minus2Depth ? '--' : '$' + Number(el.minus2Depth.toFixed(2)).toLocaleString()}
                 </Text>
                 <Text w='12%' variant='list_text' textAlign='end'>
-                  {el.volume24h === null ? '--' : '$' + Number(el.volume24h.toFixed(2)).toLocaleString()}
+                  {!el.volume24h ? '--' : '$' + Number(el.volume24h.toFixed(2)).toLocaleString()}
                 </Text>
                 <Text w='10%' variant='list_text' textAlign='end'>
-                  {el.volume24hPercent === null ? '---' : Number(el.volume24hPercent.toFixed(2)) + '%'}
+                  {!el.volume24hPercent ? '---' : Number(el.volume24hPercent.toFixed(2)) + '%'}
                 </Text>
                 <Text w='7%' variant='list_text' textAlign='end'>
-                  {el.liquidity === null ? '---' : Number(el.liquidity.toFixed(2)).toLocaleString()}
+                  {!el.liquidity ? '---' : Number(el.liquidity.toFixed(2)).toLocaleString()}
                 </Text>
               </Container>
             ))}
@@ -571,7 +571,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const data = await coinAll()
 
-  const paths = data.items.map((el: CoinItem) => ({
+  const paths = data.map((el: CoinItem) => ({
     params: { id: el.id },
   }))
 

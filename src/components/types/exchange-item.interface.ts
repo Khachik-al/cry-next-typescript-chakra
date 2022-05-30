@@ -8,13 +8,13 @@ export type ExchangeItemType = {
 export type ExchangeMarket = {
   coins: {
     id: string;
-    liquidity: number | null;
+    liquidity: number;
     logo: string;
     minus2Depth: number;
     pair: string;
     plus2Depth: number;
     price: number;
-    rank: number | null;
+    rank: number;
     source: string;
     volume24h: number;
     volume24hPercent: number;

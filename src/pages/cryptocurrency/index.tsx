@@ -104,7 +104,7 @@ const Cryptocurrency: NextPage<Props> = ({ data }) => {
                   </Link>
                 </HStack>
                 <Text variant='list_text' w='7%' textAlign='end'>
-                  {el.price === null ? '---' : '$' + Number(el.price.toFixed(2)).toLocaleString()}
+                  {!el.price ? '---' : '$' + Number(el.price.toFixed(2)).toLocaleString()}
                 </Text>
                 <Text
                   w='7%'
@@ -112,7 +112,7 @@ const Cryptocurrency: NextPage<Props> = ({ data }) => {
                   variant='list_text'
                   color={el.priceChangePercent24h < 0 ? 'danger' : 'primary.100'}
                 >
-                  {el.priceChangePercent24h === null ? '---' : Number(el.priceChangePercent24h.toFixed(2)) + '%'}
+                  {!el.priceChangePercent24h ? '---' : Number(el.priceChangePercent24h.toFixed(2)) + '%'}
                 </Text>
                 <Text
                   w='7%'
@@ -120,27 +120,27 @@ const Cryptocurrency: NextPage<Props> = ({ data }) => {
                   variant='list_text'
                   color={el.priceChangePercent7d < 0 ? 'danger' : 'primary.100'}
                 >
-                  {el.priceChangePercent7d === null ? '---' : Number(el.priceChangePercent7d.toFixed(2)) + '%'}
+                  {!el.priceChangePercent7d ? '---' : Number(el.priceChangePercent7d.toFixed(2)) + '%'}
                 </Text>
                 <Flex justify='center' w='11%'>
                   <Center borderRadius='2xl' bg='blue.100' p={2}>
                     <Text variant='list_text' fontWeight='medium'>
-                      {el.fundamentalRating === null ? '--' : Number(el.technicalRating.toFixed(2))}
+                      {!el.fundamentalRating ? '--' : Number(el.technicalRating.toFixed(2))}
                     </Text>
                   </Center>
                 </Flex>
                 <Flex justify='center' w='8%'>
                   <Center borderRadius='2xl' bg='blue.100' p={2}>
                     <Text variant='list_text' fontWeight='medium'>
-                      {el.technicalRating === null ? '--' : Number(el.technicalRating.toFixed(2))}
+                      {!el.technicalRating ? '--' : Number(el.technicalRating.toFixed(2))}
                     </Text>
                   </Center>
                 </Flex>
                 <Text w='13%' variant='list_text' textAlign='end'>
-                  {el.volume24h === null ? '---' : '$' + Number(el.volume24h.toFixed(2)).toLocaleString()}
+                  {!el.volume24h ? '---' : '$' + Number(el.volume24h.toFixed(2)).toLocaleString()}
                 </Text>
                 <Text w='13%' variant='list_text' textAlign='end'>
-                  {el.marketCap === null ? '---' : '$' + Number(el.marketCap.toFixed(2)).toLocaleString()}
+                  {!el.marketCap ? '---' : '$' + Number(el.marketCap.toFixed(2)).toLocaleString()}
                 </Text>
                 <Text w='15%' variant='list_text' textAlign='end' pl={5}>
                   <Chart
