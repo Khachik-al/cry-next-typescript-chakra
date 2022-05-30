@@ -13,6 +13,7 @@ const PageMeta: FC<Props> = ({ keywords = '', title = 'Criptogic', children }) =
       <title>{title}</title>
       <meta name='keywords' content={`criptogic ${keywords}`} />
       <meta charSet='utf-8' />
+      <link rel='shortcut icon' href='/assets/img/favicon.png' />
     </Head>
     {children}
   </>

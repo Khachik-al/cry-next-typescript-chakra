@@ -1,6 +1,7 @@
 import { chart, horizontalRating, landing, link, itemInfo, rank, rating } from './Customs'
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
 import { pagination } from './pagination'
+import { mode } from '@chakra-ui/theme-tools'
 
 const Container: ComponentStyleConfig = {
   baseStyle: {
@@ -12,7 +13,7 @@ const Container: ComponentStyleConfig = {
 
   },
   variants: {
-    header: ({ colorMode }) => ({
+    header: (props) => ({
       pl: ['2%', '2%', '5%', '8%', '12%'],
       pr: ['2%', '2%', '2%', '5%', '9%'],
       display: 'flex',
@@ -23,18 +24,18 @@ const Container: ComponentStyleConfig = {
       left: '0',
       right: '0',
       zIndex: 'sticky',
-      bg: colorMode === 'light' ? 'main_white' : 'dark.400',
+      bg: mode('main_white', 'dark.400')(props),
       borderBottom: '1px solid',
-      borderColor: colorMode === 'light' ? 'grey.200' : 'grey.600',
+      borderColor: mode('grey.200', 'grey.600')(props),
     }),
-    searchtab: ({ colorMode }) => ({
+    searchtab: (props) => ({
       pl: ['2%', '2%', '5%', '8%', '12%'],
       pr: ['2%', '2%', '2%', '5%', '9%'],
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
       borderBottom: '1px solid',
-      borderColor: colorMode === 'light' ? 'grey.200' : 'grey.600',
+      borderColor: mode('grey.200', 'grey.600')(props),
       overflow: 'auto hidden',
       whiteSpace: 'nowrap',
       scrollbarWidth: 'none',
@@ -48,36 +49,36 @@ const Container: ComponentStyleConfig = {
       pt: ['4', '12'],
       pb: '8',
     },
-    disclaimer: ({ colorMode }) => ({
+    disclaimer: (props) => ({
       pl: ['2%', '2%', '5%', '8%', '12%'],
       pr: ['2%', '2%', '2%', '5%', '9%'],
       py: '8',
-      bg: colorMode === 'light' ? 'primary.200' : 'dark.300',
+      bg: mode('primary.200', 'dark.300')(props),
       color: 'main_white',
       fontSize: '12',
     }),
-    footer: ({ colorMode }) => ({
+    footer: (props) => ({
       pl: ['2%', '2%', '5%', '8%', '12%'],
       pr: ['2%', '2%', '2%', '5%', '9%'],
-      bg: colorMode === 'light' ? 'primary.300' : 'dark.500',
+      bg: mode('primary.300', 'dark.500')(props),
       color: 'main_white',
       py: '12',
     }),
-    list_item: {
+    list_item: (props) => ({
       display: 'flex',
       justifyContent: 'start',
       alignItems: 'center',
       borderTop: '1px solid',
-      borderColor: 'grey.200',
+      borderColor: mode('grey.200', 'grey.600')(props),
       py: '4',
       pl: '3',
-    },
-    card: ({ colorMode }) => ({
+    }),
+    card: (props) => ({
       border: '1px solid',
-      borderColor: colorMode === 'light' ? 'grey.200' : 'grey.600',
+      borderColor: mode('grey.200', 'grey.600')(props),
       borderRadius: '2xl',
       _hover: {
-        bg: colorMode === 'light' ? 'green.100' : 'dark.200',
+        bg: mode('green.100', 'dark.200')(props),
       },
     }),
     rank: rank,
