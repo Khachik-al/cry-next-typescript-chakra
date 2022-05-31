@@ -36,7 +36,7 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
     }
   }
   return (
-    item && <PageMeta title={item.name || ''}>
+    item && <PageMeta title={item.name || ''} description={item.name || ''}>
       <PageLayout>
         <Container variant='main'>
           <HStack align='start' whiteSpace='nowrap' overflowX='auto'>
@@ -46,7 +46,7 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
                   <Image loader={exportableLoader} src={item.logoUrl || '/'} alt='icon' layout='fill' unoptimized />
                 </Box>
                 <VStack spacing={1} align='start'>
-                  <Heading as='h2' fontSize={20}>{item.name}</Heading>
+                  <Heading as='h1' fontSize={20}>{item.name}</Heading>
                   <Container variant='rank'>Rank #2</Container>
                 </VStack>
               </HStack>

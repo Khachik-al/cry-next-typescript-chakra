@@ -41,7 +41,7 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
     return ''
   }
   return (
-    item && <PageMeta title={item.name || ''}>
+    item && <PageMeta title={item.name || ''} description={item.name || ''}>
       <PageLayout>
         <Container variant='main'>
           <HStack spacing={14} overflowX='auto' whiteSpace='nowrap' pb={3}>
@@ -60,9 +60,9 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
                     unoptimized
                   />
                 </Box>
-                <Text fontWeight='extrabold' fontSize={18}>
+                <Heading as='h1' fontWeight='extrabold' fontSize={18}>
                   {item.name}
-                </Text>
+                </Heading>
               </HStack>
               <HStack align='start'>
                 <Heading fontSize={24} fontWeight='extrabold'>

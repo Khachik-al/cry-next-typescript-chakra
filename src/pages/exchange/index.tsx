@@ -1,4 +1,4 @@
-import { Box, Container, HStack, Text } from '@chakra-ui/react'
+import { Box, Container, Heading, HStack, Text } from '@chakra-ui/react'
 import { UTCTimestamp } from 'lightweight-charts'
 import type { GetStaticProps, NextPage } from 'next'
 import Image from 'next/image'
@@ -47,9 +47,9 @@ const Exchanges: NextPage<Props> = ({ data }) => {
     <PageMeta title='Exchanges'>
       <PageLayout>
         <Container variant='main'>
-          <Text fontSize={20} fontWeight='bold' mb={10}>
+          <Heading as='h1' fontSize={20} fontWeight='bold' mb={10}>
             Top Cryptocurrency Exchanges
-          </Text>
+          </Heading>
           <HStack mb={5}>
             <Container variant='link' borderRadius='2xl'>
               <Text m={2} fontSize={12}>USD</Text>
