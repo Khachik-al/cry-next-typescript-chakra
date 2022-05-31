@@ -19,7 +19,7 @@ const ForgotPassword: NextPage = () => {
     })
   }
   return (
-    <PageMeta title='home'>
+    <PageMeta title='Forgot password'>
       <PageLayout>
         <Box pt={32} pb={700}>
           <Center>

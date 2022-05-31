@@ -1,4 +1,4 @@
-import { Box, Center, Container, Flex, HStack, Text, VStack } from '@chakra-ui/react'
+import { Box, Center, Container, Flex, Heading, HStack, Text, VStack } from '@chakra-ui/react'
 import type { GetStaticProps, NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -45,12 +45,15 @@ const Nfts: NextPage<Props> = ({ data }) => {
     setList(pageData)
   }
   return (
-    <PageMeta title='Nfts'>
+    <PageMeta
+      title='Nfts'
+      description='NFT is part of the Nonprofit Technology Network, a membership organization created to empower nonprofit organizations to use technology effectively.'
+    >
       <PageLayout>
         <Container variant='main'>
-          <Text fontSize={20} fontWeight='extrabold' mb={10}>
+          <Heading as='h1' fontSize={20} fontWeight='extrabold' mb={10}>
             Top NFT Rankings
-          </Text>
+          </Heading>
           <Box overflowX='auto'>
             <HStack pb={3} pl={3} spacing='none' minW={1000}>
               {[
