@@ -79,7 +79,7 @@ export const rating = {
     borderColor: 'grey.200',
     borderRadius: '2xl',
     p: '7',
-    minW: '72',
+    minW: '500',
   },
   rating: {
     display: 'flex',

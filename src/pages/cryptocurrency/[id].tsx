@@ -408,31 +408,78 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
           </Text>
           <Flex justify='space-between' overflowX='auto'>
             <Container variant='rating_block'>
-              <VStack align='start'>
-                <Text fontSize={['3xl', '4xl', '40']} fontWeight='bold'>{item.fundamentalRating}</Text>
-                <Text fontWeight='extrabold'>Fundamental Rating</Text>
-                <Text size='sm' color='secondary_text'>Technical Ratings is a technical analysis tool that combines the ratings of several
-                  technical indicators to make it easier for traders and investors to find profitable trades.</Text>
-              </VStack>
-              <Container variant='rating'><Box h={item.fundamentalRating + '%'} /></Container>
+              <Flex>
+                <VStack align='start'>
+                  <Text fontSize={['3xl', '4xl', '40']} fontWeight='bold'>{item.fundamentalRating}</Text>
+                  <Text fontWeight='extrabold'>Fundamental Rating</Text>
+                  <Text size='sm' color='secondary_text'>Technical Ratings is a technical analysis tool that combines the ratings of several
+                    technical indicators to make it easier for traders and investors to find profitable trades.</Text>
+                  <HStack align='start' pt={4}>
+                    <Container variant='itemInfo' pl={0} display='flex'>
+                      <Text pb={2} size='xs' color='secondary_text'>Market cup</Text>
+                      <Text size='sm' fontWeight='extrabold'>
+                        0
+                      </Text>
+                    </Container>
+                    <Container variant='itemInfo' display='flex'>
+                      <Text pb={2} size='xs' color='secondary_text'>Valume</Text>
+                      <Text size='sm' fontWeight='extrabold'>
+                        0
+                      </Text>
+                    </Container>
+                    <Container variant='itemInfo' display='flex'>
+                      <Text pb={2} size='xs' color='secondary_text'>7 Day Turnover</Text>
+                      <Text size='sm' fontWeight='extrabold'>
+                        0
+                      </Text>
+                    </Container>
+                    <Container variant='itemInfo' border='none' display='flex'>
+                      <Text pb={2} size='xs' color='secondary_text'>Owners / Items</Text>
+                      <Text size='sm' fontWeight='extrabold'>
+                        0
+                      </Text>
+                    </Container>
+                  </HStack>
+                </VStack>
+                <Container variant='rating'><Box h={item.fundamentalRating + '%'} /></Container>
+              </Flex>
             </Container>
             <Container variant='rating_block' ml={5}>
-              <VStack align='start'>
-                <Text fontSize={['3xl', '4xl', '40']} fontWeight='bold'>{item.technicalRating}</Text>
-                <Text fontWeight='extrabold'>Fundamental Rating</Text>
-                <Text size='sm' color='secondary_text'>Technical Ratings is a technical analysis tool that combines the ratings of several
-                  technical indicators to make it easier for traders and investors to find profitable trades.</Text>
-              </VStack>
-              <Container variant='rating'><Box h={item.technicalRating + '%'} /></Container>
-            </Container>
-            <Container variant='rating_block' ml={5}>
-              <VStack align='start'>
-                <Text fontSize={['3xl', '4xl', '40']} fontWeight='bold'>{item.technicalRating}</Text>
-                <Text fontWeight='extrabold'>Fundamental Rating</Text>
-                <Text size='sm' color='secondary_text'>Technical Ratings is a technical analysis tool that combines the ratings of several
-                  technical indicators to make it easier for traders and investors to find profitable trades.</Text>
-              </VStack>
-              <Container variant='rating'><Box h={item.technicalRating + '%'} /></Container>
+              <Flex>
+                <VStack align='start'>
+                  <Text fontSize={['3xl', '4xl', '40']} fontWeight='bold'>{item.technicalRating}</Text>
+                  <Text fontWeight='extrabold'>Technical Rating</Text>
+                  <Text size='sm' color='secondary_text'>Technical Ratings is a technical analysis tool that combines the ratings of several
+                    technical indicators to make it easier for traders and investors to find profitable trades.</Text>
+                  <HStack align='start' pt={4}>
+                    <Container variant='itemInfo' pl={0} display='flex'>
+                      <Text pb={2} size='xs' color='secondary_text'>Market cup</Text>
+                      <Text size='sm' fontWeight='extrabold'>
+                        0
+                      </Text>
+                    </Container>
+                    <Container variant='itemInfo' display='flex'>
+                      <Text pb={2} size='xs' color='secondary_text'>Valume</Text>
+                      <Text size='sm' fontWeight='extrabold'>
+                        0
+                      </Text>
+                    </Container>
+                    <Container variant='itemInfo' display='flex'>
+                      <Text pb={2} size='xs' color='secondary_text'>7 Day Turnover</Text>
+                      <Text size='sm' fontWeight='extrabold'>
+                        0
+                      </Text>
+                    </Container>
+                    <Container variant='itemInfo' border='none' display='flex'>
+                      <Text pb={2} size='xs' color='secondary_text'>Owners / Items</Text>
+                      <Text size='sm' fontWeight='extrabold'>
+                        0
+                      </Text>
+                    </Container>
+                  </HStack>
+                </VStack>
+                <Container variant='rating'><Box h={item.technicalRating + '%'} /></Container>
+              </Flex>
             </Container>
           </Flex>
           <Text fontSize={20} fontWeight='extrabold' my={10}>
