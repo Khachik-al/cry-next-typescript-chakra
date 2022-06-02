@@ -6,7 +6,7 @@ import PageMeta from '../components/PageMeta/PageMeta'
 import SignUpComp from '../components/SignUp/SignUpComp'
 
 const SignUp: NextPage = () => (
-  <PageMeta title='home'>
+  <PageMeta title='signup'>
     <PageLayout>
       <Container variant='main'>
         <SignUpComp />

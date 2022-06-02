@@ -38,7 +38,7 @@ const Flow4: FC<Props> = ({ state }) => {
     <>
       <Flex justify='center'>
         <VStack spacing={4}>
-          <Image loader={exportableLoader} src='/assets/img/order_placed.png' alt='image' height={288} width={369} />
+          <Image loader={exportableLoader} src='/assets/img/order_placed.png' alt='image' height={288} width={369} unoptimized />
           <Heading fontSize={['3xl', '4xl', '5xl']} mb={30} fontWeight='black'>Order Placed</Heading>
           <Text color='primary.100' size='md'>Order #1344412</Text>
           <Text color='secondary_text' maxW={96} textAlign='center'>

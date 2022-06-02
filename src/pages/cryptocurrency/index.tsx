@@ -1,4 +1,4 @@
-import { Box, Center, Container, Flex, HStack, Text } from '@chakra-ui/react'
+import { Box, Center, Container, Flex, Heading, HStack, Text } from '@chakra-ui/react'
 import type { GetStaticProps, NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -47,12 +47,15 @@ const Cryptocurrency: NextPage<Props> = ({ data }) => {
     setList(pageData)
   }
   return (
-    <PageMeta title='Nfts'>
+    <PageMeta
+      title='Cryptocurrencys'
+      description='A cryptocurrency is a digital asset designed to work as a medium of exchange using cryptography to secure the transactions and to control the creation of additional units of the currency.'
+    >
       <PageLayout>
         <Container variant='main'>
-          <Text fontSize={20} fontWeight='extrabold' mb={10}>
+          <Heading as='h1' fontSize={20} fontWeight='extrabold' mb={10}>
             Today's Cryptocurrency Prices by Market Cap
-          </Text>
+          </Heading>
           <Box overflowX='auto'>
             <HStack pb={3} pl={3} spacing='none' minW={1000}>
               {[

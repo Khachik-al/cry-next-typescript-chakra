@@ -36,7 +36,7 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
     }
   }
   return (
-    item && <PageMeta title={item.name || ''}>
+    item && <PageMeta title={item.name || ''} description={item.name || ''}>
       <PageLayout>
         <Container variant='main'>
           <HStack align='start' whiteSpace='nowrap' overflowX='auto'>
@@ -46,8 +46,8 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
                   <Image loader={exportableLoader} src={item.logoUrl || '/'} alt='icon' layout='fill' unoptimized />
                 </Box>
                 <VStack spacing={1} align='start'>
-                  <Heading as='h2' fontSize={20}>{item.name}</Heading>
-                  <Container variant='rank'>Rank #2</Container>
+                  <Heading as='h1' fontSize={20}>{item.name}</Heading>
+                  <Container variant='rank'>Rank #{item.rank}</Container>
                 </VStack>
               </HStack>
               <Flex justify='start'>
@@ -179,31 +179,78 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
           </Text>
           <Flex justify='space-between' overflowX='auto'>
             <Container variant='rating_block'>
-              <VStack align='start'>
-                <Text fontSize={['3xl', '4xl', '40']} fontWeight='bold'>{item.fundamentalRating}</Text>
-                <Text fontWeight='extrabold'>Fundamental Rating</Text>
-                <Text size='sm' color='secondary_text'>Technical Ratings is a technical analysis tool that combines the ratings of several
-                  technical indicators to make it easier for traders and investors to find profitable trades.</Text>
-              </VStack>
-              <Container variant='rating'><Box h={item.fundamentalRating + '%'} /></Container>
+              <Flex>
+                <VStack align='start'>
+                  <Text fontSize={['3xl', '4xl', '40']} fontWeight='bold'>{item.fundamentalRating}</Text>
+                  <Text fontWeight='extrabold'>Fundamental Rating</Text>
+                  <Text size='sm' color='secondary_text'>Technical Ratings is a technical analysis tool that combines the ratings of several
+                    technical indicators to make it easier for traders and investors to find profitable trades.</Text>
+                  <HStack align='start' pt={4}>
+                    <Container variant='itemInfo' pl={0} display='flex'>
+                      <Text pb={2} size='xs' color='secondary_text'>Market cup</Text>
+                      <Text size='sm' fontWeight='extrabold'>
+                        {!item.marketCap ? '---' : item.marketCap}
+                      </Text>
+                    </Container>
+                    <Container variant='itemInfo' display='flex'>
+                      <Text pb={2} size='xs' color='secondary_text'>Valume</Text>
+                      <Text size='sm' fontWeight='extrabold'>
+                        {!item.volume ? '---' : item.volume}
+                      </Text>
+                    </Container>
+                    <Container variant='itemInfo' display='flex'>
+                      <Text pb={2} size='xs' color='secondary_text'>7 Day Turnover</Text>
+                      <Text size='sm' fontWeight='extrabold'>
+                        {!item.turnOver ? '---' : item.turnOver + '%'}
+                      </Text>
+                    </Container>
+                    <Container variant='itemInfo' border='none' display='flex'>
+                      <Text pb={2} size='xs' color='secondary_text'>Owners / Items</Text>
+                      <Text size='sm' fontWeight='extrabold'>
+                        {!item.ownersToItems ? '---' : item.ownersToItems}
+                      </Text>
+                    </Container>
+                  </HStack>
+                </VStack>
+                <Container variant='rating'><Box h={item.fundamentalRating + '%'} /></Container>
+              </Flex>
             </Container>
             <Container variant='rating_block' ml={5}>
-              <VStack align='start'>
-                <Text fontSize={['3xl', '4xl', '40']} fontWeight='bold'>{item.technicalRating}</Text>
-                <Text fontWeight='extrabold'>Technical Rating</Text>
-                <Text size='sm' color='secondary_text'>Technical Ratings is a technical analysis tool that combines the ratings of several
-                  technical indicators to make it easier for traders and investors to find profitable trades.</Text>
-              </VStack>
-              <Container variant='rating'><Box h={item.technicalRating + '%'} /></Container>
-            </Container>
-            <Container variant='rating_block' ml={5}>
-              <VStack align='start'>
-                <Text fontSize={['3xl', '4xl', '40']} fontWeight='bold'>{item.technicalRating}</Text>
-                <Text fontWeight='extrabold'>Overall Rating</Text>
-                <Text size='sm' color='secondary_text'>Technical Ratings is a technical analysis tool that combines the ratings of several
-                  technical indicators to make it easier for traders and investors to find profitable trades.</Text>
-              </VStack>
-              <Container variant='rating'><Box h={item.technicalRating + '%'} /></Container>
+              <Flex>
+                <VStack align='start'>
+                  <Text fontSize={['3xl', '4xl', '40']} fontWeight='bold'>{item.technicalRating}</Text>
+                  <Text fontWeight='extrabold'>Technical Rating</Text>
+                  <Text size='sm' color='secondary_text'>Technical Ratings is a technical analysis tool that combines the ratings of several
+                    technical indicators to make it easier for traders and investors to find profitable trades.</Text>
+                  <HStack align='start' pt={4}>
+                    <Container variant='itemInfo' pl={0} display='flex'>
+                      <Text pb={2} size='xs' color='secondary_text'>Market cup</Text>
+                      <Text size='sm' fontWeight='extrabold'>
+                        0
+                      </Text>
+                    </Container>
+                    <Container variant='itemInfo' display='flex'>
+                      <Text pb={2} size='xs' color='secondary_text'>Valume</Text>
+                      <Text size='sm' fontWeight='extrabold'>
+                        0
+                      </Text>
+                    </Container>
+                    <Container variant='itemInfo' display='flex'>
+                      <Text pb={2} size='xs' color='secondary_text'>7 Day Turnover</Text>
+                      <Text size='sm' fontWeight='extrabold'>
+                        0
+                      </Text>
+                    </Container>
+                    <Container variant='itemInfo' border='none' display='flex'>
+                      <Text pb={2} size='xs' color='secondary_text'>Owners / Items</Text>
+                      <Text size='sm' fontWeight='extrabold'>
+                        0
+                      </Text>
+                    </Container>
+                  </HStack>
+                </VStack>
+                <Container variant='rating'><Box h={item.technicalRating + '%'} /></Container>
+              </Flex>
             </Container>
           </Flex>
           <Text fontSize={20} fontWeight='extrabold' mt={10} mb={10}>
@@ -222,7 +269,7 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
               <Container variant='list_item' key={i} minW={800}>
                 <HStack w='75%' spacing={5}>
                   <Box minW={68} minH={68} position='relative' borderRadius='lg' overflow='hidden'>
-                    <Image loader={exportableLoader} src={el.img_url || '/'} alt='icon' layout='fill' unoptimized />
+                    <Image loader={exportableLoader} src={el.imgUrl || '/'} alt='icon' layout='fill' unoptimized />
                   </Box>
                   <VStack align='start'>
                     <Link href={el.permalink} passHref>
@@ -248,7 +295,7 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
                   </Text>
                 </VStack>
               </Container>
-            )) : <h1>0 items</h1>}
+            )) : <h1>no items</h1>}
           </Box>
           {!!marketplaceList && !!marketplaceList.assets?.length &&
             <HStack>

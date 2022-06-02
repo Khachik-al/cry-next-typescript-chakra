@@ -42,7 +42,7 @@ const ExchangeItem: NextPage<Props> = ({ item, market }) => {
                   <Image loader={exportableLoader} src={item.logo} alt='icon' layout='fill' unoptimized />
                 </Box>
                 <VStack spacing={1} align='start' pr={2}>
-                  <Heading as='h2' fontSize={20}>{item.name}</Heading>
+                  <Heading as='h1' fontSize={20}>{item.name}</Heading>
                   <Text color='secondary_text' size='sm'>Centralized</Text>
                 </VStack>
               </HStack>

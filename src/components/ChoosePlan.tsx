@@ -23,16 +23,21 @@ const ChoosePlan: FC = () => {
         </Heading>
         <HStack spacing={3}>
           <Text
+            as='label'
+            htmlFor='is-yearly'
             fontWeight={isYearly ? 'medium' : 'bold'}
             color={isYearly ? '' : 'primary.100'}
           >
             Monthly
           </Text>
           <Switch
+            id='is-yearly'
             isChecked={isYearly}
             onChange={() => setIsYearly(!isYearly)}
           />
           <Text
+            as='label'
+            htmlFor='is-yearly'
             fontWeight={isYearly ? 'bold' : 'medium'}
             color={isYearly ? 'primary.100' : ''}>
             Billed yearly
