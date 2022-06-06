@@ -8,8 +8,8 @@ const awsExports = {
   oauth: {
     domain: 'dev-login-cryptogic.auth.us-east-1.amazoncognito.com',
     scope: ['email', 'openid', 'profile'],
-    redirectSignIn: 'http://localhost:3000/',
-    redirectSignOut: 'http://localhost:3000/',
+    redirectSignIn: process.env.REDIRECT,
+    redirectSignOut: process.env.REDIRECT,
     responseType: 'code',
   },
   ssr: true, 
