@@ -2,13 +2,12 @@ import {
   Box, Button, CloseButton, Container, Drawer, DrawerBody, DrawerContent, DrawerOverlay,
   Flex, HStack, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Portal, useDisclosure, useMediaQuery, useToast,
 } from '@chakra-ui/react'
-import { Hub } from 'aws-amplify'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { FC, useCallback, useEffect, useState } from 'react'
 import { exportableLoader } from '../../image-loader'
-import { getUser, logOut } from '../../services/auth-services'
+import { getUser, logOut, unsubscribe } from '../../services/auth-services'
 import Login from '../Login'
 import MenuBar from './MenuBar'
 import Search from './Search'
@@ -37,18 +36,9 @@ const HeaderNav: FC = () => {
   }
 
   useEffect(() => {
-    const unsubscribe = Hub.listen('auth', ({ payload: { event, data } }) => {
-      switch (event) {
-        case 'signIn':
-          setUser(data)
-          break
-        case 'signOut':
-          setUser(null)
-          break
-      }
-    })
+    unsubscribe({ setUser })
     getUser().then(currentUser => setUser(currentUser))
-    return unsubscribe
+    return unsubscribe({ setUser })
   }, [])
   return (
     <>

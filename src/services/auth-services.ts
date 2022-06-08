@@ -1,5 +1,5 @@
 import { CognitoHostedUIIdentityProvider } from '@aws-amplify/auth'
-import { Auth } from 'aws-amplify'
+import { Auth, Hub } from 'aws-amplify'
 
 export const signUp = ({ username, email, password }: { username: string, email: string, password: string }) => {
   return Auth.signUp({
@@ -39,4 +39,17 @@ export const forgotPassword = (email: any) => {
 
 export const getUser = () => {
   return Auth.currentAuthenticatedUser()
-} 
+}
+
+export const unsubscribe = ({ setUser }: { setUser: (value: any) => void }) => {
+  Hub.listen('auth', ({ payload: { event, data } }) => {
+    switch (event) {
+      case 'signIn':
+        setUser(data)
+        break
+      case 'signOut':
+        setUser(null)
+        break
+    }
+  })
+}
