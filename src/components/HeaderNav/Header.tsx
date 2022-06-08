@@ -1,3 +1,4 @@
+import { CognitoUser } from '@aws-amplify/auth'
 import {
   Box, Button, CloseButton, Container, Drawer, DrawerBody, DrawerContent, DrawerOverlay,
   Flex, HStack, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Portal, useDisclosure, useMediaQuery, useToast,
@@ -37,7 +38,7 @@ const HeaderNav: FC = () => {
 
   useEffect(() => {
     unsubscribe({ setUser })
-    getUser().then(currentUser => setUser(currentUser))
+    getUser().then((currentUser: CognitoUser) => setUser(currentUser))
     return unsubscribe({ setUser })
   }, [])
   return (
