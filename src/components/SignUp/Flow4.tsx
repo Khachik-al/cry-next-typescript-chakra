@@ -5,7 +5,7 @@ import {
 import Image from 'next/image'
 import React, { FC, useCallback, useState } from 'react'
 import { exportableLoader } from '../../image-loader'
-import { resendCode } from '../../services'
+import { resendCode } from '../../services/auth-services'
 import Login from '../Login'
 
 interface Props {

@@ -8,7 +8,7 @@ import {
   ChangeEvent, FC, FormEvent, useState,
 } from 'react'
 import { exportableLoader } from '../../image-loader'
-import { federatedSignIn } from '../../services'
+import { federatedSignIn } from '../../services/auth-services'
 import PasswordStrength from '../PasswordStrength'
 interface Props {
   state: {

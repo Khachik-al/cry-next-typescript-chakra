@@ -14,7 +14,7 @@ import PaginationComp from '../../components/Pagination'
 import { CoinItem, CoinMarkets } from '../../components/types/coin-item.interface'
 import UpDownPercent from '../../components/UpDownPercent'
 import { exportableLoader } from '../../image-loader'
-import { coinItem, coinAll, coinMarkets } from '../../services'
+import { coinItem, coinAll, coinMarkets } from '../../services/data-services'
 
 interface Props {
   item: CoinItem;

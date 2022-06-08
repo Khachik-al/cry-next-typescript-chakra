@@ -8,7 +8,7 @@ import PageMeta from '../../components/PageMeta/PageMeta'
 import 'rc-pagination/assets/index.css'
 import { exportableLoader } from '../../image-loader'
 import PaginationComp from '../../components/Pagination'
-import { nftList } from '../../services'
+import { nftList } from '../../services/data-services'
 
 type TData = {
   items: {

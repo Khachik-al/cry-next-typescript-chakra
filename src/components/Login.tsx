@@ -4,7 +4,7 @@ import {
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { FC, useState } from 'react'
-import { signIn } from '../services'
+import { signIn } from '../services/auth-services'
 
 interface Props {
   isOpen: boolean;

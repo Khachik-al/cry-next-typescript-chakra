@@ -11,7 +11,7 @@ import PageLayout from '../../components/PageLayout/PageLayout'
 import PageMeta from '../../components/PageMeta/PageMeta'
 import PaginationComp from '../../components/Pagination'
 import { exportableLoader } from '../../image-loader'
-import { exchangeList } from '../../services'
+import { exchangeList } from '../../services/data-services'
 import Link from 'next/link'
 
 type TData = {

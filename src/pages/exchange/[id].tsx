@@ -8,7 +8,7 @@ import PageMeta from '../../components/PageMeta/PageMeta'
 import PaginationComp from '../../components/Pagination'
 import { ExchangeItemType, ExchangeMarket } from '../../components/types/exchange-item.interface'
 import { exportableLoader } from '../../image-loader'
-import { exchangeMarket } from '../../services'
+import { exchangeMarket } from '../../services/data-services'
 
 interface Props {
   item: ExchangeItemType;
