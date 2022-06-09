@@ -1,4 +1,3 @@
-import { CognitoUser } from '@aws-amplify/auth'
 import {
   Box, Button, CloseButton, Container, Drawer, DrawerBody, DrawerContent, DrawerOverlay,
   Flex, HStack, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Portal, useDisclosure, useMediaQuery, useToast,
@@ -6,21 +5,22 @@ import {
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { FC, useCallback, useEffect, useState } from 'react'
+import { FC, useCallback, useContext, useState } from 'react'
 import { exportableLoader } from '../../image-loader'
-import { getUser, logOut, unsubscribe } from '../../services/auth-services'
+import { logOut } from '../../services/auth-services'
+import { Context } from '../Store'
 import Login from '../Login'
 import MenuBar from './MenuBar'
 import Search from './Search'
 
 const HeaderNav: FC = () => {
+  const user = useContext(Context)
   const toast = useToast()
   const router = useRouter()
   const [isBrowser] = useMediaQuery('(min-width: 1110px)')
   const [isMenu, setIsMenu] = useState(true)
   const [isOpenLogin, setIsOpenLogin] = useState(false)
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const [user, setUser] = useState<any | null>()
 
   const onOpenDrawer = (menu: boolean) => {
     setIsMenu(menu)
@@ -30,17 +30,11 @@ const HeaderNav: FC = () => {
 
   const handleLogOut = async () => {
     await logOut()
-      .then(() => setUser(null))
       .catch(({ message }) => {
         toast({ position: 'top-right', title: `${message}`, status: 'error', isClosable: true })
       })
   }
 
-  useEffect(() => {
-    unsubscribe({ setUser })
-    getUser().then((currentUser: CognitoUser) => setUser(currentUser))
-    return unsubscribe({ setUser })
-  }, [])
   return (
     <>
       <Portal>
