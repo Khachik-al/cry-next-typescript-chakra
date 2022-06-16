@@ -1,17 +1,37 @@
 import {
-  Box, Button, Checkbox, Flex, Heading, HStack, Input, InputGroup, InputLeftElement, Select, Show, Skeleton, Stack, Text, VStack,
+  Box, Button, Checkbox, Flex, Heading, HStack, Input, InputGroup, InputLeftElement, Select, Show, Skeleton, Stack, Text, useToast, VStack,
 } from '@chakra-ui/react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React, { FC } from 'react'
 import { exportableLoader } from '../../image-loader'
+import { signUp } from '../../services/auth-services'
 
 interface Props {
-
+  state: {
+    full_name: string,
+    email: string,
+    password: string,
+    address_1: string,
+    address_2: string,
+    city: string,
+    state: string,
+    zipe_code: string,
+    country: string,
+  };
 }
 
-const Flow3: FC<Props> = () => {
+const Flow3: FC<Props> = ({ state }) => {
   const router = useRouter()
+  const toast = useToast()
+
+  const onSubmit = async () => {
+    await signUp({ username: state.full_name, email: state.email, password: state.password })
+      .then(() => router.push('/signup?flow=4'))
+      .catch(({ message }) => {
+        toast({ position: 'top-right', title: `${message}`, status: 'error', isClosable: true })
+      })
+  }
   return (
     <>
       <VStack spacing={4} mt={4} textAlign='center'>
@@ -114,7 +134,7 @@ const Flow3: FC<Props> = () => {
       </Stack>
       <Flex justify='center' mt={12}>
         <Button
-          onClick={() => router.push('/signup?flow=4')}
+          onClick={onSubmit}
           px={24}
         >
           Place Order

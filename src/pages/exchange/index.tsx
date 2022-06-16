@@ -11,7 +11,7 @@ import PageLayout from '../../components/PageLayout/PageLayout'
 import PageMeta from '../../components/PageMeta/PageMeta'
 import PaginationComp from '../../components/Pagination'
 import { exportableLoader } from '../../image-loader'
-import { exchangeList } from '../../services'
+import { exchangeList } from '../../services/data-services'
 import Link from 'next/link'
 
 type TData = {
@@ -95,19 +95,19 @@ const Exchanges: NextPage<Props> = ({ data }) => {
                   </Link>
                 </HStack>
                 <Text w='10%' textAlign='end' variant='list_text'>
-                  {el.volume24h === null ? '---' : '$' + Number(el.volume24h.toFixed(2)).toLocaleString()}
+                  {!el.volume24h ? '---' : '$' + Number(el.volume24h.toFixed(2)).toLocaleString()}
                 </Text>
                 <Text w='12%' textAlign='end' variant='list_text'>
-                  {el.liquidity === null ? '---' : el.liquidity.toLocaleString()}
+                  {!el.liquidity ? '---' : el.liquidity.toLocaleString()}
                 </Text>
                 <Text w='12%' variant='list_text' textAlign='end'>
-                  {el.weekly === null ? '--' : '$' + Number(el.weekly.toFixed(2)).toLocaleString()}
+                  {!el.weekly ? '--' : '$' + Number(el.weekly.toFixed(2)).toLocaleString()}
                 </Text>
                 <Text w='7%' variant='list_text' textAlign='end'>
-                  {el.coins === null ? '--' : el.coins.toLocaleString()}
+                  {!el.coins ? '--' : el.coins.toLocaleString()}
                 </Text>
                 <Text w='7%' variant='list_text' textAlign='end'>
-                  {el.pair === null ? '---' : el.pair.toLocaleString()}
+                  {!el.pair ? '---' : el.pair.toLocaleString()}
                 </Text>
                 <Text w='15%' variant='list_text' textAlign='end' pl={5}>
                   <Chart

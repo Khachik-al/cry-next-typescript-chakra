@@ -8,7 +8,7 @@ import PageMeta from '../../components/PageMeta/PageMeta'
 import PaginationComp from '../../components/Pagination'
 import { ExchangeItemType, ExchangeMarket } from '../../components/types/exchange-item.interface'
 import { exportableLoader } from '../../image-loader'
-import { exchangeMarket } from '../../services'
+import { exchangeMarket } from '../../services/data-services'
 
 interface Props {
   item: ExchangeItemType;
@@ -52,7 +52,7 @@ const ExchangeItem: NextPage<Props> = ({ item, market }) => {
                 Volume(24h)
               </Text>
               <Text lineHeight={1} size='lg' fontWeight='extrabold'>
-                {item.valume24h === null ? '---' : '$' + Number(item.valume24h.toFixed(2)).toLocaleString()}
+                {!item.valume24h ? '---' : '$' + Number(item.valume24h.toFixed(2)).toLocaleString()}
               </Text>
             </VStack>
           </Flex>
@@ -126,26 +126,26 @@ const ExchangeItem: NextPage<Props> = ({ item, market }) => {
                   </Link>
                 </HStack>
                 <Text variant='list_text' w='15%' textAlign='start' color='primary.100'>
-                  {el.pair === null ? '---' : el.pair.slice(0, 15)}
+                  {!el.pair ? '---' : el.pair.slice(0, 15)}
                 </Text>
                 <Text w='7%' textAlign='end' variant='list_text'>
-                  {el.price === null ? '---' : '$' + Number(el.price.toFixed(2)).toLocaleString()}
+                  {!el.price ? '---' : '$' + Number(el.price.toFixed(2)).toLocaleString()}
                 </Text>
                 <Text w='12%' textAlign='end' variant='list_text'>
-                  {el.plus2Depth === null ? '---' : '$' + Number(el.plus2Depth.toFixed(2)).toLocaleString()}
+                  {!el.plus2Depth ? '---' : '$' + Number(el.plus2Depth.toFixed(2)).toLocaleString()}
                 </Text>
                 <Text w='12%' variant='list_text' textAlign='end'>
-                  {el.minus2Depth === null ? '--' : '$' + Number(el.minus2Depth.toFixed(2)).toLocaleString()}
+                  {!el.minus2Depth ? '--' : '$' + Number(el.minus2Depth.toFixed(2)).toLocaleString()}
                 </Text>
                 <Text w='12%' variant='list_text' textAlign='end'>
-                  {el.volume24h === null ? '--' : '$' + Number(el.volume24h.toFixed(2)).toLocaleString()}
+                  {!el.volume24h ? '--' : '$' + Number(el.volume24h.toFixed(2)).toLocaleString()}
                 </Text>
                 <Text w='10%' variant='list_text' textAlign='end'
                   color={el.volume24hPercent < 0 ? 'danger' : 'primary.100'}>
-                  {el.volume24hPercent === null ? '---' : Number(el.volume24hPercent.toFixed(2)) + '%'}
+                  {!el.volume24hPercent ? '---' : Number(el.volume24hPercent.toFixed(2)) + '%'}
                 </Text>
                 <Text w='7%' variant='list_text' textAlign='end'>
-                  {el.liquidity === null ? '---' : Number(el.liquidity.toFixed(2)).toLocaleString()}
+                  {!el.liquidity ? '---' : Number(el.liquidity.toFixed(2)).toLocaleString()}
                 </Text>
               </Container>
             ))}

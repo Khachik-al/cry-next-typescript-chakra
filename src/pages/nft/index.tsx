@@ -8,7 +8,7 @@ import PageMeta from '../../components/PageMeta/PageMeta'
 import 'rc-pagination/assets/index.css'
 import { exportableLoader } from '../../image-loader'
 import PaginationComp from '../../components/Pagination'
-import { nftList } from '../../services'
+import { nftList } from '../../services/data-services'
 
 type TData = {
   items: {
@@ -44,6 +44,7 @@ const Nfts: NextPage<Props> = ({ data }) => {
     const pageData = await nftList({ offset: value - 1, limit: 10, sort: 'rank', order: 'asc' })
     setList(pageData)
   }
+  
   return (
     <PageMeta
       title='Nfts'

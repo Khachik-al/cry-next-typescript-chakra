@@ -1,18 +1,39 @@
 import {
   Box,
-  Button, Flex, Heading, Input, Text, VStack,
+  Button, Flex, Heading, Input, Text, useToast, VStack,
 } from '@chakra-ui/react'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
-import React, { FC } from 'react'
+import React, { FC, useCallback, useState } from 'react'
 import { exportableLoader } from '../../image-loader'
+import { resendCode } from '../../services/auth-services'
+import Login from '../Login'
 
 interface Props {
-
+  state: {
+    full_name: string,
+    email: string,
+    password: string,
+    address_1: string,
+    address_2: string,
+    city: string,
+    state: string,
+    zipe_code: string,
+    country: string,
+  }
 }
 
-const Flow4: FC<Props> = () => {
-  const router = useRouter()
+const Flow4: FC<Props> = ({ state }) => {
+  const toast = useToast()
+  const [verificationCode, setVerificationCode] = useState('')
+  const [isOpenLogin, setIsOpenLogin] = useState(false)
+  const onCloseLogin = useCallback(() => setIsOpenLogin(false), [])
+
+  const handleConfirmSignUp = async () => {
+    await resendCode({ email: state.email })
+      .catch(({ message }) => {
+        toast({ position: 'top-right', title: `${message}`, status: 'error', isClosable: true })
+      })
+  }
   return (
     <>
       <Flex justify='center'>
@@ -30,14 +51,17 @@ const Flow4: FC<Props> = () => {
               name='email'
               type='email'
               placeholder='example@email.com'
+              value={verificationCode}
+              onChange={(e) => setVerificationCode(e.target.value)}
             />
             <Button
               w='full'
               mt={6}
-              onClick={() => router.push('/signup?flow=1')}
+              onClick={() => handleConfirmSignUp()}
             >
               Resend Verification
             </Button>
+            <Login isOpen={isOpenLogin} onClose={onCloseLogin} />
           </Box>
         </VStack>
       </Flex>

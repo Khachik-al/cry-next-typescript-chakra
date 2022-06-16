@@ -1,9 +1,10 @@
 import {
   Button, Checkbox, Divider, Flex, Input,
-  Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Text,
+  Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Text, useToast,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import { FC } from 'react'
+import { FC, useState } from 'react'
+import { signIn } from '../services/auth-services'
 
 interface Props {
   isOpen: boolean;
@@ -12,6 +13,18 @@ interface Props {
 
 const Login: FC<Props> = ({ isOpen, onClose }) => {
   const router = useRouter()
+  const toast = useToast()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleSignIn = () => {
+    signIn({ email, password })
+      .then(onClose)
+      .catch(({ message }) => {
+        toast({ position: 'top-right', title: `${message}`, status: 'error', isClosable: true })
+      })
+  }
+
   return (
     <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -24,12 +37,16 @@ const Login: FC<Props> = ({ isOpen, onClose }) => {
             type='email'
             name='email'
             placeholder='example@email.com'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <Text variant='label_input' mt={3}>Password</Text>
           <Input
             type='password'
             name='password'
             placeholder='······························'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <Flex justify='space-between' mt={4}>
             <Checkbox>
@@ -47,7 +64,7 @@ const Login: FC<Props> = ({ isOpen, onClose }) => {
               Forgot password?
             </Text>
           </Flex>
-          <Button w='full' my={4}>Log in</Button>
+          <Button w='full' my={4} onClick={handleSignIn}>Log in</Button>
           <Divider />
           <Button w='full' variant='outline' color='secondary_text' my={4}>Log in with Google</Button>
           <Text textAlign='center' mt={4}>

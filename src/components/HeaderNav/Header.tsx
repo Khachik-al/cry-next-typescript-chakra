@@ -1,18 +1,21 @@
 import {
-  Box,
-  Button, CloseButton, Container, Drawer, DrawerBody, DrawerContent, DrawerOverlay,
-  Flex, HStack, Portal, useDisclosure, useMediaQuery,
+  Box, Button, CloseButton, Container, Drawer, DrawerBody, DrawerContent, DrawerOverlay,
+  Flex, HStack, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Portal, useDisclosure, useMediaQuery, useToast,
 } from '@chakra-ui/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { FC, useCallback, useState } from 'react'
+import { FC, useCallback, useContext, useState } from 'react'
 import { exportableLoader } from '../../image-loader'
+import { logOut } from '../../services/auth-services'
+import { Context } from '../Store'
 import Login from '../Login'
 import MenuBar from './MenuBar'
 import Search from './Search'
 
 const HeaderNav: FC = () => {
+  const user = useContext(Context)
+  const toast = useToast()
   const router = useRouter()
   const [isBrowser] = useMediaQuery('(min-width: 1110px)')
   const [isMenu, setIsMenu] = useState(true)
@@ -24,6 +27,13 @@ const HeaderNav: FC = () => {
     onOpen()
   }
   const onCloseLogin = useCallback(() => setIsOpenLogin(false), [])
+
+  const handleLogOut = async () => {
+    await logOut()
+      .catch(({ message }) => {
+        toast({ position: 'top-right', title: `${message}`, status: 'error', isClosable: true })
+      })
+  }
 
   return (
     <>
@@ -53,19 +63,42 @@ const HeaderNav: FC = () => {
               && <MenuBar direction='row' />}
           </Flex>
           <HStack spacing={7}>
-            {isBrowser
-              && (
-                <Button variant='link' onClick={() => setIsOpenLogin(true)}>
-                  Log in
-                </Button>
-              )}
-            <Button
-              size={isBrowser ? 'md' : 'sm'}
-              py={isBrowser ? 2 : 1}
-              onClick={() => router.push('/signup')}
-            >
-              Sign up
-            </Button>
+            {isBrowser && !user &&
+              <Button
+                variant='link'
+                onClick={() => setIsOpenLogin(true)}>
+                Log in
+              </Button>}
+            {!!user ?
+              <Menu>
+                <MenuButton>
+                  <HStack>
+                    <Box>{user.username.slice(0, 10)}</Box>
+                    <Box>
+                      <Image
+                        loader={exportableLoader}
+                        src={'/assets/img/user_icon.svg'}
+                        alt='user icon'
+                        width={40}
+                        height={40}
+                      />
+                    </Box>
+                  </HStack>
+                </MenuButton>
+                <MenuList>
+                  <MenuItem>User account</MenuItem>
+                  <MenuDivider />
+                  <MenuItem onClick={handleLogOut}>Log out</MenuItem>
+                </MenuList>
+              </Menu>
+              :
+              <Button
+                size={isBrowser ? 'md' : 'sm'}
+                py={isBrowser ? 2 : 1}
+                onClick={() => router.push('/signup')}
+              >
+                Sign up
+              </Button>}
           </HStack>
         </Container>
         <Drawer placement='top' size={isMenu ? '' : 'full'} onClose={onClose} isOpen={isOpen}>

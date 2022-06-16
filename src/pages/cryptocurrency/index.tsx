@@ -8,7 +8,7 @@ import PageMeta from '../../components/PageMeta/PageMeta'
 import 'rc-pagination/assets/index.css'
 import { exportableLoader } from '../../image-loader'
 import PaginationComp from '../../components/Pagination'
-import { coinList } from '../../services'
+import { coinList } from '../../services/data-services'
 import dynamic from 'next/dynamic'
 import { UTCTimestamp } from 'lightweight-charts'
 const Chart = dynamic(() => import('../../components/Chart/Chart'), {
@@ -161,7 +161,7 @@ const Cryptocurrency: NextPage<Props> = ({ data }) => {
               pageSize={10}
               changePage={changePage}
               current={page}
-              total={data.count}
+              total={list ? list.count : 0}
             />
           </Container>
         </Container>

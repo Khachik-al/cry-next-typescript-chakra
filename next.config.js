@@ -1,3 +1,4 @@
+const appEnv = require('./src/env-loader')
 const withPreact = require('next-plugin-preact')
 
 /** @type {import('next').NextConfig} */
@@ -11,9 +12,8 @@ module.exports = {
   images: {
     loader: 'custom'
   },
-  env: {
-    DIRNAME: __dirname
-  },
+  env: appEnv,
   trailingSlash: true
 }
+
 

@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from 'react'
+import React, { ChangeEvent, FC, useCallback, useState } from 'react'
 import { useRouter } from 'next/router'
 import Flow from './Flow4'
 import Flow1 from './Flow1'
@@ -10,6 +10,23 @@ interface Props { }
 
 const SignUpComp: FC<Props> = () => {
   const { query } = useRouter()
+  const [state, setState] = useState({
+    full_name: '',
+    email: '',
+    password: '',
+    address_1: '',
+    address_2: '',
+    city: '',
+    state: '',
+    zipe_code: '',
+    country: '',
+  })
+  const handleChange = useCallback(({ target }: ChangeEvent<HTMLInputElement>): void => {
+    setState({
+      ...state,
+      [target.name]: target.value,
+    })
+  }, [state])
 
   const paintView = useCallback(() => {
     switch (query.flow) {
@@ -24,19 +41,19 @@ const SignUpComp: FC<Props> = () => {
         return (
           <>
             <FlowHighlights flow={query.flow} />
-            <Flow2 />
+            <Flow2 state={state} handleChange={handleChange} />
           </>
         )
       case '3':
         return (
           <>
             <FlowHighlights flow={query.flow} />
-            <Flow3 />
+            <Flow3 state={state} />
           </>
         )
       case '4':
         return (
-          <Flow />
+          <Flow state={state} />
         )
       default:
         return (
@@ -46,7 +63,7 @@ const SignUpComp: FC<Props> = () => {
           </>
         )
     }
-  }, [query.flow])
+  }, [query.flow, state, handleChange])
 
   return (
     <>

@@ -30,6 +30,7 @@ const NotFound: NextPage = () => (
             src='/assets/img/puzzle.png'
             alt='puzzle'
             layout='fill'
+            unoptimized
           />
         </Box>
         <Box
@@ -45,6 +46,7 @@ const NotFound: NextPage = () => (
             src='/assets/img/min_puzzle.png'
             alt='puzzle'
             layout='fill'
+            unoptimized
           />
         </Box>
         <Box
@@ -60,6 +62,7 @@ const NotFound: NextPage = () => (
             src='/assets/img/puzzle.png'
             alt='puzzle'
             layout='fill'
+            unoptimized
           />
         </Box>
         <Box
@@ -75,6 +78,7 @@ const NotFound: NextPage = () => (
             src='/assets/img/md_puzzle.png'
             alt='puzzle'
             layout='fill'
+            unoptimized
           />
         </Box>
         <Box
@@ -89,6 +93,7 @@ const NotFound: NextPage = () => (
             src='/assets/img/big_puzzle.png'
             alt='puzzle'
             layout='fill'
+            unoptimized
           />
         </Box>
       </Center>

@@ -1,6 +1,6 @@
 import { ChevronRightIcon, ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
 import {
-  Text, Input, Box, Select, Flex, Button, Stack, Heading, VStack, Show, InputGroup, InputRightElement, Skeleton,
+  Text, Input, Box, Select, Flex, Button, Stack, Heading, VStack, Show, InputGroup, InputRightElement, Skeleton, FormErrorMessage,
 } from '@chakra-ui/react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -8,33 +8,37 @@ import {
   ChangeEvent, FC, FormEvent, useState,
 } from 'react'
 import { exportableLoader } from '../../image-loader'
+import { federatedSignIn } from '../../services/auth-services'
 import PasswordStrength from '../PasswordStrength'
+interface Props {
+  state: {
+    full_name: string,
+    email: string,
+    password: string,
+    address_1: string,
+    address_2: string,
+    city: string,
+    state: string,
+    zipe_code: string,
+    country: string,
+  };
+  handleChange: ({ target }: ChangeEvent<HTMLInputElement>) => void;
+}
 
-const Flow2: FC = () => {
+const Flow2: FC<Props> = ({ state, handleChange }) => {
   const router = useRouter()
   const [isView, setIsView] = useState(false)
-  const [state, setState] = useState({
-    full_name: '',
-    email: '',
-    password: '',
-    address_1: '',
-    address_2: '',
-    city: '',
-    state: '',
-    zipe_code: '',
-    country: '',
-  })
-  const handleChange = ({ target }: ChangeEvent<HTMLInputElement>): void => {
-    setState({
-      ...state,
-      [target.name]: target.value,
-    })
-  }
-  const onSubmit = (e: FormEvent<HTMLFormElement>): void => {
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    if (state.email && state.password && state.full_name) {
+      router.push('/signup?flow=3')
+    }
+  }
+  const googleSignin = async () => {
+    federatedSignIn()
   }
   return (
-
     <>
       <VStack spacing={4} mt={4} textAlign='center'>
         <Show above='sm'><Heading fontSize={['3xl', '4xl', '5xl']}>Start your 7 day trial</Heading></Show>
@@ -44,7 +48,7 @@ const Flow2: FC = () => {
           </Text>
         </Show>
         <Button variant='outline' color='secondary_text' w={['full', 'auto']}>
-          <Box>
+          <Box onClick={googleSignin}>
             Sign up with Google
             {' '}
             <Image loader={exportableLoader} src='/assets/img/google.svg' alt='icon' height={16} width={17} />
@@ -61,6 +65,7 @@ const Flow2: FC = () => {
               name='full_name'
               type='text'
               onChange={handleChange}
+              value={state.full_name}
               placeholder='Name Surname'
             />
             <Text variant='label_input'>Email Address</Text>
@@ -68,7 +73,10 @@ const Flow2: FC = () => {
               name='email'
               type='email'
               placeholder='example@email.com'
+              onChange={handleChange}
+              value={state.email}
             />
+            <FormErrorMessage>Email is required.</FormErrorMessage>
             <Text variant='label_input'>Password</Text>
             <InputGroup>
               <Input
@@ -89,7 +97,7 @@ const Flow2: FC = () => {
             <Text color='secondary_text' fontSize={10} mt={2}>Password Strength:</Text>
             <PasswordStrength value={state.password} />
             <Text color='grey.500' fontSize={12} mt={2}>
-              <Skeleton h={3}/>
+              <Skeleton h={3} />
             </Text>
           </Box>
           <Box w='full'>
@@ -136,7 +144,6 @@ const Flow2: FC = () => {
         </Stack>
         <Flex justify='center' mt={10}>
           <Button
-            onClick={() => router.push('/signup?flow=3')}
             type='submit'
             px={20}
           >
@@ -145,7 +152,6 @@ const Flow2: FC = () => {
           </Button>
         </Flex>
       </form>
-
     </>
   )
 }
