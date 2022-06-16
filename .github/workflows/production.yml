@@ -22,8 +22,6 @@ jobs:
       run: npm run build
     - name: export static website
       run: npm run export
-    - name: optimize
-      run: npm run optimize
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
