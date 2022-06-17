@@ -19,7 +19,7 @@ const Login: FC<Props> = ({ isOpen, onClose }) => {
 
   const handleSignIn = () => {
     signIn({ email, password })
-      .then(onClose)
+      .then(() => router.push('/nft'))
       .catch(({ message }) => {
         toast({ position: 'top-right', title: `${message}`, status: 'error', isClosable: true })
       })

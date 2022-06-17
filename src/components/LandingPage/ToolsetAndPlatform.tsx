@@ -1,10 +1,12 @@
 import { Box, Button, Flex, Heading, HStack, Portal, Text, useColorMode, VStack } from '@chakra-ui/react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { FC, useRef } from 'react'
+import { FC, useContext, useRef } from 'react'
 import { exportableLoader } from '../../image-loader'
+import { Context } from '../Store'
 
 const ToolsetAndPlatform: FC = () => {
+  const user = useContext(Context)
   const mobileBlock = useRef(null)
   const coinListBlock = useRef(null)
   const imageBlock = useRef(null)
@@ -30,10 +32,10 @@ const ToolsetAndPlatform: FC = () => {
             Try It Today For Just $7
           </Text>
           <HStack spacing={5}>
-            <Button
+            {!user && <Button
               onClick={() => router.push('/signup')}>
               Sign up
-            </Button>
+            </Button>}
             <Button variant='outline'>
               Learn more
             </Button>
