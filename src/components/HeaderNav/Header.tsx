@@ -28,8 +28,8 @@ const HeaderNav: FC = () => {
   }
   const onCloseLogin = useCallback(() => setIsOpenLogin(false), [])
 
-  const handleLogOut = async () => {
-    await logOut()
+  const handleLogOut = () => {
+    logOut()
       .catch(({ message }) => {
         toast({ position: 'top-right', title: `${message}`, status: 'error', isClosable: true })
       })
