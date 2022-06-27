@@ -34,6 +34,15 @@ export const nftMarketplace = async ({ slug, limit, offset }: { slug: string, li
   return null
 }
 
+export const nftChartData = async ({ slug }: { slug: string }) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_CRYPTOGIC_API}/section/nft/charts/${slug}`)
+  if (res.status === 200) {
+    const { data } = await res.json()
+    return data.charts.map((el: any) => ({ time: new Date(el.timestamp).getTime() / 1000, value: el.floorPrice }))
+  }
+  return null
+}
+
 export const coinList = async ({ offset, limit }: { offset?: number, limit?: number }) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_CRYPTOGIC_API}/section/token?offset=${offset}&limit=${limit}`)
   if (res.status === 200) {
