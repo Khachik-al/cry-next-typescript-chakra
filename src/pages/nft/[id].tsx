@@ -181,33 +181,27 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
             <Container variant='rating_block'>
               <Flex>
                 <VStack align='start'>
-                  <Text fontSize={['3xl', '4xl', '40']} fontWeight='bold'>{item.fundamentalRating}</Text>
+                  <Text fontSize={['3xl', '4xl', '40']} fontWeight='bold'>{item.fundamentalRating ?? 0}</Text>
                   <Text fontWeight='extrabold'>Fundamental Rating</Text>
                   <Text size='sm' color='secondary_text'>Technical Ratings is a technical analysis tool that combines the ratings of several
                     technical indicators to make it easier for traders and investors to find profitable trades.</Text>
                   <HStack align='start' pt={4}>
                     <Container variant='itemInfo' pl={0} display='flex'>
-                      <Text pb={2} size='xs' color='secondary_text'>Market cup</Text>
+                      <Text pb={2} size='xs' color='secondary_text'>Market Cap Percentile</Text>
                       <Text size='sm' fontWeight='extrabold'>
                         {!item.marketCap ? '---' : item.marketCap}
                       </Text>
                     </Container>
                     <Container variant='itemInfo' display='flex'>
-                      <Text pb={2} size='xs' color='secondary_text'>Valume</Text>
+                      <Text pb={2} size='xs' color='secondary_text'>Valume Percentile</Text>
                       <Text size='sm' fontWeight='extrabold'>
                         {!item.volume ? '---' : item.volume}
                       </Text>
                     </Container>
-                    <Container variant='itemInfo' display='flex'>
-                      <Text pb={2} size='xs' color='secondary_text'>7 Day Turnover</Text>
+                    <Container variant='itemInfo' display='flex' border='none'>
+                      <Text pb={2} size='xs' color='secondary_text'>Average Technical Trend Percentile</Text>
                       <Text size='sm' fontWeight='extrabold'>
                         {!item.turnOver ? '---' : item.turnOver + '%'}
-                      </Text>
-                    </Container>
-                    <Container variant='itemInfo' border='none' display='flex'>
-                      <Text pb={2} size='xs' color='secondary_text'>Owners / Items</Text>
-                      <Text size='sm' fontWeight='extrabold'>
-                        {!item.ownersToItems ? '---' : item.ownersToItems}
                       </Text>
                     </Container>
                   </HStack>
@@ -219,32 +213,26 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
               <Flex>
                 <VStack align='start'>
                   <Text fontSize={['3xl', '4xl', '40']} fontWeight='bold'>{item.technicalRating}</Text>
-                  <Text fontWeight='extrabold'>Technical Rating</Text>
+                  <Text fontWeight='extrabold'>Technical Trend</Text>
                   <Text size='sm' color='secondary_text'>Technical Ratings is a technical analysis tool that combines the ratings of several
                     technical indicators to make it easier for traders and investors to find profitable trades.</Text>
                   <HStack align='start' pt={4}>
                     <Container variant='itemInfo' pl={0} display='flex'>
-                      <Text pb={2} size='xs' color='secondary_text'>Market cup</Text>
+                      <Text pb={2} size='xs' color='secondary_text'>Short Term</Text>
                       <Text size='sm' fontWeight='extrabold'>
-                        0
+                        ---
                       </Text>
                     </Container>
                     <Container variant='itemInfo' display='flex'>
-                      <Text pb={2} size='xs' color='secondary_text'>Valume</Text>
+                      <Text pb={2} size='xs' color='secondary_text'>Medium</Text>
                       <Text size='sm' fontWeight='extrabold'>
-                        0
+                        ---
                       </Text>
                     </Container>
-                    <Container variant='itemInfo' display='flex'>
-                      <Text pb={2} size='xs' color='secondary_text'>7 Day Turnover</Text>
+                    <Container variant='itemInfo' display='flex' border='none'>
+                      <Text pb={2} size='xs' color='secondary_text'>Long Term</Text>
                       <Text size='sm' fontWeight='extrabold'>
-                        0
-                      </Text>
-                    </Container>
-                    <Container variant='itemInfo' border='none' display='flex'>
-                      <Text pb={2} size='xs' color='secondary_text'>Owners / Items</Text>
-                      <Text size='sm' fontWeight='extrabold'>
-                        0
+                        ---
                       </Text>
                     </Container>
                   </HStack>
