@@ -18,6 +18,7 @@ const Chart = dynamic(() => import('../../components/Chart/Chart'), {
 type TData = {
   items: {
     id: string;
+    coinId: string;
     fundamentalRating: number;
     icon: string;
     marketCap: number;
@@ -100,7 +101,7 @@ const Cryptocurrency: NextPage<Props> = ({ data }) => {
                   <Box minW={8} minH={8} position='relative' borderRadius='base' overflow='hidden'>
                     <Image priority loader={exportableLoader} src={el.icon || '/'} alt='icon' layout='fill' unoptimized />
                   </Box>
-                  <Link href={`/cryptocurrency/${el.id}`} passHref>
+                  <Link href={`/cryptocurrency/${el.coinId}`} passHref>
                     <Text variant='link' size='sm' fontWeight='extrabold'>
                       {el.name}
                     </Text>

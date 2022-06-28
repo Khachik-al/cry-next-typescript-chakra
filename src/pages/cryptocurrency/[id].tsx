@@ -80,7 +80,7 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
                 </Text>
               </Flex>
               <HStack>
-                <Link href={item.website[0]} passHref>
+                <Link href={item.website && item.website[0]} passHref>
                   <Container variant='link'>
                     <Image
                       loader={exportableLoader}
@@ -99,7 +99,7 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
                     />
                   </Container>
                 </Link>
-                <Link href={item.explorers[0] || item.website[0]} passHref>
+                <Link href={(item.explorers && item.explorers[0]) || (item.website && item.website[0])} passHref>
                   <Container variant='link'>
                     <Image
                       loader={exportableLoader}
@@ -111,7 +111,7 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
                     <Text mx={1}>Explorers</Text>
                   </Container>
                 </Link>
-                <Link href={item.community[0] || item.website[0]} passHref>
+                <Link href={(item.community && item.community[0]) || (item.website && item.website[0])} passHref>
                   <Container variant='link'>
                     <Image
                       loader={exportableLoader}
@@ -125,7 +125,7 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
                 </Link>
               </HStack>
               <HStack>
-                <Link href={item.sourceCode.github[0] || item.website[0]} passHref>
+                <Link href={(item.sourceCode?.github && item.sourceCode.github[0]) || (item.website && item.website[0])} passHref>
                   <Container variant='link'>
                     <Image
                       loader={exportableLoader}
@@ -144,7 +144,7 @@ const CryptocurrencyItem: NextPage<Props> = ({ item, markets }) => {
                     />
                   </Container>
                 </Link>
-                <Link href={item.sourceCode.github[0] || item.website[0]} passHref>
+                <Link href={(item.sourceCode?.github && item.sourceCode.github[0]) || (item.website && item.website[0])} passHref>
                   <Container variant='link'>
                     <Image
                       loader={exportableLoader}
@@ -572,7 +572,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const data = await coinAll()
 
   const paths = data.map((el: CoinItem) => ({
-    params: { id: el.id },
+    params: { id: el.coinId },
   }))
 
   return {
