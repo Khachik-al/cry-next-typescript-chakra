@@ -51,23 +51,25 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
                 </VStack>
               </HStack>
               <Flex justify='start'>
-                <Container variant='link'>
-                  <Image
-                    loader={exportableLoader}
-                    src='/assets/img/link.svg'
-                    alt='icon'
-                    height={12}
-                    width={12}
-                  />
-                  <Text mx={1}>azuki.com</Text>
-                  <Image
-                    loader={exportableLoader}
-                    src='/assets/img/export.svg'
-                    alt='icon'
-                    height={10}
-                    width={10}
-                  />
-                </Container>
+                <Link href={item.website || `https://opensea.io/collection/${item.slug}`} passHref>
+                  <Container variant='link'>
+                    <Image
+                      loader={exportableLoader}
+                      src='/assets/img/link.svg'
+                      alt='icon'
+                      height={12}
+                      width={12}
+                    />
+                    <Text mx={1}>website</Text>
+                    <Image
+                      loader={exportableLoader}
+                      src='/assets/img/export.svg'
+                      alt='icon'
+                      height={10}
+                      width={10}
+                    />
+                  </Container>
+                </Link>
               </Flex>
             </VStack>
             <Container variant='itemInfo'>
@@ -88,7 +90,7 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
               <Text lineHeight={1} size='lg' fontWeight='extrabold'>
                 {!item.marketCapEth ? '---' : Number(item.marketCapEth.toFixed(2)) + ' ETH'}
               </Text>
-              <Text pb={6} size='md' color='secondary_text'>
+              <Text size='md' color='secondary_text'>
                 {!item.marketCapUsd ? '---' : '$' + Number(item.marketCapUsd.toFixed(2))}
               </Text>
             </Container>
@@ -99,9 +101,6 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
               </Text>
               <Text size='md' color='secondary_text'>
                 {!item.volumeChange24hUsd ? '---' : '$' + Number(item.volumeChange24hUsd.toFixed(2))}
-              </Text>
-              <Text size='md' color='primary.100'>
-                {!item.volumeChange24hEth ? '---' : Number(item.volumeChange24hEth.toFixed(2))}
               </Text>
             </Container>
             <Container variant='itemInfo'>
@@ -123,11 +122,8 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
               <Text lineHeight={1} size='lg' fontWeight='extrabold'>
                 {!item.volumeChange24hEth ? '---' : Number(item.volumeChange24hEth.toFixed(2)) + ' ETH'}
               </Text>
-              <Text size='md' color='secondary_text'>
+              <Text pb={3} size='md' color='secondary_text'>
                 {!item.volumeChange24hUsd ? '---' : '$' + Number(item.volumeChange24hUsd.toFixed(2))}
-              </Text>
-              <Text pb={3} size='md' color='primary.100'>
-                {!item.volumeChange24hEth ? '---' : Number(item.volumeChange24hEth.toFixed(2))}
               </Text>
               <Text pb={2} size='sm' color='secondary_text'>24h %</Text>
               <UpDownPercent fontSize={16} value={item.volumeChangePercent24h} boxSize={3} />
@@ -139,12 +135,12 @@ const NftItem: NextPage<Props> = ({ item, marketplace }) => {
                 {!item.marketCapUsd ? '---' : '$' + Number(item.marketCapUsd.toFixed(2))}
               </Text>
             </Container>
-            <VStack align='start' pl={3}>
+            <VStack align='start' pl={3} spacing={0}>
               <Text pb={2} size='sm' color='secondary_text'>Floor Price</Text>
               <Text lineHeight={1} size='lg' fontWeight='extrabold'>
                 {!item.floorPriceEth ? '---' : (item.floorPriceEth.toFixed(2) + ' ETH')}
               </Text>
-              <Text size='md' color='secondary_text'>
+              <Text size='md' color='secondary_text' pb={4}>
                 {!item.floorPriceUsd ? '---' : ('$' + item.floorPriceUsd.toFixed(2))}
               </Text>
               <Text pb={2} size='sm' color='secondary_text'>Owners</Text>
