@@ -1,15 +1,15 @@
 import { CognitoHostedUIIdentityProvider, CognitoUser } from '@aws-amplify/auth'
 import { Auth, Hub } from 'aws-amplify'
 
-export const signUp = ({ username, email, password }: { username: string, email: string, password: string }) => {
+export const signUp = ({ email, password }: { email: string, password: string }) => {
   return Auth.signUp({
-    username: username,
+    username: email,
     password,
     attributes: { email },
   })
 }
 
-export const verifyCode = ({ type, email, code, newPassword }: { type: string, email: string, code: string, newPassword?: string }) => {
+export const verifyCode = ({ type, email, code, newPassword }: { type?: string, email: string, code: string, newPassword?: string }) => {
   if (type === 'ForgotPasswordSubmit' && newPassword) {
     return Auth.forgotPasswordSubmit(email, code, newPassword)
   } else {

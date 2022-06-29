@@ -1,6 +1,7 @@
 export type CoinItem = {
   rank: number;
   id: string;
+  coinId: string;
   icon: string;
   name: string;
   price: number;

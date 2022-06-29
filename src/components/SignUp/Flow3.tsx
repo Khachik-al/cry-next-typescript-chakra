@@ -1,11 +1,11 @@
 import {
-  Box, Button, Checkbox, Flex, Heading, HStack, Input, InputGroup, InputLeftElement, Select, Show, Skeleton, Stack, Text, useToast, VStack,
+  Box, Button, Checkbox, Flex, Heading, HStack, Input, InputGroup, InputLeftElement, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Select, Show, Skeleton, Stack, Text, useDisclosure, useToast, VStack,
 } from '@chakra-ui/react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { exportableLoader } from '../../image-loader'
-import { signUp } from '../../services/auth-services'
+import { resendCode, signUp, verifyCode } from '../../services/auth-services'
 
 interface Props {
   state: {
@@ -24,16 +24,57 @@ interface Props {
 const Flow3: FC<Props> = ({ state }) => {
   const router = useRouter()
   const toast = useToast()
+  const { isOpen, onOpen } = useDisclosure()
+  const [code, setCode] = useState('')
 
-  const onSubmit = async () => {
-    await signUp({ username: state.full_name, email: state.email, password: state.password })
+  const onSubmit = () => {
+    signUp({ email: state.email, password: state.password })
+      .then(onOpen)
+      .catch(({ message }) => {
+        toast({ position: 'top-right', title: `${message}`, status: 'error', isClosable: true })
+      })
+  }
+  const verify = () => {
+    verifyCode({ code, email: state.email })
       .then(() => router.push('/signup?flow=4'))
+      .catch(({ message }) => {
+        toast({ position: 'top-right', title: `${message}`, status: 'error', isClosable: true })
+      })
+  }
+  const resend = () => {
+    resendCode({ email: state.email })
       .catch(({ message }) => {
         toast({ position: 'top-right', title: `${message}`, status: 'error', isClosable: true })
       })
   }
   return (
     <>
+      <Modal isOpen={isOpen} onClose={() => { }}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Verification code</ModalHeader>
+          <ModalBody>
+            <Input
+              name='full_name'
+              type='text'
+              onChange={(e) => setCode(e.target.value)}
+              value={code}
+              placeholder='code'
+            />
+          </ModalBody>
+          <ModalFooter>
+            <HStack>
+              <Button variant='link' size='sm' onClick={resend}>
+                Resend code
+              </Button>
+              <Button size='sm' onClick={verify}>
+                Verify
+              </Button>
+            </HStack>
+
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
       <VStack spacing={4} mt={4} textAlign='center'>
         <Show above='sm'>
           <Heading fontSize={['3xl', '4xl', '5xl']}>Start your 7 day trial</Heading>

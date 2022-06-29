@@ -18,6 +18,7 @@ export type NFTMarketItem = {
   volume: number;
   turnOver: number;
   ownersToItems: number;
+  website: string;
 }
 
 export type Marketplace = {

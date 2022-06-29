@@ -31,7 +31,7 @@ const Flow2: FC<Props> = ({ state, handleChange }) => {
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (state.email && state.password && state.full_name) {
+    if (state.email && state.password) {
       router.push('/signup?flow=3')
     }
   }
