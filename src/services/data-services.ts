@@ -1,4 +1,4 @@
-import { UTCTimestamp } from "lightweight-charts"
+import { UTCTimestamp } from 'lightweight-charts'
 
 export const nftList = async ({ offset, limit, sort, order }: { offset: number, limit: number, sort: string, order: string }) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_CRYPTOGIC_API}/section/nft?offset=${offset}&limit=${limit}&sort=${sort}&order=${order}`)
@@ -40,22 +40,22 @@ export const nftChartData = async ({ slug, range }: { slug: string, range: strin
   const res = await fetch(`${process.env.NEXT_PUBLIC_CRYPTOGIC_API}/section/nft/charts/${slug}`)
   if (res.status === 200) {
     const { data }: { data: { charts: { timestamp: number, floorPrice: number }[] } } = await res.json()
-    const list = data.charts.map((el) => ({ time: (el.timestamp / 1000) as UTCTimestamp, value: el.floorPrice }));
-    const today = new Date();
-    const prevDay = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 1).getTime() / 1000;
-    const prevWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7).getTime() / 1000;
-    const prevMonth = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate()).getTime() / 1000;
-    const prev3Month = new Date(today.getFullYear(), today.getMonth() - 3, today.getDate()).getTime() / 1000;
-    const prevYear = new Date(today.getFullYear() - 1, today.getMonth(), today.getDate()).getTime() / 1000;
-    const prevYTD = new Date(today.getFullYear().toString()).getTime() / 1000;
+    const list = data.charts.map((el) => ({ time: (el.timestamp / 1000) as UTCTimestamp, value: el.floorPrice }))
+    const today = new Date()
+    const prevDay = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 1).getTime() / 1000
+    const prevWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7).getTime() / 1000
+    const prevMonth = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate()).getTime() / 1000
+    const prev3Month = new Date(today.getFullYear(), today.getMonth() - 3, today.getDate()).getTime() / 1000
+    const prevYear = new Date(today.getFullYear() - 1, today.getMonth(), today.getDate()).getTime() / 1000
+    const prevYTD = new Date(today.getFullYear().toString()).getTime() / 1000
 
     switch (range) {
-      case ('1D'): return list.filter((el) => prevDay < el.time);
-      case ('7D'): return list.filter((el) => prevWeek < el.time);
-      case ('1M'): return list.filter((el) => prevMonth < el.time);
-      case ('3M'): return list.filter((el) => prev3Month < el.time);
-      case ('1Y'): return list.filter((el) => prevYear < el.time);
-      case ('YTD'): return list.filter((el) => prevYTD < el.time);
+      case ('1D'): return list.filter((el) => prevDay < el.time)
+      case ('7D'): return list.filter((el) => prevWeek < el.time)
+      case ('1M'): return list.filter((el) => prevMonth < el.time)
+      case ('3M'): return list.filter((el) => prev3Month < el.time)
+      case ('1Y'): return list.filter((el) => prevYear < el.time)
+      case ('YTD'): return list.filter((el) => prevYTD < el.time)
       default: return list
     }
   }

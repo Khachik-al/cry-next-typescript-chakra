@@ -39,21 +39,3 @@ export type Marketplace = {
   next: string;
   previous: string;
 }
-
-export type ChartData = {
-  assets: {
-    address: string;
-    imgUrl: string;
-    name: string;
-    permalink: string;
-    price_eth: number;
-    price_usd: number;
-    token_id: string;
-    traits: {
-      trait_type: string;
-      value: string;
-    }[]
-  }[];
-  next: string;
-  previous: string;
-}

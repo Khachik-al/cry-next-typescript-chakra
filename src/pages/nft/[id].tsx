@@ -41,7 +41,7 @@ const NftItem: NextPage<Props> = ({ item, marketplace, chartData }) => {
     if (typeof query.id === 'string') {
       setChartTimePicker(range)
       const data = await nftChartData({ slug: item.id, range })
-      data !== null && setChartDataList(data)
+      if (data !== null) setChartDataList(data)
     }
   }
   return (
