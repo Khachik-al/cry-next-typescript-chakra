@@ -11,7 +11,7 @@ import { NFTMarketItem, Marketplace } from '../../components/types/nft-marketpla
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import UpDownPercent from '../../components/UpDownPercent'
-import { Time } from 'lightweight-charts'
+import { UTCTimestamp } from 'lightweight-charts'
 const Chart = dynamic(() => import('../../components/Chart/Chart'), {
   ssr: false,
 })
@@ -19,7 +19,7 @@ const Chart = dynamic(() => import('../../components/Chart/Chart'), {
 interface Props {
   item: NFTMarketItem;
   marketplace: Marketplace;
-  chartData: { time: Time, value: number }[];
+  chartData: { time: UTCTimestamp, value: number }[];
 }
 enum Path {
   next = 'next',
@@ -29,11 +29,19 @@ enum Path {
 const NftItem: NextPage<Props> = ({ item, marketplace, chartData }) => {
   const { query } = useRouter()
   const [marketplaceList, setMarketplaceList] = useState(marketplace)
-  const [chartTimePicker, setChartTimePicker] = useState<string>('1D')
+  const [chartDataList, setChartDataList] = useState(chartData)
+  const [chartTimePicker, setChartTimePicker] = useState<string>('ALL')
   const changePage = async (path: Path) => {
     if (typeof query.id === 'string') {
       const pageData = await nftMarketplace({ slug: query.id, limit: 10, offset: marketplaceList[path] || '' })
       setMarketplaceList(pageData)
+    }
+  }
+  const changeChartRange = async (range: string) => {
+    if (typeof query.id === 'string') {
+      setChartTimePicker(range)
+      const data = await nftChartData({ slug: item.id, range })
+      data !== null && setChartDataList(data)
     }
   }
   return (
@@ -154,7 +162,7 @@ const NftItem: NextPage<Props> = ({ item, marketplace, chartData }) => {
               </Text>
             </VStack>
           </HStack>
-          {chartData && <>
+          {chartDataList && <>
             <Text fontSize={20} fontWeight='extrabold' mt={10} mb={5}>
               {item.name} Floor Price Chart
             </Text>
@@ -164,14 +172,14 @@ const NftItem: NextPage<Props> = ({ item, marketplace, chartData }) => {
                   <Box
                     key={el}
                     className={chartTimePicker === el ? 'active' : ''}
-                    onClick={() => setChartTimePicker(el)}
+                    onClick={() => changeChartRange(el)}
                   >
                     {el}
                   </Box>,
                 )}
               </Container>
             </Flex>
-            <Chart data={chartData} />
+            <Chart data={chartDataList} />
           </>}
           <Text fontSize={20} fontWeight='extrabold' mt={5} mb={5}>
             Cryptogic Rating
@@ -310,7 +318,7 @@ const NftItem: NextPage<Props> = ({ item, marketplace, chartData }) => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const item = await nftItem({ slug: `${context?.params?.id}` })
   const marketplace = await nftMarketplace({ slug: `${context?.params?.id}`, limit: 10, offset: '' })
-  const chartData = await nftChartData({ slug: `${item?.id}` })
+  const chartData = await nftChartData({ slug: `${item?.id}`, range: 'ALL' })
 
   return {
     props: { item, marketplace, chartData },
