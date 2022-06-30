@@ -38,7 +38,7 @@ export const nftChartData = async ({ slug }: { slug: string }) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_CRYPTOGIC_API}/section/nft/charts/${slug}`)
   if (res.status === 200) {
     const { data } = await res.json()
-    return data.charts.map((el: any) => ({ time: new Date(el.timestamp).getTime() / 1000, value: el.floorPrice }))
+    return data.charts.map((el: any) => ({ time: el.timestamp / 1000, value: el.floorPrice }))
   }
   return null
 }

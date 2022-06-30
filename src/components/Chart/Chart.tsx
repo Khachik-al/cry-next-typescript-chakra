@@ -79,7 +79,7 @@ const Chart: FC<Props> = ({ data, baseline, small, height, redColor }) => {
           borderColor: colorMode === 'light' ?
             theme.colors.grey['200'] :
             theme.colors.grey['600'],
-          timeVisible: true
+          timeVisible: true,
         },
         handleScroll: {
           horzTouchDrag: false,
