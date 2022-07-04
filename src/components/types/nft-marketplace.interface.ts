@@ -1,4 +1,5 @@
 export type NFTMarketItem = {
+  id: string
   logoUrl: string;
   rank: number;
   name: string;

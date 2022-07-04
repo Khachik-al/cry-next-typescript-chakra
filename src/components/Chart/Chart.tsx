@@ -79,6 +79,7 @@ const Chart: FC<Props> = ({ data, baseline, small, height, redColor }) => {
           borderColor: colorMode === 'light' ?
             theme.colors.grey['200'] :
             theme.colors.grey['600'],
+          timeVisible: true,
         },
         handleScroll: {
           horzTouchDrag: false,
@@ -120,6 +121,9 @@ const Chart: FC<Props> = ({ data, baseline, small, height, redColor }) => {
         var lineSeries = chart.addLineSeries({
           priceScaleId: 'left',
           priceLineVisible: false,
+          priceFormat: {
+            type: 'price',
+          },
           color: small ?
             redColor ? theme.colors.danger : theme.colors.primary['100'] :
             theme.colors.secondary_text,
